@@ -152,7 +152,3 @@ begin
    end;
 end;
 
-procedure btnPregnancyRedatedOnClick(Sender);
-begin
-  cbPregnancyRedatedYes.checked := not(cbPregnancyRedatedYes.checked )
-end;

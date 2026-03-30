@@ -11,10 +11,26 @@
 #include "shared/obstetric/gestationalAge.pas"
 #include "shared/obstetric/eddHandling.pas"
 #include "shared/obstetric/clinicalHistory.pas"
+#include "shared/obstetric/ivf.pas"
+#include "shared/obstetric/ovaries.pas"
 
 // --- Shared gynae ---
 #include "shared/gynae/fibroids.pas"
 #include "shared/gynae/fibroidUI.pas"
+
+// --- earlyT1Singleton variants (where this exam differs from shared majority) ---
+#include "shared/variants/AddFullstopToEnd.earlyT1Singleton_pe12week.pas"
+#include "shared/variants/GetCavDistortionCount.earlyT1Singleton.pas"
+#include "shared/variants/GetClinicalHistory.earlyT1Singleton.pas"
+#include "shared/variants/GetClinicalIndicators.earlyT1Singleton.pas"
+#include "shared/variants/GetFibroidString.earlyT1Singleton.pas"
+#include "shared/variants/GetIntegerMeasuredString.earlyT1Singleton.pas"
+#include "shared/variants/GetSingleFibroidDimensions.earlyT1Singleton.pas"
+#include "shared/variants/cbUSSEDDOnChange.earlyT1Singleton.pas"
+#include "shared/variants/cxccbReferralIndicatorsChange.earlyT1Singleton.pas"
+#include "shared/variants/deStatedEDDOnChange.earlyT1Singleton_pe12week.pas"
+#include "shared/variants/getOvaryWarning.earlyT1Singleton.pas"
+#include "shared/variants/spFibroidCountOnChange.earlyT1Singleton.pas"
 
 // --- Exam-specific ---
 #include "earlyT1Singleton/embryo.pas"

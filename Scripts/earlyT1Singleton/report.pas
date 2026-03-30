@@ -1,3 +1,22 @@
+function CheckFormComplete: Boolean;
+var
+  vTempStr : String;
+begin
+  if ((cxtsFetus1.TabVisible)and (StrToFloatDef(edtEmbroSize1.text, 0) < 0.1) and (cbEmbryo1Visualised1.Checked)) then
+  begin
+    ShowMessage('You must enter a CRL measurement if the embryo is visualised');
+    result := false;
+  end
+  else
+  if (pcEDDPrinciple.Properties.ActivePage = tsIVFEDD) and ((seTransferDay.Value < 1) or (seNumberTransferred.Value < 1)) and (cbEDDPrinciple.ItemIndex > 4) then
+  begin
+    ShowMessage('Embryo Transfer Day and Number Transferred should both be > 0');
+    result := False;
+  end
+  else
+    result := True;
+end;
+
 function GetFindings: String;
 begin
   case cbPregnancyOutcome.ItemIndex of
@@ -68,71 +87,6 @@ result := '';
    result := result + 'The embryo dimensions are equivalent to '+ getCompositeDate + 'No embryonic heart motion detected.  '
 end;
 
-function GetEnteredEDD :String
-Begin
-result := '';
-  {if cbEDDPrinciple.ItemIndex = 0 then // No Dates
-  begin
-    result := 'No Dates. ';
-  end
-  else  }
-  if cbEDDPrinciple.ItemIndex = 2 then // Menstrual EDD
-  begin
-    if deMenstrualEDD.Date > 0 then
-      result := FormatDateTime('dd/mm/yyyy', deMenstrualEDD.Date);
-  end
-  else
-  if cbEDDPrinciple.ItemIndex = 0 then // Stated EDD
-  begin
-    if (deStatedEDD.Date > 0) then
-    begin
-      Result := FormatDateTime('dd/mm/yyyy', deStatedEDD.Date);
-    end
-  end
-  else
-  if cbEDDPrinciple.ItemIndex = 3 then // Previously established EDD
-  begin
-    if (deMUFWEdd.Date > 0) then
-      Result := FormatDateTime('dd/mm/yyyy', deMUFWEdd.Date);
-  end
-  else
-  if cbEDDPrinciple.ItemIndex = 4 then // Timed Ovulation
-  begin
-    if (deOvulationEDD.Date > 0) then
-    begin
-      if (deOvulationEDD.Date > 0) then
-        result := FormatDateTime('dd/mm/yyyy', deOvulationEDD.Date);
-    end
-  end
-  else // Assisted
-  begin
-    if (deIVFEDD.Date > 0) then
-    begin
-      Result := FormatDateTime('dd/mm/yyyy', deIVFEDD.Date);
-    end;
-  end;
-  if not(cbPregnancyRedatedYes.checked) then
-  begin
-     result := '#|#+BOLD' + result + '#/#'
-  end
-end;
-
-function getCompositeDate : String;
-begin
-  result := '';
-  result := intToStr(seUSSEDDGAWeeks1.value)   +' weeks '               
-  if seSSEDDGADays1.value > 0 then
-  begin
-    if seSSEDDGADays1.value > 1 then
-     result := result + intToStr(seSSEDDGADays1.value)   +' days';
-    else
-     result := result + intToStr(seSSEDDGADays1.value)   +' day';
-  end
-  else if seSSEDDGADays1.value = 0 then
-      result := result + intToStr(seSSEDDGADays1.value)   +' days';
-      
-  result := AddFullstopToEnd(Result);
-end
 
 function getPregnancyRedated : Boolean
 begin
@@ -345,13 +299,6 @@ result := '';
     if result <> '' then
       result :=  result + #13#10 +#13#10;
   end;
-end;
-
-Function getOvaryWarning : Boolean;
-begin
-  result := FALSE;
-  if ((cbRightOvaryAbnormal.checked) or (cbLeftOvaryAbnormal.checked)) then
-    result := TRUE;
 end;
 
 Function getFindingsWarning : Boolean;
