@@ -1,0 +1,9 @@
+#ifndef __SHARED_VARIANTS_DESTATEDEDDONCHANGE_EARLYT1SINGLETON_PE12WEEK
+#define __SHARED_VARIANTS_DESTATEDEDDONCHANGE_EARLYT1SINGLETON_PE12WEEK
+
+procedure deStatedEDDOnChange(Sender);
+begin
+  PopulateEDDControls(deStatedEDD, seStatedEDDGestAgeWeeks, seStatedEDDGestAgeDays);
+end;
+
+#endif

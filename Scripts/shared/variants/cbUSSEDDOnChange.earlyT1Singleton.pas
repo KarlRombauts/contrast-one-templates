@@ -1,0 +1,10 @@
+#ifndef __SHARED_VARIANTS_CBUSSEDDONCHANGE_EARLYT1SINGLETON
+#define __SHARED_VARIANTS_CBUSSEDDONCHANGE_EARLYT1SINGLETON
+
+procedure cbUSSEDDOnChange(Sender);
+var
+  vWeeks, vDays: Integer;
+begin
+end;
+
+#endif

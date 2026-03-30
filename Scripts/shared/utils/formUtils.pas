@@ -1,25 +1,6 @@
 #ifndef __SHARED_UTILS_FORMUTILS
 #define __SHARED_UTILS_FORMUTILS
 
-function CheckFormComplete: Boolean;
-var
-  vTempStr : String;
-begin
-  if ((cxtsFetus1.TabVisible)and (StrToFloatDef(edtEmbroSize1.text, 0) < 0.1) and (cbEmbryo1Visualised1.Checked)) then
-  begin
-    ShowMessage('You must enter a CRL measurement if the embryo is visualised');
-    result := false;
-  end
-  else
-  if (pcEDDPrinciple.Properties.ActivePage = tsIVFEDD) and ((seTransferDay.Value < 1) or (seNumberTransferred.Value < 1)) and (cbEDDPrinciple.ItemIndex > 4) then
-  begin
-    ShowMessage('Embryo Transfer Day and Number Transferred should both be > 0');
-    result := False;
-  end
-  else
-    result := True;
-end;
-
 function AddToResult(inResult, inNew: string): string;
 begin
   result := '';

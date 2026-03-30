@@ -1,5 +1,5 @@
-#ifndef __SHARED_OBSTETRIC_CLINICALHISTORY
-#define __SHARED_OBSTETRIC_CLINICALHISTORY
+#ifndef __SHARED_VARIANTS_GETCLINICALINDICATORS_EARLYT1SINGLETON
+#define __SHARED_VARIANTS_GETCLINICALINDICATORS_EARLYT1SINGLETON
 
 function GetClinicalIndicators: String;
 var
@@ -14,29 +14,16 @@ begin
         result := result + '.  ';
       result := result + cxccbReferralIndicators.ShortDescription[i];
     end;
-  end;                     
+  end;
   if (cxccbReferralIndicators.States[cxccbReferralIndicators.Properties.Items.Count-1] = 1) then
   begin
     if result <> '' then
       result := result + '.  ';
-    result := result + trim(edtReferralIndicator1.Text);
+    result := result + trim(edtPresentComplaintOther.Text);
   end;
   if result <> '' then
-    result := AddFullStop(result);
-  result := result + ' ';  
-end;
-
-function GetClinicalHistory: String;
-var
-  i: Integer;
-begin
-  result := '';
-
-end;
-
-procedure cxccbReferralIndicatorsChange(Sender);
-begin
-  edtReferralIndicator1.Enabled := (cxccbReferralIndicators.States[cxccbReferralIndicators.Properties.Items.Count-1] = 1);
+    result := AddFullstopToEnd(result);
+  //result := result + ' ';
 end;
 
 #endif

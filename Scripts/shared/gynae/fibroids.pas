@@ -37,7 +37,7 @@ begin
   result := 0;
   if (gbFibroid1.Visible) and (cbCavityDistortion1.Checked) and (cbCavityDistortion1.Enabled) then
     result := Result + 1;
-  if (gbFibroid2.Visible) and (cbCavityDistortion2.Checked) and (cbCavityDistortion2.Enabled) then
+  {if (gbFibroid2.Visible) and (cbCavityDistortion2.Checked) and (cbCavityDistortion2.Enabled) then
     result := Result + 1;
   if (gbFibroid3.Visible) and (cbCavityDistortion3.Checked) and (cbCavityDistortion3.Enabled) then
     result := Result + 1;
@@ -54,19 +54,18 @@ begin
   if (gbFibroid9.Visible) and (cbCavityDistortion9.Checked) and (cbCavityDistortion9.Enabled) then
     result := Result + 1;
   if (gbFibroid10.Visible) and (cbCavityDistortion10.Checked) and (cbCavityDistortion10.Enabled) then
-    result := Result + 1;
+    result := Result + 1;}
 end;
 
-function GetSingleFibroidDimensions: string;
+ function GetSingleFibroidDimensions: string;
 var
-  v1, v2, v3: Integer;
-  v4: Double;
+  v1, v2, v3,v4: Integer;
 begin
   result := '';
   v1 := trunc(edtFibroidLength1.Value);
   v2 := trunc(edtFibroidWidth1.Value);
   v3 := trunc(edtFibroiddepth1.Value);
-  v4 := trunc(edtFibroidVolume1.Value * 10) / 10;
+  v4 := trunc(edtFibroidVolume1.Value);
   if v1 > 0 then
   begin
     if v2 > 0 then
@@ -75,7 +74,7 @@ begin
       begin
         if v4 > 0 then
         begin
-          result := result + format('%d x %d x %dmm (vol. %3.1f cc)', [v1, v2, v3, v4]);
+          result := result + format('%d x %d x %dmm (vol. %dcc)', [v1, v2, v3, v4]);
         end
         else
           result := result + format('%d x %d x %dmm', [v1, v2, v3]);
@@ -101,10 +100,9 @@ result := '';
     result := ' ' + result;
 end;
 
-function GetFibroidString(inFibroid: Integer): string;
+function GetFibroidString (inFibroid: Integer): string;
 var
-  v1, v2, v3: Integer;
-  v4: Double;
+  v1, v2, v3,v4: Integer;
   vl, vw, vd, vv: TcxSpinEdit;
   vp, vt, vlr: TcxComboBox;
   vCheck: TcxCheckBox;
@@ -118,12 +116,10 @@ begin
   vt := TWinControl(tsFibroids.Owner).FindComponent('cbFibroidsType' + intToStr(inFibroid));
   vlr := TWinControl(tsFibroids.Owner).FindComponent('cbFibroidsLeftRight' + intToStr(inFibroid));
   vCheck := TWinControl(tsFibroids.Owner).FindComponent('cbCavityDistortion' + intToStr(inFibroid));
-  if vlr.Text <> '' then
-    result := vlr.Text + ' ';
   v1 := trunc(vl.Value);
   v2 := trunc(vw.Value);
   v3 := trunc(vd.Value);
-  v4 := trunc(vv.Value * 10) / 10;
+  v4 := trunc(vv.Value)
   if v1 > 0 then
   begin
     if v2 > 0 then
@@ -132,16 +128,36 @@ begin
       begin
         if v4 > 0 then
         begin
-          result := result + vp.Text + ' ' + vt.Text + format(' %d x %d x %dmm (vol. %3.1f cc)', [v1, v2, v3, v4]);
+          result := result  + format('%d x %d x %dmm (vol. %dcc)', [v1, v2, v3, v4]) + ' ' ;
+            if vlr.Text <> '' then
+                 result := result + Lowercase(vlr.Text) + ' ';
+          result := result + vp.Text + ' ' + vt.Text;
         end
         else
-          result := result + vp.Text + ' ' + vt.Text + format(' %d x %d x %dmm', [v1, v2, v3]);
+        begin
+          result := result  + format('%d x %d x %dmm', [v1, v2, v3]) + ' ' ;
+           if vlr.Text <> '' then
+                 result := result + Lowercase(vlr.Text) + ' ';
+          result := result + vp.Text + ' ' + vt.Text;
+        end
       end
       else
-        result := result + vp.Text + ' ' + vt.Text + format(' %d x %dmm', [v1, v2]);
+      begin
+        result := result + format('%d x %dmm', [v1, v2]) + ' ' ;
+         if vlr.Text <> '' then
+                 result := result + Lowercase(vlr.Text) + ' ';
+          result := result + vp.Text + ' ' + vt.Text;
+      end;
     end
     else
-      result := result + vp.Text + ' ' + vt.Text + format(' %dmm', [v1]);
+    begin
+      result := result + format('%dmm', [v1])+ ' ' ;
+       if vlr.Text <> '' then
+                 result := result + Lowercase(vlr.Text) + ' ';
+       result := result + vp.Text + ' ' + vt.Text;
+    end;
+    if result <> '' then
+      result := result + ' fibroid'
   end;
   if vCheck.Checked then
   begin
@@ -153,12 +169,12 @@ begin
     else
       result := result + ' and is close to the cervix';
   end;    
-  {else
+  else
   begin
     if GetCavDistortionCount > 0 then
       result := result + ', clear of the cervix';
-  end; }
-end;
+  end;
+end;  
 
 function GetFibroidDesc(inFibroid: Integer): string;
 var

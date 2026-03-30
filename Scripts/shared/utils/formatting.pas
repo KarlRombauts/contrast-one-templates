@@ -56,9 +56,9 @@ var
 begin
   vt := trim(inStr);
   if vt[length(vt)] <> '.' then
-    vt := vt + '.  '
+    vt := vt + '. '
   else
-    vt := inStr;
+    vt := vt + ' ';
   result := vt;
 end;
 
@@ -124,24 +124,21 @@ begin
         if v4 > 0 then
         begin
           if trunc(v4) = v4 then
-            result := Format('%d x %d x %d%s (vol %d cc)', [v1, v2, v3, inType, trunc(v4)]);
+            result := Format('%dx%dx%d%s (vol %d cc)', [v1, v2, v3, inType, trunc(v4)]);
+          else
+            result := Format('%dx%dx%d%s (vol %2.1f cc)', [v1, v2, v3, inType, v4]);
+        end
         else
-          result := Format('%d x %d x %d%s (vol %2.1f cc)', [v1, v2, v3, inType, v4]);
+          result := Format('%dx%dx%d%s', [v1, v2, v3, inType]);
       end
       else
-        result := Format('%d x %d x %d%s', [v1, v2, v3, inType]);
+        result := Format('%dx%d%s', [v1, v2, inType]);
     end
     else
-      result := Format('%d x %d%s', [v1, v2, inType]);
+      result := Format('%d%s', [v1, inType]);
   end
   else
-    result := Format('%d%s', [v1, inType]);
-end
-else
-  result := '';
-if result <> '' then
-  result := ' of '+ result;
-
+    result := '';
 end;
 
 #endif

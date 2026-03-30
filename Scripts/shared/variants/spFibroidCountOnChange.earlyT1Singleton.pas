@@ -1,5 +1,5 @@
-#ifndef __SHARED_GYNAE_FIBROIDUI
-#define __SHARED_GYNAE_FIBROIDUI
+#ifndef __SHARED_VARIANTS_SPFIBROIDCOUNTONCHANGE_EARLYT1SINGLETON
+#define __SHARED_VARIANTS_SPFIBROIDCOUNTONCHANGE_EARLYT1SINGLETON
 
 procedure spFibroidCountOnChange(Sender)
 begin
@@ -13,10 +13,6 @@ begin
   gbFibroid8.Visible := False;
   gbFibroid9.Visible := False;
   gbFibroid10.Visible := False;
-  if spFibroidCount.Value > 0 then
-  begin
-     cbFibroidsVisualised.Checked := true;
-  end;
   if cbFibroidsVisualised.Checked then
   begin
     if spFibroidCount.Value > 0 then
@@ -59,28 +55,6 @@ begin
         end;
       end;
     end;
-  end;
-end;
-
-procedure cbFibroidsVisualisedOnClick(sender)
-begin
-  spFibroidCount.Enabled := cbFibroidsVisualised.Checked;
-  spFibroidCountOnChange(nil);
-end;
-
-procedure cbFibroidsTypeOnChange(Sender)
-var
-  vControlIdx: Integer;
-  vCheckBox: TWinControl;
-begin
-  vControlIdx := Sender.Tag;
-  if vControlIdx > 0 then
-  begin
-    {  vCheckBox := TWinControl(Sender).Owner.FindComponent('cbCavityDistortion' + intToStr(vControlIdx));
-      if assigned(vCheckBox) then
-      begin
-        TcxCheckBox(vCheckBox).Enabled := TcxComboBox(Sender).ItemIndex = 0;
-      end;  }
   end;
 end;
 

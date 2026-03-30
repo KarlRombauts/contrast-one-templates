@@ -37,4 +37,28 @@ begin
   result := (trunc(now) - trunc(inDate)) mod 7;
 end;
 
+function GetGestDays: integer;
+var
+  inW, inD: Integer;
+begin
+  result := '';
+  inW := 0;
+  inD := 0;
+    inW := trunc(seEDDCalGAWeeks.Value);
+    inD := trunc(seEDDCalGADays.Value);
+    result :=  inD;
+end;
+
+function GetGestWeeks: integer;
+var
+  inW, inD: Integer;
+begin
+  result := '';
+  inW := 0;
+  inD := 0;
+    inW := trunc(seEDDCalGAWeeks.Value);
+    inD := trunc(seEDDCalGADays.Value);
+    result :=  inW;
+end;
+
 #endif
