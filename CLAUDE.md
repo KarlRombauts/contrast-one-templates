@@ -8,30 +8,44 @@ Contrast One is a medical ultrasound reporting system for obstetric and gynecolo
 
 ## Build System
 
-The project uses a custom Python-based preprocessor (`Scripts/builder.py`) instead of a standard build system. It processes Pascal source files before Delphi compilation.
+The project uses **GPP** (Generic PreProcessor) to assemble modular Pascal source files into monolithic scripts, and Python tools for parsing/splitting.
 
 ### Key Commands
 
 ```bash
-# Preprocess a Pascal script (expand includes, imports, defines)
-python Scripts/builder.py <input.pas> <output.pas>
+# Build all exams (from anywhere)
+bash Scripts/tools/build.sh
 
-# Extract function/procedure signatures from a Pascal file
-python Scripts/getFuncDefs.py <input.pas> <output.txt>
+# Build a single exam (from Scripts/ directory)
+cd Scripts && gpp -I. -o build/earlyT1Singleton.pas earlyT1Singleton/script.pas
 
-# Extract full function bodies from a Pascal file
-python Scripts/funcExtract.py <input.pas> <output.txt>
+# List functions in a script
+cd Scripts/tools && python3 funcsplit.py list ../earlyT1Singleton/script.pas
+
+# Extract a single function
+cd Scripts/tools && python3 funcsplit.py extract StrToFloatDef ../earlyT1Singleton/script.pas
+
+# Reverse-sync an app export against source files
+cd Scripts/tools && python3 reversesync.py ../earlyT1Singleton/mapping.json exported_script.pas
 
 # Decompose an exported binary template into its component files
 ./filesplit.sh <export_file> <output_directory>
+
+# Run tests
+cd Scripts/tools && .venv/bin/python3 -m pytest tests/ -v
 ```
 
-### Preprocessor Directives (builder.py)
+### GPP Preprocessor Directives
 
-The builder supports three directives in Pascal source files:
-- `#include "path/file.pas"` — inlines file contents (always re-includes)
-- `#import "path/file.pas"` — inlines file contents once (deduplicates)
-- `#define KEY value` — registers a macro; use as `{{KEY}}` in source
+GPP handles these directives in Pascal source files:
+- `#include "path/file.pas"` — inlines file contents
+- `#ifndef` / `#define` / `#endif` — include guards to prevent double-inclusion
+- `#define KEY value` — macro substitution
+
+### Legacy Tools (being replaced)
+
+- `Scripts/builder.py` — old preprocessor (replaced by GPP)
+- `Scripts/funcExtract.py` / `Scripts/getFuncDefs.py` — old function extractors (replaced by `funcsplit.py`)
 
 ## Architecture
 
