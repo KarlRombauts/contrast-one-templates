@@ -1,0 +1,130 @@
+{
+  "shared/utils/strUtils.pas": [
+    "StrToFloatDef",
+    "StrToIntDef",
+    "StringReplace",
+    "StringReplaceAll"
+  ],
+  "shared/utils/formatting.pas": [
+    "InitCaps",
+    "IncludeComma",
+    "AddFullStop",
+    "AddFullstopToEnd",
+    "PadDecimalPlaces",
+    "GetNumberString",
+    "RemoveDecimalPointAtEnd",
+    "GetIntegerMeasuredString"
+  ],
+  "shared/utils/dateUtils.pas": [
+    "GetFullDateString"
+  ],
+  "shared/utils/articles.pas": [
+    "GetIndefinateArticle"
+  ],
+  "shared/utils/formUtils.pas": [
+    "CheckFormComplete",
+    "AddToResult",
+    "cbToggleCheckOnClick",
+    "Max",
+    "Min"
+  ],
+  "shared/obstetric/eddHandling.pas": [
+    "cbEDDPrincipleOnChange",
+    "cbLMPDateOnChange",
+    "PopulateEDDControls",
+    "deStatedEDDOnChange",
+    "deMUFWEddOnChange",
+    "deMenstrualEDDOnChange",
+    "deOvulationEDDOnChange",
+    "deIVFEDDOnChange",
+    "cbDateOfConceptionOnChange",
+    "seTransferDayOnChange",
+    "cbUSSEDDOnChange"
+  ],
+  "shared/obstetric/gestationalAge.pas": [
+    "GetWeeksFromDueDate",
+    "GetDaysFromDueDate",
+    "GetWeeksFromLMPDate",
+    "GetDaysFromLMPDate",
+    "GetLMPWeeks",
+    "GetLMPDays"
+  ],
+  "shared/obstetric/clinicalHistory.pas": [
+    "GetClinicalIndicators",
+    "GetClinicalHistory",
+    "cxccbReferralIndicatorsChange"
+  ],
+  "shared/gynae/fibroids.pas": [
+    "GetFibroidCount",
+    "GetSingleCloseOrClear",
+    "GetCavDistortionCount",
+    "GetSingleFibroidDimensions",
+    "GetSingleFibroid",
+    "GetFibroidString",
+    "GetFibroidDesc",
+    "GetLargestFibroid",
+    "GetFibroidAvg",
+    "GetSingleFibroidCavity",
+    "GetHasDistortion",
+    "GetFibroidConcl",
+    "getFibroid",
+    "GetFibroidAllClear"
+  ],
+  "shared/gynae/fibroidUI.pas": [
+    "spFibroidCountOnChange",
+    "cbFibroidsVisualisedOnClick",
+    "cbFibroidsTypeOnChange"
+  ],
+  "earlyT1Singleton/report.pas": [
+    "GetFindings",
+    "GetConclusion",
+    "GetLiveFindings",
+    "GetLiveConclusion",
+    "getMissedMiscarriageFinding",
+    "getMissedMiscarriageConclusion",
+    "GetEnteredEDD",
+    "getCompositeDate",
+    "getPregnancyRedated",
+    "ProduceMergeFieldData",
+    "ProduceMergeOrder",
+    "GetOvary",
+    "getPerigestationalHaemorrhage",
+    "getPregnancyComplication",
+    "getOvaryWarning",
+    "getFindingsWarning",
+    "getGAFromEnteredEDD"
+  ],
+  "earlyT1Singleton/embryo.pas": [
+    "IsLivePregnancy",
+    "GetEbmHeartMotion",
+    "getFetalHeartRate",
+    "getHeartRateLabel",
+    "GetEmbryoTransferCount",
+    "GetFrozen"
+  ],
+  "earlyT1Singleton/nips.pas": [
+    "getNIPSString",
+    "getNIPSConclusion"
+  ],
+  "earlyT1Singleton/uiHandlers.pas": [
+    "cbNaturalMedicationOnChange",
+    "cbClinicalHistoryOnChange",
+    "cbClinicalHistoryChange",
+    "cbYolkSacYes1OnClick",
+    "cbYolkSacNo1OnClick",
+    "cbHeartMotionVisYes1OnClick",
+    "cbHeartMotionVisNo1OnClick",
+    "cbEmbryo1NotVisualised1OnClick",
+    "cbEmbryo1Visualised1OnClick",
+    "cbPreigHeamYesOnClick",
+    "cbPreigHeamNoOnClick",
+    "edtEmbroSize1OnChange",
+    "edtYolkSacSize1OnChange",
+    "seHeartBPM1OnChange",
+    "btnPregnancyRedatedOnClick"
+  ],
+  "earlyT1Singleton/script.pas": [
+    "StartScript",
+    "InitializeScreen"
+  ]
+}
