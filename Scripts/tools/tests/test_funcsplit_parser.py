@@ -380,3 +380,272 @@ class TestEdgeCases:
         assert "{ Author: someone }" in result.preamble
         assert "(* Version 1.0 *)" in result.preamble
         assert result.functions[0].name == "First"
+
+
+# ---------------------------------------------------------------------------
+# Critical edge-case tests from audit (12 tests)
+# ---------------------------------------------------------------------------
+
+
+def test_end_else_begin_without_semicolons():
+    """end without semicolon before else must NOT close the function."""
+    src = "\n".join([
+        "function GetIndefinateArticle(inValue: Integer; inDoCaps: Boolean): string;",
+        "var",
+        "  vTemp: string;",
+        "begin",
+        "  result := '';",
+        "  vTemp := IntToStr(inValue);",
+        "  if inValue = 8 then",
+        "  begin",
+        "    result := 'An'",
+        "  end",
+        "  else",
+        "  begin",
+        "    result := 'A'",
+        "  end;",
+        "end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "GetIndefinateArticle"
+    assert f.start_line == 0
+    assert f.end_line == 14
+
+
+def test_if_then_without_begin_end():
+    """Simple if/else without begin/end blocks."""
+    src = "\n".join([
+        "function Min(a, b: Integer): Integer;",
+        "begin",
+        "  if a > b then",
+        "    result := b",
+        "  else",
+        "    result := a;",
+        "end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "Min"
+    assert f.start_line == 0
+    assert f.end_line == 6
+
+
+def test_for_loop_with_begin_end():
+    """for loop with begin/end doesn't break parsing."""
+    src = "\n".join([
+        "procedure DoLoop;",
+        "var",
+        "  i: Integer;",
+        "begin",
+        "  for i := 0 to 10 do",
+        "  begin",
+        "    DoSomething(i);",
+        "  end;",
+        "end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "DoLoop"
+    assert f.start_line == 0
+    assert f.end_line == 8
+
+
+def test_compiler_directives_between_functions():
+    """Include guards / compiler directives are preamble/postamble, not function bodies."""
+    src = "\n".join([
+        "#ifndef __GUARD",
+        "#define __GUARD",
+        "",
+        "function Foo: Integer;",
+        "begin",
+        "  result := 1;",
+        "end;",
+        "",
+        "function Bar: Integer;",
+        "begin",
+        "  result := 2;",
+        "end;",
+        "",
+        "#endif",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 2
+    assert result.functions[0].name == "Foo"
+    assert result.functions[1].name == "Bar"
+    assert "#ifndef __GUARD" in result.preamble
+    assert "#define __GUARD" in result.preamble
+    assert "#endif" in result.postamble
+
+
+def test_function_with_untyped_parameter():
+    """Contrast One scripting engine pattern: parameter without type."""
+    src = "\n".join([
+        "procedure cbToggleCheckOnClick(Sender)",
+        "var",
+        "  i: Integer;",
+        "begin",
+        "  if Sender.Checked then",
+        "    i := 1;",
+        "end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "cbToggleCheckOnClick"
+    assert f.start_line == 0
+    assert f.end_line == 6
+
+
+def test_deeply_nested_case_with_begin_end():
+    """Multiple begin/end pairs inside case arms all balance correctly."""
+    src = "\n".join([
+        "procedure HandleCase(sender);",
+        "begin",
+        "  case cbEDDPrinciple.ItemIndex of",
+        "    1: begin",
+        "         gbEDDDating.Height := 47;",
+        "       end;",
+        "    2: begin",
+        "         gbEDDDating.Height := 80;",
+        "       end;",
+        "    3: begin",
+        "         gbEDDDating.Height := 80;",
+        "       end;",
+        "  end;",
+        "end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "HandleCase"
+    assert f.start_line == 0
+    assert f.end_line == 13
+
+
+def test_multiple_end_on_same_line():
+    """end;end; on same line -- first closes try, second closes function."""
+    src = "\n".join([
+        "function Foo: Integer;",
+        "begin",
+        "  try",
+        "    result := 1;",
+        "  except",
+        "    result := 0;",
+        "  end;end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "Foo"
+    assert f.end_line == 6
+
+
+def test_string_with_embedded_single_quotes_complex():
+    """Triple-quote pattern (escaped quotes) doesn't break string parsing."""
+    src = "\n".join([
+        "procedure AddData;",
+        "begin",
+        "  lbData.Items.Add('Field=''' + GetValue + '''');",
+        "end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "AddData"
+    assert f.start_line == 0
+    assert f.end_line == 3
+
+
+def test_comment_between_signature_and_begin():
+    """Comment between function signature and var/begin is inside the function body."""
+    src = "\n".join([
+        "function Foo: Integer;",
+        "// This function does something",
+        "var",
+        "  x: Integer;",
+        "begin",
+        "  result := 1;",
+        "end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "Foo"
+    assert f.start_line == 0
+    assert f.end_line == 6
+    assert "// This function does something" in f.body
+
+
+def test_multiline_paren_star_comment():
+    """Keywords in multi-line (* *) comment are ignored."""
+    src = "\n".join([
+        "function Foo: Integer;",
+        "begin",
+        "  (* This is",
+        "     a multiline comment",
+        "     with END and BEGIN keywords *)",
+        "  result := 1;",
+        "end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "Foo"
+    assert f.start_line == 0
+    assert f.end_line == 6
+
+
+def test_function_reordering_preserves_all():
+    """All 5 functions extracted in source order with correct names."""
+    funcs = ["Alpha", "Bravo", "Charlie", "Delta", "Echo"]
+    parts = []
+    for name in funcs:
+        parts.extend([
+            f"function {name}: Integer;",
+            "begin",
+            "  result := 1;",
+            "end;",
+            "",
+        ])
+    src = "\n".join(parts).rstrip("\n")
+    result = parse(src)
+    assert len(result.functions) == 5
+    for i, name in enumerate(funcs):
+        assert result.functions[i].name == name
+
+
+def test_real_world_getindefinatearticle():
+    """Critical end else begin pattern from real codebase."""
+    src = "\n".join([
+        "function GetIndefinateArticle(inValue: Integer; inDoCaps: Boolean): string;",
+        "var",
+        "  vTemp: string;",
+        "begin",
+        "  result := '';",
+        "  vTemp := IntToStr(inValue);",
+        "  if ((length(vTemp) > 0) and (vTemp[1] = '8')) or (inValue = 11) or (inValue = 18) then",
+        "  begin",
+        "    if inDoCaps then",
+        "      result := 'An'",
+        "    else",
+        "      result := 'an'",
+        "  end",
+        "  else",
+        "  begin",
+        "    if inDoCaps then",
+        "      result := 'A';",
+        "    else",
+        "      result := 'a';",
+        "  end;",
+        "end;",
+    ])
+    result = parse(src)
+    assert len(result.functions) == 1
+    f = result.functions[0]
+    assert f.name == "GetIndefinateArticle"
+    assert f.start_line == 0
+    assert f.end_line == 20
