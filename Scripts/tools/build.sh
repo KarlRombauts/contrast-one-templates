@@ -28,7 +28,7 @@ for exam in "${EXAMS[@]}"; do
     fi
 
     echo "Building $exam..."
-    gpp -o "$output" "$input"
+    gpp -I. -o "$output" "$input"
     echo "  -> $output"
 done
 
