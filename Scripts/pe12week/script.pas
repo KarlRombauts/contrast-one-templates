@@ -1,0 +1,2095 @@
+// ******************* Global Variables ************************************//                                            
+Var
+   GLiquorWarning, GPlacentaWarning, GPresentationWarning, GCervixWarning, GUAPIWarning, GMCAPIWarning, GFibroidWarning : Boolean;
+
+// ******************* Utility Functions ************************************//
+      
+function StrToFloatDef(inString: string; inDefault: Real): Real;
+begin
+  try                                                                                                                                                          
+    result := StrToFloat(inString);
+  except
+    result := inDefault;
+  end;
+end;
+
+function Min(in1, in2: Integer): Integer;
+begin
+  if in1 > in2 then                                 
+    result := in2                                               
+  else
+    result := in1;
+end;
+
+function StrToIntDef(inString: string; inDefault: Integer): Integer;
+begin
+  try
+    result := StrToInt(inString);
+  except
+    result := inDefault;
+  end;
+end;                                              
+
+function GetIndefinateArticle(inValue: Integer; inDoCaps: Boolean): string;
+var
+  vTemp: string;
+begin                                                                     
+  result := '';
+  vTemp := IntToStr(inValue);
+  if ((length(vTemp) > 0) and (vTemp[1] = '8')) or (inValue = 11) or (inValue = 18) then
+  begin
+    if inDoCaps then
+      result := 'An'
+    else
+      result := 'an'
+  end
+  else                                
+  begin
+    if inDoCaps then
+      result := 'A';
+  else
+    result := 'a';
+  end;
+end;
+
+function GetFullDateString(inDate: TDateTime): string;
+begin
+  result := FormatDateTime('dd mmmm yyyy', inDate);
+end;
+
+function IncludeComma(inString: string): string;
+var
+  v1: string;
+begin
+  v1 := '';
+  if Length(inString) > 0 then
+    v1 := inString + ', ';
+  result := v1;
+end;
+
+function PadDecimalPlaces(inStr: String): String;
+begin
+  result := Trim(inStr);
+  if (pos('.', result) = 0) then
+    result := result + '.0'
+  else if result[0] = '.' then
+  begin
+      result := '0'+ result ;
+  end;
+  else
+  begin
+    if result[length(result)] = '.' then
+      result := result + '0';
+  end;
+end;
+
+function RemoveDecimalPointAtEnd(inStr: String): String;
+begin
+  result := Trim(inStr);
+  if result[length(result)] = '.' then
+      result := copy(result, 1, (length(result)-1));
+end;
+
+                                                          
+function GetIntegerMeasuredString(v1, v2, v3: Integer; v4: Double; inType: string): string;
+begin
+  if v1 > 0 then
+  begin
+    if v2 > 0 then
+    begin
+      if v3 > 0 then
+      begin
+        if v4 > 0 then
+        begin
+          if trunc(v4) = v4 then
+            result := Format('%dx%dx%d%s (vol %d cc)', [v1, v2, v3, inType, trunc(v4)]);
+          else
+            result := Format('%dx%dx%d%s (vol %2.1f cc)', [v1, v2, v3, inType, v4]);
+        end
+        else
+          result := Format('%dx%dx%d%s', [v1, v2, v3, inType]);
+      end
+      else
+        result := Format('%dx%d%s', [v1, v2, inType]);
+    end
+    else
+      result := Format('%d%s', [v1, inType]);
+  end
+  else
+    result := '';
+end;
+
+function InitCaps(inv: string; inReduce: Boolean): string;
+var
+  vDiff: Integer;
+begin
+  if inv <> '' then
+  begin
+    vDiff := Ord('A') - Ord('a');
+    result := inv;
+    if inReduce then
+    begin
+      if (Ord(result[1]) >= Ord('A')) and (Ord(result[1]) <= Ord('Z')) then
+        result[1] := chr(Ord(inv[1]) - vDiff);
+    end
+    else
+    begin
+      if (Ord(result[1]) >= Ord('a')) and (Ord(result[1]) <= Ord('z')) then
+        result[1] := chr(Ord(inv[1]) + vDiff);
+    end;
+  end
+  else
+    result := '';
+end;
+
+function AddFullStop(inStr: String): String;
+var
+  vt: String;
+begin
+  vt := Trim(inStr);
+  if vt <> '' then
+  begin
+    if vt[length(vt)] <> '.' then
+      result := vt + '.  '
+    else
+      result := inStr;
+  end
+  else
+    result := ''
+end;
+
+function GetNumberString(inNumber: Integer): string;
+begin
+  result := '';
+  if inNumber = 1 then
+    result := 'a single'
+  else
+  begin
+    if inNumber = 2 then
+      result := 'two'
+    else if inNumber = 3 then
+      result := 'three'
+    else if inNumber = 4 then
+      result := 'four'
+    else if inNumber = 5 then
+      result := 'five'
+    else if inNumber = 6 then
+      result := 'six'
+    else if inNumber = 7 then
+      result := 'seven'
+    else if inNumber = 8 then
+      result := 'eight'
+    else if inNumber = 9 then
+      result := 'nine'
+    else
+      result := IntToStr(inNumber);
+  end;
+end;
+
+
+
+procedure cbToggleCheckOnClick(Sender)
+var
+  i: Integer;
+begin
+  if Sender.Checked then
+  begin
+    for i := 0 to TWinControl(Sender.Parent).ControlCount - 1 do
+    begin
+      if (Sender.Parent.Controls[i] is TcxCheckBox) then
+      begin
+        if (Sender.Parent.Controls[i].Checked) and (Sender.Parent.Controls[i] <> Sender) then
+        begin
+          Sender.Parent.Controls[i].Checked := false;
+        end;
+      end;
+    end;
+  end;
+end;
+
+function Max(A, B: Integer): Integer;
+begin
+  if A > B then
+    result := A
+  else
+    result := B;
+end;
+
+
+
+function AddToResult(inResult, inNew: string): string;
+begin
+  result := '';
+  if trim(inResult) <> '' then
+  begin
+    if trim(inNew) <> '' then
+      result := inResult + ', ' + trim(inNew);
+  end
+  else
+  begin
+    if trim(inNew) <> '' then
+      result := trim(inNew);
+  end;
+end;
+
+function StringReplaceAll(inSource, inMatch, inReplace: String): String;
+var
+  i: Integer;                                                             
+begin
+  result := inSource;
+  i := Pos(inMatch, result);
+  while (i > 0) do
+  begin
+    result := copy(result, 1, i-1) + inReplace + copy(result, i+length(inMatch), length(result));
+    i := Pos(inMatch, result);
+  end;
+end;
+
+function AddFullstopToEnd(inStr: String): String;
+var
+  vt: String;
+begin
+  vt := trim(inStr);
+  if vt[length(vt)] <> '.' then
+    vt := vt + '.  '
+  else
+    vt := inStr;
+  result := vt;
+end;
+
+function StringReplace(inSource, inMatch, inReplace: String): String;
+var
+  i: Integer;
+begin
+  result := inSource;
+  i := Pos(inMatch, result);
+  while i > 0 do
+  begin
+    result := copy(inSource, 1, i-1) + inReplace + copy(inSource, i+length(inMatch), length(inSource));
+    i := Pos(result, inMatch);
+  end;
+end;
+
+
+// ******************* Dating Functions *********************************************//
+function GetWeeksFromLMPDate(inLMPDate, inExamDate: TDateTime): Integer;
+begin
+  result := (trunc(inExamDate) - Trunc(inLMPDate)) div 7;
+end;
+
+function GetDaysFromLMPDate(inLMPDate, inExamDate: TDateTime): Integer;
+begin
+  result := (trunc(inExamDate) - Trunc(inLMPDate)) mod 7;
+end;
+
+function GetWeeksFromDueDate(inEDDDate, inExamDate: TDateTime): Integer;
+var
+  v1: Integer;
+begin
+  v1 := (trunc(inEDDDate) - 280);
+  result := (trunc(inExamDate) - v1) div 7;
+end;
+
+function GetDaysFromDueDate(inEDDDate, inExamDate: TDateTime): Integer;
+var
+  v1: Integer;
+begin
+  v1 := (trunc(inEDDDate) - 280);
+  result := (trunc(inExamDate) - v1) mod 7;
+end;
+
+function GetEmbryoTransferCount: string;
+begin
+  result := '';
+  case trunc(seNumberTransferred.Value) of
+    1: result := 'single';
+  else
+    result := GetNumberString(seNumberTransferred.Value);
+  end;
+end;
+
+function GetFrozen: String;
+begin
+  if cbEDDPrinciple.ItemIndex = 6 then
+    result := 'frozen '
+  else
+    result := '';
+end;
+
+procedure cbUSSEDDOnChange(Sender);
+var
+  vWeeks, vDays: Integer;
+begin
+  seUSSEDDGAWeeks1.Value := 0;
+  seSSEDDGADays1.Value := 0;
+  if (deExamDate.Date > 100) and (deUSSEDD1.Date > 100) then
+  begin
+    vWeeks := GetWeeksFromDueDate(deUSSEDD1.Date, deExamDate.Date);
+    vDays := GetDaysFromDueDate(deUSSEDD1.Date, deExamDate.Date);
+    seUSSEDDGAWeeks1.Value := vWeeks;
+    seSSEDDGADays1.Value := vDays;
+  end;
+end;
+
+
+
+
+
+// **********************************************************************************//
+// ******************* Header Functions *********************************************//
+
+function GetLiquor5Centile(inWeeks : integer) : real;
+begin
+ result := 0.0;
+  case inWeeks of
+    16: result := 7.9;
+    17: result := 8.3;
+    18: result := 8.7;
+    19: result := 9.0;
+    20: result := 9.3;
+    21: result := 9.5;
+    22: result := 9.7;
+    23: result := 9.8;
+    24: result := 9.8;
+    25: result := 9.7;
+    26: result := 9.7;
+    27: result := 9.5;
+    28: result := 9.4;
+    29: result := 9.2;
+    30: result := 9.0;
+    31: result := 8.8;
+    32: result := 8.6;
+    33: result := 8.3;
+    34: result := 8.1;
+    35: result := 7.9;
+    36: result := 7.7;
+    37: result := 7.5;
+    38: result := 7.3;
+    39: result := 7.2;
+    40: result := 7.1;
+    41: result := 7.0;
+    41: result := 6.9;
+  end;
+end;
+
+function GetLiquor95Centile(inWeeks : integer) : Real;
+begin
+   result := 0.0;
+  case inWeeks of
+    16: result := 18.5;
+    17: result := 19.4;
+    18: result := 20.2;
+    19: result := 20.7;
+    20: result := 21.2;
+    21: result := 21.4;
+    22: result := 21.6;
+    23: result := 21.8;
+    24: result := 21.9;
+    25: result := 22.1;
+    26: result := 22.3;
+    27: result := 22.6;
+    28: result := 22.8;
+    29: result := 23.1;
+    30: result := 23.4;
+    31: result := 23.8;
+    32: result := 24.2;
+    33: result := 24.5;
+    34: result := 24.8;
+    35: result := 24.9;
+    36: result := 24.9;
+    37: result := 24.4;
+    38: result := 23.9;
+    39: result := 22.6;
+    40: result := 21.4;
+    41: result := 19.4;
+    41: result := 17.5;
+  end;
+end;
+
+
+
+
+
+procedure cbEDDPrincipleOnChange(sender)
+begin
+  case cbEDDPrinciple.ItemIndex of
+    1: begin
+         gbEDDDating.Height := 47;
+         lblMedication.Visible := False;
+       end;
+    2: begin
+         pcEDDPrinciple.Properties.ActivePage := tsMenstrualEDD;
+         gbEDDDating.Height := 80;
+         lblMedication.Visible := True;
+       end;
+    0: begin
+         pcEDDPrinciple.Properties.ActivePage := tsStatedEDD;
+         gbEDDDating.Height := 80;
+         lblMedication.Visible := True;
+       end;
+    3: begin
+         pcEDDPrinciple.Properties.ActivePage := tsEstEDD;
+         gbEDDDating.Height := 80;
+         lblMedication.Visible := True;
+       end;
+    4: begin
+         pcEDDPrinciple.Properties.ActivePage := tsTimedEDD;
+         gbEDDDating.Height := 80;
+         lblMedication.Visible := True;
+       end;
+    5: begin
+         pcEDDPrinciple.Properties.ActivePage := tsIVFEDD;
+         gbEDDDating.Height := 120;
+         lblMedication.Visible := True;
+       end;
+    6: begin
+         pcEDDPrinciple.Properties.ActivePage := tsIVFEDD;
+         gbEDDDating.Height := 120;
+         lblMedication.Visible := True;
+       end;
+  end;
+end;
+
+procedure cbLMPDateOnChange(Sender);
+begin
+  if cbEDDPrinciple.ItemIndex = 1 then
+  begin
+    deMenstrualEDD.Date := deLMPDate.Date + 280;
+  end;
+end;
+
+procedure PopulateEDDControls(inDate: TcxDateEdit; inWeeks, inDay: TcxSpinEdit);
+var
+  vWeeks, vDays: Integer;
+begin
+  vWeeks := 0;
+  vDays := 0;
+  inDay.Value := 0;
+  inWeeks.Value := 0;
+  if (deExamDate.Date > 0) and (inDate.Date > 0) then
+  begin
+    vWeeks := GetWeeksFromDueDate(inDate.Date, deExamDate.Date);
+    vDays := GetDaysFromDueDate(inDate.Date, deExamDate.Date);
+    inWeeks.Value := vWeeks;
+    inDay.Value := vDays;
+  end;
+end;
+
+procedure deMenstrualEDDOnChange(Sender);
+begin
+  PopulateEDDControls(deMenstrualEDD, seEDDCalGAWeeks, seEDDCalGADays);
+end;
+
+procedure deStatedEDDOnChange(Sender);
+begin
+  PopulateEDDControls(deStatedEDD, seStatedEDDGestAgeWeeks, seStatedEDDGestAgeDays);
+end;
+
+procedure deMUFWEddOnChange(Sender);
+begin
+  PopulateEDDControls(deMUFWEdd, seMUFWGestAgeWeeks, seMUFWGestAgeDays);
+end;
+
+procedure deOvulationEDDOnChange(Sender);
+begin
+  PopulateEDDControls(deOvulationEDD, spOvualtionGestAgeWeeks, spOvualtionGestAgeDays);
+end;
+
+procedure deIVFEDDOnChange(Sender);
+begin
+  PopulateEDDControls(deIVFEDD, seIVFGAWeeks, seIVFGADays);
+end;
+
+procedure cbDateOfConceptionOnChange(Sender);
+begin
+  if deConceptionDate.Date > 0 then
+  begin
+    deTransferDate.Date := deConceptionDate.Date + seTransferDay.Value;
+  end;
+end;
+
+procedure seTransferDayOnChange(Sender);
+begin
+  cbDateOfConceptionOnChange(nil);
+end;
+
+function getCompositeDate : String;
+begin
+  result := '';
+  result := intToStr(seUSSEDDGAWeeks1.value)   +' weeks '
+  if seSSEDDGADays1.value > 0 then
+  begin
+    if seSSEDDGADays1.value > 1 then
+     result := result + intToStr(seSSEDDGADays1.value)   +' days';
+    else
+     result := result + intToStr(seSSEDDGADays1.value)   +' day';
+  end
+  else if seSSEDDGADays1.value = 0 then
+      result := result + intToStr(seSSEDDGADays1.value)   +' days';
+
+  result := AddFullstopToEnd(Result);
+end
+
+
+
+function GetClinicalHistory: String;
+var
+  i: Integer;
+begin
+  result := '';
+
+end;
+
+
+function GetValueSuffix(inValue: Integer): String;
+var
+  vVal: String;
+begin
+  Result := '';
+  vVal := Copy(Trim(IntToStr(inValue)), Length(Trim(IntToStr(inValue))),1);
+  if ((StrToInt(vVal) = 1) and (inValue <> 11)) then
+  begin
+    Result := Result + '#|#+SUPSst#/#';
+  end
+  else if ((StrToInt(vVal) = 2) and (inValue <> 12)) then
+  begin
+    Result := Result + '#|#+SUPSnd#/#';
+  end
+  else if ((StrToInt(vVal) = 3) and (inValue <> 13)) then
+  begin
+    Result := Result + '#|#+SUPSrd#/#';
+  end
+  else
+  begin
+    Result := Result + '#|#+SUPSth#/#';
+  end
+end;
+
+function GetClinicalIndicators: String;
+var
+  i: Integer;
+begin
+  result := '';         
+  for i := 0 to cxccbReferralIndication.Properties.Items.Count - 2 do
+  begin
+    if cxccbReferralIndication.States[i] = 1 then
+    begin
+      if result <> '' then
+        result := AddFullStop(result);
+      result := result + cxccbReferralIndication.ShortDescription[i];
+    end;
+  end;
+  if (cxccbReferralIndication.States[cxccbReferralIndication.Properties.Items.Count-1] = 1) then
+  begin
+    if result <> '' then
+      result := AddFullStop(result);
+    result := result + InItCaps(trim(edtReferralIndicator1.Text),False);
+  end;
+  if result <> '' then
+    result := AddFullStop(result);
+end;
+
+function GetObstetricHistory: String;
+var
+  i: Integer;
+begin
+  result := '';
+  for i := 0 to cxccbObstetricHistory.Properties.Items.Count - 2 do
+  begin
+    if cxccbObstetricHistory.States[i] = 1 then
+    begin
+      if result <> '' then
+        result := result + '.  ';
+      result := result + cxccbObstetricHistory.ShortDescription[i];
+    end;
+  end;
+  if (cxccbObstetricHistory.States[cxccbObstetricHistory.Properties.Items.Count-1] = 1) then
+  begin
+    if result <> '' then
+      result := result + '.  ';
+    result := result + trim(edtOtherPastHistory1.Text);
+  end;
+  if result <> '' then
+    result := AddFullStop(result);
+end;
+
+function getMedicalHistory : String
+var
+  i: Integer;
+begin
+  result := '';
+  for i := 0 to ccbPEMedicationHistory.Properties.Items.Count - 1 do
+  begin
+    if ccbPEMedicationHistory.States[i] = 1 then
+    begin
+      if result <> '' then
+        result := result + ',  ';
+      result := result + ccbPEMedicationHistory.ShortDescription[i];
+    end;
+  end;
+  if result = '' then
+  begin
+    result := result + 'Nil  ';
+  end;
+end;
+
+function getPEObstetricHistory : String
+begin
+result := '';
+  if cbNalliPorous.checked then
+  begin
+    result := 'Nulliparous';
+  end;
+  else if cbParous.checked then
+  begin
+    result := 'Parous';
+    if sePrevGAWk.Value > 0 then
+      result := result + ', last delivered at ' + intToStr(sePrevGAWk.value)  +  ' weeks' ;
+    if meBirthWeight.text <> '' then
+    begin
+       if strToFloatDef(meBirthWeight.text,0.0) > 0 then
+         result := result + ', ' + meBirthWeight.text + 'g';
+    end;
+    if cbPrevPEYes.checked then
+      result := result + ', pre-eclampsia'
+    else if cbPrevPENo.checked then
+      result := result + ', no pre-eclampsia'  
+  end;
+end;
+
+function getBioPhysicalMeasurements : String
+begin
+result := '';
+ if edtMAP.text <> '' then
+ begin
+    if StrToFloatDef(edtMAP.text,0.0) > 0 then
+    begin
+       result := result + 'MAP ' + edtMAP.text + ' mmHg ' + #9;
+    end;
+    else
+      result := result + 'MAP ## mmHg '+ #9;
+ end;
+ else
+    result := result + 'MAP ## mmHg ' + #9;
+
+ if edtUTPUI.text <> '' then
+ begin
+    if StrToFloatDef(edtUTPUI.text,0.0) > 0 then
+     result := result + 'Mean UTPI ' + edtUTPUI.text + ' MoM'
+    else
+      result := result + 'Mean UTPI ## MoM'
+ end;
+ else
+    result := result + 'Mean UTPI ## MoM'
+end;
+
+function getBioChemistry : String
+begin
+result := '';
+   if edtPIGF.text <> '' then
+   begin
+     if strToFloatDef(edtPIGF.text,0.0) > 0 then
+     begin
+        result := result + 'PIGF ' + edtPIGF.text + ' MoM' + #9;
+     end
+     else
+       result := result + 'PlGF ## MoM'+ #9 ;
+   end;
+   else
+     result := result + 'PlGF ## MoM' + #9;
+
+   if edtPAPP.text <> '' then
+   begin
+     if strToFloatDef(edtPAPP.text,0.0) > 0 then
+     begin
+       result := result + 'PAPP-A ' + edtPAPP.text + ' MoM';
+     end
+     else
+         result := result + 'PAPP-A ## MoM'
+   end
+   else
+       result := result + 'PAPP-A ## MoM'
+end;
+
+
+function getEFW(inFetus : integer) : string
+var
+vFW : TcxSpinEdit;
+begin
+    result := '';
+    vFW := TWinControl(pgFetusMeasusements.Owner).FindComponent('seEstFetalWeight' + intToStr(infetus));
+    if (vFW.Value > 0) then
+     Result := Result + IntToStr(vFW.Value);
+end;
+
+function GetGestWeeks: integer;
+var
+  inW, inD: Integer;
+begin
+  result := '';
+  inW := 0;
+  inD := 0;
+    inW := trunc(seEDDCalGAWeeks.Value);
+    inD := trunc(seEDDCalGADays.Value);
+    result :=  inW;
+end;
+
+function GetGestDays: integer;
+var
+  inW, inD: Integer;
+begin
+  result := '';
+  inW := 0;
+  inD := 0;
+    inW := trunc(seEDDCalGAWeeks.Value);
+    inD := trunc(seEDDCalGADays.Value);
+    result :=  inD;
+end;
+
+ function GetGraphXValue(inControl: String): Real;
+var
+  vUpper: String;
+begin
+  result := 0;
+  vUpper := UpperCase(inControl);
+ // GetOriginalDating('');
+  if (pos('EDTBPD', vUpper) > 0) or (pos('EDTOFD', vUpper) > 0) or (pos('EDHC', vUpper) > 0) or (pos('EDAC', vUpper) > 0) or (pos('EDHL', vUpper) > 0) or (pos('EDFL', vUpper) > 0) or (pos('SEESTFETAL', vUpper) > 0) or (pos('EDTAFI', vUpper) > 0) or(pos('EDTCEREBCPR', vUpper) > 0) or(pos('EDTMIDCERARTPI', vUpper) > 0) or (pos('EDTUMBILICALARTPI', vUpper) > 0) then
+  begin
+    result := GetGestWeeks + (GetGestDays / 7);
+  end;
+end;
+
+
+function GetPerGraph(sender : TcxMaskEdit; inShowValue: Boolean): String;              
+var
+  i,inValue: Integer;
+  vtempStr : String;
+begin
+  result := '';
+  vtempStr := '';
+  if (pos('<',sender.Text) > 0) then
+  begin
+    vtempStr := StringReplaceAll(sender.Text,' ','');
+    if (vtempStr = '<3') then
+    begin
+      result := ' x[---------|---------]'
+    end
+  end
+  else if (pos('>',sender.Text) > 0) then
+  begin
+     vtempStr := StringReplaceAll(sender.Text,' ','');
+     if (vtempStr = '>97') then
+     begin
+      result := ' [---------|---------]x';
+     end
+  end;
+  else
+  begin
+    inValue := StrToFloatDef(sender.Text, 0)
+    if inValue > 0 then
+    begin
+      if inValue < 3 then
+        result := ' x[---------|---------]'
+      else if inValue < 10 then
+        result := ' [x--------|---------]'
+      else if inValue < 15 then
+        result := ' [-x-------|---------]'
+      else if inValue < 20 then
+        result := ' [--x------|---------]'
+      else if inValue < 25 then
+        result := ' [---x-----|---------]'
+      else if inValue < 30 then
+        result := ' [----x----|---------]'
+      else if inValue < 35 then
+        result := ' [-----x---|---------]'
+      else if inValue < 40 then
+        result := ' [------x--|---------]'
+      else if inValue < 45 then
+        result := ' [-------x-|---------]'
+      else if inValue < 50 then
+        result := ' [--------x|---------]'
+      else if inValue = 50 then
+       result := ' [---------x---------]'
+      else if inValue > 97 then
+        result := ' [---------|---------]x'
+      else if inValue > 90 then
+        result := ' [---------|--------x]'
+      else if inValue > 85 then
+        result := ' [---------|-------x-]'
+      else if inValue > 80 then
+        result := ' [---------|------x--]'
+      else if inValue > 75 then
+        result := ' [---------|-----x---]'
+      else if inValue > 70 then
+        result := ' [---------|----x----]'
+      else if inValue > 65 then
+        result := ' [---------|---x-----]'
+      else if inValue > 60 then
+        result := ' [---------|--x------]'
+      else if inValue > 55 then
+        result := ' [---------|-x-------]'
+      else if inValue > 50 then
+        result := ' [---------|x--------]'
+    end;
+  end;
+end;
+
+
+function GetEnteredEDD :String
+Begin
+result := '';
+  {if cbEDDPrinciple.ItemIndex = 0 then // No Dates
+  begin
+    result := 'No Dates. ';
+  end
+  else  }
+  if cbEDDPrinciple.ItemIndex = 2 then // Menstrual EDD
+  begin
+    if deMenstrualEDD.Date > 0 then
+      result := FormatDateTime('dd/mm/yyyy', deMenstrualEDD.Date);
+  end
+  else
+  if cbEDDPrinciple.ItemIndex = 0 then // Stated EDD
+  begin
+    if (deStatedEDD.Date > 0) then
+    begin
+      Result := FormatDateTime('dd/mm/yyyy', deStatedEDD.Date);
+    end
+  end
+  else
+  if cbEDDPrinciple.ItemIndex = 3 then // Previously established EDD
+  begin
+    if (deMUFWEdd.Date > 0) then
+      Result := FormatDateTime('dd/mm/yyyy', deMUFWEdd.Date);
+  end
+  else
+  if cbEDDPrinciple.ItemIndex = 4 then // Timed Ovulation
+  begin
+    if (deOvulationEDD.Date > 0) then
+    begin
+      if (deOvulationEDD.Date > 0) then
+        result := FormatDateTime('dd/mm/yyyy', deOvulationEDD.Date);
+    end
+  end
+  else // Assisted
+  begin
+    if (deIVFEDD.Date > 0) then
+    begin
+      Result := FormatDateTime('dd/mm/yyyy', deIVFEDD.Date);
+    end;
+  end;
+  if not(cbPregnancyRedatedYes.checked) then
+  begin
+     result := '#|#+BOLD' + result + '#/#'
+  end
+end;
+
+Function getGAFromEnteredEDD :String;
+Begin
+result := '';
+  {if cbEDDPrinciple.ItemIndex = 0 then // No Dates
+  begin
+    result := 'LMP Unknown. ';
+  end
+  else}
+  if cbEDDPrinciple.ItemIndex = 2 then // Menstrual EDD
+  begin
+    if deMenstrualEDD.Date > 0 then
+    begin
+      result := Trim(IntToStr(seEDDCalGAWeeks.Value)) + ' weeks ';
+      if seEDDCalGADays.Value >= 0 then
+      begin
+         if seEDDCalGADays.Value = 1 then
+          result := result + Trim(IntToStr(seEDDCalGADays.Value)) + ' day';
+         else
+           result := result + Trim(IntToStr(seEDDCalGADays.Value)) + ' days';
+      end;     
+    end;
+  end
+  else
+  if cbEDDPrinciple.ItemIndex = 0 then // Stated EDD
+  begin
+    if (deStatedEDD.Date > 0) then
+    begin
+      Result := Trim(IntToStr(seStatedEDDGestAgeWeeks.Value)) + ' weeks ';
+      if seStatedEDDGestAgeDays.Value >= 0 then
+      begin
+         if seStatedEDDGestAgeDays.Value = 1 then
+          result := result + Trim(IntToStr(seStatedEDDGestAgeDays.Value)) + ' day';
+         else                                                                    
+           result := result + Trim(IntToStr(seStatedEDDGestAgeDays.Value)) + ' days';
+      end;
+    end
+  end
+  else
+  if cbEDDPrinciple.ItemIndex = 3 then // Previously established EDD
+  begin
+    if (deMUFWEdd.Date > 0) then
+      Result := Trim(IntToStr(seMUFWGestAgeWeeks.Value)) + ' weeks ';
+    if seMUFWGestAgeDays.Value >= 0 then
+    begin
+       if seMUFWGestAgeDays.Value = 1 then
+        result := result + Trim(IntToStr(seMUFWGestAgeDays.Value)) + ' day';
+       else
+         result := result + Trim(IntToStr(seMUFWGestAgeDays.Value)) + ' days';
+    end;
+  end
+  else
+  if cbEDDPrinciple.ItemIndex = 4 then // Timed Ovulation
+  begin
+    if (deOvulationEDD.Date > 0) then
+    begin
+      if (deOvulationEDD.Date > 0) then
+        result := Trim(IntToStr(spOvualtionGestAgeWeeks.Value)) + ' weeks ';
+      if spOvualtionGestAgeDays.Value >= 0 then
+      begin
+       if spOvualtionGestAgeDays.Value = 1 then
+        result := result + Trim(IntToStr(spOvualtionGestAgeDays.Value)) + ' day';
+       else
+         result := result + Trim(IntToStr(spOvualtionGestAgeDays.Value)) + ' days';
+      end;
+    end
+  end
+  else // Assisted
+  begin
+    if (deIVFEDD.Date > 0) then
+    begin
+      Result := IntToStr(seIVFGAWeeks.Value) + ' weeks ';
+      if seIVFGADays.Value >= 0 then
+      begin
+       if seIVFGADays.Value = 1 then
+        result := result + Trim(IntToStr(seIVFGADays.Value)) + ' day';
+       else
+         result := result + Trim(IntToStr(seIVFGADays.Value)) + ' days';
+      end;
+    end;
+  end;
+end;
+
+function GetPlacenta: String;
+begin
+result := '';
+ if cbPlacentaSite1.text <> '' then
+  result := result + lowercase(trim(cbPlacentaSite1.text)) + 'ly';
+end;
+
+ Function getPlacentaConclusion : String
+ begin
+ result := '';
+ end;
+
+ Function getFunnellingMembrane :  String
+ begin
+ result := ''
+ if cbFunnellingofmembranesYes.checked then
+ begin
+   result := result +  'Funnelling of membranes is seen.  '
+ end;
+
+ end;
+
+ Function getCervicalSuture : String
+ begin
+   Result := '';
+   if cbCervixSutureYes.checked then
+   begin
+     result := result + 'The cervical suture is visualised';
+     if edtSutureToOS.text <> '' then
+     begin
+      if StrToInt(edtSutureToOS.text) > 0 then
+        result := result + ' and is located '+ edtSutureToOS.text +'mm above the external os. ';
+      else
+        result :=  result +  ' and is located ##mm above the external os. ';
+     end;
+   end;
+   result := AddFullStop(result);
+ end;
+
+
+ Function getCervixDetailed : String
+ var
+   vCervicalLength : Integer;
+ begin
+  result := '';
+  vCervicalLength := 0;
+  if ((meCervicalLength.text) <> '')  or (getFunnellingMembrane <> '') or (getCervicalSuture <> '') or (cbCervixShortYes.checked) then
+  begin
+      vCervicalLength := StrToInt(meCervicalLength.text);
+      if  vCervicalLength > 0 then
+      begin
+          if ((vCervicalLength > 25) or (cbCervixShortNo.checked)) then
+          begin
+             result := 'The cervix is long and closed';
+          end
+          else if ((vCervicalLength > 0) and (vCervicalLength < 25)) or (cbCervixShortYes.checked = TRUE) then
+          begin
+             result := 'The cervix is shortened';
+          end
+          if cbCervixTVS.checked then
+            result := result + ' on transvaginal ultrasound.  '
+          else if cbCervixTA.checked then
+            result := result + ' on transabdominal ultrasound.  '
+           result :=AddFullStop(result); 
+          if (vCervicalLength > 0) then
+          begin
+             if (cbCervixShortYes.checked = TRUE) then
+                result := result + 'The closed length of cervix is '+ meCervicalLength.text + 'mm'
+             else
+                result := result + 'The closed length of cervix is '+ meCervicalLength.text + 'mm';
+          end;
+            result := AddFullStop(Result);
+          result :=  #13#10  + '#|#+UNDE#|#+BOLDCervix:#/#'+ #13#10  +  result +getFunnellingMembrane;
+     end;
+     else
+     begin
+        if (cbCervixShortYes.checked = TRUE) then
+          result := #13#10  + '#|#+UNDE#|#+BOLDCervix:#/#'+ #13#10  + 'The cervix is shortened.  ' +getFunnellingMembrane;
+        else if (cbCervixShortNo.checked = TRUE) then
+          result := result +  'Cervix:' + #09#09 + 'long and closed  ';
+        else
+          result := result +  'Cervix:' + #09#09 + '##'
+     end;
+  end;
+  else 
+  begin
+    if (cbCervixShortYes.checked = TRUE) then
+      result := result + 'Cervix:' + #09#09 + 'short.  ';
+    else if (cbCervixShortNo.checked = TRUE) then
+      result := result +  'Cervix:' + #09#09 + 'long and closed.  ';
+    else
+      result := result +  'Cervix:' + #09#09 + '##'
+  end;
+  result := #13#10  + result;
+  result := result + getCervicalSuture;
+ end;
+
+
+ Function getCervixConclusion : String
+ var
+   vCervicalLength : Real;
+ begin
+  result := '';
+  vCervicalLength := 0.0;
+  if ((meCervicalLength.text) <> '') then
+  begin
+         vCervicalLength := StrToFloatDef(meCervicalLength.text, 0);
+      if (cbCervixShortYes.checked = TRUE) then
+      begin
+         result := 'Shortened cervix';
+      end
+  end;
+  result := AddFullStop(Result);
+ end;
+
+ function GetAnatomy : String
+ var
+   vDifficultExam : String;
+   v1 : Integer;
+ begin
+   result := '';
+   vDifficultExam := '';
+   if (cbLargeBMI1.Checked) or (cbEarlyGestation1.Checked) or (cbAwkFetalPos1.Checked) then
+   begin
+    v1 := 0;
+    if cbLargeBMI1.Checked then
+    begin
+      vDifficultExam := vDifficultExam + 'maternal habitus';
+      inc(v1);
+    end;
+    if cbAwkFetalPos1.Checked then
+    begin
+      if v1 > 0 then
+        vDifficultExam := vDifficultExam + ' and';
+      vDifficultExam := vDifficultExam + 'fetal position';
+    end;
+    if vDifficultExam <> '' then
+      vDifficultExam := 'Views were more challenging due to '+ AddFullstop(vDifficultExam);
+  end;
+   if cbFetalAnatomyNormal1.checked then
+   begin
+      result := result + 'Detail is limited by the early gestation.  The skull, brain, heart, diaphragm, arms, hands, fingers, stomach, kidneys, bladder, cord insertion, three vessel cord, legs, feet and spine appear to be developing normally for the current gestation.  ';
+      if (StrtoFloatDef(edNucTransMeasurement1.text,0) > 0) and (StrtoFloatDef(edNucTransMeasurement1.text,0) <= 3.4) then
+        result := result + 'The nuchal translucency is within the normal range.  ';
+   end
+   else if cbFetalAnatomyAbNormal1.checked then
+   begin
+     Result := 'Abnormality.  ';
+   end;
+   if result <> '' then
+     if vDifficultExam <> '' then
+       result := vDifficultExam + result;
+   if result = '' then
+     result := '##';    
+ end;
+
+ function getReportHeading : String
+ begin
+   result := '';
+   if (cxccbReferralIndication.states[5] = 1) then
+   begin
+     if (cxccbReferralIndication.states[8] = 1) then
+        result := 'Second Trimester Ultrasound and Aminiocentesis'
+     else if (cxccbReferralIndication.states[1] = 1) then
+         result := 'Early Second Trimester Ultrasound and Aminiocentesis'
+   end
+   if (cxccbReferralIndication.states[6] = 1) then
+       result := 'Second Trimester Ultrasound Report'
+ end;
+
+ function GetSingleCloseOrClear: String;
+begin
+  if cbCavityDistortion1.Checked then
+    result := 'close to the cervix'
+  else
+  begin
+    result := 'clear of the cervix';
+  end;
+  if seCloseToCrevix1.value > 0 then
+    result := result + ' (within ' + intToStr(seCloseToCrevix1.value) + ' mm)'
+end;
+
+Function GetNasalBone : String
+Begin
+  result := '';
+  if cbNasalVisualised1.checked then
+    Result := 'The nasal bone is present. ';
+  if cbNasaAbsent1.checked then
+    Result := 'The nasal bone is absent.  ';
+  {if cbNasalNotClear1.checked then
+    Result := 'The nasal was not clearly visualised.  ';}  
+end;
+
+
+ function GetSingleFibroidDimensions: string;
+var
+  v1, v2, v3,v4: Integer;
+begin
+  result := '';
+  v1 := trunc(edtFibroidLength1.Value);
+  v2 := trunc(edtFibroidWidth1.Value);
+  v3 := trunc(edtFibroiddepth1.Value);
+  v4 := trunc(edtFibroidVolume1.Value);
+  if v1 > 0 then
+  begin
+    if v2 > 0 then
+    begin
+      if v3 > 0 then
+      begin
+        if v4 > 0 then
+        begin
+          result := result + format('%d x %d x %dmm (vol. %dcc)', [v1, v2, v3, v4]);
+        end
+        else
+          result := result + format('%d x %d x %dmm', [v1, v2, v3]);
+      end
+      else
+        result := result + format('%d x %dmm', [v1, v2]);
+    end
+    else
+      result := result + format('%dmm', [v1]);
+  end;
+  if result <> '' then
+    result := ' ' + result;
+end;
+
+function GetSingleFibroid: string;
+begin
+result := '';
+  result := cbFibriodPosition1.Text + ' ' + cbFibroidsType1.Text;
+  if cbFibroidsLeftRight1.ItemIndex > 0 then
+    result := InitCaps(cbFibroidsLeftRight1.Text, True) + ' ' + result;
+
+  if result <> '' then
+    result := ' ' + result;
+end;
+
+function GetCavDistortionCount: Integer;
+begin
+  result := 0;
+  if (gbFibroid1.Visible) and (cbCavityDistortion1.Checked) and (cbCavityDistortion1.Enabled) then
+    result := Result + 1;
+  {if (gbFibroid2.Visible) and (cbCavityDistortion2.Checked) and (cbCavityDistortion2.Enabled) then
+    result := Result + 1;
+  if (gbFibroid3.Visible) and (cbCavityDistortion3.Checked) and (cbCavityDistortion3.Enabled) then
+    result := Result + 1;
+  if (gbFibroid4.Visible) and (cbCavityDistortion4.Checked) and (cbCavityDistortion4.Enabled) then
+    result := Result + 1;
+  if (gbFibroid5.Visible) and (cbCavityDistortion5.Checked) and (cbCavityDistortion5.Enabled) then
+    result := Result + 1;
+  if (gbFibroid6.Visible) and (cbCavityDistortion6.Checked) and (cbCavityDistortion6.Enabled) then
+    result := Result + 1;
+  if (gbFibroid7.Visible) and (cbCavityDistortion7.Checked) and (cbCavityDistortion7.Enabled) then
+    result := Result + 1;
+  if (gbFibroid8.Visible) and (cbCavityDistortion8.Checked) and (cbCavityDistortion8.Enabled) then
+    result := Result + 1;
+  if (gbFibroid9.Visible) and (cbCavityDistortion9.Checked) and (cbCavityDistortion9.Enabled) then
+    result := Result + 1;
+  if (gbFibroid10.Visible) and (cbCavityDistortion10.Checked) and (cbCavityDistortion10.Enabled) then
+    result := Result + 1;}
+end;
+
+
+function GetFibroidString (inFibroid: Integer): string;
+var
+  v1, v2, v3,v4: Integer;
+  vl, vw, vd, vv: TcxSpinEdit;
+  vp, vt, vlr: TcxComboBox;
+  vCheck: TcxCheckBox;
+begin
+  result := '';
+  vv := TWinControl(tsFibroids.Owner).FindComponent('edtFibroidVolume' + intToStr(inFibroid));
+  vl := TWinControl(tsFibroids.Owner).FindComponent('edtFibroidLength' + intToStr(inFibroid));
+  vw := TWinControl(tsFibroids.Owner).FindComponent('edtFibroidWidth' + intToStr(inFibroid));
+  vd := TWinControl(tsFibroids.Owner).FindComponent('edtFibroiddepth' + intToStr(inFibroid));
+  vp := TWinControl(tsFibroids.Owner).FindComponent('cbFibriodPosition' + intToStr(inFibroid));
+  vt := TWinControl(tsFibroids.Owner).FindComponent('cbFibroidsType' + intToStr(inFibroid));
+  vlr := TWinControl(tsFibroids.Owner).FindComponent('cbFibroidsLeftRight' + intToStr(inFibroid));
+  vCheck := TWinControl(tsFibroids.Owner).FindComponent('cbCavityDistortion' + intToStr(inFibroid));
+  v1 := trunc(vl.Value);
+  v2 := trunc(vw.Value);
+  v3 := trunc(vd.Value);
+  v4 := trunc(vv.Value)
+  if v1 > 0 then
+  begin
+    if v2 > 0 then
+    begin
+      if v3 > 0 then
+      begin
+        if v4 > 0 then
+        begin
+          result := result  + format('%d x %d x %dmm (vol. %dcc)', [v1, v2, v3, v4]) + ' ' ;
+            if vlr.Text <> '' then
+                 result := result + Lowercase(vlr.Text) + ' ';
+          result := result + vp.Text + ' ' + vt.Text;
+        end
+        else
+        begin
+          result := result  + format('%d x %d x %dmm', [v1, v2, v3]) + ' ' ;
+           if vlr.Text <> '' then
+                 result := result + Lowercase(vlr.Text) + ' ';
+          result := result + vp.Text + ' ' + vt.Text;
+        end
+      end
+      else
+      begin
+        result := result + format('%d x %dmm', [v1, v2]) + ' ' ;
+         if vlr.Text <> '' then
+                 result := result + Lowercase(vlr.Text) + ' ';
+          result := result + vp.Text + ' ' + vt.Text;
+      end;
+    end
+    else
+    begin
+      result := result + format('%dmm', [v1])+ ' ' ;
+       if vlr.Text <> '' then
+                 result := result + Lowercase(vlr.Text) + ' ';
+       result := result + vp.Text + ' ' + vt.Text;
+    end;
+    if result <> '' then
+      result := result + ' fibroid'
+  end;
+  if vCheck.Checked then
+  begin
+    vv := TWinControl(tsFibroids.Owner).FindComponent('seCloseToCrevix' + intToStr(inFibroid));
+    if vv.value > 0 then
+    begin
+        result := result + Format(' within %d mm of the cervix',[trunc(vv.value)]);
+    end
+    else
+      result := result + ' and is close to the cervix';
+  end;    
+  else
+  begin
+    if GetCavDistortionCount > 0 then
+      result := result + ', clear of the cervix';
+  end;
+end;  
+
+ Function GetOvary : string;
+var
+  tempString;
+begin
+  result := '';
+
+  if cbRightOvaryAbnormal.checked then
+  begin
+     if cbLeftOvaryAbnormal.checked then
+       result := result + 'Both ovaries are abnormal.  ';
+     else
+       result := result + 'Abnormal right ovary.  ';
+  end
+  else  if cbLeftOvaryAbnormal.checked then
+     result := result + 'Abnormal left ovary.  ';
+
+     if result <> '' then
+     result := #13#10+#13#10 + '#|#+BOLDOvaries:#/#' + #13#10 + result ;
+
+end;
+
+function getAnatomyConc :String
+Begin
+result := '';
+   if cbFetalAnatomyAbNormal1.checked then
+  begin
+     result := 'Abnormal anatomy.  ';
+   end;
+end;
+
+function getFibroidConc : String
+begin
+ result := '';
+if cbFibroidsVisualised.checked then
+  begin
+   if (spFibroidCount.value > 0) then
+   begin
+     if spFibroidCount.value = 1 then
+      result := result + 'Fibroid as described.  ';
+     else
+      result := result + 'Fibroids as described.  ';
+   end
+   else
+      result := result + 'Fibroid/s as described.  ';
+  end;   
+end;
+
+ Function GetOvaryConc : string;
+begin
+  result := '';
+
+  if cbRightOvaryAbnormal.checked then
+  begin
+     if cbLeftOvaryAbnormal.checked then
+       result := result + 'Abnormal ovaries.  ';
+     else
+       result := result + 'Abnormal right ovary.  ';
+  end
+  else  if cbLeftOvaryAbnormal.checked then
+     result := result + 'Abnormal left ovary.  ';
+
+  if getCervixConclusion <> '' then
+    result := result +  getCervixConclusion;
+
+    result := result + getAnatomyConc;
+    result := result + getFibroidConc;
+end;
+
+function getFibroid : String;
+var
+  i : Integer;
+begin
+result := '';
+  if spFibroidCount.value > 0 then
+  begin
+    if spFibroidCount.value = 1 then
+    begin
+      if GetSingleFibroidDimensions <> ''  then
+         result := result +  GetSingleFibroidDimensions + GetSingleFibroid + ' fibroid seen.  ';
+      if (result <> '')  and (GetSingleCloseOrClear <> '') then
+         result := result + 'It is ' +  GetSingleCloseOrClear;
+      if result <> '' then
+        result :=  'There is a ' + result;
+    end
+    else if spFibroidCount.value > 1 then
+    begin
+      for i := 1 to spFibroidCount.value do
+      begin
+        if result <> '' then
+        begin
+          if i = spFibroidCount.value then
+             result := result + ' and ';
+          else
+             result := result + ', ';
+        end;
+        result := result + GetFibroidString(i);
+      end;
+      if result <> '' then
+       result := 'There are fibroids identified: ' + result;
+    end;
+    if result = '' then
+    begin
+        GFibroidWarning := TRUE;
+        if spFibroidCount.value = 1 then
+          result := 'Fibroid';
+        else if spFibroidCount.value > 1 then
+          result := 'Fibroids';
+    end;
+  end
+  else if cbFibroidsVisualised.checked then
+  begin
+    GFibroidWarning := TRUE;
+    result := 'Fibroid/s';
+  end;
+  else
+    result := '';  
+
+  if result <> '' then
+    result := #13#10+#13#10 + AddFullSTopToEnd(result);
+end;
+
+ Function getAnatomyChecked :  Boolean
+ begin  
+     result := False;
+     if (cbFetalAnatomyNormal1.checked) or  (cbFetalAnatomyAbNormal1.checked) then 
+     begin       
+        result := TRUE;  
+     end
+ end;                     
+
+
+// **********************************************************************************//
+// ******************* Data Validation Functions ************************************//
+function CheckFormComplete: Boolean;                                                        
+begin                                                                             
+    result := true;    
+    if GetClinicalIndicators = '' then
+    begin        
+      ShowMessage('Please enter indication');
+      result := False;
+    end;
+    if deUSSEDD1.date <=0 then                                                        
+    begin        
+      ShowMessage('Please enter USS EDD');
+      result := False;
+    end;                           
+    if not getAnatomyChecked then
+    begin             
+      ShowMessage('Please tick Normal/Abnormal for anatomy');
+      result := False;
+    end;
+     if cbPlacentaSite1.text = '' then       
+    begin        
+      ShowMessage('Please enter placental site');
+      result := False;     
+    end;
+    if meCervicalLength.text <> '' then
+    begin
+        if not(StrToFloatDef(meCervicalLength.text,0)>0) then
+        begin
+          ShowMessage('Please enter cervix');
+          result := False;
+        end;
+     end
+     else if meCervicalLength.text = '' then
+     begin
+          ShowMessage('Please enter cervix');
+          result := False;
+     end;
+     if edNucTransMeasurement1.text <> '' then
+    begin
+        if not(StrToFloatDef(edNucTransMeasurement1.text,0)>0) then
+        begin
+          ShowMessage('Please enter NT');
+          result := False;
+        end;
+     end
+     else if edNucTransMeasurement1.text = '' then
+     begin
+          ShowMessage('Please enter NT');
+          result := False;
+     end;
+end;                                         
+
+
+
+// **************************Dictation Warning checks *************************************//
+
+{function getNIPSWarning : Boolean
+begin
+result := FALSE;
+if cbConsistentNIPTNo1.checked then
+   result := TRUE;
+end;   }
+
+function getAnatomyWarning : Boolean
+begin
+result := FALSE;
+if cbFetalAnatomyAbNormal1.checked then
+begin
+   result := TRUE;
+ end;
+end;
+
+Function getCervixWarning : Boolean
+var
+  vCervicalLength : integer;
+begin
+result := FALSE;
+vCervicalLength := 0;
+if (meCervicalLength.text <> '') then
+begin
+   vCervicalLength := StrToInt(meCervicalLength.text);
+   if (vCervicalLength > 0) and (vCervicalLength < 25) then
+      result := TRUE;
+end;   
+end;
+
+{function getPlacentalWarning : Boolean
+begin
+result := FALSE;
+if cbLowLyingPlacentaYes1.checked then
+begin
+   result := TRUE;
+ end;
+end;  }
+
+function getOvaryWarning : Boolean
+begin
+result := FALSE;
+if (cbLeftOvaryAbNormal.checked) or (cbRightOvaryAbNormal.checked) then
+begin
+   result := TRUE;
+ end;
+end;
+
+Function getBPD : string
+var
+  inValue : Integer;
+begin
+  inValue := 0;
+  result := '';
+  result := StrToFloatDef(edtBPD1.text,0);
+  result := intToStr(round(result));
+end;
+
+Function getCRL : string
+var
+  inValue : Integer;
+begin
+  inValue := 0;
+  result := '';
+  result := StrToFloatDef(edtCRL1.text,0);
+  result := intToStr(round(result));
+end;
+
+//-----------------------------Redating --------------------------- //
+procedure btnPregnancyRedatedOnClick(Sender);
+begin
+  cbPregnancyRedatedYes.checked := not(cbPregnancyRedatedYes.checked )
+end;
+
+
+
+
+ // ***************************Anatomy************************************************//
+
+function SetAnatomyChecks(inParent: TControl; inChecked: Boolean)
+var
+  i: Integer;
+begin
+  for i := 0 to TWinControl(inParent).ControlCount - 1 do
+  begin
+    if TWinControl(inParent).Controls[i] is TcxCheckBox then
+      if (pos('cbLargeBMI', TcxCheckBox(TWinControl(inParent).Controls[i]).name) < 1) and (pos('cbAwkFetalPos', TcxCheckBox(TWinControl(inParent).Controls[i]).name) < 1)
+                     and (pos('cbEarlyGestation', TcxCheckBox(TWinControl(inParent).Controls[i]).name) < 1) then
+        TcxCheckBox(TWinControl(inParent).Controls[i]).Checked := inChecked;
+  end;
+end;
+
+procedure btnSelectAll1OnClick(sender)
+begin
+  SetAnatomyChecks(cxgbTheChecks1, True);
+end;
+
+procedure btnClear1OnClick(sender)
+begin
+  SetAnatomyChecks(cxgbTheChecks1, False);
+end;
+
+
+{Function getConclusionWarnings : String
+begin
+result := '';
+  if (getAnatomyWarning = TRUE) then
+     result := result + 'Dictate ANATOMY.  '
+  if (getCervixWarning = TRUE) then
+      result := result + 'Dictate CERVIX.  '
+  if (getOvaryWarning = TRUE ) then
+       result := result + 'Dictate Ovaries.  '
+  if (GFibroidWarning = TRUE) then
+       result := result + 'Dictate fibroids.  '
+end; }
+
+
+
+Function getFunnelingMembranes : Boolean
+begin
+result := FALSE;
+  if cbFunnellingofmembranesYes.checked then
+     result := TRUE;
+end;
+
+procedure cxccbReferralIndicationChange(Sender);
+begin
+  edtReferralIndicator1.Enabled := (cxccbReferralIndication.States[cxccbReferralIndication.Properties.Items.Count-1] = 1);
+end;
+
+procedure cxccbObstetricHistoryChange(Sender);
+begin
+  edtOtherPastHistory1.Enabled := (cxccbObstetricHistory.States[cxccbObstetricHistory.Properties.Items.Count-1] = 1);
+end;
+
+
+procedure cbGestationTypeChange(Sender);
+begin
+  cbGestationType.ItemIndex := 1;
+end;
+
+procedure SetAbnormalCheckes(inControl: TcxGroupBox; inValue: Boolean);
+begin
+  if assigned(inControl) then
+  begin
+    for i := 0 to inControl.ControlCount - 1 do
+    begin
+      if inControl.Controls[i] is TcxCheckBox then
+      begin
+        TcxCheckBox(inControl.Controls[i]).enabled := inValue;
+      end;
+    end;
+  end;
+end;
+
+procedure spFibroidCountOnChange(Sender)
+begin
+  gbFibroid1.Visible := False;
+  gbFibroid2.Visible := False;
+  gbFibroid3.Visible := False;
+  gbFibroid4.Visible := False;
+  gbFibroid5.Visible := False;
+  gbFibroid6.Visible := False;
+  gbFibroid7.Visible := False;
+  gbFibroid8.Visible := False;
+  gbFibroid9.Visible := False;
+  gbFibroid10.Visible := False;
+  if spFibroidCount.Value > 0 then
+  begin
+     cbFibroidsVisualised.Checked := true;
+  end;
+  if cbFibroidsVisualised.Checked then
+  begin
+    if spFibroidCount.Value > 0 then
+    begin
+      gbFibroid1.Visible := True;
+      if spFibroidCount.Value > 1 then
+      begin
+        gbFibroid2.Visible := True;
+        if spFibroidCount.Value > 2 then
+        begin
+          gbFibroid3.Visible := True;
+          if spFibroidCount.Value > 3 then
+          begin
+            gbFibroid4.Visible := True;
+            if spFibroidCount.Value > 4 then
+            begin
+              gbFibroid5.Visible := True;
+              if spFibroidCount.Value > 5 then
+              begin
+                gbFibroid6.Visible := True;
+                if spFibroidCount.Value > 6 then
+                begin
+                  gbFibroid7.Visible := True;
+                  if spFibroidCount.Value > 7 then
+                  begin
+                    gbFibroid8.Visible := True;
+                    if spFibroidCount.Value > 8 then
+                    begin
+                      gbFibroid9.Visible := True;
+                      if spFibroidCount.Value > 9 then
+                      begin
+                        gbFibroid10.Visible := True;
+                      end;
+                    end;
+                  end;
+                end;
+              end;
+            end;
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure cbFibroidsVisualisedOnClick(sender)
+begin
+  spFibroidCount.Enabled := cbFibroidsVisualised.Checked;
+  spFibroidCountOnChange(nil);
+end;   
+
+procedure cbFetalAnatomyNormal1OnClick(sender);
+var
+  vgb: TcxGroupBox;
+  vChecked: TcxCheckBox;
+  i: Integer;
+begin
+  cbToggleCheckOnClick(Sender);
+  vgb := TWinControl(pgFetusMeasusements.Owner).FindComponent('cxgbAbnormal' + copy(Sender.Name, length(Sender.name), length(sender.name)));
+  vChecked := TWinControl(pgFetusMeasusements.Owner).FindComponent('cbFetalAnatomyAbNormal' + copy(Sender.Name, length(Sender.name), length(sender.name)));
+  if assigned(vgb) then
+  begin
+    SetAbnormalCheckes(vgb, vChecked.Checked);
+  end;
+  if (cbFetalAnatomyNormal1.checked) or (cbFetalAnatomyAbNormal1.checked) then
+     btnSelectAll1OnClick(sender);
+  else
+    btnClear1OnClick(sender)
+end;
+
+
+function getConclusion: String;
+begin
+  result := '';
+  if cbPregnancyRedatedYes.checked then
+  begin
+    result := result + 'Normal fetal appearances. ';
+    result := result + 'The biometry is consistent with ' + getCompositeDate;
+    result := result +  'The pregnancy has been redated. The ultrasound EDD is ' + FormatDateTime('dd/mm/yyyy', deUSSEDD1.Date) +'.  '
+  end;
+  else
+    result := 'Normal fetal appearances at ' + getGAFromEnteredEDD;
+  result := AddFullStop(result) ;
+end;
+
+ procedure cbCervixSutureOnClick(sender);
+ begin
+   cbToggleCheckOnClick(Sender);
+   edtSutureToOS.Enabled := cbCervixSutureYes.Checked;
+ end;
+
+ procedure edNucTransMeasurement1OnExit(sender);
+ begin
+   edNucTransMeasurement1.text := PadDecimalPlaces(edNucTransMeasurement1.text);
+ end;
+
+
+ Procedure cbNalliPorousOnClick(Sender)
+ begin
+   if cbParous.checked then
+     cbNalliPorous.checked := not(cbParous.checked)
+ end;
+
+ Procedure cbParousClick(Sender)
+ begin
+   gbLastPregnancy.visible := cbParous.checked;
+ end
+
+  procedure ToggleCloseToCervixFibroid(sender);
+  var
+    vControlName: String;
+    vControl: TcxSpinEdit;
+  begin
+    vControlName := TcxCheckBox(sender).Name;
+    if vControlName[length(vControlName)] = '0' then
+      vControl := TWinControl(sender.Owner).FindComponent('seCloseToCrevix10')
+    else
+      vControl := TWinControl(sender.Owner).FindComponent('seCloseToCrevix' + vControlName[length(vControlName)]);
+    vControl.Enabled := TcxCheckBox(sender).Checked;
+  end;
+
+procedure ProduceMergeFieldData;
+var
+  v1: String;
+begin
+  GAnatomyWarning := False;
+  GFibroidWarning := False;
+    // ---------------Gestation Details--------------------------------- //
+  lbMergeDataMergeFields.Items.Clear;
+  if not(cbPregnancyRedatedYes.checked) then
+  begin
+    lbMergeDataMergeFields.Items.Add('EXPECTEDEDDCAPTION=''#|#+BOLDExpected EDD:#/#''');
+  end
+  else
+  begin
+        lbMergeDataMergeFields.Items.Add('EXPECTEDEDDCAPTION=''Expected EDD:''');
+  end
+  if GetEnteredEDD <> '' then
+     lbMergeDataMergeFields.Items.Add('Entered_EDD='''+  GetEnteredEDD   +'''');
+  else
+     lbMergeDataMergeFields.Items.Add('Entered_EDD=''');
+
+   //-----------------  Entered EDD ----------//
+  lbMergeDataMergeFields.Items.Add('GA_from_Entered_EDD='''+  getGAFromEnteredEDD   +'''');
+   
+   //----------------- Composite US  EDD ----------//
+  lbMergeDataMergeFields.Items.Add('Composite_Ultrasound_Age='''+  intToStr(seUSSEDDGAWeeks1.value)   +' weeks ''');
+  if seSSEDDGADays1.value > 0 then
+  begin
+    if seSSEDDGADays1.value > 1 then
+     lbMergeDataMergeFields.Items.Add('Gestational_Age_by_EDD='''+  intToStr(seSSEDDGADays1.value)   +' days''');
+    else
+     lbMergeDataMergeFields.Items.Add('Gestational_Age_by_EDD='''+  intToStr(seSSEDDGADays1.value)   +' day''');
+  end
+  else
+     lbMergeDataMergeFields.Items.Add('Gestational_Age_by_EDD=''');
+
+
+   //------------------Average US EDD ---------------------//
+  if cbPregnancyRedatedYes.checked then
+  begin
+    lbMergeDataMergeFields.Items.Add('USSEDDCAPTION=''#|#+BOLDUltrasound EDD:#/#''');
+  end
+  else
+  begin
+    lbMergeDataMergeFields.Items.Add('USSEDDCAPTION=''Ultrasound EDD:''');
+  end
+
+  if (deUSSEDD1.Date > 0) then
+  begin
+   if cbPregnancyRedatedYes.checked then
+      lbMergeDataMergeFields.Items.Add('EDD_from_average_ultrasound_age=''#|#+BOLD'+  FormatDateTime('dd/mm/yyyy', deUSSEDD1.Date)   +'#/#''');
+     else
+      lbMergeDataMergeFields.Items.Add('EDD_from_average_ultrasound_age='''#9 +  FormatDateTime('dd/mm/yyyy', deUSSEDD1.Date)   +'''');
+  end;
+
+  lbMergeDataMergeFields.Items.Add('BPD_T1mm='''+  getBPD   +'mm''');
+  lbMergeDataMergeFields.Items.Add('Crown_Rump_Length='''+ getCRL +'mm''');
+ 
+
+  lbMergeDataMergeFields.Items.Add('ReferralIndication='''+ GetClinicalIndicators +'''');
+  lbMergeDataMergeFields.Items.Add('ClinicalHistory='''+ GetObstetricHistory +'''');
+
+  if (edNucTransMeasurement1.text <> '') then
+  begin
+     if StrToFloatDef(edNucTransMeasurement1.text,0.0) > 0 then
+       lbMergeDataMergeFields.Items.Add('NT='''+ edNucTransMeasurement1.text +'''');
+     else
+       lbMergeDataMergeFields.Items.Add('NT=''##''');
+  end;
+
+  lbMergeDataMergeFields.Items.Add('Placenta='''+ GetPlacenta +'''');
+  lbMergeDataMergeFields.Items.Add('NasalBone='''+ GetNasalBone +'''');
+
+  lbMergeDataMergeFields.Items.Add('Ovaries='''+ getOvary +'''');
+  lbMergeDataMergeFields.Items.Add('Fibroid='''+ getFibroid +'''');
+
+  lbMergeDataMergeFields.Items.Add('cervix='''+ getCervixDetailed + '''');
+
+
+  lbMergeDataMergeFields.Items.Add('liquor='''+ inItCaps(cbAmnioticFluid1.text,True) + '''');
+
+  lbMergeDataMergeFields.Items.Add('Anatomy='''+ getAnatomy + '''');
+  lbMergeDataMergeFields.Items.Add('ReportHeading='''+ getReportHeading + '''');
+
+
+     //lbMergeDataMergeFields.Items.Add('ConclusionWarnings='''+ getConclusionWarnings + '''');
+     //lbMergeDataMergeFields.Items.Add('CervixConclusion='''+ getCervixConclusion + '''');
+
+     //------------------------------PE Screen -------------------------------------//
+    if edtHeight.text <> '' then
+    begin
+      if StrToFloatDef(edtHeight.text,0.0) > 0 then
+        lbMergeDataMergeFields.Items.Add('height='''+ RemoveDecimalPointAtEnd(edtHeight.text) + '''');
+      else
+         lbMergeDataMergeFields.Items.Add('height=''##''');
+    end;
+    else
+       lbMergeDataMergeFields.Items.Add('height=''##''');
+
+    if edtWeight.text <> '' then
+    begin
+      if StrToFloatDef(edtWeight.text,0.0) > 0 then
+        lbMergeDataMergeFields.Items.Add('weight='''+ edtWeight.text + '''');
+      else
+         lbMergeDataMergeFields.Items.Add('weight=''##''');
+    end;
+    else
+       lbMergeDataMergeFields.Items.Add('weight=''##''');
+       
+   if cbOrigin.text <> '' then
+    lbMergeDataMergeFields.Items.Add('racialOrigin='''+ cbOrigin.text + '''');
+   else
+     lbMergeDataMergeFields.Items.Add('racialOrigin=''##''');
+
+   if cbConceptionMethod.text <> '' then
+    lbMergeDataMergeFields.Items.Add('Conception Method='''+ cbConceptionMethod.text + '''');
+   else
+     lbMergeDataMergeFields.Items.Add('Conception Method=''##''');
+
+   {if getOvaryConc <> '' then }
+    lbMergeDataMergeFields.Items.Add('OvaryConc='''+ getOvaryConc + '''');
+   {else
+    lbMergeDataMergeFields.Items.Add('OvaryConc=''');}
+                                                                                            
+   if cbSmokingYes.checked then
+    lbMergeDataMergeFields.Items.Add('smoker=''Yes''');
+   else if cbSmokingNo.checked then
+     lbMergeDataMergeFields.Items.Add('smoker=''No''');
+   else
+     lbMergeDataMergeFields.Items.Add('smoker=''##''');
+
+   if cbPEYes.checked then
+    lbMergeDataMergeFields.Items.Add('MotherPE=''Yes''');
+   else if cbPENo.checked then
+     lbMergeDataMergeFields.Items.Add('MotherPE=''No''');
+   else
+     lbMergeDataMergeFields.Items.Add('MotherPE=''##''');
+
+   lbMergeDataMergeFields.Items.Add('MedicalHistory='''+ getMedicalHistory + '''');
+   lbMergeDataMergeFields.Items.Add('PEObstetricHistory='''+ getPEObstetricHistory + '''');
+   lbMergeDataMergeFields.Items.Add('BioPhysicalMeasurements='''+ getBioPhysicalMeasurements + '''');
+   lbMergeDataMergeFields.Items.Add('BioChemistry='''+ getBioChemistry + '''');
+   lbMergeDataMergeFields.Items.Add('conclusion='''+ getConclusion + '''');
+  // lbMergeDataMergeFields.Items.Add('ConclusionWarnings='''+ getConclusionWarnings + '''');
+
+end;
+
+procedure ProduceMergeOrder;
+var
+  vHeading : Boolean;
+  PEPerformedYes : Boolean;
+begin
+  vHeading := False;
+  PEPerformedYes := False;
+  CheckFormComplete;
+  lbMergeDataMergeOrder.Items.Clear;
+  {if ((getAnatomyWarning = TRUE) or (getCervixWarning = TRUE) or  (getOvaryWarning = TRUE ) or (GFibroidWarning = TRUE))then
+  begin
+     lbMergeDataMergeOrder.Items.Add('Warning');
+     lbMergeDataMergeOrder.Items.Add('<BR>');
+  end;}
+  if ((cbPEDoneYes.checked = True) or (cxccbReferralIndication.States[7] = 1)) then
+    PEPerformedYes := TRUE;
+   if PEPerformedYes then
+   begin
+     if ((cxccbReferralIndication.States[1] = 1) and PEPerformedYes) then
+        lbMergeDataMergeOrder.Items.Add('VCGSPreEclampsia')
+      else if ((cxccbReferralIndication.States[5] = 1) and PEPerformedYes )then
+        lbMergeDataMergeOrder.Items.Add('NTOnlyPEScreening')
+      else if ((cxccbReferralIndication.States[6] = 1) and PEPerformedYes) then
+        lbMergeDataMergeOrder.Items.Add('AneuploidyDeclinedPEScreening')
+      else if ((cxccbReferralIndication.States[2] = 1) and PEPerformedYes) then
+        lbMergeDataMergeOrder.Items.Add('NIPSPEScreening')
+      else if ((cxccbReferralIndication.States[3] = 1) and PEPerformedYes) then
+        lbMergeDataMergeOrder.Items.Add('NIPSPendingPEScreening')
+      else if ((cxccbReferralIndication.States[0] = 1) and PEPerformedYes) then
+        lbMergeDataMergeOrder.Items.Add('NormalNIPSPEScreening')
+      else if ((cxccbReferralIndication.States[4] = 1) and PEPerformedYes) then
+        lbMergeDataMergeOrder.Items.Add('IncreasedNIPSPEScreening')
+      else if ((cxccbReferralIndication.States[8] = 1) and PEPerformedYes)  then
+        lbMergeDataMergeOrder.Items.Add('DefaultPEScreening')
+     else
+        lbMergeDataMergeOrder.Items.Add('DefaultPEScreening');
+    end;
+   else
+   begin
+      if cxccbReferralIndication.States[1] = 1 then
+        lbMergeDataMergeOrder.Items.Add('MSS+VCGS')
+      else if cxccbReferralIndication.States[5] = 1 then
+        lbMergeDataMergeOrder.Items.Add('NTOnly')
+      else if cxccbReferralIndication.States[6] = 1 then
+        lbMergeDataMergeOrder.Items.Add('AneuploidyDeclined')
+      else if cxccbReferralIndication.States[2] = 1 then
+        lbMergeDataMergeOrder.Items.Add('NIPS')
+      else if cxccbReferralIndication.States[3] = 1 then
+        lbMergeDataMergeOrder.Items.Add('NIPSPending')
+      else if cxccbReferralIndication.States[0] = 1 then
+        lbMergeDataMergeOrder.Items.Add('NormalNIPS')
+      else if cxccbReferralIndication.States[4] = 1 then
+        lbMergeDataMergeOrder.Items.Add('IncreasedNIPS')
+     else
+       lbMergeDataMergeOrder.Items.Add('Default')
+    end;
+end;
+
+procedure InitializeScreen;
+begin
+  Gwarning := False;
+  GPlacentaWarning := FALSE;
+  GPresentationWarning := FALSE;
+  GCervixWarning := FALSE;
+  pcEDDPrinciple.HideTabs := True;
+  cbGestationType.ItemIndex := 1;
+//  cbGestationTypeChange(nil);
+  gbEDDDating.Height := 45;
+  lblMedication.Visible := False;
+  //cbEDDPrinciple.ItemIndex := 0;
+  cbEDDPrincipleOnChange(nil);
+  GAnatomyWarning := FALSE;
+  if (deExamDate.Date < 100) then
+    deExamDate.Date := Now;
+  pgFetusMeasusements.ActivePage := cxtsFetusGeneral1;
+    pcEDDPrinciple.Properties.HideTabs := true;
+  spFibroidCountOnChange(nil);
+  //edtPtNameOnChange(nil);
+  cbGestationType.ItemIndex := 1;
+   //cxccbReferralIndication.States[0] := 1;
+  cbGestationTypeChange(nil);
+
+end;
+
+
+procedure StartScript;
+begin
+    // -----------------------------------------------------------------------------//
+    InitializeScreen;
+    cbGestationType.Properties.OnChange := 'cbGestationTypeChange';
+    cbEDDPrinciple.Properties.OnChange := 'cbEDDPrincipleOnChange';
+    deStatedEDD.Properties.OnChange := 'deStatedEDDOnChange';
+    deMUFWEdd.Properties.OnChange := 'deMUFWEddOnChange';
+    deLMPDate.Properties.OnChange := 'cbLMPDateOnChange';
+    deMenstrualEDD.Properties.OnChange := 'deMenstrualEDDOnChange';
+    deOvulationEDD.Properties.OnChange := 'deOvulationEDDOnChange';
+    deIVFEDD.Properties.OnChange := 'deIVFEDDOnChange';
+    deConceptionDate.Properties.OnChange := 'cbDateOfConceptionOnChange';
+    seTransferDay.Properties.OnChange := 'seTransferDayOnChange';
+    cbFetalAnatomyNormal1.OnClick := 'cbFetalAnatomyNormal1OnClick';
+    cbFetalAnatomyAbNormal1.OnClick := 'cbFetalAnatomyNormal1OnClick';
+    cxccbReferralIndication.Properties.OnChange := 'cxccbReferralIndicationChange';
+    cxccbObstetricHistory.Properties.OnChange := 'cxccbObstetricHistoryChange';
+
+    deUSSEDD1.Properties.OnChange := 'cbUSSEDDOnChange';
+
+    cbCervixTVS.OnClick := 'cbToggleCheckOnClick';
+    cbCervixTA.OnClick := 'cbToggleCheckOnClick';
+    spFibroidCount.Properties.OnChange := 'spFibroidCountOnChange';
+    cbFibroidsVisualised.OnClick := 'cbFibroidsVisualisedOnClick';
+
+    cbCervixShortYes.OnClick := 'cbToggleCheckOnClick';
+    cbCervixShortNo.OnClick := 'cbToggleCheckOnClick';
+
+    cbFunnellingofmembranesYes.OnClick := 'cbToggleCheckOnClick';
+    cbFunnellingofmembranesNo.OnClick := 'cbToggleCheckOnClick';
+
+    cbCervixSutureYes.OnClick := 'cbCervixSutureOnClick'
+    cbCervixSutureNo.OnClick := 'cbCervixSutureOnClick'
+
+    btnSelectAll1.OnClick := 'btnSelectAll1OnClick';
+    btnClear1.OnClick := 'btnClear1OnClick';
+
+    cbRightOvaryNormal.OnClick := 'cbToggleCheckOnClick';
+    cbRightOvaryAbNormal.OnClick := 'cbToggleCheckOnClick';
+    cbLeftOvaryNormal.OnClick := 'cbToggleCheckOnClick';
+    cbLeftOvaryAbNormal.OnClick := 'cbToggleCheckOnClick';
+
+    cbNasalVisualised1.OnClick := 'cbToggleCheckOnClick';
+    cbNasaAbsent1.OnClick := 'cbToggleCheckOnClick';
+    cbNasalNotClear1.OnClick := 'cbToggleCheckOnClick';
+
+
+   //----------------------------PE Screen----------------
+    cbSmokingYes.OnClick := 'cbToggleCheckOnClick';
+    cbSmokingNo.OnClick := 'cbToggleCheckOnClick';
+    cbPEYes.OnClick := 'cbToggleCheckOnClick';
+    cbPENo.OnClick := 'cbToggleCheckOnClick';
+    cbPrevPEYes.OnClick := 'cbToggleCheckOnClick';
+    cbPrevPENo.OnClick := 'cbToggleCheckOnClick';
+    cbNalliPorous.OnClick := 'cbNalliPorousOnClick';
+    cbPEDoneYes.OnClick := 'cbToggleCheckOnClick';
+    cbPEDoneNo.OnClick := 'cbToggleCheckOnClick';
+    cbParous.OnClick   := 'cbParousClick'
+
+    cbCavityDistortion1.OnClick := 'ToggleCloseToCervixFibroid';
+    cbCavityDistortion2.OnClick := 'ToggleCloseToCervixFibroid';
+    cbCavityDistortion3.OnClick := 'ToggleCloseToCervixFibroid';
+    cbCavityDistortion4.OnClick := 'ToggleCloseToCervixFibroid';
+    cbCavityDistortion5.OnClick := 'ToggleCloseToCervixFibroid';
+    cbCavityDistortion6.OnClick := 'ToggleCloseToCervixFibroid';
+    cbCavityDistortion7.OnClick := 'ToggleCloseToCervixFibroid';
+    cbCavityDistortion8.OnClick := 'ToggleCloseToCervixFibroid';
+    cbCavityDistortion9.OnClick := 'ToggleCloseToCervixFibroid';
+    cbCavityDistortion10.OnClick := 'ToggleCloseToCervixFibroid';
+
+    btnPregnancyRedated.OnClick := 'btnPregnancyRedatedOnClick';
+    edNucTransMeasurement1.OnExit := 'edNucTransMeasurement1OnExit'
+end;
+
+StartScript;
