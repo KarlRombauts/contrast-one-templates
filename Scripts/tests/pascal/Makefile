@@ -8,7 +8,7 @@ SCRIPTS = ../..
 
 FPCFLAGS = -Fu$(PS_SRC) -Fu$(SRC) -Fu$(TESTS) -FE. -dNOGUI
 
-.PHONY: all prebuild build test clean
+.PHONY: all prebuild build test clean help
 
 all: test
 
@@ -28,3 +28,13 @@ test-suite: build
 clean:
 	rm -f TestRunner *.o *.ppu src/*.o src/*.ppu tests/*.o tests/*.ppu
 	rm -rf $(BUILD)
+
+help:
+	@echo "PascalScript Test Harness"
+	@echo "========================"
+	@echo ""
+	@echo "  make test         - Build and run all tests"
+	@echo "  make build        - Compile test runner"
+	@echo "  make prebuild     - GPP-build exam scripts"
+	@echo "  make clean        - Remove build artifacts"
+	@echo "  make test-suite SUITE=TestStrUtils  - Run specific suite"
