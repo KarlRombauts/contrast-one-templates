@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { parseDfm } from '../parser.js';
+import type { DfmItem } from '../types.js';
 
 describe('parseDfm', () => {
   it('parses a single object with simple properties', () => {
@@ -105,5 +106,91 @@ end`;
     const nodes = parseDfm(input);
     expect(nodes[0].properties.get('Enabled')).toBe(false);
     expect(nodes[0].properties.get('Visible')).toBe(true);
+  });
+
+  it('parses Properties.Items.Strings parenthesized list', () => {
+    const input = `object cb1: TcxComboBox
+  Properties.Items.Strings = (
+    ''
+    'Normal'
+    'Bradycardia'
+    'Tachycardia')
+  TabOrder = 3
+end`;
+    const nodes = parseDfm(input);
+    const items = nodes[0].properties.get('Properties.Items.Strings');
+    expect(items).toEqual(['', 'Normal', 'Bradycardia', 'Tachycardia']);
+  });
+
+  it('parses Properties.Items angle-bracket collection', () => {
+    const input = `object ccb1: TcxCheckComboBox
+  Properties.Items = <
+    item
+      Description = 'Dating'
+      ShortDescription = 'Dating'
+    end
+    item
+      Description = 'Viability'
+      ShortDescription = 'Viability'
+    end>
+  Width = 163
+end`;
+    const nodes = parseDfm(input);
+    const items = nodes[0].properties.get('Properties.Items') as DfmItem[];
+    expect(items).toHaveLength(2);
+    expect(items[0].properties.get('Description')).toBe('Dating');
+    expect(items[1].properties.get('Description')).toBe('Viability');
+  });
+
+  it('parses empty angle-bracket collection', () => {
+    const input = `object pc1: TcxPageControl
+  Properties.CustomButtons.Buttons = <>
+end`;
+    const nodes = parseDfm(input);
+    expect(nodes[0].properties.get('Properties.CustomButtons.Buttons')).toEqual([]);
+  });
+
+  it('parses Delphi color constants as strings', () => {
+    const input = `object ccb1: TcxCheckComboBox
+  Style.BorderColor = clRed
+  Style.Font.Color = clWindowText
+end`;
+    const nodes = parseDfm(input);
+    expect(nodes[0].properties.get('Style.BorderColor')).toBe('clRed');
+    expect(nodes[0].properties.get('Style.Font.Color')).toBe('clWindowText');
+  });
+
+  it('parses set notation properties', () => {
+    const input = `object grp1: TcxGroupBox
+  Style.Edges = [bBottom]
+  Style.Font.Style = [fsBold]
+end`;
+    const nodes = parseDfm(input);
+    expect(nodes[0].properties.get('Style.Edges')).toBe('[bBottom]');
+    expect(nodes[0].properties.get('Style.Font.Style')).toBe('[fsBold]');
+  });
+
+  it('parses empty set notation', () => {
+    const input = `object grp1: TcxGroupBox
+  Style.Edges = []
+end`;
+    const nodes = parseDfm(input);
+    expect(nodes[0].properties.get('Style.Edges')).toBe('[]');
+  });
+
+  it('parses Align property values', () => {
+    const input = `object sb1: TScrollBox
+  Align = alClient
+end`;
+    const nodes = parseDfm(input);
+    expect(nodes[0].properties.get('Align')).toBe('alClient');
+  });
+
+  it('parses Properties.ActivePage as a string reference', () => {
+    const input = `object pc1: TcxPageControl
+  Properties.ActivePage = cxtsPregnancy
+end`;
+    const nodes = parseDfm(input);
+    expect(nodes[0].properties.get('Properties.ActivePage')).toBe('cxtsPregnancy');
   });
 });
