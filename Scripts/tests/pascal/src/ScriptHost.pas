@@ -38,6 +38,11 @@ type
     procedure SetVariable(const Name: string; Value: Pointer;
       const TypeName: string);
 
+    { Bind a TObject instance to a script-level global variable.
+      Call AFTER Execute. The variable must be declared in the script
+      source as 'var VarName: TypeName'. }
+    procedure SetVarToInstance(const VarName: string; Instance: TObject);
+
     property Compiled: Boolean read FCompiled;
     property LastError: string read FLastError;
     property Compiler: TPSPascalCompiler read FCompiler;
@@ -198,6 +203,16 @@ procedure TScriptHost.SetVariable(const Name: string; Value: Pointer;
   const TypeName: string);
 begin
   // Will be implemented when stubs are needed
+end;
+
+procedure TScriptHost.SetVarToInstance(const VarName: string; Instance: TObject);
+var
+  V: PIFVariant;
+begin
+  V := FExec.GetVar2(VarName);
+  if V = nil then
+    raise Exception.CreateFmt('SetVarToInstance: variable "%s" not found', [VarName]);
+  SetVariantToClass(V, Instance);
 end;
 
 end.

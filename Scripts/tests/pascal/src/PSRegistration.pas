@@ -81,7 +81,8 @@ begin
     RegisterProperty('Checked', 'Boolean', iptRW);
   end;
 
-  { TcxComboBox - Properties.Items needs flattened access }
+  { TcxComboBox - Properties.Items needs flattened access.
+    Also serves as TcxCheckComboBox with States[] and ShortDescription[]. }
   with Cl.AddClassN(Cl.FindClass('TWinControl'), 'TcxComboBox') do
   begin
     RegisterProperty('ItemIndex', 'Integer', iptRW);
@@ -89,6 +90,11 @@ begin
     { Flattened accessors for Properties.Items.Count and Properties.Items[i] }
     RegisterMethod('function GetItemCount: Integer');
     RegisterMethod('function GetItemText(Index: Integer): string');
+    { Check-combo-box features: States[i] and ShortDescription[i] }
+    RegisterProperty('States', 'Integer Integer', iptRW);
+    RegisterProperty('ShortDescription', 'string Integer', iptRW);
+    { Add an item to Properties.Items and size States/ShortDescription arrays }
+    RegisterMethod('function AddItem(AText: string): Integer');
   end;
 
   { TcxSpinEdit }
@@ -243,6 +249,21 @@ begin Result := Self.Properties.Items.Count; end;
 function TStubComboBox_GetItemText(Self: TStubComboBox; Index: Integer): string;
 begin Result := Self.Properties.Items[Index]; end;
 
+procedure TStubComboBox_StatesR(Self: TStubComboBox; var T: Integer; Index: Integer);
+begin T := Self.States[Index]; end;
+
+procedure TStubComboBox_StatesW(Self: TStubComboBox; const T: Integer; Index: Integer);
+begin Self.States[Index] := T; end;
+
+procedure TStubComboBox_ShortDescriptionR(Self: TStubComboBox; var T: string; Index: Integer);
+begin T := Self.ShortDescription[Index]; end;
+
+procedure TStubComboBox_ShortDescriptionW(Self: TStubComboBox; const T: string; Index: Integer);
+begin Self.ShortDescription[Index] := T; end;
+
+function TStubComboBox_AddItem(Self: TStubComboBox; const AText: string): Integer;
+begin Result := Self.AddItem(AText); end;
+
 { TcxSpinEdit (TStubSpinEdit) }
 procedure TStubSpinEdit_ValueR(Self: TStubSpinEdit; var T: Double);
 begin T := Self.Value; end;
@@ -343,6 +364,9 @@ begin
     RegisterPropertyHelper(@TStubComboBox_TextR, @TStubComboBox_TextW, 'Text');
     RegisterMethod(@TStubComboBox_GetItemCount, 'GetItemCount');
     RegisterMethod(@TStubComboBox_GetItemText, 'GetItemText');
+    RegisterPropertyHelper(@TStubComboBox_StatesR, @TStubComboBox_StatesW, 'States');
+    RegisterPropertyHelper(@TStubComboBox_ShortDescriptionR, @TStubComboBox_ShortDescriptionW, 'ShortDescription');
+    RegisterMethod(@TStubComboBox_AddItem, 'AddItem');
   end;
 
   { TcxSpinEdit -> TStubSpinEdit }

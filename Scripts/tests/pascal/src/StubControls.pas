@@ -116,18 +116,32 @@ type
     property Checked: Boolean read FChecked write FChecked;
   end;
 
-  { TStubComboBox - registered as TcxComboBox }
+  { TStubComboBox - registered as TcxComboBox.
+    Also doubles as TcxCheckComboBox with States[] and ShortDescription[]. }
   TStubComboBox = class(TStubWinControl)
   private
     FItemIndex: Integer;
     FText: string;
     FProperties: TStubProperties;
+    FStates: array of Integer;
+    FShortDescriptions: array of string;
+    function GetState(Index: Integer): Integer;
+    procedure SetState(Index: Integer; Value: Integer);
+    function GetShortDescription(Index: Integer): string;
+    procedure SetShortDescription(Index: Integer; const Value: string);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
+    { Ensure States/ShortDescriptions arrays are at least Count elements }
+    procedure EnsureStateCount(ACount: Integer);
+    { Add an item to Properties.Items and ensure States/ShortDescriptions
+      arrays are sized to match. Returns the new index. }
+    function AddItem(const AText: string): Integer;
     property ItemIndex: Integer read FItemIndex write FItemIndex;
     property Text: string read FText write FText;
     property Properties: TStubProperties read FProperties;
+    property States[Index: Integer]: Integer read GetState write SetState;
+    property ShortDescription[Index: Integer]: string read GetShortDescription write SetShortDescription;
   end;
 
   { TStubSpinEdit - registered as TcxSpinEdit }
@@ -352,12 +366,58 @@ begin
   inherited Create(AOwner);
   FProperties := TStubProperties.Create;
   FItemIndex := -1;
+  SetLength(FStates, 0);
+  SetLength(FShortDescriptions, 0);
 end;
 
 destructor TStubComboBox.Destroy;
 begin
   FProperties.Free;
   inherited Destroy;
+end;
+
+procedure TStubComboBox.EnsureStateCount(ACount: Integer);
+begin
+  if Length(FStates) < ACount then
+    SetLength(FStates, ACount);
+  if Length(FShortDescriptions) < ACount then
+    SetLength(FShortDescriptions, ACount);
+end;
+
+function TStubComboBox.AddItem(const AText: string): Integer;
+begin
+  Result := FProperties.Items.Add(AText);
+  EnsureStateCount(FProperties.Items.Count);
+end;
+
+function TStubComboBox.GetState(Index: Integer): Integer;
+begin
+  if (Index >= 0) and (Index < Length(FStates)) then
+    Result := FStates[Index]
+  else
+    Result := 0;
+end;
+
+procedure TStubComboBox.SetState(Index: Integer; Value: Integer);
+begin
+  if Index >= Length(FStates) then
+    EnsureStateCount(Index + 1);
+  FStates[Index] := Value;
+end;
+
+function TStubComboBox.GetShortDescription(Index: Integer): string;
+begin
+  if (Index >= 0) and (Index < Length(FShortDescriptions)) then
+    Result := FShortDescriptions[Index]
+  else
+    Result := '';
+end;
+
+procedure TStubComboBox.SetShortDescription(Index: Integer; const Value: string);
+begin
+  if Index >= Length(FShortDescriptions) then
+    EnsureStateCount(Index + 1);
+  FShortDescriptions[Index] := Value;
 end;
 
 { ---- TStubPageControl ---- }
