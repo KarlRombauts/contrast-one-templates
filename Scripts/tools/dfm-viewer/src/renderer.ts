@@ -543,9 +543,10 @@ function renderMaskEdit(node: DfmNode): string {
 
   const styleAttr = inlineStyles.length > 0 ? ` style="${inlineStyles.join(';')}"` : '';
   const attrsStr = attrs.length > 0 ? ' ' + attrs.join(' ') : '';
-  const placeholderAttr = mask ? ` placeholder="${esc(mask)}"` : '';
+  // Delphi edit masks are regex patterns — not useful as placeholders.
+  // Skip showing them; the field just appears as an empty text input.
 
-  return `<input type="text" class="${allClasses.join(' ')}" data-name="${esc(node.name)}" value="${esc(text)}"${placeholderAttr}${styleAttr}${attrsStr}>`;
+  return `<input type="text" class="dfm-input ${classes.join(' ')}" data-name="${esc(node.name)}" value="${esc(text)}"${styleAttr}${attrsStr}>`;
 }
 
 // ─── TcxButton ────────────────────────────────────────────────────────────────
@@ -587,10 +588,15 @@ ${renderClientArea(node.children)}
 
 function renderRootNode(root: DfmNode): string {
   const width = numProp(root, 'Width');
-  const height = numProp(root, 'Height');
+  const align = strProp(root, 'Align');
   const formStyles: string[] = [];
-  if (width !== undefined) formStyles.push(`width:${width}px`);
-  if (height !== undefined) formStyles.push(`height:${height}px`);
+  // When Align = alClient, the form fills its parent (the app window).
+  // Use the DFM width as min-width but let it stretch to fill the browser.
+  if (align === 'alClient') {
+    if (width !== undefined) formStyles.push(`min-width:${width}px`);
+  } else {
+    if (width !== undefined) formStyles.push(`width:${width}px`);
+  }
 
   const styleAttr = formStyles.length > 0 ? ` style="${formStyles.join(';')}"` : '';
 
