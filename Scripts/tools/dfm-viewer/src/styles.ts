@@ -78,7 +78,7 @@ body {
 .dfm-groupbox {
   position: relative;
   border: 1px solid #aaa;
-  padding: 4px;
+  padding: 0;
   background: transparent;
 }
 
