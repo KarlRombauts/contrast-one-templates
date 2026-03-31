@@ -2,7 +2,7 @@ program TestRunner;
 {$mode objfpc}{$H+}
 uses
   Classes, SysUtils, consoletestrunner,
-  TestPureUtils, TestGestationalAge;
+  TestPureUtils, TestGestationalAge, TestStubControls;
 
 var
   App: TTestRunner;
