@@ -468,7 +468,6 @@ function renderCheckBox(node: DfmNode): string {
 
 function renderCheckComboBox(node: DfmNode): string {
   const { classes, inlineStyles, attrs } = computeLayout(node);
-  const wrapClasses = [...classes];
   const attrsStr = attrs.length > 0 ? ' ' + attrs.join(' ') : '';
 
   const items = prop(node, 'Properties.Items');
@@ -478,19 +477,18 @@ function renderCheckComboBox(node: DfmNode): string {
       .map((item) => {
         const desc = item.properties.get('Description');
         const label = desc !== undefined ? String(desc) : '';
-        return `<label><input type="checkbox">${esc(label)}</label>`;
+        return `<label><input type="checkbox" value="${esc(label)}"> ${esc(label)}</label>`;
       })
       .join('');
   }
 
-  const wrapStyle = wrapClasses.length > 0 ? ` class="${wrapClasses.join(' ')}"` : '';
-  const allStyles = ['position:relative', ...inlineStyles];
-  const styleAttr = ` style="${allStyles.join(';')}"`;
+  const outerClasses = classes.join(' ');
+  const outerStyle = inlineStyles.join(';');
 
-  return `<div data-name="${esc(node.name)}"${wrapStyle}${styleAttr}${attrsStr}>
-<div class="dfm-check-combo">(Select...)</div>
-<div class="dfm-check-combo-dropdown">${dropdownItems}</div>
-</div>`;
+  return `<div class="${outerClasses}" style="${outerStyle}" data-name="${esc(node.name)}"${attrsStr}><div style="position:relative">
+<div class="dfm-check-combo" data-ccb="${esc(node.name)}">(Select...)</div>
+<div class="dfm-check-combo-dropdown" data-ccb-dropdown="${esc(node.name)}">${dropdownItems}</div>
+</div></div>`;
 }
 
 // ─── TcxMaskEdit ──────────────────────────────────────────────────────────────
@@ -556,7 +554,8 @@ function renderRootNode(root: DfmNode): string {
 
   const styleAttr = formStyles.length > 0 ? ` style="${formStyles.join(';')}"` : '';
 
-  const titlebar = `<div class="dfm-titlebar">${esc(root.name)}</div>`;
+  const displayName = root.name.replace(/_/g, ' ');
+  const titlebar = `<div class="dfm-titlebar">${esc(displayName)}</div>`;
   const body = renderChildren(root.children);
 
   return `<div class="dfm-form"${styleAttr} data-name="${esc(root.name)}">
