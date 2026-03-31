@@ -3,7 +3,7 @@ program TestRunner;
 uses
   Classes, SysUtils, consoletestrunner,
   TestPureUtils, TestGestationalAge, TestStubControls,
-  TestClinicalHistory, TestEDDHandling;
+  TestClinicalHistory, TestEDDHandling, TestFibroids;
 
 var
   App: TTestRunner;
