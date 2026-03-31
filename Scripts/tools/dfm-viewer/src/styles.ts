@@ -79,7 +79,7 @@ body {
   position: relative;
   border: 1px solid #aaa;
   padding: 4px;
-  background: rgba(255,255,255,0.3);
+  background: transparent;
 }
 
 .dfm-groupbox.panel-active {

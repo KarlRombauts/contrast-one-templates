@@ -55,6 +55,30 @@ function hex(n: number): string {
   return n.toString(16).padStart(2, '0');
 }
 
+/**
+ * Compute the minimum height needed to contain all absolutely positioned
+ * children. Walks one level of children, picking max(Top + Height).
+ * For alTop children, adds their heights sequentially.
+ */
+function computeContentHeight(children: DfmNode[]): number {
+  let maxBottom = 0;
+  let topOffset = 0;
+  for (const child of children) {
+    const align = child.properties.get('Align');
+    const top = child.properties.get('Top');
+    const height = child.properties.get('Height');
+    if (align === 'alTop' && typeof height === 'number') {
+      topOffset += height;
+      if (topOffset > maxBottom) maxBottom = topOffset;
+    } else if (typeof top === 'number') {
+      const h = typeof height === 'number' ? height : 25; // default control height
+      const bottom = top + h;
+      if (bottom > maxBottom) maxBottom = bottom;
+    }
+  }
+  return maxBottom;
+}
+
 // ─── HTML helpers ─────────────────────────────────────────────────────────────
 
 function esc(s: string): string {
@@ -266,19 +290,24 @@ function renderPageControl(node: DfmNode): string {
     })
     .join('\n');
 
-  // Tab panels
+  // Tab panels — compute per-panel min-height from children positions
   const tabPanels = tabs
     .map((tab) => {
       const isActive = tab.name === activeTabName;
       const panelClass = isActive ? 'dfm-tab-panel active' : 'dfm-tab-panel';
       const panelContent = renderChildren(tab.children);
-      return `<div class="${panelClass}" data-panel="${esc(tab.name)}" data-pc="${esc(node.name)}">\n${panelContent}\n</div>`;
+      const contentHeight = computeContentHeight(tab.children);
+      const panelStyle = contentHeight > 0 ? ` style="min-height:${contentHeight}px"` : '';
+      return `<div class="${panelClass}" data-panel="${esc(tab.name)}" data-pc="${esc(node.name)}"${panelStyle}>\n${panelContent}\n</div>`;
     })
     .join('\n');
 
   const pcClasses = ['dfm-page-control', ...classes];
-  const styleAttr = inlineStyles.length > 0 ? ` style="${inlineStyles.join(';')}"` : '';
+  // Drop fixed height on the page control wrapper — we'll compute per-panel heights instead
+  const pcStyles = inlineStyles.filter(s => !s.startsWith('height:'));
+  const styleAttr = pcStyles.length > 0 ? ` style="${pcStyles.join(';')}"` : '';
   const classAttr = ` class="${pcClasses.join(' ')}"`;
+
 
   return `<div${classAttr}${styleAttr} data-name="${esc(node.name)}">
 <div class="dfm-tabs" data-pc="${esc(node.name)}">
