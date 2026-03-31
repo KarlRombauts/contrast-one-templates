@@ -249,11 +249,6 @@ function renderControl(node: DfmNode): string {
 
 function renderPageControl(node: DfmNode): string {
   const { classes, inlineStyles } = computeLayout(node);
-  const visible = boolProp(node, 'Visible');
-  if (!classes.includes('dfm-align-client') && !classes.includes('dfm-align-top')) {
-    // keep absolute if set
-  }
-  if (visible === false) classes.push('dfm-hidden');
 
   const activePage = strProp(node, 'Properties.ActivePage');
   const tabs = node.children.filter((c) => c.type === 'TcxTabSheet');
@@ -474,7 +469,6 @@ function renderCheckBox(node: DfmNode): string {
 function renderCheckComboBox(node: DfmNode): string {
   const { classes, inlineStyles, attrs } = computeLayout(node);
   const wrapClasses = [...classes];
-  const styleAttr = inlineStyles.length > 0 ? ` style="${inlineStyles.join(';')}"` : '';
   const attrsStr = attrs.length > 0 ? ' ' + attrs.join(' ') : '';
 
   const items = prop(node, 'Properties.Items');
@@ -490,8 +484,10 @@ function renderCheckComboBox(node: DfmNode): string {
   }
 
   const wrapStyle = wrapClasses.length > 0 ? ` class="${wrapClasses.join(' ')}"` : '';
+  const allStyles = ['position:relative', ...inlineStyles];
+  const styleAttr = ` style="${allStyles.join(';')}"`;
 
-  return `<div data-name="${esc(node.name)}"${wrapStyle}${styleAttr}${attrsStr} style="position:relative${inlineStyles.length > 0 ? ';' + inlineStyles.join(';') : ''}">
+  return `<div data-name="${esc(node.name)}"${wrapStyle}${styleAttr}${attrsStr}>
 <div class="dfm-check-combo">(Select...)</div>
 <div class="dfm-check-combo-dropdown">${dropdownItems}</div>
 </div>`;
