@@ -243,6 +243,17 @@ function renderChildren(children: DfmNode[]): string {
   return children.map(renderControl).join('\n');
 }
 
+/**
+ * Render children inside a client area wrapper.
+ * Delphi containers have a 2px client area inset (SM_CXEDGE/SM_CYEDGE)
+ * where the coordinate origin for child controls begins. This wrapper
+ * shifts the positioning origin inward by the specified inset.
+ */
+function renderClientArea(children: DfmNode[], inset = 2): string {
+  const content = renderChildren(children);
+  return `<div style="position:relative;margin:${inset}px">${content}</div>`;
+}
+
 function renderControl(node: DfmNode): string {
   const type = node.type;
 
@@ -295,9 +306,9 @@ function renderPageControl(node: DfmNode): string {
     .map((tab) => {
       const isActive = tab.name === activeTabName;
       const panelClass = isActive ? 'dfm-tab-panel active' : 'dfm-tab-panel';
-      const panelContent = renderChildren(tab.children);
+      const panelContent = renderClientArea(tab.children);
       const contentHeight = computeContentHeight(tab.children);
-      const panelStyle = contentHeight > 0 ? ` style="min-height:${contentHeight}px"` : '';
+      const panelStyle = contentHeight > 0 ? ` style="min-height:${contentHeight + 4}px"` : '';
       return `<div class="${panelClass}" data-panel="${esc(tab.name)}" data-pc="${esc(node.name)}"${panelStyle}>\n${panelContent}\n</div>`;
     })
     .join('\n');
@@ -324,7 +335,7 @@ function renderTabSheet(node: DfmNode): string {
   const allClasses = ['dfm-tab-panel', 'active', ...classes];
   const styleAttr = inlineStyles.length > 0 ? ` style="${inlineStyles.join(';')}"` : '';
   return `<div class="${allClasses.join(' ')}"${styleAttr} data-panel="${esc(node.name)}" data-name="${esc(node.name)}">
-${renderChildren(node.children)}
+${renderClientArea(node.children)}
 </div>`;
 }
 
@@ -373,7 +384,7 @@ function renderGroupBox(node: DfmNode): string {
   const attrsStr = attrs.length > 0 ? ' ' + attrs.join(' ') : '';
 
   return `<div class="${groupClasses.join(' ')}" data-name="${esc(node.name)}"${styleAttr}${attrsStr}>
-${renderChildren(node.children)}
+${renderClientArea(node.children)}
 </div>`;
 }
 
@@ -386,7 +397,7 @@ function renderScrollBox(node: DfmNode): string {
   const attrsStr = attrs.length > 0 ? ' ' + attrs.join(' ') : '';
 
   return `<div class="${allClasses.join(' ')}" data-name="${esc(node.name)}"${styleAttr}${attrsStr}>
-${renderChildren(node.children)}
+${renderClientArea(node.children)}
 </div>`;
 }
 
@@ -568,7 +579,7 @@ function renderGeneric(node: DfmNode): string {
   const attrsStr = attrs.length > 0 ? ' ' + attrs.join(' ') : '';
 
   return `<div data-name="${esc(node.name)}" data-type="${esc(node.type)}"${classAttr}${styleAttr}${attrsStr}>
-${renderChildren(node.children)}
+${renderClientArea(node.children)}
 </div>`;
 }
 
