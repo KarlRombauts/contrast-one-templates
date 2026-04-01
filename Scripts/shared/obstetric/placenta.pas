@@ -35,19 +35,19 @@ end;
     result := trim(vControl.text) ;
     if vLowLyingYes.checked then
     begin
-       result := result + ' and low lying.  ';     
-       GPlacentaWarning := TRUE;  
+       result := result + ' and low lying. ';
+       GPlacentaWarning := TRUE;
        if vmeInternalOS.text <> '' then
         begin
           if (StrToFloatDef(vmeInternalOS.text,0) > 0 ) then
-            result := result + 'Leading edge ' + GetPlacenta1Measure + ' the internal cervical os.  '
+            result := result + 'The leading edge is ' + GetPlacenta1Measure + ' from the internal cervical os. '
           else if (StrToFloatDef(vmeInternalOS.text,0) = 0 ) then
-            result := result + 'The inferior edge reaching the internal cervical os.  '
-        end;                                                                                             
+            result := result + 'The inferior edge is reaching the internal cervical os. '
+        end;
     end
     else if vLowLyingNo.checked then
     begin
-        result := result + ' and not low lying.  ';
+        result := result + ' and not low lying. ';
         GPlacentaWarning := False;
     end;
   end
@@ -57,7 +57,7 @@ end;
  function getPlacentaBeyond(infetus : integer) : string
  begin
    result := '' ;
-   result := result + 'Placenta was ' + GetPlacenta +', extending ' + GetPlacenta1InvertPosition + ' ' + GetPlacenta1Measure +' mm beyond the internal cervical os.';
+   result := result + 'Placenta is ' + GetPlacenta +', extending ' + GetPlacenta1InvertPosition + ' ' + GetPlacenta1Measure +' mm beyond the internal cervical os.';
  end;
 
 #endif
