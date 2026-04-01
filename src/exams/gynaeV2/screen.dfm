@@ -457,9 +457,19 @@ inherited Gynae: TGynae
             Transparent = True
           end
         end
-      end
-    end
-    object tsUterus: TcxTabSheet
+        object pcReportBody: TcxPageControl
+          Left = 4
+          Top = 247
+          Width = 888
+          Height = 516
+          TabOrder = 1
+          Properties.ActivePage = tsUterus
+          Properties.CustomButtons.Buttons = <>
+          ClientRectBottom = 516
+          ClientRectRight = 888
+          ClientRectTop = 24
+
+          object tsUterus: TcxTabSheet
             Caption = 'Uterus'
             ImageIndex = 5
             object sbUterus: TcxScrollBox
@@ -4174,6 +4184,7 @@ inherited Gynae: TGynae
               Align = alClient
               TabOrder = 0
               AutoSize = True
+              LookAndFeel.NativeStyle = True
 
               object cbBladderNodule: TcxCheckBox
                 Left = 10000
@@ -5781,5 +5792,8 @@ inherited Gynae: TGynae
               end
             end
           end
+        end
+      end
+    end
   end
 end
