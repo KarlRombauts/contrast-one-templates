@@ -349,9 +349,6 @@ inherited Gynae: TGynae
           ClientRectRight = 888
           ClientRectTop = 24
 
-          { ================================================================ }
-          { TAB 1: UTERUS                                                    }
-          { ================================================================ }
           object tsUterus: TcxTabSheet
             Caption = 'Uterus'
             ImageIndex = 5
@@ -363,7 +360,6 @@ inherited Gynae: TGynae
               Align = alClient
               TabOrder = 0
 
-              { --- Position --- }
               object cxLabel20: TcxLabel
                 Left = 10
                 Top = 7
@@ -385,7 +381,6 @@ inherited Gynae: TGynae
                 Width = 130
               end
 
-              { --- Measurements (DICOM auto-populated) --- }
               object Bevel1: TBevel
                 Left = 5
                 Top = 30
@@ -484,7 +479,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { --- Size classification (computed) --- }
               object cxLabel27: TcxLabel
                 Left = 400
                 Top = 37
@@ -505,7 +499,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { --- Hysterectomy --- }
               object Bevel2: TBevel
                 Left = 5
                 Top = 60
@@ -530,7 +523,6 @@ inherited Gynae: TGynae
                 Width = 110
               end
 
-              { --- Congenital abnormality --- }
               object cbCongenitalAbnormality: TcxCheckBox
                 Left = 10
                 Top = 90
@@ -623,7 +615,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- LSCS scar --- }
               object cbLSCSScar: TcxCheckBox
                 Left = 10
                 Top = 168
@@ -633,9 +624,6 @@ inherited Gynae: TGynae
                 Width = 150
               end
 
-              { ======================================= }
-              { MYOMETRIUM                              }
-              { ======================================= }
               object Bevel3: TBevel
                 Left = 5
                 Top = 195
@@ -656,7 +644,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { --- Adenomyosis --- }
               object cbAdenomyosis: TcxCheckBox
                 Left = 10
                 Top = 224
@@ -789,7 +776,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- Fibroids --- }
               object cbFibroidsPresent: TcxCheckBox
                 Left = 10
                 Top = 420
@@ -825,7 +811,6 @@ inherited Gynae: TGynae
                   Width = 35
                 end
 
-                { --- Fibroid column headers --- }
                 object cxLabel38: TcxLabel
                   Left = 5
                   Top = 30
@@ -905,7 +890,6 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
 
-                { --- Fibroid 1 --- }
                 object gbFibroid1: TcxGroupBox
                   Tag = 1
                   Left = 0
@@ -1013,7 +997,6 @@ inherited Gynae: TGynae
                   end
                 end
 
-                { --- Fibroid 2 --- }
                 object gbFibroid2: TcxGroupBox
                   Tag = 2
                   Left = 0
@@ -1121,7 +1104,6 @@ inherited Gynae: TGynae
                   end
                 end
 
-                { --- Fibroid 3 --- }
                 object gbFibroid3: TcxGroupBox
                   Tag = 3
                   Left = 0
@@ -1229,7 +1211,6 @@ inherited Gynae: TGynae
                   end
                 end
 
-                { --- Fibroid 4 --- }
                 object gbFibroid4: TcxGroupBox
                   Tag = 4
                   Left = 0
@@ -1337,7 +1318,6 @@ inherited Gynae: TGynae
                   end
                 end
 
-                { --- Fibroid 5 --- }
                 object gbFibroid5: TcxGroupBox
                   Tag = 5
                   Left = 0
@@ -1445,7 +1425,6 @@ inherited Gynae: TGynae
                   end
                 end
 
-                { --- Fibroid 6 --- }
                 object gbFibroid6: TcxGroupBox
                   Tag = 6
                   Left = 0
@@ -1553,7 +1532,6 @@ inherited Gynae: TGynae
                   end
                 end
 
-                { --- Fibroid 7 --- }
                 object gbFibroid7: TcxGroupBox
                   Tag = 7
                   Left = 0
@@ -1661,7 +1639,6 @@ inherited Gynae: TGynae
                   end
                 end
 
-                { --- Fibroid 8 --- }
                 object gbFibroid8: TcxGroupBox
                   Tag = 8
                   Left = 0
@@ -1772,14 +1749,10 @@ inherited Gynae: TGynae
             end
           end
 
-          { ================================================================ }
-          { TAB 2: ENDOMETRIUM                                               }
-          { ================================================================ }
           object tsEndometrium: TcxTabSheet
             Caption = 'Endometrium'
             ImageIndex = 5
 
-            { --- Phase --- }
             object cxLabel50: TcxLabel
               Left = 10
               Top = 7
@@ -1802,7 +1775,6 @@ inherited Gynae: TGynae
               Width = 140
             end
 
-            { --- Thickness --- }
             object cxLabel51: TcxLabel
               Left = 10
               Top = 33
@@ -1828,7 +1800,6 @@ inherited Gynae: TGynae
               Transparent = True
             end
 
-            { --- In sync --- }
             object cbInSync: TcxCheckBox
               Left = 160
               Top = 31
@@ -1838,7 +1809,6 @@ inherited Gynae: TGynae
               Width = 70
             end
 
-            { --- Focal lesion (polyp) --- }
             object Bevel10: TBevel
               Left = 5
               Top = 56
@@ -1969,7 +1939,6 @@ inherited Gynae: TGynae
               end
             end
 
-            { --- IUD --- }
             object Bevel11: TBevel
               Left = 5
               Top = 200
@@ -1993,7 +1962,6 @@ inherited Gynae: TGynae
               Width = 185
             end
 
-            { --- RPOC --- }
             object Bevel12: TBevel
               Left = 5
               Top = 232
@@ -2136,9 +2104,6 @@ inherited Gynae: TGynae
             end
           end
 
-          { ================================================================ }
-          { TAB 3: OVARIES                                                   }
-          { ================================================================ }
           object tsOvaries: TcxTabSheet
             Tag = 1
             Caption = 'Ovaries'
@@ -2151,7 +2116,6 @@ inherited Gynae: TGynae
               Align = alClient
               TabOrder = 0
 
-              { --- Vertical divider between right and left --- }
               object BevelOvDiv: TBevel
                 Left = 430
                 Top = 0
@@ -2159,7 +2123,6 @@ inherited Gynae: TGynae
                 Height = 700
               end
 
-              { ===== RIGHT OVARY ===== }
               object cxLabel70: TcxLabel
                 Left = 10
                 Top = 2
@@ -2174,7 +2137,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { Status }
               object cxLabel71: TcxLabel
                 Left = 10
                 Top = 22
@@ -2194,7 +2156,6 @@ inherited Gynae: TGynae
                 Width = 110
               end
 
-              { Measurements }
               object cxLabel72: TcxLabel
                 Left = 10
                 Top = 46
@@ -2265,7 +2226,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { Appearance }
               object cxLabel77: TcxLabel
                 Left = 10
                 Top = 88
@@ -2289,7 +2249,6 @@ inherited Gynae: TGynae
                 Width = 155
               end
 
-              { AFC }
               object cxLabel78: TcxLabel
                 Left = 10
                 Top = 114
@@ -2305,7 +2264,6 @@ inherited Gynae: TGynae
                 Width = 35
               end
 
-              { Max follicle diameter }
               object cxLabel79: TcxLabel
                 Left = 90
                 Top = 114
@@ -2327,7 +2285,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { Corpus luteum }
               object BevelR1: TBevel
                 Left = 5
                 Top = 137
@@ -2374,7 +2331,6 @@ inherited Gynae: TGynae
                 Width = 100
               end
 
-              { Mobility and tenderness }
               object BevelR2: TBevel
                 Left = 5
                 Top = 168
@@ -2450,7 +2406,6 @@ inherited Gynae: TGynae
                 Width = 140
               end
 
-              { Surface findings }
               object BevelR3: TBevel
                 Left = 5
                 Top = 240
@@ -2474,7 +2429,6 @@ inherited Gynae: TGynae
                 Width = 75
               end
 
-              { Para-ovarian cysts }
               object BevelR4: TBevel
                 Left = 5
                 Top = 270
@@ -2535,7 +2489,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { ===== LEFT OVARY ===== }
               object cxLabel90: TcxLabel
                 Left = 445
                 Top = 2
@@ -2550,7 +2503,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { Status }
               object cxLabel91: TcxLabel
                 Left = 445
                 Top = 22
@@ -2570,7 +2522,6 @@ inherited Gynae: TGynae
                 Width = 110
               end
 
-              { Measurements }
               object cxLabel92: TcxLabel
                 Left = 445
                 Top = 46
@@ -2641,7 +2592,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { Appearance }
               object cxLabel97: TcxLabel
                 Left = 445
                 Top = 88
@@ -2665,7 +2615,6 @@ inherited Gynae: TGynae
                 Width = 155
               end
 
-              { AFC }
               object cxLabel98: TcxLabel
                 Left = 445
                 Top = 114
@@ -2681,7 +2630,6 @@ inherited Gynae: TGynae
                 Width = 35
               end
 
-              { Max follicle diameter }
               object cxLabel99: TcxLabel
                 Left = 525
                 Top = 114
@@ -2703,7 +2651,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { Total AFC (computed) }
               object BevelAFC: TBevel
                 Left = 700
                 Top = 108
@@ -2737,7 +2684,6 @@ inherited Gynae: TGynae
                 Transparent = True
               end
 
-              { Corpus luteum }
               object BevelL1: TBevel
                 Left = 440
                 Top = 137
@@ -2784,7 +2730,6 @@ inherited Gynae: TGynae
                 Width = 100
               end
 
-              { Mobility and tenderness }
               object BevelL2: TBevel
                 Left = 440
                 Top = 168
@@ -2860,7 +2805,6 @@ inherited Gynae: TGynae
                 Width = 140
               end
 
-              { Surface findings }
               object BevelL3: TBevel
                 Left = 440
                 Top = 240
@@ -2884,7 +2828,6 @@ inherited Gynae: TGynae
                 Width = 75
               end
 
-              { Para-ovarian cysts }
               object BevelL4: TBevel
                 Left = 440
                 Top = 270
@@ -2947,9 +2890,6 @@ inherited Gynae: TGynae
             end
           end
 
-          { ================================================================ }
-          { TAB 4: OVARIAN LESIONS                                           }
-          { ================================================================ }
           object tsOvarianLesions: TcxTabSheet
             Caption = 'Ovarian Lesions'
             ImageIndex = 6
@@ -2966,12 +2906,10 @@ inherited Gynae: TGynae
               ClientRectRight = 888
               ClientRectTop = 24
 
-              { --- Common Pathologies sub-tab --- }
               object tsCommonPathology: TcxTabSheet
                 Caption = 'Common Pathologies'
                 ImageIndex = 0
 
-                { Right ovary }
                 object cxLabel110: TcxLabel
                   Left = 10
                   Top = 5
@@ -3078,7 +3016,6 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
 
-                { Left ovary }
                 object BevelOL1: TBevel
                   Left = 430
                   Top = 0
@@ -3191,7 +3128,6 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
 
-                { Free fluid / Ascites }
                 object BevelOL2: TBevel
                   Left = 5
                   Top = 140
@@ -3236,7 +3172,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- IOTA Classification - Right Ovary sub-tab --- }
               object tsIOTARight: TcxTabSheet
                 Caption = 'IOTA - Right Ovary'
                 ImageIndex = 0
@@ -3349,7 +3284,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- IOTA Classification - Left Ovary sub-tab --- }
               object tsIOTALeft: TcxTabSheet
                 Caption = 'IOTA - Left Ovary'
                 ImageIndex = 0
@@ -3462,7 +3396,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- IOTA Simple Rules sub-tab (unchanged from existing) --- }
               object tsIOTASimpleRules: TcxTabSheet
                 Caption = 'IOTA Simple Rules'
                 ImageIndex = 7
@@ -3479,7 +3412,6 @@ inherited Gynae: TGynae
                   Height = 3
                 end
 
-                { B-features (benign) }
                 object cxLabel150: TcxLabel
                   Left = 10
                   Top = 5
@@ -3534,7 +3466,6 @@ inherited Gynae: TGynae
                   Width = 220
                 end
 
-                { M-features (malignant) }
                 object cxLabel151: TcxLabel
                   Left = 255
                   Top = 5
@@ -3589,7 +3520,6 @@ inherited Gynae: TGynae
                   Width = 220
                 end
 
-                { Classification result }
                 object cxLabel152: TcxLabel
                   Left = 10
                   Top = 220
@@ -3620,9 +3550,6 @@ inherited Gynae: TGynae
             end
           end
 
-          { ================================================================ }
-          { TAB 5: ENDOMETRIOSIS ASSESSMENT                                  }
-          { ================================================================ }
           object tsEndometriosis: TcxTabSheet
             Caption = 'Endometriosis'
             ImageIndex = 1
@@ -3639,7 +3566,6 @@ inherited Gynae: TGynae
               ClientRectRight = 888
               ClientRectTop = 24
 
-              { --- Bladder sub-tab --- }
               object tsEndoBladder: TcxTabSheet
                 Caption = 'Bladder'
                 ImageIndex = 0
@@ -3741,7 +3667,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- Kidneys sub-tab --- }
               object tsEndoKidneys: TcxTabSheet
                 Caption = 'Kidneys'
                 ImageIndex = 0
@@ -3805,7 +3730,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- Vaginal Vault sub-tab --- }
               object tsEndoVaginalVault: TcxTabSheet
                 Caption = 'Vaginal Vault'
                 ImageIndex = 0
@@ -3923,7 +3847,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- Pouch of Douglas sub-tab --- }
               object tsEndoPOD: TcxTabSheet
                 Caption = 'Pouch of Douglas'
                 ImageIndex = 0
@@ -3985,7 +3908,6 @@ inherited Gynae: TGynae
                   Width = 250
                 end
 
-                { Uterus mobility (lives here per meeting notes) }
                 object BevelPOD1: TBevel
                   Left = 5
                   Top = 118
@@ -4047,7 +3969,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- Retro-cervical Region sub-tab --- }
               object tsEndoRetroCervical: TcxTabSheet
                 Caption = 'Retro-cervical'
                 ImageIndex = 0
@@ -4209,12 +4130,10 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- Uterosacral Ligaments sub-tab --- }
               object tsEndoUSL: TcxTabSheet
                 Caption = 'Uterosacral Ligaments'
                 ImageIndex = 0
 
-                { Right USL }
                 object cxLabel200: TcxLabel
                   Left = 10
                   Top = 5
@@ -4325,7 +4244,6 @@ inherited Gynae: TGynae
                   Width = 100
                 end
 
-                { Left USL }
                 object BevelUSL1: TBevel
                   Left = 5
                   Top = 103
@@ -4443,7 +4361,6 @@ inherited Gynae: TGynae
                 end
               end
 
-              { --- Bowel Nodules sub-tab --- }
               object tsEndoBowel: TcxTabSheet
                 Caption = 'Bowel'
                 ImageIndex = 0
@@ -4484,7 +4401,6 @@ inherited Gynae: TGynae
                     Width = 35
                   end
 
-                  { Bowel nodule 1 }
                   object gbBowelNodule1: TcxGroupBox
                     Tag = 1
                     Left = 0
@@ -4616,7 +4532,6 @@ inherited Gynae: TGynae
                     end
                   end
 
-                  { Bowel nodule 2 }
                   object gbBowelNodule2: TcxGroupBox
                     Tag = 2
                     Left = 0
@@ -4749,7 +4664,6 @@ inherited Gynae: TGynae
                     end
                   end
 
-                  { Bowel nodule 3 }
                   object gbBowelNodule3: TcxGroupBox
                     Tag = 3
                     Left = 0
@@ -4886,14 +4800,10 @@ inherited Gynae: TGynae
             end
           end
 
-          { ================================================================ }
-          { TAB 6: PROCEDURES                                                }
-          { ================================================================ }
           object tsProcedures: TcxTabSheet
             Caption = 'Procedures'
             ImageIndex = 4
 
-            { --- Saline Hysterosonography --- }
             object cxLabel250: TcxLabel
               Left = 10
               Top = 5
@@ -4937,7 +4847,6 @@ inherited Gynae: TGynae
               Width = 180
             end
 
-            { --- Tubal Patency --- }
             object BevelProc1: TBevel
               Left = 5
               Top = 55
@@ -4995,7 +4904,6 @@ inherited Gynae: TGynae
                 Width = 120
               end
 
-              { Right tube }
               object cxLabel254: TcxLabel
                 Left = 5
                 Top = 35
@@ -5034,7 +4942,6 @@ inherited Gynae: TGynae
                 Width = 65
               end
 
-              { Left tube }
               object cxLabel255: TcxLabel
                 Left = 5
                 Top = 61
@@ -5075,9 +4982,6 @@ inherited Gynae: TGynae
             end
           end
 
-          { ================================================================ }
-          { TAB 7: COMMENTS AND DIAGNOSIS                                    }
-          { ================================================================ }
           object tsCommentsAndDiagnosis: TcxTabSheet
             Tag = 1
             Caption = 'Comments and Diagnosis'
