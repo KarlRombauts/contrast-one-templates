@@ -51,32 +51,19 @@ type
 
 implementation
 
-const
-  CLINICAL_HISTORY_SOURCE =
-    { --- Dependency: AddFullStop from formatting.pas --- }
-    'function AddFullStop(inStr: String): String;'               + LineEnding +
-    'var'                                                        + LineEnding +
-    '  vt: String;'                                              + LineEnding +
-    'begin'                                                      + LineEnding +
-    '  vt := Trim(inStr);'                                       + LineEnding +
-    '  if vt <> '''' then'                                       + LineEnding +
-    '  begin'                                                    + LineEnding +
-    '    if vt[length(vt)] <> ''.'' then'                        + LineEnding +
-    '      result := vt + ''.  '''                               + LineEnding +
-    '    else'                                                   + LineEnding +
-    '      result := inStr;'                                     + LineEnding +
-    '  end'                                                      + LineEnding +
-    '  else'                                                     + LineEnding +
-    '    result := '''';'                                        + LineEnding +
-    'end;'                                                       + LineEnding +
-    ''                                                           + LineEnding +
+uses
+  SourceLoader;
 
-    { --- Global control variables (assigned in test functions) --- }
+const
+  { Variable declarations must precede loaded source (which references them) }
+  SCAFFOLD_VARS =
     'var'                                                        + LineEnding +
     '  cxccbReferralIndicators: TcxComboBox;'                    + LineEnding +
     '  edtReferralIndicator1: TcxTextEdit;'                      + LineEnding +
-    ''                                                           + LineEnding +
+    ''                                                           + LineEnding;
 
+  { Setup/teardown helpers and test wrapper functions follow loaded source }
+  SCAFFOLD_SOURCE =
     { --- Helper: create combo with 3 items (Pain, Bleeding, Other) --- }
     'procedure SetupCombo3;'                                     + LineEnding +
     'begin'                                                      + LineEnding +
@@ -98,55 +85,9 @@ const
     'end;'                                                       + LineEnding +
     ''                                                           + LineEnding +
 
-    { --- GetClinicalIndicators (adapted from clinicalHistory.pas) ---
-      Changes:
-      - Properties.Items.Count -> GetItemCount
-      - Sender untyped -> Sender: TObject  }
-    'function GetClinicalIndicators: String;'                    + LineEnding +
-    'var'                                                        + LineEnding +
-    '  i: Integer;'                                              + LineEnding +
-    'begin'                                                      + LineEnding +
-    '  result := '''';'                                          + LineEnding +
-    '  for i := 0 to cxccbReferralIndicators.GetItemCount - 2 do' + LineEnding +
-    '  begin'                                                    + LineEnding +
-    '    if cxccbReferralIndicators.States[i] = 1 then'          + LineEnding +
-    '    begin'                                                  + LineEnding +
-    '      if result <> '''' then'                               + LineEnding +
-    '        result := result + ''.  '';'                        + LineEnding +
-    '      result := result + cxccbReferralIndicators.ShortDescription[i];' + LineEnding +
-    '    end;'                                                   + LineEnding +
-    '  end;'                                                     + LineEnding +
-    '  if (cxccbReferralIndicators.States[cxccbReferralIndicators.GetItemCount-1] = 1) then' + LineEnding +
-    '  begin'                                                    + LineEnding +
-    '    if result <> '''' then'                                 + LineEnding +
-    '      result := result + ''.  '';'                          + LineEnding +
-    '    result := result + trim(edtReferralIndicator1.Text);'   + LineEnding +
-    '  end;'                                                     + LineEnding +
-    '  if result <> '''' then'                                   + LineEnding +
-    '    result := AddFullStop(result);'                         + LineEnding +
-    '  result := result + '' '';'                                + LineEnding +
-    'end;'                                                       + LineEnding +
-    ''                                                           + LineEnding +
-
-    { --- GetClinicalHistory (empty body in source) --- }
-    'function GetClinicalHistory: String;'                       + LineEnding +
-    'var'                                                        + LineEnding +
-    '  i: Integer;'                                              + LineEnding +
-    'begin'                                                      + LineEnding +
-    '  result := '''';'                                          + LineEnding +
-    'end;'                                                       + LineEnding +
-    ''                                                           + LineEnding +
-
-    { --- cxccbReferralIndicatorsChange --- }
-    'procedure cxccbReferralIndicatorsChange(Sender: TObject);'  + LineEnding +
-    'begin'                                                      + LineEnding +
-    '  edtReferralIndicator1.Enabled := (cxccbReferralIndicators.States[cxccbReferralIndicators.GetItemCount-1] = 1);' + LineEnding +
-    'end;'                                                       + LineEnding +
-    ''                                                           + LineEnding +
-
     { ============== Test functions ============== }
 
-    { Test: no items selected -> should return ' ' (space only) }
+    { Test: no items selected -> should return '' (empty) }
     'function TestNoItems: string;'                              + LineEnding +
     'var res: string;'                                           + LineEnding +
     'begin'                                                      + LineEnding +
@@ -155,15 +96,15 @@ const
     '  cxccbReferralIndicators.States[1] := 0;'                  + LineEnding +
     '  cxccbReferralIndicators.States[2] := 0;'                  + LineEnding +
     '  res := GetClinicalIndicators;'                            + LineEnding +
-    '  if res = '' '' then'                                      + LineEnding +
+    '  if res = '''' then'                                       + LineEnding +
     '    Result := ''OK'''                                       + LineEnding +
     '  else'                                                     + LineEnding +
-    '    Result := ''Expected " " got "'' + res + ''"'';'        + LineEnding +
+    '    Result := ''Expected "" got "'' + res + ''"'';'         + LineEnding +
     '  TeardownCombo;'                                           + LineEnding +
     'end;'                                                       + LineEnding +
     ''                                                           + LineEnding +
 
-    { Test: 1 item selected (not last) -> "Pain.  " + space }
+    { Test: 1 item selected (not last) -> "Pain. " }
     'function TestOneItem: string;'                              + LineEnding +
     'var res: string;'                                           + LineEnding +
     'begin'                                                      + LineEnding +
@@ -172,15 +113,15 @@ const
     '  cxccbReferralIndicators.States[1] := 0;'                  + LineEnding +
     '  cxccbReferralIndicators.States[2] := 0;'                  + LineEnding +
     '  res := GetClinicalIndicators;'                            + LineEnding +
-    '  if res = ''Pain.   '' then'                               + LineEnding +
+    '  if res = ''Pain. '' then'                                 + LineEnding +
     '    Result := ''OK'''                                       + LineEnding +
     '  else'                                                     + LineEnding +
-    '    Result := ''Expected "Pain.   " got "'' + res + ''"'';' + LineEnding +
+    '    Result := ''Expected "Pain. " got "'' + res + ''"'';'   + LineEnding +
     '  TeardownCombo;'                                           + LineEnding +
     'end;'                                                       + LineEnding +
     ''                                                           + LineEnding +
 
-    { Test: multiple items selected -> "Pain.  Bleeding.  " + space }
+    { Test: multiple items selected -> "Pain. Bleeding. " }
     'function TestMultipleItems: string;'                        + LineEnding +
     'var res: string;'                                           + LineEnding +
     'begin'                                                      + LineEnding +
@@ -189,15 +130,15 @@ const
     '  cxccbReferralIndicators.States[1] := 1;'                  + LineEnding +
     '  cxccbReferralIndicators.States[2] := 0;'                  + LineEnding +
     '  res := GetClinicalIndicators;'                            + LineEnding +
-    '  if res = ''Pain.  Bleeding.   '' then'                    + LineEnding +
+    '  if res = ''Pain. Bleeding. '' then'                       + LineEnding +
     '    Result := ''OK'''                                       + LineEnding +
     '  else'                                                     + LineEnding +
-    '    Result := ''Expected "Pain.  Bleeding.   " got "'' + res + ''"'';' + LineEnding +
+    '    Result := ''Expected "Pain. Bleeding. " got "'' + res + ''"'';' + LineEnding +
     '  TeardownCombo;'                                           + LineEnding +
     'end;'                                                       + LineEnding +
     ''                                                           + LineEnding +
 
-    { Test: "Other" (last item) selected -> includes edtReferralIndicator1.Text }
+    { Test: "Other" (last item) selected -> includes InitCaps(edtReferralIndicator1.Text) }
     'function TestOtherSelected: string;'                        + LineEnding +
     'var res: string;'                                           + LineEnding +
     'begin'                                                      + LineEnding +
@@ -207,10 +148,10 @@ const
     '  cxccbReferralIndicators.States[1] := 0;'                  + LineEnding +
     '  cxccbReferralIndicators.States[2] := 1;'                  + LineEnding +
     '  res := GetClinicalIndicators;'                            + LineEnding +
-    '  if res = ''Pain.  custom reason.   '' then'               + LineEnding +
+    '  if res = ''Pain. Custom reason. '' then'                  + LineEnding +
     '    Result := ''OK'''                                       + LineEnding +
     '  else'                                                     + LineEnding +
-    '    Result := ''Expected "Pain.  custom reason.   " got "'' + res + ''"'';' + LineEnding +
+    '    Result := ''Expected "Pain. Custom reason. " got "'' + res + ''"'';' + LineEnding +
     '  TeardownCombo;'                                           + LineEnding +
     'end;'                                                       + LineEnding +
     ''                                                           + LineEnding +
@@ -266,12 +207,19 @@ const
 { ====== Setup / TearDown ====== }
 
 procedure TTestClinicalHistory.SetUp;
+var
+  Source: string;
 begin
   FSetupOk := False;
   FHost := TScriptHost.Create;
   FHost.Compiler.OnUses := @StandardOnUses;
 
-  if not FHost.CompileScript(CLINICAL_HISTORY_SOURCE) then
+  Source := LoadPascalSource('build/formatting.pas') +
+            SCAFFOLD_VARS +
+            LoadPascalSource('build/clinicalHistory.pas') +
+            SCAFFOLD_SOURCE;
+
+  if not FHost.CompileScript(Source) then
   begin
     WriteLn('COMPILE ERROR: ', FHost.LastError);
     Exit;
