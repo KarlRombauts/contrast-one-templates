@@ -1,4 +1,46 @@
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === IDEs ===
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# === AI tool state ===
+.claude/
+.serena/
+.superpowers/
+
+# === Python ===
 __pycache__/
-.venv/
-build/
 *.pyc
+*.pyo
+.venv/
+
+# === Node ===
+node_modules/
+
+# === Pascal build artifacts ===
+*.o
+*.ppu
+*.dcu
+Scripts/tests/pascal/TestRunner
+Scripts/build/
+
+# === Large/binary files that don't belong in VCS ===
+meeting-recordings/
+gynae-reports/
+*.har
+*.m4a
+*.mp3
+*.wav
+*.pdf
+
+# === Temp/scratch files ===
+Scripts/tools/_preamble.pas
+Scripts/tools/_postamble.pas
+Scripts/tools/_remaining.pas
+Scripts/tools/analyze_variants.py
+Scripts/tools/generate_shared_function_audit.py

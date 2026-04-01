@@ -260,7 +260,7 @@ Uses `funcsplit.py`'s parser and the mapping JSON to extract functions from a mo
 1. Developer A builds:        gpp -o build/exam.pas exam/script.pas
 2. Compiled output imported into application
 3. Developer B edits in application's script editor
-4. Export from application, filesplit.sh to get modified script
+4. Export from application, `Scripts/tools/filesplit.sh` to get modified script
 5. Reverse-sync:              reversesync.py mapping.json modified_exam.pas
 6. Developer A reviews per-file diffs and manually applies changes
 ```

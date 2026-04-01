@@ -29,7 +29,7 @@ cd Scripts/tools && python3 funcsplit.py extract StrToFloatDef ../earlyT1Singlet
 cd Scripts/tools && python3 reversesync.py ../earlyT1Singleton/mapping.json exported_script.pas
 
 # Decompose an exported binary template into its component files
-./filesplit.sh <export_file> <output_directory>
+bash Scripts/tools/filesplit.sh <export_file> <output_directory>
 
 # Run tests
 cd Scripts/tools && .venv/bin/python3 -m pytest tests/ -v
