@@ -41,7 +41,7 @@ begin
   end;
 end;
 
-procedure cbLMPDateOnChange(Sender);
+procedure cbLMPDateOnChange(Sender: TObject);
 begin
   if cbEDDPrinciple.ItemIndex = 1 then
   begin
@@ -66,27 +66,27 @@ begin
   end;
 end;
 
-procedure deStatedEDDOnChange(Sender);
+procedure deStatedEDDOnChange(Sender: TObject);
 begin
   PopulateEDDControls(deStatedEDD, seEDDCalGAWeeks, seEDDCalGADays);
 end;
 
-procedure deMUFWEddOnChange(Sender);
+procedure deMUFWEddOnChange(Sender: TObject);
 begin
   PopulateEDDControls(deMUFWEdd, seMUFWGestAgeWeeks, seMUFWGestAgeDays);
 end;
 
-procedure deMenstrualEDDOnChange(Sender);
+procedure deMenstrualEDDOnChange(Sender: TObject);
 begin
   PopulateEDDControls(deMenstrualEDD, seEDDCalGAWeeks, seEDDCalGADays);
 end;
 
-procedure deOvulationEDDOnChange(Sender);
+procedure deOvulationEDDOnChange(Sender: TObject);
 begin
   PopulateEDDControls(deOvulationEDD, spOvualtionGestAgeWeeks, spOvualtionGestAgeDays);
 end;
 
-procedure deIVFEDDOnChange(Sender);
+procedure deIVFEDDOnChange(Sender: TObject);
 begin
   PopulateEDDControls(deIVFEDD, seIVFGAWeeks, seIVFGADays);
 end;

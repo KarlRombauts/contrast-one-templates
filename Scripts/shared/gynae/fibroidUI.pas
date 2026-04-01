@@ -68,6 +68,7 @@ begin
   spFibroidCountOnChange(nil);
 end;
 
+#ifndef NOGUI
 procedure cbFibroidsTypeOnChange(Sender: TObject);
 var
   vControlIdx: Integer;
@@ -83,5 +84,6 @@ begin
       end;  }
   end;
 end;
+#endif
 
 #endif
