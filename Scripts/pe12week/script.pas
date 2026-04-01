@@ -25,9 +25,9 @@
 #include "shared/gynae/fibroids.pas"
 
 // --- pe12week variants ---
-#include "shared/variants/GetClinicalIndicators.pe12week.pas"
-#include "shared/variants/GetPlacenta.pe12week.pas"
-#include "shared/variants/cbFetalAnatomyNormal1OnClick.pe12week.pas"
+#include "shared/variants/GetClinicalIndicators.20week_pe12week.pas"
+#include "pe12week/placenta.pas"
+#include "pe12week/cbFetalAnatomyNormal1OnClick.pas"
 #include "shared/variants/deStatedEDDOnChange.earlyT1Singleton_pe12week.pas"
 
 // --- Exam-specific ---

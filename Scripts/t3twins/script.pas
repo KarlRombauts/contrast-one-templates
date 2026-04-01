@@ -23,9 +23,9 @@
 #include "shared/gynae/fibroids.pas"
 
 // --- t3twins variants ---
-#include "shared/variants/GetBioPhysicalConc.t3twins.pas"
-#include "shared/variants/GetDuctusVenosusWarning.t3twins.pas"
-#include "shared/variants/getEFWPer.t3twins.pas"
+#include "t3twins/bioPhysicalConc.pas"
+#include "t3twins/ductusVenosusWarning.pas"
+#include "t3twins/efwPer.pas"
 
 // --- Exam-specific ---
 #include "t3twins/report.pas"

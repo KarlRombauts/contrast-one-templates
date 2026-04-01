@@ -25,7 +25,7 @@
 
 // --- t3Singleton variants ---
 #include "shared/variants/GetGraphXValue.20week_t3Singleton.pas"
-#include "shared/variants/cbGestationTypeChange.t3Singleton.pas"
+#include "t3Singleton/gestationTypeChange.pas"
 
 // --- Exam-specific ---
 #include "t3Singleton/report.pas"

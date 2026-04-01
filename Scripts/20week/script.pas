@@ -27,14 +27,14 @@
 #include "shared/gynae/fibroids.pas"
 
 // --- 20week variants ---
-#include "shared/variants/GetAnatomy.20week.pas"
-#include "shared/variants/GetClinicalIndicators.pe12week.pas"
-#include "shared/variants/GetEnteredEDD.20week.pas"
+#include "20week/anatomy.pas"
+#include "shared/variants/GetClinicalIndicators.20week_pe12week.pas"
+#include "20week/enteredEDD.pas"
 #include "shared/variants/GetGraphXValue.20week_t3Singleton.pas"
-#include "shared/variants/GetNormalMCAPIRange.20week.pas"
-#include "shared/variants/btnGeneratePercentilesOnClick.20week.pas"
-#include "shared/variants/cbFetalAnatomyNormal1OnClick.20week.pas"
-#include "shared/variants/getReportHeading.20week.pas"
+#include "20week/normalMCAPIRange.pas"
+#include "20week/btnGeneratePercentilesOnClick.pas"
+#include "20week/cbFetalAnatomyNormal1OnClick.pas"
+#include "20week/reportHeading.pas"
 
 // --- Exam-specific ---
 #include "20week/report.pas"
