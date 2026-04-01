@@ -48,7 +48,7 @@ end;
 function Min(in1, in2: Integer): Integer;
 begin                                                        
   if in1 > in2 then                                 
-    result := in2;
+    result := in2
   else
     result := in1;
 end;

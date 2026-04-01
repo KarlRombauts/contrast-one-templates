@@ -71,16 +71,20 @@ begin
 end;
 
 function PadDecimalPlaces(inStr: String): String;
+var
+  vt: String;
 begin
-  result := Trim(inStr);
-  if (pos('.', result) = 0) then
-    result := result + '.0'
-  else if result[1] = '.' then
-    result := '0' + result
+  vt := Trim(inStr);
+  if (pos('.', vt) = 0) then
+    result := vt + '.0'
+  else if vt[1] = '.' then
+    result := '0' + vt
   else
   begin
-    if result[length(result)] = '.' then
-      result := result + '0';
+    if vt[length(vt)] = '.' then
+      result := vt + '0'
+    else
+      result := vt;
   end;
 end;
 
@@ -113,10 +117,14 @@ begin
 end;
 
 function RemoveDecimalPointAtEnd(inStr: String): String;
+var
+  vt: String;
 begin
-  result := Trim(inStr);
-  if result[length(result)] = '.' then
-      result := copy(result, 1, (length(result)-1));
+  vt := Trim(inStr);
+  if vt[length(vt)] = '.' then
+    result := copy(vt, 1, (length(vt)-1))
+  else
+    result := vt;
 end;
 
 function GetIntegerMeasuredString(v1, v2, v3: Integer; v4: Double; inType: string): string;
@@ -130,7 +138,7 @@ begin
         if v4 > 0 then
         begin
           if trunc(v4) = v4 then
-            result := Format('%dx%dx%d%s (vol %d cc)', [v1, v2, v3, inType, trunc(v4)]);
+            result := Format('%dx%dx%d%s (vol %d cc)', [v1, v2, v3, inType, trunc(v4)])
           else
             result := Format('%dx%dx%d%s (vol %2.1f cc)', [v1, v2, v3, inType, v4]);
         end

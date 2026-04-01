@@ -18,8 +18,8 @@ begin
   begin
     if inDoCaps then
       result := 'A'
-  else
-    result := 'a';
+    else
+      result := 'a';
   end;
 end;
 
