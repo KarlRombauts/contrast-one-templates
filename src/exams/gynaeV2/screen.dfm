@@ -4174,7 +4174,6 @@ inherited Gynae: TGynae
               Align = alClient
               TabOrder = 0
               AutoSize = True
-              OptionsItem.AutoControlAreaAlignment = True
 
               object cbBladderNodule: TcxCheckBox
                 Left = 10000
