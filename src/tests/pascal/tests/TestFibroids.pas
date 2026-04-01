@@ -13,8 +13,8 @@ unit TestFibroids;
 
   Test strategy:
     Controls are created inside PascalScript as global variables.
-    Dependency functions (GetNumberString, InitCaps) are inlined.
-    InitCaps adapted to avoid result[1]:= (uses local var approach).
+    Source is loaded from GPP-preprocessed build/ files at runtime
+    via SourceLoader, then compiled and called individually via ScriptHost.
 }
 
 {$mode objfpc}{$H+}
@@ -61,69 +61,12 @@ type
 
 implementation
 
+uses
+  SourceLoader;
+
 const
-  FIBROID_SOURCE =
-    { --- Dependency: GetNumberString (from formatting.pas) --- }
-    'function GetNumberString(inNumber: Integer): string;'           + LineEnding +
-    'begin'                                                          + LineEnding +
-    '  result := '''';'                                              + LineEnding +
-    '  if inNumber = 1 then'                                         + LineEnding +
-    '    result := ''a single'''                                     + LineEnding +
-    '  else'                                                         + LineEnding +
-    '  begin'                                                        + LineEnding +
-    '    if inNumber = 2 then'                                       + LineEnding +
-    '      result := ''two'''                                        + LineEnding +
-    '    else if inNumber = 3 then'                                  + LineEnding +
-    '      result := ''three'''                                      + LineEnding +
-    '    else if inNumber = 4 then'                                  + LineEnding +
-    '      result := ''four'''                                       + LineEnding +
-    '    else if inNumber = 5 then'                                  + LineEnding +
-    '      result := ''five'''                                       + LineEnding +
-    '    else if inNumber = 6 then'                                  + LineEnding +
-    '      result := ''six'''                                        + LineEnding +
-    '    else if inNumber = 7 then'                                  + LineEnding +
-    '      result := ''seven'''                                      + LineEnding +
-    '    else if inNumber = 8 then'                                  + LineEnding +
-    '      result := ''eight'''                                      + LineEnding +
-    '    else if inNumber = 9 then'                                  + LineEnding +
-    '      result := ''nine'''                                       + LineEnding +
-    '    else'                                                       + LineEnding +
-    '      result := IntToStr(inNumber);'                            + LineEnding +
-    '  end;'                                                         + LineEnding +
-    'end;'                                                           + LineEnding +
-    ''                                                               + LineEnding +
-
-    { --- Dependency: InitCaps (adapted for PascalScript) ---
-      Uses local var approach to avoid result[1] := char assignment }
-    'function InitCaps(inv: string; inReduce: Boolean): string;'     + LineEnding +
-    'var'                                                             + LineEnding +
-    '  vDiff: Integer;'                                              + LineEnding +
-    '  vFirst: Char;'                                                + LineEnding +
-    '  vTmp: string;'                                                + LineEnding +
-    'begin'                                                          + LineEnding +
-    '  if inv <> '''' then'                                          + LineEnding +
-    '  begin'                                                        + LineEnding +
-    '    vDiff := Ord(''A'') - Ord(''a'');'                          + LineEnding +
-    '    vTmp := inv;'                                               + LineEnding +
-    '    vFirst := vTmp[1];'                                         + LineEnding +
-    '    if inReduce then'                                           + LineEnding +
-    '    begin'                                                      + LineEnding +
-    '      if (Ord(vFirst) >= Ord(''A'')) and (Ord(vFirst) <= Ord(''Z'')) then' + LineEnding +
-    '        vFirst := chr(Ord(inv[1]) - vDiff);'                    + LineEnding +
-    '    end'                                                        + LineEnding +
-    '    else'                                                       + LineEnding +
-    '    begin'                                                      + LineEnding +
-    '      if (Ord(vFirst) >= Ord(''a'')) and (Ord(vFirst) <= Ord(''z'')) then' + LineEnding +
-    '        vFirst := chr(Ord(inv[1]) + vDiff);'                    + LineEnding +
-    '    end;'                                                       + LineEnding +
-    '    result := vFirst + Copy(vTmp, 2, Length(vTmp) - 1);'        + LineEnding +
-    '  end'                                                          + LineEnding +
-    '  else'                                                         + LineEnding +
-    '    result := '''';'                                            + LineEnding +
-    'end;'                                                           + LineEnding +
-    ''                                                               + LineEnding +
-
-    { --- Global control variables --- }
+  { Variable declarations must precede loaded source (which references them) }
+  SCAFFOLD_VARS =
     'var'                                                             + LineEnding +
     '  spFibroidCount: TcxSpinEdit;'                                 + LineEnding +
     '  cbFibroidsVisualised: TcxCheckBox;'                           + LineEnding +
@@ -143,8 +86,10 @@ const
     '  edtFibroidWidth1: TcxSpinEdit;'                               + LineEnding +
     '  edtFibroiddepth1: TcxSpinEdit;'                               + LineEnding +
     '  edtFibroidVolume1: TcxSpinEdit;'                              + LineEnding +
-    ''                                                               + LineEnding +
+    ''                                                               + LineEnding;
 
+  { Setup/teardown helpers and test wrapper functions follow loaded source }
+  SCAFFOLD_SOURCE =
     { --- Setup/Teardown helpers --- }
     'procedure SetupFibroidControls;'                                + LineEnding +
     'begin'                                                          + LineEnding +
@@ -192,149 +137,6 @@ const
     'end;'                                                           + LineEnding +
     ''                                                               + LineEnding +
 
-    { --- GetFibroidCount (from fibroids.pas) --- }
-    'function GetFibroidCount: string;'                              + LineEnding +
-    'var'                                                             + LineEnding +
-    '  vNumber: string;'                                             + LineEnding +
-    'begin'                                                          + LineEnding +
-    '  if spFibroidCount.Value = 0 then'                             + LineEnding +
-    '    result := ''No fibroids were'''                             + LineEnding +
-    '  else'                                                         + LineEnding +
-    '  begin'                                                        + LineEnding +
-    '    vNumber := GetNumberString(Trunc(spFibroidCount.Value));'   + LineEnding +
-    '    if spFibroidCount.Value = 1 then'                           + LineEnding +
-    '      result := vNumber + '' fibroid is'''                      + LineEnding +
-    '    else'                                                       + LineEnding +
-    '    begin'                                                      + LineEnding +
-    '      result := vNumber + '' fibroids are'';'                   + LineEnding +
-    '    end;'                                                       + LineEnding +
-    '  end;'                                                         + LineEnding +
-    '  result := InitCaps(result, False);'                           + LineEnding +
-    'end;'                                                           + LineEnding +
-    ''                                                               + LineEnding +
-
-    { --- GetSingleCloseOrClear (from fibroids.pas) --- }
-    'function GetSingleCloseOrClear: String;'                        + LineEnding +
-    'begin'                                                          + LineEnding +
-    '  if cbCavityDistortion1.Checked then'                          + LineEnding +
-    '    result := ''close to the cervix'''                          + LineEnding +
-    '  else'                                                         + LineEnding +
-    '  begin'                                                        + LineEnding +
-    '    result := ''clear of the cervix'';'                         + LineEnding +
-    '  end;'                                                         + LineEnding +
-    '  if seCloseToCrevix1.Value > 0 then'                           + LineEnding +
-    '    result := result + '' (within '' + IntToStr(Trunc(seCloseToCrevix1.Value)) + '' mm)'';' + LineEnding +
-    'end;'                                                           + LineEnding +
-    ''                                                               + LineEnding +
-
-    { --- spFibroidCountOnChange (from fibroidUI.pas) ---
-      Adapted: added semicolon after (Sender), typed Sender }
-    'procedure spFibroidCountOnChange(Sender: TObject);'             + LineEnding +
-    'begin'                                                          + LineEnding +
-    '  gbFibroid1.Visible := False;'                                 + LineEnding +
-    '  gbFibroid2.Visible := False;'                                 + LineEnding +
-    '  gbFibroid3.Visible := False;'                                 + LineEnding +
-    '  gbFibroid4.Visible := False;'                                 + LineEnding +
-    '  gbFibroid5.Visible := False;'                                 + LineEnding +
-    '  gbFibroid6.Visible := False;'                                 + LineEnding +
-    '  gbFibroid7.Visible := False;'                                 + LineEnding +
-    '  gbFibroid8.Visible := False;'                                 + LineEnding +
-    '  gbFibroid9.Visible := False;'                                 + LineEnding +
-    '  gbFibroid10.Visible := False;'                                + LineEnding +
-    '  if spFibroidCount.Value > 0 then'                             + LineEnding +
-    '  begin'                                                        + LineEnding +
-    '    cbFibroidsVisualised.Checked := True;'                      + LineEnding +
-    '  end;'                                                         + LineEnding +
-    '  if cbFibroidsVisualised.Checked then'                         + LineEnding +
-    '  begin'                                                        + LineEnding +
-    '    if spFibroidCount.Value > 0 then'                           + LineEnding +
-    '    begin'                                                      + LineEnding +
-    '      gbFibroid1.Visible := True;'                              + LineEnding +
-    '      if spFibroidCount.Value > 1 then'                         + LineEnding +
-    '      begin'                                                    + LineEnding +
-    '        gbFibroid2.Visible := True;'                            + LineEnding +
-    '        if spFibroidCount.Value > 2 then'                       + LineEnding +
-    '        begin'                                                  + LineEnding +
-    '          gbFibroid3.Visible := True;'                          + LineEnding +
-    '          if spFibroidCount.Value > 3 then'                     + LineEnding +
-    '          begin'                                                + LineEnding +
-    '            gbFibroid4.Visible := True;'                        + LineEnding +
-    '            if spFibroidCount.Value > 4 then'                   + LineEnding +
-    '            begin'                                              + LineEnding +
-    '              gbFibroid5.Visible := True;'                      + LineEnding +
-    '              if spFibroidCount.Value > 5 then'                 + LineEnding +
-    '              begin'                                            + LineEnding +
-    '                gbFibroid6.Visible := True;'                    + LineEnding +
-    '                if spFibroidCount.Value > 6 then'               + LineEnding +
-    '                begin'                                          + LineEnding +
-    '                  gbFibroid7.Visible := True;'                  + LineEnding +
-    '                  if spFibroidCount.Value > 7 then'             + LineEnding +
-    '                  begin'                                        + LineEnding +
-    '                    gbFibroid8.Visible := True;'                + LineEnding +
-    '                    if spFibroidCount.Value > 8 then'           + LineEnding +
-    '                    begin'                                      + LineEnding +
-    '                      gbFibroid9.Visible := True;'              + LineEnding +
-    '                      if spFibroidCount.Value > 9 then'         + LineEnding +
-    '                      begin'                                    + LineEnding +
-    '                        gbFibroid10.Visible := True;'           + LineEnding +
-    '                      end;'                                     + LineEnding +
-    '                    end;'                                       + LineEnding +
-    '                  end;'                                         + LineEnding +
-    '                end;'                                           + LineEnding +
-    '              end;'                                             + LineEnding +
-    '            end;'                                               + LineEnding +
-    '          end;'                                                 + LineEnding +
-    '        end;'                                                   + LineEnding +
-    '      end;'                                                     + LineEnding +
-    '    end;'                                                       + LineEnding +
-    '  end;'                                                         + LineEnding +
-    'end;'                                                           + LineEnding +
-    ''                                                               + LineEnding +
-
-    { --- cbFibroidsVisualisedOnClick (from fibroidUI.pas) --- }
-    'procedure cbFibroidsVisualisedOnClick(Sender: TObject);'        + LineEnding +
-    'begin'                                                          + LineEnding +
-    '  spFibroidCount.Enabled := cbFibroidsVisualised.Checked;'      + LineEnding +
-    '  spFibroidCountOnChange(nil);'                                 + LineEnding +
-    'end;'                                                           + LineEnding +
-    ''                                                               + LineEnding +
-
-    { --- GetSingleFibroidDimensions (from fibroids.pas) ---
-      Adapted: Format() calls replaced with string concatenation
-      since Format is not available in PascalScript }
-    'function GetSingleFibroidDimensions: string;'                   + LineEnding +
-    'var'                                                             + LineEnding +
-    '  v1, v2, v3, v4: Integer;'                                     + LineEnding +
-    'begin'                                                          + LineEnding +
-    '  result := '''';'                                              + LineEnding +
-    '  v1 := Trunc(edtFibroidLength1.Value);'                        + LineEnding +
-    '  v2 := Trunc(edtFibroidWidth1.Value);'                         + LineEnding +
-    '  v3 := Trunc(edtFibroiddepth1.Value);'                         + LineEnding +
-    '  v4 := Trunc(edtFibroidVolume1.Value);'                        + LineEnding +
-    '  if v1 > 0 then'                                               + LineEnding +
-    '  begin'                                                        + LineEnding +
-    '    if v2 > 0 then'                                             + LineEnding +
-    '    begin'                                                      + LineEnding +
-    '      if v3 > 0 then'                                           + LineEnding +
-    '      begin'                                                    + LineEnding +
-    '        if v4 > 0 then'                                         + LineEnding +
-    '        begin'                                                  + LineEnding +
-    '          result := result + IntToStr(v1) + '' x '' + IntToStr(v2) + '' x '' + IntToStr(v3) + ''mm (vol. '' + IntToStr(v4) + ''cc)'';' + LineEnding +
-    '        end'                                                    + LineEnding +
-    '        else'                                                   + LineEnding +
-    '          result := result + IntToStr(v1) + '' x '' + IntToStr(v2) + '' x '' + IntToStr(v3) + ''mm'';' + LineEnding +
-    '      end'                                                      + LineEnding +
-    '      else'                                                     + LineEnding +
-    '        result := result + IntToStr(v1) + '' x '' + IntToStr(v2) + ''mm'';' + LineEnding +
-    '    end'                                                        + LineEnding +
-    '    else'                                                       + LineEnding +
-    '      result := result + IntToStr(v1) + ''mm'';'                + LineEnding +
-    '  end;'                                                         + LineEnding +
-    '  if result <> '''' then'                                       + LineEnding +
-    '    result := '' '' + result;'                                  + LineEnding +
-    'end;'                                                           + LineEnding +
-    ''                                                               + LineEnding +
-
     { ============== Test functions ============== }
 
     { --- GetFibroidCount tests --- }
@@ -359,10 +161,10 @@ const
     '  SetupFibroidControls;'                                        + LineEnding +
     '  spFibroidCount.Value := 1;'                                   + LineEnding +
     '  res := GetFibroidCount;'                                      + LineEnding +
-    '  if res = ''A single fibroid is'' then'                        + LineEnding +
+    '  if res = ''A single fibroid was'' then'                       + LineEnding +
     '    Result := ''OK'''                                           + LineEnding +
     '  else'                                                         + LineEnding +
-    '    Result := ''Expected "A single fibroid is" got "'' + res + ''"'';' + LineEnding +
+    '    Result := ''Expected "A single fibroid was" got "'' + res + ''"'';' + LineEnding +
     '  TeardownFibroidControls;'                                     + LineEnding +
     'end;'                                                           + LineEnding +
     ''                                                               + LineEnding +
@@ -373,10 +175,10 @@ const
     '  SetupFibroidControls;'                                        + LineEnding +
     '  spFibroidCount.Value := 3;'                                   + LineEnding +
     '  res := GetFibroidCount;'                                      + LineEnding +
-    '  if res = ''Three fibroids are'' then'                         + LineEnding +
+    '  if res = ''Three fibroids were'' then'                        + LineEnding +
     '    Result := ''OK'''                                           + LineEnding +
     '  else'                                                         + LineEnding +
-    '    Result := ''Expected "Three fibroids are" got "'' + res + ''"'';' + LineEnding +
+    '    Result := ''Expected "Three fibroids were" got "'' + res + ''"'';' + LineEnding +
     '  TeardownFibroidControls;'                                     + LineEnding +
     'end;'                                                           + LineEnding +
     ''                                                               + LineEnding +
@@ -387,10 +189,10 @@ const
     '  SetupFibroidControls;'                                        + LineEnding +
     '  spFibroidCount.Value := 10;'                                  + LineEnding +
     '  res := GetFibroidCount;'                                      + LineEnding +
-    '  if res = ''10 fibroids are'' then'                            + LineEnding +
+    '  if res = ''10 fibroids were'' then'                           + LineEnding +
     '    Result := ''OK'''                                           + LineEnding +
     '  else'                                                         + LineEnding +
-    '    Result := ''Expected "10 fibroids are" got "'' + res + ''"'';' + LineEnding +
+    '    Result := ''Expected "10 fibroids were" got "'' + res + ''"'';' + LineEnding +
     '  TeardownFibroidControls;'                                     + LineEnding +
     'end;'                                                           + LineEnding +
     ''                                                               + LineEnding +
@@ -616,12 +418,20 @@ const
 { ====== Setup / TearDown ====== }
 
 procedure TTestFibroids.SetUp;
+var
+  Source: string;
 begin
   FSetupOk := False;
   FHost := TScriptHost.Create;
   FHost.Compiler.OnUses := @StandardOnUses;
 
-  if not FHost.CompileScript(FIBROID_SOURCE) then
+  Source := SCAFFOLD_VARS +
+            LoadPascalSource('build/formatting.pas') +
+            LoadPascalSource('build/fibroids.pas') +
+            LoadPascalSource('build/fibroidUI.pas') +
+            SCAFFOLD_SOURCE;
+
+  if not FHost.CompileScript(Source) then
   begin
     WriteLn('COMPILE ERROR: ', FHost.LastError);
     Exit;

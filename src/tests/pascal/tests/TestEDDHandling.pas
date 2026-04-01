@@ -7,11 +7,11 @@ unit TestEDDHandling;
   box heights, date calculations, and gestational age population.
 
   Test strategy:
-  - Controls are created inside PascalScript as global variables
-  - Functions under test are adapted for PascalScript compatibility:
-      Properties.ActivePage -> ActivePage (flattened)
-      Sender (untyped) -> Sender: TObject
-      Missing semicolons fixed
+  - Business logic loaded from build/gestationalAge.pas and
+    build/eddHandling.pas via SourceLoader (auto-fixes
+    Properties.ActivePage -> ActivePage)
+  - Control variable declarations (SCAFFOLD_VARS) precede loaded source
+  - Test wrapper functions (SCAFFOLD_SOURCE) follow loaded source
   - Self-checking pattern: each test returns 'OK' or error description
 }
 
@@ -48,27 +48,12 @@ type
 
 implementation
 
-const
-  EDD_HANDLING_SOURCE =
-    { --- Dependencies: gestational age functions --- }
-    'function GetWeeksFromDueDate(inEDDDate, inExamDate: TDateTime): Integer;' + LineEnding +
-    'var'                                                        + LineEnding +
-    '  v1: Integer;'                                             + LineEnding +
-    'begin'                                                      + LineEnding +
-    '  v1 := (trunc(inEDDDate) - 280);'                         + LineEnding +
-    '  result := (trunc(inExamDate) - v1) div 7;'               + LineEnding +
-    'end;'                                                       + LineEnding +
-    ''                                                           + LineEnding +
-    'function GetDaysFromDueDate(inEDDDate, inExamDate: TDateTime): Integer;' + LineEnding +
-    'var'                                                        + LineEnding +
-    '  v1: Integer;'                                             + LineEnding +
-    'begin'                                                      + LineEnding +
-    '  v1 := (trunc(inEDDDate) - 280);'                         + LineEnding +
-    '  result := (trunc(inExamDate) - v1) mod 7;'               + LineEnding +
-    'end;'                                                       + LineEnding +
-    ''                                                           + LineEnding +
+uses
+  SourceLoader;
 
-    { --- Global control variables --- }
+const
+  { Variable declarations must precede loaded source (which references them) }
+  SCAFFOLD_VARS =
     'var'                                                        + LineEnding +
     '  cbEDDPrinciple: TcxComboBox;'                             + LineEnding +
     '  gbEDDDating: TcxGroupBox;'                                + LineEnding +
@@ -82,81 +67,23 @@ const
     '  deLMPDate: TcxDateEdit;'                                  + LineEnding +
     '  deMenstrualEDD: TcxDateEdit;'                             + LineEnding +
     '  deExamDate: TcxDateEdit;'                                 + LineEnding +
-    ''                                                           + LineEnding +
+    { Controls referenced by de*OnChange handlers in eddHandling.pas }
+    '  deStatedEDD: TcxDateEdit;'                                + LineEnding +
+    '  seEDDCalGAWeeks: TcxSpinEdit;'                            + LineEnding +
+    '  seEDDCalGADays: TcxSpinEdit;'                             + LineEnding +
+    '  deMUFWEdd: TcxDateEdit;'                                  + LineEnding +
+    '  seMUFWGestAgeWeeks: TcxSpinEdit;'                         + LineEnding +
+    '  seMUFWGestAgeDays: TcxSpinEdit;'                          + LineEnding +
+    '  deOvulationEDD: TcxDateEdit;'                             + LineEnding +
+    '  spOvualtionGestAgeWeeks: TcxSpinEdit;'                    + LineEnding +
+    '  spOvualtionGestAgeDays: TcxSpinEdit;'                     + LineEnding +
+    '  deIVFEDD: TcxDateEdit;'                                   + LineEnding +
+    '  seIVFGAWeeks: TcxSpinEdit;'                               + LineEnding +
+    '  seIVFGADays: TcxSpinEdit;'                                + LineEnding +
+    ''                                                           + LineEnding;
 
-    { --- cbEDDPrincipleOnChange (adapted) ---
-      Changes: added semicolon after (sender), typed sender,
-      Properties.ActivePage -> ActivePage }
-    'procedure cbEDDPrincipleOnChange(Sender: TObject);'         + LineEnding +
-    'begin'                                                      + LineEnding +
-    '  case cbEDDPrinciple.ItemIndex of'                         + LineEnding +
-    '    1: begin'                                               + LineEnding +
-    '         gbEDDDating.Height := 47;'                         + LineEnding +
-    '         lblMedication.Visible := False;'                   + LineEnding +
-    '       end;'                                                + LineEnding +
-    '    2: begin'                                               + LineEnding +
-    '         pcEDDPrinciple.ActivePage := tsMenstrualEDD;'      + LineEnding +
-    '         gbEDDDating.Height := 80;'                         + LineEnding +
-    '         lblMedication.Visible := True;'                    + LineEnding +
-    '       end;'                                                + LineEnding +
-    '    0: begin'                                               + LineEnding +
-    '         pcEDDPrinciple.ActivePage := tsStatedEDD;'         + LineEnding +
-    '         gbEDDDating.Height := 80;'                         + LineEnding +
-    '         lblMedication.Visible := True;'                    + LineEnding +
-    '       end;'                                                + LineEnding +
-    '    3: begin'                                               + LineEnding +
-    '         pcEDDPrinciple.ActivePage := tsEstEDD;'            + LineEnding +
-    '         gbEDDDating.Height := 80;'                         + LineEnding +
-    '         lblMedication.Visible := True;'                    + LineEnding +
-    '       end;'                                                + LineEnding +
-    '    4: begin'                                               + LineEnding +
-    '         pcEDDPrinciple.ActivePage := tsTimedEDD;'          + LineEnding +
-    '         gbEDDDating.Height := 80;'                         + LineEnding +
-    '         lblMedication.Visible := True;'                    + LineEnding +
-    '       end;'                                                + LineEnding +
-    '    5: begin'                                               + LineEnding +
-    '         pcEDDPrinciple.ActivePage := tsIVFEDD;'            + LineEnding +
-    '         gbEDDDating.Height := 120;'                        + LineEnding +
-    '         lblMedication.Visible := True;'                    + LineEnding +
-    '       end;'                                                + LineEnding +
-    '    6: begin'                                               + LineEnding +
-    '         pcEDDPrinciple.ActivePage := tsIVFEDD;'            + LineEnding +
-    '         gbEDDDating.Height := 120;'                        + LineEnding +
-    '         lblMedication.Visible := True;'                    + LineEnding +
-    '       end;'                                                + LineEnding +
-    '  end;'                                                     + LineEnding +
-    'end;'                                                       + LineEnding +
-    ''                                                           + LineEnding +
-
-    { --- cbLMPDateOnChange (adapted) --- }
-    'procedure cbLMPDateOnChange(Sender: TObject);'              + LineEnding +
-    'begin'                                                      + LineEnding +
-    '  if cbEDDPrinciple.ItemIndex = 1 then'                     + LineEnding +
-    '  begin'                                                    + LineEnding +
-    '    deMenstrualEDD.Date := deLMPDate.Date + 280;'           + LineEnding +
-    '  end;'                                                     + LineEnding +
-    'end;'                                                       + LineEnding +
-    ''                                                           + LineEnding +
-
-    { --- PopulateEDDControls (adapted) --- }
-    'procedure PopulateEDDControls(inDate: TcxDateEdit; inWeeks, inDay: TcxSpinEdit);' + LineEnding +
-    'var'                                                        + LineEnding +
-    '  vWeeks, vDays: Integer;'                                  + LineEnding +
-    'begin'                                                      + LineEnding +
-    '  vWeeks := 0;'                                             + LineEnding +
-    '  vDays := 0;'                                              + LineEnding +
-    '  inDay.Value := 0;'                                        + LineEnding +
-    '  inWeeks.Value := 0;'                                      + LineEnding +
-    '  if (deExamDate.Date > 0) and (inDate.Date > 0) then'      + LineEnding +
-    '  begin'                                                    + LineEnding +
-    '    vWeeks := GetWeeksFromDueDate(inDate.Date, deExamDate.Date);' + LineEnding +
-    '    vDays := GetDaysFromDueDate(inDate.Date, deExamDate.Date);' + LineEnding +
-    '    inWeeks.Value := vWeeks;'                               + LineEnding +
-    '    inDay.Value := vDays;'                                  + LineEnding +
-    '  end;'                                                     + LineEnding +
-    'end;'                                                       + LineEnding +
-    ''                                                           + LineEnding +
-
+  { Setup/teardown helpers and test wrapper functions follow loaded source }
+  SCAFFOLD_SOURCE =
     { --- Helper: create all EDD controls --- }
     'procedure SetupEDDControls;'                                + LineEnding +
     'begin'                                                      + LineEnding +
@@ -172,11 +99,35 @@ const
     '  deLMPDate := TcxDateEdit.Create(nil);'                    + LineEnding +
     '  deMenstrualEDD := TcxDateEdit.Create(nil);'               + LineEnding +
     '  deExamDate := TcxDateEdit.Create(nil);'                   + LineEnding +
+    '  deStatedEDD := TcxDateEdit.Create(nil);'                  + LineEnding +
+    '  seEDDCalGAWeeks := TcxSpinEdit.Create(nil);'              + LineEnding +
+    '  seEDDCalGADays := TcxSpinEdit.Create(nil);'               + LineEnding +
+    '  deMUFWEdd := TcxDateEdit.Create(nil);'                    + LineEnding +
+    '  seMUFWGestAgeWeeks := TcxSpinEdit.Create(nil);'           + LineEnding +
+    '  seMUFWGestAgeDays := TcxSpinEdit.Create(nil);'            + LineEnding +
+    '  deOvulationEDD := TcxDateEdit.Create(nil);'               + LineEnding +
+    '  spOvualtionGestAgeWeeks := TcxSpinEdit.Create(nil);'      + LineEnding +
+    '  spOvualtionGestAgeDays := TcxSpinEdit.Create(nil);'       + LineEnding +
+    '  deIVFEDD := TcxDateEdit.Create(nil);'                     + LineEnding +
+    '  seIVFGAWeeks := TcxSpinEdit.Create(nil);'                 + LineEnding +
+    '  seIVFGADays := TcxSpinEdit.Create(nil);'                  + LineEnding +
     'end;'                                                       + LineEnding +
     ''                                                           + LineEnding +
 
     'procedure TeardownEDDControls;'                             + LineEnding +
     'begin'                                                      + LineEnding +
+    '  seIVFGADays.Free;'                                        + LineEnding +
+    '  seIVFGAWeeks.Free;'                                       + LineEnding +
+    '  deIVFEDD.Free;'                                           + LineEnding +
+    '  spOvualtionGestAgeDays.Free;'                             + LineEnding +
+    '  spOvualtionGestAgeWeeks.Free;'                            + LineEnding +
+    '  deOvulationEDD.Free;'                                     + LineEnding +
+    '  seMUFWGestAgeDays.Free;'                                  + LineEnding +
+    '  seMUFWGestAgeWeeks.Free;'                                 + LineEnding +
+    '  deMUFWEdd.Free;'                                          + LineEnding +
+    '  seEDDCalGADays.Free;'                                     + LineEnding +
+    '  seEDDCalGAWeeks.Free;'                                    + LineEnding +
+    '  deStatedEDD.Free;'                                        + LineEnding +
     '  deExamDate.Free;'                                         + LineEnding +
     '  deMenstrualEDD.Free;'                                     + LineEnding +
     '  deLMPDate.Free;'                                          + LineEnding +
@@ -351,12 +302,19 @@ const
 { ====== Setup / TearDown ====== }
 
 procedure TTestEDDHandling.SetUp;
+var
+  Source: string;
 begin
   FSetupOk := False;
   FHost := TScriptHost.Create;
   FHost.Compiler.OnUses := @StandardOnUses;
 
-  if not FHost.CompileScript(EDD_HANDLING_SOURCE) then
+  Source := SCAFFOLD_VARS +
+            LoadPascalSource('build/gestationalAge.pas') +
+            LoadPascalSource('build/eddHandling.pas') +
+            SCAFFOLD_SOURCE;
+
+  if not FHost.CompileScript(Source) then
   begin
     WriteLn('COMPILE ERROR: ', FHost.LastError);
     Exit;
