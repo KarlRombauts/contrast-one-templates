@@ -4184,7 +4184,7 @@ inherited Gynae: TGynae
               Align = alClient
               TabOrder = 0
               AutoSize = True
-              LookAndFeel.NativeStyle = True
+              LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
 
               object cbBladderNodule: TcxCheckBox
                 Left = 10000
@@ -5795,5 +5795,7 @@ inherited Gynae: TGynae
         end
       end
     end
+  end
+  object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
   end
 end
