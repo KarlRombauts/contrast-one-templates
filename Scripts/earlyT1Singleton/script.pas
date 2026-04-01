@@ -19,6 +19,7 @@
 #include "shared/gynae/fibroidUI.pas"
 
 // --- earlyT1Singleton variants (where this exam differs from shared majority) ---
+#include "shared/variants/GetClinicalIndicators.earlyT1Singleton.pas"
 #include "shared/variants/GetCavDistortionCount.earlyT1Singleton.pas"
 #include "shared/variants/GetClinicalHistory.earlyT1Singleton.pas"
 #include "shared/variants/GetFibroidString.earlyT1Singleton.pas"
