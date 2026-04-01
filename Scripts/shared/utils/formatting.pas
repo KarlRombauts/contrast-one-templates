@@ -4,21 +4,25 @@
 function InitCaps(inv: string; inReduce: Boolean): string;
 var
   vDiff: Integer;
+  vFirst: Char;
+  vTmp: string;
 begin
   if inv <> '' then
   begin
     vDiff := Ord('A') - Ord('a');
-    result := inv;
+    vTmp := inv;
+    vFirst := vTmp[1];
     if inReduce then
     begin
-      if (Ord(result[1]) >= Ord('A')) and (Ord(result[1]) <= Ord('Z')) then
-        result[1] := chr(Ord(inv[1]) - vDiff);
+      if (Ord(vFirst) >= Ord('A')) and (Ord(vFirst) <= Ord('Z')) then
+        vFirst := chr(Ord(vFirst) - vDiff);
     end
     else
     begin
-      if (Ord(result[1]) >= Ord('a')) and (Ord(result[1]) <= Ord('z')) then
-        result[1] := chr(Ord(inv[1]) + vDiff);
+      if (Ord(vFirst) >= Ord('a')) and (Ord(vFirst) <= Ord('z')) then
+        vFirst := chr(Ord(vFirst) + vDiff);
     end;
+    result := vFirst + Copy(vTmp, 2, Length(vTmp) - 1);
   end
   else
     result := '';
@@ -71,12 +75,10 @@ begin
   result := Trim(inStr);
   if (pos('.', result) = 0) then
     result := result + '.0'
-  else if result[0] = '.' then
-  begin
-      result := '0'+ result ;
-  end;
+  else if result[1] = '.' then
+    result := '0' + result
   else
-  begin                                  
+  begin
     if result[length(result)] = '.' then
       result := result + '0';
   end;
