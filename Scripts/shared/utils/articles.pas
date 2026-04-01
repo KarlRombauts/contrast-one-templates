@@ -17,7 +17,7 @@ begin
   else
   begin
     if inDoCaps then
-      result := 'A';
+      result := 'A'
   else
     result := 'a';
   end;

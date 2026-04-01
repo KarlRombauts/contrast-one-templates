@@ -1,7 +1,7 @@
 #ifndef __SHARED_GYNAE_FIBROIDUI
 #define __SHARED_GYNAE_FIBROIDUI
 
-procedure spFibroidCountOnChange(Sender)
+procedure spFibroidCountOnChange(Sender: TObject);
 begin
   gbFibroid1.Visible := False;
   gbFibroid2.Visible := False;
@@ -62,13 +62,13 @@ begin
   end;
 end;
 
-procedure cbFibroidsVisualisedOnClick(sender)
+procedure cbFibroidsVisualisedOnClick(Sender: TObject);
 begin
   spFibroidCount.Enabled := cbFibroidsVisualised.Checked;
   spFibroidCountOnChange(nil);
 end;
 
-procedure cbFibroidsTypeOnChange(Sender)
+procedure cbFibroidsTypeOnChange(Sender: TObject);
 var
   vControlIdx: Integer;
   vCheckBox: TWinControl;

@@ -16,7 +16,7 @@ begin
   end;
 end;
 
-procedure cbToggleCheckOnClick(Sender)
+procedure cbToggleCheckOnClick(Sender: TObject);
 var
   i: Integer;
 begin
@@ -46,7 +46,7 @@ end;
 function Min(in1, in2: Integer): Integer;
 begin                                                        
   if in1 > in2 then                                 
-    result := in2                                               
+    result := in2;
   else
     result := in1;
 end;

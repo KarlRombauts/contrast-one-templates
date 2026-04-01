@@ -1,7 +1,7 @@
 #ifndef __SHARED_OBSTETRIC_EDDHANDLING
 #define __SHARED_OBSTETRIC_EDDHANDLING
 
-procedure cbEDDPrincipleOnChange(sender)
+procedure cbEDDPrincipleOnChange(Sender: TObject);
 begin
   case cbEDDPrinciple.ItemIndex of
     1: begin

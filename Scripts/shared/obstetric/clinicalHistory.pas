@@ -33,7 +33,7 @@ begin
 
 end;
 
-procedure cxccbReferralIndicatorsChange(Sender);
+procedure cxccbReferralIndicatorsChange(Sender: TObject);
 begin
   edtReferralIndicator1.Enabled := (cxccbReferralIndicators.States[cxccbReferralIndicators.Properties.Items.Count-1] = 1);
 end;

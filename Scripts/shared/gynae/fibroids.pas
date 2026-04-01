@@ -9,8 +9,8 @@ begin
     result := 'No fibroids were'
   else
   begin
-    vNumber := GetNumberString(spFibroidCount.Value);
-    if spFibroidCount.Value = 1 then
+    vNumber := GetNumberString(Trunc(spFibroidCount.Value));
+    if Trunc(spFibroidCount.Value) = 1 then
       result := vNumber + ' fibroid was'
     else
     begin
@@ -29,7 +29,7 @@ begin
     result := 'clear of the cervix';
   end;
   if seCloseToCrevix1.value > 0 then
-    result := result + ' (within ' + intToStr(seCloseToCrevix1.value) + ' mm)'
+    result := result + ' (within ' + intToStr(Trunc(seCloseToCrevix1.value)) + ' mm)';
 end;
 
 function GetCavDistortionCount: Integer;
@@ -119,7 +119,7 @@ begin
   v1 := trunc(vl.Value);
   v2 := trunc(vw.Value);
   v3 := trunc(vd.Value);
-  v4 := trunc(vv.Value)
+  v4 := trunc(vv.Value);
   if v1 > 0 then
   begin
     if v2 > 0 then
