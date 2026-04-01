@@ -35,7 +35,6 @@
 #include "shared/variants/GetPerGraph.20week.pas"
 #include "shared/variants/btnGeneratePercentilesOnClick.20week.pas"
 #include "shared/variants/cbFetalAnatomyNormal1OnClick.20week.pas"
-#include "shared/variants/getCompositeDate.20week.pas"
 #include "shared/variants/getReportHeading.20week.pas"
 
 // --- Exam-specific ---
