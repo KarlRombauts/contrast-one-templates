@@ -2,6 +2,7 @@ program TestRunner;
 {$mode objfpc}{$H+}
 uses
   Classes, SysUtils, consoletestrunner,
+  SourceLoader,
   TestPureUtils, TestGestationalAge, TestStubControls,
   TestClinicalHistory, TestEDDHandling, TestFibroids;
 

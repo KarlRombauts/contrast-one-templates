@@ -4,7 +4,8 @@ PS_SRC = ./vendor/pascalscript/Source
 SRC = ./src
 TESTS = ./tests
 BUILD = ./build
-SCRIPTS = ../..
+SCRIPTS = ../../../Scripts
+SHARED = $(SCRIPTS)/shared
 
 FPCFLAGS = -Fu$(PS_SRC) -Fu$(SRC) -Fu$(TESTS) -FE. -dNOGUI
 
@@ -14,7 +15,16 @@ all: test
 
 prebuild:
 	@mkdir -p $(BUILD)
-	cd $(SCRIPTS) && $(GPP) -I. -o tests/pascal/$(BUILD)/earlyT1Singleton.pas earlyT1Singleton/script.pas
+	cd $(SCRIPTS) && $(GPP) -I. -o "$(CURDIR)/$(BUILD)/earlyT1Singleton.pas" earlyT1Singleton/script.pas
+	$(GPP) -DNOGUI -o "$(CURDIR)/$(BUILD)/strUtils.pas" $(SHARED)/utils/strUtils.pas
+	$(GPP) -DNOGUI -o "$(CURDIR)/$(BUILD)/formatting.pas" $(SHARED)/utils/formatting.pas
+	$(GPP) -DNOGUI -o "$(CURDIR)/$(BUILD)/articles.pas" $(SHARED)/utils/articles.pas
+	$(GPP) -DNOGUI -o "$(CURDIR)/$(BUILD)/formUtils.pas" $(SHARED)/utils/formUtils.pas
+	$(GPP) -DNOGUI -o "$(CURDIR)/$(BUILD)/gestationalAge.pas" $(SHARED)/obstetric/gestationalAge.pas
+	$(GPP) -DNOGUI -o "$(CURDIR)/$(BUILD)/clinicalHistory.pas" $(SHARED)/obstetric/clinicalHistory.pas
+	$(GPP) -DNOGUI -o "$(CURDIR)/$(BUILD)/eddHandling.pas" $(SHARED)/obstetric/eddHandling.pas
+	$(GPP) -DNOGUI -o "$(CURDIR)/$(BUILD)/fibroids.pas" $(SHARED)/gynae/fibroids.pas
+	$(GPP) -DNOGUI -o "$(CURDIR)/$(BUILD)/fibroidUI.pas" $(SHARED)/gynae/fibroidUI.pas
 
 build: prebuild
 	$(FPC) $(FPCFLAGS) -oTestRunner TestRunner.pas
