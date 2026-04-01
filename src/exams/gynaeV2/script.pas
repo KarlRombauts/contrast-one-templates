@@ -1,7 +1,3 @@
-// ******************* GynaeV2 UI Control Script ****************************//
-
-// ======================== Framework-Required Functions ====================//
-
 function CheckFormComplete: Boolean
 begin
   result := True;
@@ -9,15 +5,10 @@ end;
 
 procedure ProduceMergeFieldData
 begin
-  lbMergeDataMergeFields.Items.Clear;
-  lbMergeDataMergeFields.Items.Add('ExaminationDate="' + FormatDateTime('dd mmm yyyy', deExamDate.Date) + '"');
 end;
 
 procedure ProduceMergeOrder
 begin
-  lbMergeDataMergeOrder.Items.Clear;
-  lbMergeDataMergeOrder.Items.Add('PatientDemographics');
-  lbMergeDataMergeOrder.Items.Add('ReportHeading');
 end;
 
 procedure InitializeScreen
