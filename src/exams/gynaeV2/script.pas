@@ -1,17 +1,17 @@
-function CheckFormComplete: Boolean
+function CheckFormComplete: Boolean;
 begin
   result := True;
 end;
 
-procedure ProduceMergeFieldData
+procedure ProduceMergeFieldData;
 begin
 end;
 
-procedure ProduceMergeOrder
+procedure ProduceMergeOrder;
 begin
 end;
 
-procedure InitializeScreen
+procedure InitializeScreen;
 begin
   if (deExamDate.Date < 100) then
     deExamDate.Date := now;
@@ -341,7 +341,7 @@ end;
 
 // ======================== StartScript =====================================//
 
-procedure StartScript
+procedure StartScript;
 begin
   // --- Scan Type ---
   cbTransvaginal.OnClick := 'cbTransvaginalClick';
@@ -424,4 +424,9 @@ begin
   cbRightNonTender.OnClick := 'cbRightTenderClick';
   cbLeftTender.OnClick := 'cbLeftTenderClick';
   cbLeftNonTender.OnClick := 'cbLeftTenderClick';
+
+  InitializeScreen;
+
 end;
+
+StartScript;
