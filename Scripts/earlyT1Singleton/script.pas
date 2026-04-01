@@ -24,7 +24,6 @@
 #include "shared/variants/cbUSSEDDOnChange.earlyT1Singleton.pas"
 #include "shared/variants/cxccbReferralIndicatorsChange.earlyT1Singleton.pas"
 #include "shared/variants/deStatedEDDOnChange.earlyT1Singleton_pe12week.pas"
-#include "shared/variants/getOvaryWarning.earlyT1Singleton.pas"
 
 // --- Exam-specific ---
 #include "earlyT1Singleton/embryo.pas"
