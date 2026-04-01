@@ -26,7 +26,6 @@
 
 // --- pe12week variants ---
 #include "shared/variants/GetClinicalIndicators.pe12week.pas"
-#include "shared/variants/GetPerGraph.pe12week.pas"
 #include "shared/variants/GetPlacenta.pe12week.pas"
 #include "shared/variants/cbFetalAnatomyNormal1OnClick.pe12week.pas"
 #include "shared/variants/deStatedEDDOnChange.earlyT1Singleton_pe12week.pas"

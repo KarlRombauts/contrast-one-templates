@@ -20,15 +20,15 @@ procedure cbToggleCheckOnClick(Sender)
 var
   i: Integer;
 begin
-  if Sender.Checked then
+  if TcxCheckBox(Sender).Checked then
   begin
     for i := 0 to TWinControl(Sender.Parent).ControlCount - 1 do
     begin
       if (Sender.Parent.Controls[i] is TcxCheckBox) then
       begin
-        if (Sender.Parent.Controls[i].Checked) and (Sender.Parent.Controls[i] <> Sender) then
+        if (TcxCheckBox(Sender.Parent.Controls[i]).Checked) and (Sender.Parent.Controls[i] <> Sender) then
         begin
-          Sender.Parent.Controls[i].Checked := false;
+          TcxCheckBox(Sender.Parent.Controls[i]).Checked := false;
         end;
       end;
     end;

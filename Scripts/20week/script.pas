@@ -32,7 +32,6 @@
 #include "shared/variants/GetEnteredEDD.20week.pas"
 #include "shared/variants/GetGraphXValue.20week_t3Singleton.pas"
 #include "shared/variants/GetNormalMCAPIRange.20week.pas"
-#include "shared/variants/GetPerGraph.20week.pas"
 #include "shared/variants/btnGeneratePercentilesOnClick.20week.pas"
 #include "shared/variants/cbFetalAnatomyNormal1OnClick.20week.pas"
 #include "shared/variants/getReportHeading.20week.pas"
