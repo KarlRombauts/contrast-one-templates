@@ -42,7 +42,7 @@ begin
   if vt <> '' then
   begin
     if vt[length(vt)] <> '.' then
-      result := vt + '.  '
+      result := vt + '. '
     else
       result := inStr;
   end
@@ -54,12 +54,16 @@ function AddFullstopToEnd(inStr: String): String;
 var
   vt: String;
 begin
-  vt := trim(inStr);
-  if vt[length(vt)] <> '.' then
-    vt := vt + '. '
+  vt := Trim(inStr);
+  if vt <> '' then
+  begin
+    if vt[length(vt)] <> '.' then
+      result := vt + '. '
+    else
+      result := vt;
+  end
   else
-    vt := vt + ' ';
-  result := vt;
+    result := ''
 end;
 
 function PadDecimalPlaces(inStr: String): String;
