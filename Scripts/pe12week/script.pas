@@ -30,7 +30,6 @@
 #include "shared/variants/GetPlacenta.pe12week.pas"
 #include "shared/variants/cbFetalAnatomyNormal1OnClick.pe12week.pas"
 #include "shared/variants/deStatedEDDOnChange.earlyT1Singleton_pe12week.pas"
-#include "shared/variants/getFibroid.pe12week.pas"
 
 // --- Exam-specific ---
 #include "pe12week/report.pas"

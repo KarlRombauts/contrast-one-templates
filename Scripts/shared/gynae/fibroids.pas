@@ -11,10 +11,10 @@ begin
   begin
     vNumber := GetNumberString(spFibroidCount.Value);
     if spFibroidCount.Value = 1 then
-      result := vNumber + ' fibroid is'
+      result := vNumber + ' fibroid was'
     else
     begin
-      result := vNumber + ' fibroids are';
+      result := vNumber + ' fibroids were';
     end;
   end;
   result := InitCaps(result, False);
@@ -37,7 +37,7 @@ begin
   result := 0;
   if (gbFibroid1.Visible) and (cbCavityDistortion1.Checked) and (cbCavityDistortion1.Enabled) then
     result := Result + 1;
-  {if (gbFibroid2.Visible) and (cbCavityDistortion2.Checked) and (cbCavityDistortion2.Enabled) then
+  if (gbFibroid2.Visible) and (cbCavityDistortion2.Checked) and (cbCavityDistortion2.Enabled) then
     result := Result + 1;
   if (gbFibroid3.Visible) and (cbCavityDistortion3.Checked) and (cbCavityDistortion3.Enabled) then
     result := Result + 1;
@@ -54,7 +54,7 @@ begin
   if (gbFibroid9.Visible) and (cbCavityDistortion9.Checked) and (cbCavityDistortion9.Enabled) then
     result := Result + 1;
   if (gbFibroid10.Visible) and (cbCavityDistortion10.Checked) and (cbCavityDistortion10.Enabled) then
-    result := Result + 1;}
+    result := Result + 1;
 end;
 
  function GetSingleFibroidDimensions: string;
@@ -362,7 +362,7 @@ result := '';
       if (result <> '')  and (GetSingleCloseOrClear <> '') then
          result := result + 'It is ' +  GetSingleCloseOrClear;
       if result <> '' then
-        result :=  'There is a' + result;
+        result :=  'There is a ' + result;
     end
     else if spFibroidCount.value > 1 then
     begin
@@ -371,9 +371,9 @@ result := '';
         if result <> '' then
         begin
           if i = spFibroidCount.value then
-             result := result + ' and';
+             result := result + ' and ';
           else
-             result := result + ',';
+             result := result + ', ';
         end;
         result := result + GetFibroidString(i);
       end;

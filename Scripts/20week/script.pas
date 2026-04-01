@@ -30,7 +30,6 @@
 #include "shared/variants/GetAnatomy.20week.pas"
 #include "shared/variants/GetClinicalIndicators.pe12week.pas"
 #include "shared/variants/GetEnteredEDD.20week.pas"
-#include "shared/variants/GetFibroidString.20week.pas"
 #include "shared/variants/GetGraphXValue.20week_t3Singleton.pas"
 #include "shared/variants/GetNormalMCAPIRange.20week.pas"
 #include "shared/variants/GetPerGraph.20week.pas"

@@ -27,7 +27,6 @@
 #include "shared/variants/GetDuctusVenosusWarning.t3twins.pas"
 #include "shared/variants/getCervixConclusion.t3twins.pas"
 #include "shared/variants/getEFWPer.t3twins.pas"
-#include "shared/variants/getFibroid.t3twins.pas"
 
 // --- Exam-specific ---
 #include "t3twins/report.pas"
