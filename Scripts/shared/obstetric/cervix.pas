@@ -38,11 +38,20 @@
   vCervicalLength := 0.0;
   if ((meCervicalLength.text) <> '') then
   begin
-         vCervicalLength := StrToFloatDef(meCervicalLength.text, 0);
-      if (cbCervixShortYes.checked = TRUE) then
+    vCervicalLength := StrToFloatDef(meCervicalLength.text, 0);
+    if (cbCervixShortYes.checked = TRUE) then
+    begin
+      result := 'Shortened cervix';
+      if vCervicalLength > 0 then
       begin
-         result := 'Shortened cervix';
-      end
+        result := result + ' (' + meCervicalLength.text + 'mm';
+        if cbCervixTVS.checked then
+          result := result + ' on transvaginal ultrasound'
+        else if cbCervixTA.checked then
+          result := result + ' on transabdominal ultrasound';
+        result := result + ')';
+      end;
+    end;
   end;
   result := AddFullStop(Result);
  end;
@@ -66,18 +75,19 @@
           begin
              result := 'The cervix is shortened';
           end
+          if (vCervicalLength > 0) then
+          begin
+             if (cbCervixShortYes.checked = TRUE) then
+                result := result + ', '+ meCervicalLength.text + 'mm'
+             else
+                result := result + ', '+ meCervicalLength.text + 'mm';
+          end;
           if cbCervixTVS.checked then
             result := result + ' on transvaginal ultrasound.  '
           else if cbCervixTA.checked then
             result := result + ' on transabdominal ultrasound.  '
-           result :=AddFullStop(result); 
-          if (vCervicalLength > 0) then
-          begin
-             if (cbCervixShortYes.checked = TRUE) then
-                result := result + 'The closed length of cervix is '+ meCervicalLength.text + 'mm'
-             else
-                result := result + 'The closed length of cervix is '+ meCervicalLength.text + 'mm';
-          end;
+           result :=AddFullStop(result);
+
             result := AddFullStop(Result);
           result :=  #13#10  + '#|#+UNDE#|#+BOLDCervix:#/#'+ #13#10  +  result +getFunnellingMembrane;
      end;
@@ -91,7 +101,7 @@
           result := result +  'Cervix:' + #09#09 + '##'
      end;
   end;
-  else 
+  else
   begin
     if (cbCervixShortYes.checked = TRUE) then
       result := result + 'Cervix:' + #09#09 + 'short.  ';

@@ -25,7 +25,6 @@
 // --- t3twins variants ---
 #include "shared/variants/GetBioPhysicalConc.t3twins.pas"
 #include "shared/variants/GetDuctusVenosusWarning.t3twins.pas"
-#include "shared/variants/getCervixConclusion.t3twins.pas"
 #include "shared/variants/getEFWPer.t3twins.pas"
 
 // --- Exam-specific ---
