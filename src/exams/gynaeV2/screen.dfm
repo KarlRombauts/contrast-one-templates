@@ -4922,8 +4922,6 @@ inherited Gynae: TGynae
                   object liBladderNodule: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = cbBladderNodule
-                    ControlOptions.OriginalHeight = 21
-                    ControlOptions.OriginalWidth = 165
                     ControlOptions.ShowBorder = False
                   end
                   object lgBladderDetails: TdxLayoutGroup
@@ -4938,8 +4936,6 @@ inherited Gynae: TGynae
                     object liBladderL: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = seBladderNoduleLength
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 35
                       ControlOptions.ShowBorder = False
                     end
                     object liBladderSep1: TdxLayoutLabeledItem
@@ -4948,8 +4944,6 @@ inherited Gynae: TGynae
                     object liBladderW: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = seBladderNoduleWidth
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 35
                       ControlOptions.ShowBorder = False
                     end
                     object liBladderSep2: TdxLayoutLabeledItem
@@ -4958,8 +4952,6 @@ inherited Gynae: TGynae
                     object liBladderD: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = seBladderNoduleDepth
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 35
                       ControlOptions.ShowBorder = False
                     end
                     object liBladderMM: TdxLayoutLabeledItem
@@ -4975,8 +4967,6 @@ inherited Gynae: TGynae
                     object liBladderLoc: TdxLayoutItem
                       CaptionOptions.Text = 'Location'
                       Control = cbBladderNoduleLocation
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 100
                       ControlOptions.ShowBorder = False
                     end
                   end
@@ -4995,23 +4985,17 @@ inherited Gynae: TGynae
                     object liVaultVis: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbVaultVisualised
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 85
                       ControlOptions.ShowBorder = False
                     end
                     object liVaultThin: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbVaultThinRegular
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 120
                       ControlOptions.ShowBorder = False
                     end
                   end
                   object liVagNodule: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = cbVaginalNodule
-                    ControlOptions.OriginalHeight = 21
-                    ControlOptions.OriginalWidth = 160
                     ControlOptions.ShowBorder = False
                   end
                   object lgVaultDetails: TdxLayoutGroup
@@ -5030,8 +5014,6 @@ inherited Gynae: TGynae
                       object liVagL: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seVagNoduleLength
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liVagSep1: TdxLayoutLabeledItem
@@ -5040,8 +5022,6 @@ inherited Gynae: TGynae
                       object liVagW: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seVagNoduleWidth
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liVagSep2: TdxLayoutLabeledItem
@@ -5050,8 +5030,6 @@ inherited Gynae: TGynae
                       object liVagD: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seVagNoduleDepth
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liVagMM: TdxLayoutLabeledItem
@@ -5061,8 +5039,6 @@ inherited Gynae: TGynae
                     object liVagStuckTo: TdxLayoutItem
                       CaptionOptions.Text = 'Stuck to'
                       Control = cbVagNoduleStuckTo
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 200
                       ControlOptions.ShowBorder = False
                     end
                   end
@@ -5076,8 +5052,6 @@ inherited Gynae: TGynae
                   object liFreeFluid: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = cbFreeFluid
-                    ControlOptions.OriginalHeight = 21
-                    ControlOptions.OriginalWidth = 130
                     ControlOptions.ShowBorder = False
                   end
                   object liPODOblLabel: TdxLayoutLabeledItem
@@ -5087,8 +5061,6 @@ inherited Gynae: TGynae
                   object liPODNone: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = rbPODNoObliteration
-                    ControlOptions.OriginalHeight = 21
-                    ControlOptions.OriginalWidth = 120
                     ControlOptions.ShowBorder = False
                   end
                   object lgPODPartial: TdxLayoutGroup
@@ -5099,30 +5071,22 @@ inherited Gynae: TGynae
                     object liPODPartial: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = rbPODPartialObliteration
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 140
                       ControlOptions.ShowBorder = False
                     end
                     object liPODSide: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbPODPartialSide
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 80
                       ControlOptions.ShowBorder = False
                     end
                   end
                   object liPODComplete: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = rbPODCompleteObliteration
-                    ControlOptions.OriginalHeight = 21
-                    ControlOptions.OriginalWidth = 155
                     ControlOptions.ShowBorder = False
                   end
                   object liPODPost: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = rbPODPostSurgical
-                    ControlOptions.OriginalHeight = 21
-                    ControlOptions.OriginalWidth = 260
                     ControlOptions.ShowBorder = False
                   end
                   object liUterusMobLabel: TdxLayoutSeparatorItem
@@ -5137,22 +5101,16 @@ inherited Gynae: TGynae
                     object liUMobile: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbUterusMobile
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 70
                       ControlOptions.ShowBorder = False
                     end
                     object liULimited: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbUterusLimitedMobility
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 115
                       ControlOptions.ShowBorder = False
                     end
                     object liUFixed: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbUterusFixed
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 60
                       ControlOptions.ShowBorder = False
                     end
                   end
@@ -5164,15 +5122,11 @@ inherited Gynae: TGynae
                     object liUTender: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbUterusTender
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 70
                       ControlOptions.ShowBorder = False
                     end
                     object liUNonTender: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbUterusNonTender
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 90
                       ControlOptions.ShowBorder = False
                     end
                   end
@@ -5186,8 +5140,6 @@ inherited Gynae: TGynae
                   object liRCNodule: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = cbRetroCervicalNodule
-                    ControlOptions.OriginalHeight = 21
-                    ControlOptions.OriginalWidth = 200
                     ControlOptions.ShowBorder = False
                   end
                   object lgRCDetails: TdxLayoutGroup
@@ -5206,8 +5158,6 @@ inherited Gynae: TGynae
                       object liRCL: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seRetroCervLength
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liRCSep1: TdxLayoutLabeledItem
@@ -5216,8 +5166,6 @@ inherited Gynae: TGynae
                       object liRCW: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seRetroCervWidth
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liRCSep2: TdxLayoutLabeledItem
@@ -5226,8 +5174,6 @@ inherited Gynae: TGynae
                       object liRCD: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seRetroCervDepth
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liRCMM: TdxLayoutLabeledItem
@@ -5237,8 +5183,6 @@ inherited Gynae: TGynae
                     object liRCMyometrium: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbGrowsIntoMyometrium
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 170
                       ControlOptions.ShowBorder = False
                     end
                     object lgRCStuckTo: TdxLayoutGroup
@@ -5250,36 +5194,26 @@ inherited Gynae: TGynae
                       object liRCStuckLO: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRCStuckLeftOvary
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 85
                         ControlOptions.ShowBorder = False
                       end
                       object liRCStuckRO: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRCStuckRightOvary
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 90
                         ControlOptions.ShowBorder = False
                       end
                       object liRCStuckBowel: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRCStuckBowel
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 60
                         ControlOptions.ShowBorder = False
                       end
                       object liRCStuckBN: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRCStuckBowelNodule
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 100
                         ControlOptions.ShowBorder = False
                       end
                       object liRCStuckBF: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRCStuckBowelFat
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 80
                         ControlOptions.ShowBorder = False
                       end
                     end
@@ -5291,23 +5225,17 @@ inherited Gynae: TGynae
                       object liRCTender: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRCTender
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 70
                         ControlOptions.ShowBorder = False
                       end
                       object liRCNonTender: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRCNonTender
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 90
                         ControlOptions.ShowBorder = False
                       end
                     end
                     object liRCScarring: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbRCPostSurgicalScarring
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 200
                       ControlOptions.ShowBorder = False
                     end
                   end
@@ -5326,8 +5254,6 @@ inherited Gynae: TGynae
                     object liRUSLApp: TdxLayoutItem
                       CaptionOptions.Text = 'Appearance'
                       Control = cbRightUSLAppearance
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 100
                       ControlOptions.ShowBorder = False
                     end
                     object lgRUSLNodule: TdxLayoutGroup
@@ -5338,15 +5264,11 @@ inherited Gynae: TGynae
                       object liRUSLNodule: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRightUSLNodule
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 70
                         ControlOptions.ShowBorder = False
                       end
                       object liRUSLL: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seRightUSLNoduleLength
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liRUSLSep1: TdxLayoutLabeledItem
@@ -5355,8 +5277,6 @@ inherited Gynae: TGynae
                       object liRUSLW: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seRightUSLNoduleWidth
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liRUSLSep2: TdxLayoutLabeledItem
@@ -5365,8 +5285,6 @@ inherited Gynae: TGynae
                       object liRUSLD: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seRightUSLNoduleDepth
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liRUSLMM: TdxLayoutLabeledItem
@@ -5381,15 +5299,11 @@ inherited Gynae: TGynae
                       object liRUSLTender: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRightUSLTender
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 70
                         ControlOptions.ShowBorder = False
                       end
                       object liRUSLFat: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbRightUSLFatStranding
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 100
                         ControlOptions.ShowBorder = False
                       end
                     end
@@ -5402,8 +5316,6 @@ inherited Gynae: TGynae
                     object liLUSLApp: TdxLayoutItem
                       CaptionOptions.Text = 'Appearance'
                       Control = cbLeftUSLAppearance
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 100
                       ControlOptions.ShowBorder = False
                     end
                     object lgLUSLNodule: TdxLayoutGroup
@@ -5414,15 +5326,11 @@ inherited Gynae: TGynae
                       object liLUSLNodule: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbLeftUSLNodule
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 70
                         ControlOptions.ShowBorder = False
                       end
                       object liLUSLL: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seLeftUSLNoduleLength
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liLUSLSep1: TdxLayoutLabeledItem
@@ -5431,8 +5339,6 @@ inherited Gynae: TGynae
                       object liLUSLW: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seLeftUSLNoduleWidth
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liLUSLSep2: TdxLayoutLabeledItem
@@ -5441,8 +5347,6 @@ inherited Gynae: TGynae
                       object liLUSLD: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = seLeftUSLNoduleDepth
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 35
                         ControlOptions.ShowBorder = False
                       end
                       object liLUSLMM: TdxLayoutLabeledItem
@@ -5457,15 +5361,11 @@ inherited Gynae: TGynae
                       object liLUSLTender: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbLeftUSLTender
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 70
                         ControlOptions.ShowBorder = False
                       end
                       object liLUSLFat: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = cbLeftUSLFatStranding
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 100
                         ControlOptions.ShowBorder = False
                       end
                     end
@@ -5480,8 +5380,6 @@ inherited Gynae: TGynae
                   object liBowelNodule: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = cbBowelNodulePresent
-                    ControlOptions.OriginalHeight = 21
-                    ControlOptions.OriginalWidth = 160
                     ControlOptions.ShowBorder = False
                   end
                   object lgBowelDetails: TdxLayoutGroup
@@ -5492,8 +5390,6 @@ inherited Gynae: TGynae
                     object liBowelCount: TdxLayoutItem
                       CaptionOptions.Text = 'Count'
                       Control = spBowelNoduleCount
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 35
                       ControlOptions.ShowBorder = False
                     end
                     object lgBowelNod1: TdxLayoutGroup
@@ -5512,8 +5408,6 @@ inherited Gynae: TGynae
                         object liBN1L: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = seBowelNod1Length
-                          ControlOptions.OriginalHeight = 21
-                          ControlOptions.OriginalWidth = 35
                           ControlOptions.ShowBorder = False
                         end
                         object liBN1Sep1: TdxLayoutLabeledItem
@@ -5522,8 +5416,6 @@ inherited Gynae: TGynae
                         object liBN1W: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = seBowelNod1Width
-                          ControlOptions.OriginalHeight = 21
-                          ControlOptions.OriginalWidth = 35
                           ControlOptions.ShowBorder = False
                         end
                         object liBN1Sep2: TdxLayoutLabeledItem
@@ -5532,8 +5424,6 @@ inherited Gynae: TGynae
                         object liBN1D: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = seBowelNod1Depth
-                          ControlOptions.OriginalHeight = 21
-                          ControlOptions.OriginalWidth = 35
                           ControlOptions.ShowBorder = False
                         end
                         object liBN1MM: TdxLayoutLabeledItem
@@ -5543,22 +5433,16 @@ inherited Gynae: TGynae
                       object liBN1Dist: TdxLayoutItem
                         CaptionOptions.Text = 'Distance from anus'
                         Control = seBowelNod1DistAnus
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 40
                         ControlOptions.ShowBorder = False
                       end
                       object liBN1Invasion: TdxLayoutItem
                         CaptionOptions.Text = 'Depth of invasion'
                         Control = cbBowelNod1Invasion
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 120
                         ControlOptions.ShowBorder = False
                       end
                       object liBN1Stuck: TdxLayoutItem
                         CaptionOptions.Text = 'Stuck to'
                         Control = cbBowelNod1StuckTo
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 200
                         ControlOptions.ShowBorder = False
                       end
                     end
@@ -5579,8 +5463,6 @@ inherited Gynae: TGynae
                         object liBN2L: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = seBowelNod2Length
-                          ControlOptions.OriginalHeight = 21
-                          ControlOptions.OriginalWidth = 35
                           ControlOptions.ShowBorder = False
                         end
                         object liBN2Sep1: TdxLayoutLabeledItem
@@ -5589,8 +5471,6 @@ inherited Gynae: TGynae
                         object liBN2W: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = seBowelNod2Width
-                          ControlOptions.OriginalHeight = 21
-                          ControlOptions.OriginalWidth = 35
                           ControlOptions.ShowBorder = False
                         end
                         object liBN2Sep2: TdxLayoutLabeledItem
@@ -5599,8 +5479,6 @@ inherited Gynae: TGynae
                         object liBN2D: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = seBowelNod2Depth
-                          ControlOptions.OriginalHeight = 21
-                          ControlOptions.OriginalWidth = 35
                           ControlOptions.ShowBorder = False
                         end
                         object liBN2MM: TdxLayoutLabeledItem
@@ -5610,22 +5488,16 @@ inherited Gynae: TGynae
                       object liBN2Dist: TdxLayoutItem
                         CaptionOptions.Text = 'Distance from prev'
                         Control = seBowelNod2DistPrev
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 40
                         ControlOptions.ShowBorder = False
                       end
                       object liBN2Invasion: TdxLayoutItem
                         CaptionOptions.Text = 'Depth of invasion'
                         Control = cbBowelNod2Invasion
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 120
                         ControlOptions.ShowBorder = False
                       end
                       object liBN2Stuck: TdxLayoutItem
                         CaptionOptions.Text = 'Stuck to'
                         Control = cbBowelNod2StuckTo
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 200
                         ControlOptions.ShowBorder = False
                       end
                     end
@@ -5646,8 +5518,6 @@ inherited Gynae: TGynae
                         object liBN3L: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = seBowelNod3Length
-                          ControlOptions.OriginalHeight = 21
-                          ControlOptions.OriginalWidth = 35
                           ControlOptions.ShowBorder = False
                         end
                         object liBN3Sep1: TdxLayoutLabeledItem
@@ -5656,8 +5526,6 @@ inherited Gynae: TGynae
                         object liBN3W: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = seBowelNod3Width
-                          ControlOptions.OriginalHeight = 21
-                          ControlOptions.OriginalWidth = 35
                           ControlOptions.ShowBorder = False
                         end
                         object liBN3Sep2: TdxLayoutLabeledItem
@@ -5666,8 +5534,6 @@ inherited Gynae: TGynae
                         object liBN3D: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = seBowelNod3Depth
-                          ControlOptions.OriginalHeight = 21
-                          ControlOptions.OriginalWidth = 35
                           ControlOptions.ShowBorder = False
                         end
                         object liBN3MM: TdxLayoutLabeledItem
@@ -5677,22 +5543,16 @@ inherited Gynae: TGynae
                       object liBN3Dist: TdxLayoutItem
                         CaptionOptions.Text = 'Distance from prev'
                         Control = seBowelNod3DistPrev
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 40
                         ControlOptions.ShowBorder = False
                       end
                       object liBN3Invasion: TdxLayoutItem
                         CaptionOptions.Text = 'Depth of invasion'
                         Control = cbBowelNod3Invasion
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 120
                         ControlOptions.ShowBorder = False
                       end
                       object liBN3Stuck: TdxLayoutItem
                         CaptionOptions.Text = 'Stuck to'
                         Control = cbBowelNod3StuckTo
-                        ControlOptions.OriginalHeight = 21
-                        ControlOptions.OriginalWidth = 200
                         ControlOptions.ShowBorder = False
                       end
                     end
@@ -5713,15 +5573,11 @@ inherited Gynae: TGynae
                     object liRKVis: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbRightKidneyVisualised
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 85
                       ControlOptions.ShowBorder = False
                     end
                     object liRKObs: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbRightKidneyObstructed
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 90
                       ControlOptions.ShowBorder = False
                     end
                   end
@@ -5734,15 +5590,11 @@ inherited Gynae: TGynae
                     object liLKVis: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbLeftKidneyVisualised
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 85
                       ControlOptions.ShowBorder = False
                     end
                     object liLKObs: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = cbLeftKidneyObstructed
-                      ControlOptions.OriginalHeight = 21
-                      ControlOptions.OriginalWidth = 90
                       ControlOptions.ShowBorder = False
                     end
                   end
