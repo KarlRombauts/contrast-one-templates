@@ -5090,7 +5090,6 @@ inherited Gynae: TGynae
                   end
                   object liUterusMobLabel: TdxLayoutSeparatorItem
                     CaptionOptions.Text = 'Uterus Mobility'
-                    CaptionOptions.Visible = True
                   end
                   object lgMobility: TdxLayoutGroup
                     CaptionOptions.Visible = False
