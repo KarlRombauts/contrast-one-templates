@@ -48,43 +48,48 @@ end;
 
 procedure cbHysterectomyClick(Sender)
 begin
-  cbCervixPresent.Visible := cbHysterectomy.Checked;
+  liCervixPresent.Visible := cbHysterectomy.Checked;
   if not cbHysterectomy.Checked then
     cbCervixPresent.Checked := False;
 end;
 
+procedure cbCongenitalAbnormalityClick(Sender)
+begin
+  lgCongenitalDetails.Visible := cbCongenitalAbnormality.Checked;
+end;
+
 procedure cbAdenomyosisClick(Sender)
 begin
-  gbAdenomyosis.Visible := cbAdenomyosis.Checked;
+  lgAdenomyosisDetails.Visible := cbAdenomyosis.Checked;
 end;
 
 procedure cbFibroidsPresentClick(Sender)
 begin
-  gbFibroids.Visible := cbFibroidsPresent.Checked;
+  lgFibroidsDetails.Visible := cbFibroidsPresent.Checked;
 end;
 
 procedure spFibroidCountChange(Sender)
 begin
-  gbFibroid1.Visible := (spFibroidCount.Value >= 1);
-  gbFibroid2.Visible := (spFibroidCount.Value >= 2);
-  gbFibroid3.Visible := (spFibroidCount.Value >= 3);
-  gbFibroid4.Visible := (spFibroidCount.Value >= 4);
-  gbFibroid5.Visible := (spFibroidCount.Value >= 5);
-  gbFibroid6.Visible := (spFibroidCount.Value >= 6);
-  gbFibroid7.Visible := (spFibroidCount.Value >= 7);
-  gbFibroid8.Visible := (spFibroidCount.Value >= 8);
+  lgFibroid1.Visible := (spFibroidCount.Value >= 1);
+  lgFibroid2.Visible := (spFibroidCount.Value >= 2);
+  lgFibroid3.Visible := (spFibroidCount.Value >= 3);
+  lgFibroid4.Visible := (spFibroidCount.Value >= 4);
+  lgFibroid5.Visible := (spFibroidCount.Value >= 5);
+  lgFibroid6.Visible := (spFibroidCount.Value >= 6);
+  lgFibroid7.Visible := (spFibroidCount.Value >= 7);
+  lgFibroid8.Visible := (spFibroidCount.Value >= 8);
 end;
 
 // --- Endometrium ---
 
 procedure cbFocalLesionClick(Sender)
 begin
-  gbPolyps.Visible := cbFocalLesion.Checked;
+  lgPolypDetails.Visible := cbFocalLesion.Checked;
 end;
 
 procedure cbRPOCClick(Sender)
 begin
-  gbRPOC.Visible := cbRPOC.Checked;
+  lgRPOCDetails.Visible := cbRPOC.Checked;
 end;
 
 // --- Ovary Status ---
@@ -286,12 +291,12 @@ end;
 
 procedure cbSHGPerformedClick(Sender)
 begin
-  cbSHGFindings.Enabled := cbSHGPerformed.Checked;
+  lgSHGDetails.Visible := cbSHGPerformed.Checked;
 end;
 
 procedure cbTubalPatencyPerformedClick(Sender)
 begin
-  gbTubalPatency.Visible := cbTubalPatencyPerformed.Checked;
+  lgTubalDetails.Visible := cbTubalPatencyPerformed.Checked;
 end;
 
 // --- Uterus Mobility (radio toggle) ---
@@ -354,6 +359,7 @@ begin
 
   // --- Uterus ---
   cbHysterectomy.OnClick := 'cbHysterectomyClick';
+  cbCongenitalAbnormality.OnClick := 'cbCongenitalAbnormalityClick';
   cbAdenomyosis.OnClick := 'cbAdenomyosisClick';
   cbFibroidsPresent.OnClick := 'cbFibroidsPresentClick';
   spFibroidCount.Properties.OnChange := 'spFibroidCountChange';
