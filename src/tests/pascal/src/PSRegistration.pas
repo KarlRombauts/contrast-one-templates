@@ -163,6 +163,10 @@ begin
     Sender.AddDelphiFunction(
       'procedure ShowMessage(const Msg: string);');
 
+    { Format - string formatting (not built into PascalScript) }
+    Sender.AddDelphiFunction(
+      'function Format(const Fmt: string; const Args: array of const): string;');
+
     { Stub DevExpress controls }
     SIRegister_StubControls(Sender);
 
@@ -428,6 +432,9 @@ begin
 
   { ShowMessage - no-op }
   Exec.RegisterDelphiFunction(@ShowMessage_P, 'ShowMessage', cdRegister);
+
+  { Format }
+  Exec.RegisterDelphiFunction(@Format_P, 'Format', cdRegister);
 
   { Stub DevExpress controls }
   RIRegister_StubControls(ClassImporter);
