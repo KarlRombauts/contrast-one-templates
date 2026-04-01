@@ -1,15 +1,8 @@
 // ******************* GynaeV2 UI Control Script ****************************//
-//
-// Handles show/hide logic and form control interactions for the gynaeV2 form.
-// This script wires up event handlers and manages conditional visibility
-// of form sections based on user input.
-//
-
-// ======================== Event Handlers ==================================//
 
 // --- Scan Type ---
 
-procedure cbTransvaginalClick(Sender: TObject);
+procedure cbTransvaginalClick(Sender);
 begin
   cbPainWithProbe.Enabled := cbTransvaginal.Checked;
   if not cbTransvaginal.Checked then
@@ -18,235 +11,236 @@ end;
 
 // --- Medication ---
 
-procedure cxccbMedicationChange(Sender: TObject);
-var
-  HasOther: Boolean;
+procedure cxccbMedicationChange(Sender);
 begin
-  HasOther := Pos('Other', cxccbMedication.Text) > 0;
-  edtOtherMedication.Enabled := HasOther;
-  if not HasOther then
+  edtOtherMedication.Enabled := (cxccbMedication.States[cxccbMedication.Properties.Items.Count-1] = 1);
+  if not edtOtherMedication.Enabled then
     edtOtherMedication.Text := '';
 end;
 
 // --- Surgical History ---
 
-procedure cxccbPastSurgeryChange(Sender: TObject);
-var
-  HasLap: Boolean;
+procedure cxccbPastSurgeryChange(Sender);
 begin
-  HasLap := Pos('Lap', cxccbPastSurgery.Text) > 0;
-  gbLaparoscopy.Visible := HasLap;
+  gbLaparoscopy.Visible := (cxccbPastSurgery.States[6] = 1);
 end;
 
 // --- Uterus ---
 
-procedure cbHysterectomyClick(Sender: TObject);
+procedure cbHysterectomyClick(Sender);
 begin
   cbCervixPresent.Visible := cbHysterectomy.Checked;
   if not cbHysterectomy.Checked then
     cbCervixPresent.Checked := False;
 end;
 
-procedure cbCongenitalAbnormalityClick(Sender: TObject);
-begin
-  gbCongenitalAbnormality.Visible := TcxCheckBox(Sender).Checked;
-end;
-
-procedure cbAdenomyosisClick(Sender: TObject);
+procedure cbAdenomyosisClick(Sender);
 begin
   gbAdenomyosis.Visible := cbAdenomyosis.Checked;
 end;
 
-procedure cbFibroidsPresentClick(Sender: TObject);
+procedure cbFibroidsPresentClick(Sender);
 begin
   gbFibroids.Visible := cbFibroidsPresent.Checked;
 end;
 
-procedure spFibroidCountChange(Sender: TObject);
-var
-  I, Count: Integer;
-  gb: TcxGroupBox;
+procedure spFibroidCountChange(Sender);
 begin
-  Count := spFibroidCount.Value;
-  for I := 1 to 8 do
-  begin
-    gb := TcxGroupBox(FindComponent('gbFibroid' + IntToStr(I)));
-    if gb <> nil then
-      gb.Visible := (I <= Count);
-  end;
+  gbFibroid1.Visible := (spFibroidCount.Value >= 1);
+  gbFibroid2.Visible := (spFibroidCount.Value >= 2);
+  gbFibroid3.Visible := (spFibroidCount.Value >= 3);
+  gbFibroid4.Visible := (spFibroidCount.Value >= 4);
+  gbFibroid5.Visible := (spFibroidCount.Value >= 5);
+  gbFibroid6.Visible := (spFibroidCount.Value >= 6);
+  gbFibroid7.Visible := (spFibroidCount.Value >= 7);
+  gbFibroid8.Visible := (spFibroidCount.Value >= 8);
 end;
 
 // --- Endometrium ---
 
-procedure cbFocalLesionClick(Sender: TObject);
+procedure cbFocalLesionClick(Sender);
 begin
   gbPolyps.Visible := cbFocalLesion.Checked;
 end;
 
-procedure cbRPOCClick(Sender: TObject);
+procedure cbRPOCClick(Sender);
 begin
   gbRPOC.Visible := cbRPOC.Checked;
 end;
 
-// --- Ovaries ---
+// --- Ovary Status ---
 
-procedure UpdateOvaryVisibility(const Side: String);
-var
-  cbStatus: TcxComboBox;
-  IsVisible: Boolean;
+procedure cbRightOvaryStatusChange(Sender);
 begin
-  cbStatus := TcxComboBox(FindComponent('cb' + Side + 'OvaryStatus'));
-  if cbStatus = nil then Exit;
-
-  IsVisible := (cbStatus.Text = 'identified');
-
-  TcxSpinEdit(FindComponent('se' + Side + 'OvaryLength')).Enabled := IsVisible;
-  TcxSpinEdit(FindComponent('se' + Side + 'OvaryWidth')).Enabled := IsVisible;
-  TcxSpinEdit(FindComponent('se' + Side + 'OvaryHeight')).Enabled := IsVisible;
-  TcxSpinEdit(FindComponent('se' + Side + 'OvaryCC')).Enabled := IsVisible;
-  TcxComboBox(FindComponent('cb' + Side + 'OvaryAppearance')).Enabled := IsVisible;
-  TcxSpinEdit(FindComponent('se' + Side + 'AFC')).Enabled := IsVisible;
-  TcxSpinEdit(FindComponent('se' + Side + 'MaxFollicle')).Enabled := IsVisible;
+  seRightOvaryLength.Enabled := (cbRightOvaryStatus.Text = 'identified');
+  seRightOvaryWidth.Enabled := (cbRightOvaryStatus.Text = 'identified');
+  seRightOvaryHeight.Enabled := (cbRightOvaryStatus.Text = 'identified');
+  seRightOvaryCC.Enabled := (cbRightOvaryStatus.Text = 'identified');
+  cbRightOvaryAppearance.Enabled := (cbRightOvaryStatus.Text = 'identified');
+  seRightAFC.Enabled := (cbRightOvaryStatus.Text = 'identified');
+  seRightMaxFollicle.Enabled := (cbRightOvaryStatus.Text = 'identified');
 end;
 
-procedure cbRightOvaryStatusChange(Sender: TObject);
+procedure cbLeftOvaryStatusChange(Sender);
 begin
-  UpdateOvaryVisibility('Right');
+  seLeftOvaryLength.Enabled := (cbLeftOvaryStatus.Text = 'identified');
+  seLeftOvaryWidth.Enabled := (cbLeftOvaryStatus.Text = 'identified');
+  seLeftOvaryHeight.Enabled := (cbLeftOvaryStatus.Text = 'identified');
+  seLeftOvaryCC.Enabled := (cbLeftOvaryStatus.Text = 'identified');
+  cbLeftOvaryAppearance.Enabled := (cbLeftOvaryStatus.Text = 'identified');
+  seLeftAFC.Enabled := (cbLeftOvaryStatus.Text = 'identified');
+  seLeftMaxFollicle.Enabled := (cbLeftOvaryStatus.Text = 'identified');
 end;
 
-procedure cbLeftOvaryStatusChange(Sender: TObject);
+// --- Common Pathologies: Simple cyst ---
+
+procedure cbRightSimpleCystClick(Sender);
 begin
-  UpdateOvaryVisibility('Left');
+  seRightSimpleCystL.Enabled := cbRightSimpleCyst.Checked;
+  seRightSimpleCystW.Enabled := cbRightSimpleCyst.Checked;
+  seRightSimpleCystD.Enabled := cbRightSimpleCyst.Checked;
 end;
 
-// --- Common Pathologies ---
-
-procedure UpdateSimplePathologyEnable(cb: TcxCheckBox; const Prefix: String);
+procedure cbLeftSimpleCystClick(Sender);
 begin
-  TcxSpinEdit(FindComponent(Prefix + 'L')).Enabled := cb.Checked;
-  TcxSpinEdit(FindComponent(Prefix + 'W')).Enabled := cb.Checked;
-  TcxSpinEdit(FindComponent(Prefix + 'D')).Enabled := cb.Checked;
+  seLeftSimpleCystL.Enabled := cbLeftSimpleCyst.Checked;
+  seLeftSimpleCystW.Enabled := cbLeftSimpleCyst.Checked;
+  seLeftSimpleCystD.Enabled := cbLeftSimpleCyst.Checked;
 end;
 
-procedure cbRightSimpleCystClick(Sender: TObject);
+// --- Common Pathologies: Dermoid ---
+
+procedure cbRightDermoidClick(Sender);
 begin
-  UpdateSimplePathologyEnable(cbRightSimpleCyst, 'seRightSimpleCyst');
+  seRightDermoidL.Enabled := cbRightDermoid.Checked;
+  seRightDermoidW.Enabled := cbRightDermoid.Checked;
+  seRightDermoidD.Enabled := cbRightDermoid.Checked;
 end;
 
-procedure cbLeftSimpleCystClick(Sender: TObject);
+procedure cbLeftDermoidClick(Sender);
 begin
-  UpdateSimplePathologyEnable(cbLeftSimpleCyst, 'seLeftSimpleCyst');
+  seLeftDermoidL.Enabled := cbLeftDermoid.Checked;
+  seLeftDermoidW.Enabled := cbLeftDermoid.Checked;
+  seLeftDermoidD.Enabled := cbLeftDermoid.Checked;
 end;
 
-procedure cbRightDermoidClick(Sender: TObject);
+// --- Common Pathologies: Fibroma ---
+
+procedure cbRightFibromaClick(Sender);
 begin
-  UpdateSimplePathologyEnable(cbRightDermoid, 'seRightDermoid');
+  seRightFibromaL.Enabled := cbRightFibroma.Checked;
+  seRightFibromaW.Enabled := cbRightFibroma.Checked;
+  seRightFibromaD.Enabled := cbRightFibroma.Checked;
 end;
 
-procedure cbLeftDermoidClick(Sender: TObject);
+procedure cbLeftFibromaClick(Sender);
 begin
-  UpdateSimplePathologyEnable(cbLeftDermoid, 'seLeftDermoid');
+  seLeftFibromaL.Enabled := cbLeftFibroma.Checked;
+  seLeftFibromaW.Enabled := cbLeftFibroma.Checked;
+  seLeftFibromaD.Enabled := cbLeftFibroma.Checked;
 end;
 
-procedure cbRightFibromaClick(Sender: TObject);
+// --- Common Pathologies: Endometrioma (multiple) ---
+
+procedure cbRightEndometriomaClick(Sender);
 begin
-  UpdateSimplePathologyEnable(cbRightFibroma, 'seRightFibroma');
-end;
-
-procedure cbLeftFibromaClick(Sender: TObject);
-begin
-  UpdateSimplePathologyEnable(cbLeftFibroma, 'seLeftFibroma');
-end;
-
-// --- Endometrioma (multiple support) ---
-
-procedure UpdateEndometriomaEntries(const Side: String; cb: TcxCheckBox; seCount: TcxSpinEdit);
-var
-  I, Count: Integer;
-  gb: TcxGroupBox;
-begin
-  seCount.Enabled := cb.Checked;
-  if cb.Checked then
-    Count := seCount.Value
-  else
-    Count := 0;
-
-  for I := 1 to 3 do
+  seRightEndometriomaCount.Enabled := cbRightEndometrioma.Checked;
+  if cbRightEndometrioma.Checked then
   begin
-    gb := TcxGroupBox(FindComponent('gb' + Side + 'Endometrioma' + IntToStr(I)));
-    if gb <> nil then
-      gb.Visible := (I <= Count);
+    gbRightEndometrioma1.Visible := (seRightEndometriomaCount.Value >= 1);
+    gbRightEndometrioma2.Visible := (seRightEndometriomaCount.Value >= 2);
+    gbRightEndometrioma3.Visible := (seRightEndometriomaCount.Value >= 3);
+  end
+  else
+  begin
+    gbRightEndometrioma1.Visible := False;
+    gbRightEndometrioma2.Visible := False;
+    gbRightEndometrioma3.Visible := False;
   end;
 end;
 
-procedure cbRightEndometriomaClick(Sender: TObject);
+procedure cbLeftEndometriomaClick(Sender);
 begin
-  UpdateEndometriomaEntries('Right', cbRightEndometrioma, seRightEndometriomaCount);
+  seLeftEndometriomaCount.Enabled := cbLeftEndometrioma.Checked;
+  if cbLeftEndometrioma.Checked then
+  begin
+    gbLeftEndometrioma1.Visible := (seLeftEndometriomaCount.Value >= 1);
+    gbLeftEndometrioma2.Visible := (seLeftEndometriomaCount.Value >= 2);
+    gbLeftEndometrioma3.Visible := (seLeftEndometriomaCount.Value >= 3);
+  end
+  else
+  begin
+    gbLeftEndometrioma1.Visible := False;
+    gbLeftEndometrioma2.Visible := False;
+    gbLeftEndometrioma3.Visible := False;
+  end;
 end;
 
-procedure cbLeftEndometriomaClick(Sender: TObject);
+procedure seRightEndometriomaCountChange(Sender);
 begin
-  UpdateEndometriomaEntries('Left', cbLeftEndometrioma, seLeftEndometriomaCount);
+  gbRightEndometrioma1.Visible := cbRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 1);
+  gbRightEndometrioma2.Visible := cbRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 2);
+  gbRightEndometrioma3.Visible := cbRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 3);
 end;
 
-procedure seRightEndometriomaCountChange(Sender: TObject);
+procedure seLeftEndometriomaCountChange(Sender);
 begin
-  UpdateEndometriomaEntries('Right', cbRightEndometrioma, seRightEndometriomaCount);
+  gbLeftEndometrioma1.Visible := cbLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 1);
+  gbLeftEndometrioma2.Visible := cbLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 2);
+  gbLeftEndometrioma3.Visible := cbLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 3);
 end;
 
-procedure seLeftEndometriomaCountChange(Sender: TObject);
-begin
-  UpdateEndometriomaEntries('Left', cbLeftEndometrioma, seLeftEndometriomaCount);
-end;
+// --- Endometriosis: Layout group visibility ---
 
-// --- Endometriosis (TdxLayoutControl groups) ---
-
-procedure cbBladderNoduleClick(Sender: TObject);
+procedure cbBladderNoduleClick(Sender);
 begin
   lgBladderDetails.Visible := cbBladderNodule.Checked;
   lgBladderLocation.Visible := cbBladderNodule.Checked;
 end;
 
-procedure cbVaginalNoduleClick(Sender: TObject);
+procedure cbVaginalNoduleClick(Sender);
 begin
   lgVaultDetails.Visible := cbVaginalNodule.Checked;
 end;
 
-procedure cbRetroCervicalNoduleClick(Sender: TObject);
+procedure cbRetroCervicalNoduleClick(Sender);
 begin
   lgRCDetails.Visible := cbRetroCervicalNodule.Checked;
 end;
 
-procedure cbBowelNodulePresentClick(Sender: TObject);
+procedure cbBowelNodulePresentClick(Sender);
 begin
   lgBowelDetails.Visible := cbBowelNodulePresent.Checked;
 end;
 
-procedure spBowelNoduleCountChange(Sender: TObject);
-var
-  Count: Integer;
+procedure spBowelNoduleCountChange(Sender);
 begin
-  Count := spBowelNoduleCount.Value;
-  lgBowelNod1.Visible := (Count >= 1);
-  lgBowelNod2.Visible := (Count >= 2);
-  lgBowelNod3.Visible := (Count >= 3);
+  lgBowelNod1.Visible := (spBowelNoduleCount.Value >= 1);
+  lgBowelNod2.Visible := (spBowelNoduleCount.Value >= 2);
+  lgBowelNod3.Visible := (spBowelNoduleCount.Value >= 3);
 end;
 
-procedure rbPODPartialObliterationClick(Sender: TObject);
+// --- POD Obliteration (radio toggle) ---
+
+procedure PODObliterationClick(Sender);
 begin
+  rbPODNoObliteration.Checked := (Sender = rbPODNoObliteration);
+  rbPODPartialObliteration.Checked := (Sender = rbPODPartialObliteration);
+  rbPODCompleteObliteration.Checked := (Sender = rbPODCompleteObliteration);
+  rbPODPostSurgical.Checked := (Sender = rbPODPostSurgical);
   cbPODPartialSide.Enabled := rbPODPartialObliteration.Checked;
 end;
 
 // --- USL Nodule measurements ---
 
-procedure cbRightUSLNoduleClick(Sender: TObject);
+procedure cbRightUSLNoduleClick(Sender);
 begin
   seRightUSLNoduleLength.Enabled := cbRightUSLNodule.Checked;
   seRightUSLNoduleWidth.Enabled := cbRightUSLNodule.Checked;
   seRightUSLNoduleDepth.Enabled := cbRightUSLNodule.Checked;
 end;
 
-procedure cbLeftUSLNoduleClick(Sender: TObject);
+procedure cbLeftUSLNoduleClick(Sender);
 begin
   seLeftUSLNoduleLength.Enabled := cbLeftUSLNodule.Checked;
   seLeftUSLNoduleWidth.Enabled := cbLeftUSLNodule.Checked;
@@ -255,14 +249,14 @@ end;
 
 // --- Kidneys ---
 
-procedure cbRightKidneyVisualisedClick(Sender: TObject);
+procedure cbRightKidneyVisualisedClick(Sender);
 begin
   cbRightKidneyObstructed.Enabled := cbRightKidneyVisualised.Checked;
   if not cbRightKidneyVisualised.Checked then
     cbRightKidneyObstructed.Checked := False;
 end;
 
-procedure cbLeftKidneyVisualisedClick(Sender: TObject);
+procedure cbLeftKidneyVisualisedClick(Sender);
 begin
   cbLeftKidneyObstructed.Enabled := cbLeftKidneyVisualised.Checked;
   if not cbLeftKidneyVisualised.Checked then
@@ -271,83 +265,59 @@ end;
 
 // --- Procedures ---
 
-procedure cbSHGPerformedClick(Sender: TObject);
+procedure cbSHGPerformedClick(Sender);
 begin
   cbSHGFindings.Enabled := cbSHGPerformed.Checked;
 end;
 
-procedure cbTubalPatencyPerformedClick(Sender: TObject);
+procedure cbTubalPatencyPerformedClick(Sender);
 begin
   gbTubalPatency.Visible := cbTubalPatencyPerformed.Checked;
 end;
 
-// --- POD Obliteration toggle (radio-button behaviour) ---
+// --- Uterus Mobility (radio toggle) ---
 
-procedure PODObliterationClick(Sender: TObject);
-var
-  Clicked: TcxCheckBox;
+procedure UterusMobilityClick(Sender);
 begin
-  Clicked := TcxCheckBox(Sender);
-  if Clicked <> rbPODNoObliteration then rbPODNoObliteration.Checked := False;
-  if Clicked <> rbPODPartialObliteration then rbPODPartialObliteration.Checked := False;
-  if Clicked <> rbPODCompleteObliteration then rbPODCompleteObliteration.Checked := False;
-  if Clicked <> rbPODPostSurgical then rbPODPostSurgical.Checked := False;
-  cbPODPartialSide.Enabled := rbPODPartialObliteration.Checked;
+  cbUterusMobile.Checked := (Sender = cbUterusMobile);
+  cbUterusLimitedMobility.Checked := (Sender = cbUterusLimitedMobility);
+  cbUterusFixed.Checked := (Sender = cbUterusFixed);
 end;
 
-// --- Uterus mobility toggle ---
-
-procedure UterusMobilityClick(Sender: TObject);
-var
-  Clicked: TcxCheckBox;
+procedure UterusTendernessClick(Sender);
 begin
-  Clicked := TcxCheckBox(Sender);
-  if Clicked <> cbUterusMobile then cbUterusMobile.Checked := False;
-  if Clicked <> cbUterusLimitedMobility then cbUterusLimitedMobility.Checked := False;
-  if Clicked <> cbUterusFixed then cbUterusFixed.Checked := False;
+  cbUterusTender.Checked := (Sender = cbUterusTender);
+  cbUterusNonTender.Checked := (Sender = cbUterusNonTender);
 end;
 
-procedure UterusTendernessClick(Sender: TObject);
-var
-  Clicked: TcxCheckBox;
+// --- Ovary Mobility (radio toggle) ---
+
+procedure cbRightMobileClick(Sender);
 begin
-  Clicked := TcxCheckBox(Sender);
-  if Clicked <> cbUterusTender then cbUterusTender.Checked := False;
-  if Clicked <> cbUterusNonTender then cbUterusNonTender.Checked := False;
+  cbRightMobile.Checked := (Sender = cbRightMobile);
+  cbRightReducedMobility.Checked := (Sender = cbRightReducedMobility);
+  cbRightStuck.Checked := (Sender = cbRightStuck);
+  cbRightRigid.Checked := (Sender = cbRightRigid);
 end;
 
-// --- Ovary mobility toggle ---
-
-procedure OvaryMobilityClick(Sender: TObject);
-var
-  Clicked: TcxCheckBox;
-  Side: String;
-  cbMob, cbRed, cbStk, cbRig: TcxCheckBox;
+procedure cbLeftMobileClick(Sender);
 begin
-  Clicked := TcxCheckBox(Sender);
-  if Pos('Right', Clicked.Name) > 0 then Side := 'Right' else Side := 'Left';
-  cbMob := TcxCheckBox(FindComponent('cb' + Side + 'Mobile'));
-  cbRed := TcxCheckBox(FindComponent('cb' + Side + 'ReducedMobility'));
-  cbStk := TcxCheckBox(FindComponent('cb' + Side + 'Stuck'));
-  cbRig := TcxCheckBox(FindComponent('cb' + Side + 'Rigid'));
-  if Clicked <> cbMob then cbMob.Checked := False;
-  if Clicked <> cbRed then cbRed.Checked := False;
-  if Clicked <> cbStk then cbStk.Checked := False;
-  if Clicked <> cbRig then cbRig.Checked := False;
+  cbLeftMobile.Checked := (Sender = cbLeftMobile);
+  cbLeftReducedMobility.Checked := (Sender = cbLeftReducedMobility);
+  cbLeftStuck.Checked := (Sender = cbLeftStuck);
+  cbLeftRigid.Checked := (Sender = cbLeftRigid);
 end;
 
-procedure OvaryTendernessClick(Sender: TObject);
-var
-  Clicked: TcxCheckBox;
-  Side: String;
-  cbT, cbNT: TcxCheckBox;
+procedure cbRightTenderClick(Sender);
 begin
-  Clicked := TcxCheckBox(Sender);
-  if Pos('Right', Clicked.Name) > 0 then Side := 'Right' else Side := 'Left';
-  cbT := TcxCheckBox(FindComponent('cb' + Side + 'Tender'));
-  cbNT := TcxCheckBox(FindComponent('cb' + Side + 'NonTender'));
-  if Clicked <> cbT then cbT.Checked := False;
-  if Clicked <> cbNT then cbNT.Checked := False;
+  cbRightTender.Checked := (Sender = cbRightTender);
+  cbRightNonTender.Checked := (Sender = cbRightNonTender);
+end;
+
+procedure cbLeftTenderClick(Sender);
+begin
+  cbLeftTender.Checked := (Sender = cbLeftTender);
+  cbLeftNonTender.Checked := (Sender = cbLeftNonTender);
 end;
 
 // ======================== StartScript =====================================//
@@ -389,20 +359,20 @@ begin
   cbRightFibroma.OnClick := 'cbRightFibromaClick';
   cbLeftFibroma.OnClick := 'cbLeftFibromaClick';
 
-  // --- Endometriosis (TdxLayoutControl groups) ---
+  // --- Endometriosis ---
   cbBladderNodule.OnClick := 'cbBladderNoduleClick';
   cbVaginalNodule.OnClick := 'cbVaginalNoduleClick';
   cbRetroCervicalNodule.OnClick := 'cbRetroCervicalNoduleClick';
   cbBowelNodulePresent.OnClick := 'cbBowelNodulePresentClick';
   spBowelNoduleCount.Properties.OnChange := 'spBowelNoduleCountChange';
 
-  // POD obliteration (radio toggle)
+  // POD obliteration
   rbPODNoObliteration.OnClick := 'PODObliterationClick';
   rbPODPartialObliteration.OnClick := 'PODObliterationClick';
   rbPODCompleteObliteration.OnClick := 'PODObliterationClick';
   rbPODPostSurgical.OnClick := 'PODObliterationClick';
 
-  // Uterus mobility/tenderness (radio toggle)
+  // Uterus mobility/tenderness
   cbUterusMobile.OnClick := 'UterusMobilityClick';
   cbUterusLimitedMobility.OnClick := 'UterusMobilityClick';
   cbUterusFixed.OnClick := 'UterusMobilityClick';
@@ -421,18 +391,18 @@ begin
   cbSHGPerformed.OnClick := 'cbSHGPerformedClick';
   cbTubalPatencyPerformed.OnClick := 'cbTubalPatencyPerformedClick';
 
-  // --- Ovary mobility/tenderness (radio toggle) ---
-  cbRightMobile.OnClick := 'OvaryMobilityClick';
-  cbRightReducedMobility.OnClick := 'OvaryMobilityClick';
-  cbRightStuck.OnClick := 'OvaryMobilityClick';
-  cbRightRigid.OnClick := 'OvaryMobilityClick';
-  cbLeftMobile.OnClick := 'OvaryMobilityClick';
-  cbLeftReducedMobility.OnClick := 'OvaryMobilityClick';
-  cbLeftStuck.OnClick := 'OvaryMobilityClick';
-  cbLeftRigid.OnClick := 'OvaryMobilityClick';
+  // --- Ovary mobility/tenderness ---
+  cbRightMobile.OnClick := 'cbRightMobileClick';
+  cbRightReducedMobility.OnClick := 'cbRightMobileClick';
+  cbRightStuck.OnClick := 'cbRightMobileClick';
+  cbRightRigid.OnClick := 'cbRightMobileClick';
+  cbLeftMobile.OnClick := 'cbLeftMobileClick';
+  cbLeftReducedMobility.OnClick := 'cbLeftMobileClick';
+  cbLeftStuck.OnClick := 'cbLeftMobileClick';
+  cbLeftRigid.OnClick := 'cbLeftMobileClick';
 
-  cbRightTender.OnClick := 'OvaryTendernessClick';
-  cbRightNonTender.OnClick := 'OvaryTendernessClick';
-  cbLeftTender.OnClick := 'OvaryTendernessClick';
-  cbLeftNonTender.OnClick := 'OvaryTendernessClick';
+  cbRightTender.OnClick := 'cbRightTenderClick';
+  cbRightNonTender.OnClick := 'cbRightTenderClick';
+  cbLeftTender.OnClick := 'cbLeftTenderClick';
+  cbLeftNonTender.OnClick := 'cbLeftTenderClick';
 end;
