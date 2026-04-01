@@ -3,8 +3,8 @@ unit TestPureUtils;
   Tests for pure utility functions from the shared library.
   These functions have no UI dependencies and can be tested in isolation.
 
-  Functions are compiled as an inline PascalScript source string, then
-  called individually via the ScriptHost.
+  Source is loaded from GPP-preprocessed build/ files at runtime via
+  SourceLoader, then compiled and called individually via the ScriptHost.
 }
 
 {$mode objfpc}{$H+}
@@ -96,227 +96,23 @@ type
 
 implementation
 
-const
-  { Inline PascalScript source containing all pure utility functions.
-    Copied from Scripts/shared/utils/ with preprocessor guards removed.
-
-    Adaptations for PascalScript runtime:
-    - result[n] := chr(...) does not work; use StrSet or string concat instead
-    - StrGet2(s, i) is used instead of s[i] for reading chars from result
-    - StrToIntDef is a built-in but not callable via GetProc; wrapped here
-    - Real type alias registered in PSRegistration }
-  PURE_UTILS_SOURCE =
-    'function StrToFloatDef(inString: string; inDefault: Real): Real;'  + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  try'                                                              + LineEnding +
-    '    result := StrToFloat(inString);'                                + LineEnding +
-    '  except'                                                           + LineEnding +
-    '    result := inDefault;'                                           + LineEnding +
-    '  end;'                                                             + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    { Wrapper around the PascalScript built-in StrToIntDef so we can call
-      it via GetProc/RunProc. The built-in is not directly addressable. }
-    'function MyStrToIntDef(inString: string; inDefault: Integer): Integer;' + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  result := StrToIntDef(inString, inDefault);'                      + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'function StringReplace(inSource, inMatch, inReplace: String): String;' + LineEnding +
-    'var'                                                                + LineEnding +
-    '  i: Integer;'                                                      + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  result := inSource;'                                              + LineEnding +
-    '  i := Pos(inMatch, result);'                                       + LineEnding +
-    '  while i > 0 do'                                                   + LineEnding +
-    '  begin'                                                            + LineEnding +
-    '    result := copy(inSource, 1, i-1) + inReplace + copy(inSource, i+length(inMatch), length(inSource));' + LineEnding +
-    '    i := Pos(result, inMatch);'                                     + LineEnding +
-    '  end;'                                                             + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'function StringReplaceAll(inSource, inMatch, inReplace: String): String;' + LineEnding +
-    'var'                                                                + LineEnding +
-    '  i: Integer;'                                                      + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  result := inSource;'                                              + LineEnding +
-    '  i := Pos(inMatch, result);'                                       + LineEnding +
-    '  while (i > 0) do'                                                 + LineEnding +
-    '  begin'                                                            + LineEnding +
-    '    result := copy(result, 1, i-1) + inReplace + copy(result, i+length(inMatch), length(result));' + LineEnding +
-    '    i := Pos(inMatch, result);'                                     + LineEnding +
-    '  end;'                                                             + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    { InitCaps: PascalScript does not support result[1] := chr(...)
-      because string index assignment on result does not work.
-      We use StrSet on a local var instead to mutate the first char. }
-    'function InitCaps(inv: string; inReduce: Boolean): string;'         + LineEnding +
-    'var'                                                                + LineEnding +
-    '  vDiff: Integer;'                                                  + LineEnding +
-    '  vOrd: Integer;'                                                   + LineEnding +
-    '  vTmp: string;'                                                    + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  if inv <> '''' then'                                              + LineEnding +
-    '  begin'                                                            + LineEnding +
-    '    vDiff := Ord(''A'') - Ord(''a'');'                              + LineEnding +
-    '    vTmp := inv;'                                                   + LineEnding +
-    '    vOrd := Ord(vTmp[1]);'                                          + LineEnding +
-    '    if inReduce then'                                               + LineEnding +
-    '    begin'                                                          + LineEnding +
-    '      if (vOrd >= Ord(''A'')) and (vOrd <= Ord(''Z'')) then'        + LineEnding +
-    '      begin'                                                        + LineEnding +
-    '        StrSet(chr(vOrd - vDiff), 1, vTmp);'                        + LineEnding +
-    '        result := vTmp;'                                            + LineEnding +
-    '      end'                                                          + LineEnding +
-    '      else'                                                         + LineEnding +
-    '        result := inv;'                                             + LineEnding +
-    '    end'                                                            + LineEnding +
-    '    else'                                                           + LineEnding +
-    '    begin'                                                          + LineEnding +
-    '      if (vOrd >= Ord(''a'')) and (vOrd <= Ord(''z'')) then'        + LineEnding +
-    '      begin'                                                        + LineEnding +
-    '        StrSet(chr(vOrd + vDiff), 1, vTmp);'                        + LineEnding +
-    '        result := vTmp;'                                            + LineEnding +
-    '      end'                                                          + LineEnding +
-    '      else'                                                         + LineEnding +
-    '        result := inv;'                                             + LineEnding +
-    '    end;'                                                           + LineEnding +
-    '  end'                                                              + LineEnding +
-    '  else'                                                             + LineEnding +
-    '    result := '''';'                                                + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'function IncludeComma(inString: string): string;'                   + LineEnding +
-    'var'                                                                + LineEnding +
-    '  v1: string;'                                                      + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  v1 := '''';'                                                      + LineEnding +
-    '  if Length(inString) > 0 then'                                     + LineEnding +
-    '    v1 := inString + '', '';'                                       + LineEnding +
-    '  result := v1;'                                                    + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'function AddFullStop(inStr: String): String;'                       + LineEnding +
-    'var'                                                                + LineEnding +
-    '  vt: String;'                                                      + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  vt := Trim(inStr);'                                               + LineEnding +
-    '  if vt <> '''' then'                                               + LineEnding +
-    '  begin'                                                            + LineEnding +
-    '    if vt[length(vt)] <> ''.'' then'                                + LineEnding +
-    '      result := vt + ''.  '''                                       + LineEnding +
-    '    else'                                                           + LineEnding +
-    '      result := inStr;'                                             + LineEnding +
-    '  end'                                                              + LineEnding +
-    '  else'                                                             + LineEnding +
-    '    result := '''' '                                                + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'function GetNumberString(inNumber: Integer): string;'               + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  result := '''';'                                                  + LineEnding +
-    '  if inNumber = 1 then'                                             + LineEnding +
-    '    result := ''a single'''                                         + LineEnding +
-    '  else'                                                             + LineEnding +
-    '  begin'                                                            + LineEnding +
-    '    if inNumber = 2 then'                                           + LineEnding +
-    '      result := ''two'''                                            + LineEnding +
-    '    else if inNumber = 3 then'                                      + LineEnding +
-    '      result := ''three'''                                          + LineEnding +
-    '    else if inNumber = 4 then'                                      + LineEnding +
-    '      result := ''four'''                                           + LineEnding +
-    '    else if inNumber = 5 then'                                      + LineEnding +
-    '      result := ''five'''                                           + LineEnding +
-    '    else if inNumber = 6 then'                                      + LineEnding +
-    '      result := ''six'''                                            + LineEnding +
-    '    else if inNumber = 7 then'                                      + LineEnding +
-    '      result := ''seven'''                                          + LineEnding +
-    '    else if inNumber = 8 then'                                      + LineEnding +
-    '      result := ''eight'''                                          + LineEnding +
-    '    else if inNumber = 9 then'                                      + LineEnding +
-    '      result := ''nine'''                                           + LineEnding +
-    '    else'                                                           + LineEnding +
-    '      result := IntToStr(inNumber);'                                + LineEnding +
-    '  end;'                                                             + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    { RemoveDecimalPointAtEnd: Use a local var instead of indexing result
-      directly, since PascalScript StrGet on result may not work. }
-    'function RemoveDecimalPointAtEnd(inStr: String): String;'           + LineEnding +
-    'var'                                                                + LineEnding +
-    '  vt: String;'                                                      + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  vt := Trim(inStr);'                                               + LineEnding +
-    '  if vt[length(vt)] = ''.'' then'                                   + LineEnding +
-    '    result := copy(vt, 1, length(vt)-1)'                            + LineEnding +
-    '  else'                                                             + LineEnding +
-    '    result := vt;'                                                  + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'function GetIndefinateArticle(inValue: Integer; inDoCaps: Boolean): string;' + LineEnding +
-    'var'                                                                + LineEnding +
-    '  vTemp: string;'                                                   + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  result := '''';'                                                  + LineEnding +
-    '  vTemp := IntToStr(inValue);'                                      + LineEnding +
-    '  if ((length(vTemp) > 0) and (vTemp[1] = ''8'')) or (inValue = 11) or (inValue = 18) then' + LineEnding +
-    '  begin'                                                            + LineEnding +
-    '    if inDoCaps then'                                               + LineEnding +
-    '      result := ''An'''                                             + LineEnding +
-    '    else'                                                           + LineEnding +
-    '      result := ''an'''                                             + LineEnding +
-    '  end'                                                              + LineEnding +
-    '  else'                                                             + LineEnding +
-    '  begin'                                                            + LineEnding +
-    '    if inDoCaps then'                                               + LineEnding +
-    '      result := ''A'''                                              + LineEnding +
-    '    else'                                                           + LineEnding +
-    '      result := ''a'''                                              + LineEnding +
-    '  end;'                                                             + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'function Max(A, B: Integer): Integer;'                              + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  if A > B then'                                                    + LineEnding +
-    '    result := A'                                                    + LineEnding +
-    '  else'                                                             + LineEnding +
-    '    result := B;'                                                   + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'function Min(in1, in2: Integer): Integer;'                          + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  if in1 > in2 then'                                                + LineEnding +
-    '    result := in2'                                                  + LineEnding +
-    '  else'                                                             + LineEnding +
-    '    result := in1;'                                                 + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'function AddToResult(inResult, inNew: string): string;'             + LineEnding +
-    'begin'                                                              + LineEnding +
-    '  result := '''';'                                                  + LineEnding +
-    '  if trim(inResult) <> '''' then'                                   + LineEnding +
-    '  begin'                                                            + LineEnding +
-    '    if trim(inNew) <> '''' then'                                    + LineEnding +
-    '      result := inResult + '', '' + trim(inNew);'                   + LineEnding +
-    '  end'                                                              + LineEnding +
-    '  else'                                                             + LineEnding +
-    '  begin'                                                            + LineEnding +
-    '    if trim(inNew) <> '''' then'                                    + LineEnding +
-    '      result := trim(inNew);'                                       + LineEnding +
-    '  end;'                                                             + LineEnding +
-    'end;'                                                               + LineEnding +
-    ''                                                                   + LineEnding +
-    'begin'                                                              + LineEnding +
-    'end.';
+uses SourceLoader;
 
 procedure TTestPureUtils.SetUp;
+var
+  Source: string;
 begin
   FSetupOk := False;
   FHost := TScriptHost.Create;
   FHost.Compiler.OnUses := @StandardOnUses;
 
-  if not FHost.CompileScript(PURE_UTILS_SOURCE) then
+  Source := LoadPascalSource('build/strUtils.pas') +
+            LoadPascalSource('build/formatting.pas') +
+            LoadPascalSource('build/articles.pas') +
+            LoadPascalSource('build/formUtils.pas') +
+            LineEnding + 'begin' + LineEnding + 'end.';
+
+  if not FHost.CompileScript(Source) then
   begin
     WriteLn('COMPILE ERROR: ', FHost.LastError);
     Exit;
@@ -394,16 +190,15 @@ procedure TTestPureUtils.TestStrToIntDef_ValidInt;
 var
   R: Integer;
 begin
-  { PS built-in StrToIntDef is not callable via GetProc; use wrapper }
-  R := CallIntFn('MyStrToIntDef', ['123', 0]);
-  AssertEquals('Should parse valid integer', 123, R);
+  R := CallIntFn('StrToIntDef', ['42', 0]);
+  AssertEquals('Should parse valid int', 42, R);
 end;
 
 procedure TTestPureUtils.TestStrToIntDef_InvalidReturnsDefault;
 var
   R: Integer;
 begin
-  R := CallIntFn('MyStrToIntDef', ['xyz', -1]);
+  R := CallIntFn('StrToIntDef', ['xyz', -1]);
   AssertEquals('Should return default for invalid string', -1, R);
 end;
 
@@ -494,7 +289,7 @@ var
   R: string;
 begin
   R := CallStrFn('AddFullStop', ['hello']);
-  AssertEquals('Should append period and spaces', 'hello.  ', R);
+  AssertEquals('Should append period and space', 'hello. ', R);
 end;
 
 procedure TTestPureUtils.TestAddFullStop_AlreadyHasStop;

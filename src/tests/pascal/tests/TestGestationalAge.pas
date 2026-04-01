@@ -70,53 +70,20 @@ type
 
 implementation
 
-const
-  { Inline PascalScript source for gestational age functions.
-    Copied from Scripts/shared/obstetric/gestationalAge.pas with
-    #ifndef/#define/#endif preprocessor guards removed.
-
-    GetGestDays and GetGestWeeks reference UI controls (seEDDCalGAWeeks,
-    seEDDCalGADays) and are not included here.
-
-    GetLMPWeeks and GetLMPDays call Now() and are non-deterministic;
-    they are omitted from concrete-value testing. }
-  GESTATIONAL_AGE_SOURCE =
-    'function GetWeeksFromDueDate(inEDDDate, inExamDate: TDateTime): Integer;' + LineEnding +
-    'var'                                                                       + LineEnding +
-    '  v1: Integer;'                                                            + LineEnding +
-    'begin'                                                                     + LineEnding +
-    '  v1 := (trunc(inEDDDate) - 280);'                                        + LineEnding +
-    '  result := (trunc(inExamDate) - v1) div 7;'                              + LineEnding +
-    'end;'                                                                      + LineEnding +
-    ''                                                                          + LineEnding +
-    'function GetDaysFromDueDate(inEDDDate, inExamDate: TDateTime): Integer;'  + LineEnding +
-    'var'                                                                       + LineEnding +
-    '  v1: Integer;'                                                            + LineEnding +
-    'begin'                                                                     + LineEnding +
-    '  v1 := (trunc(inEDDDate) - 280);'                                        + LineEnding +
-    '  result := (trunc(inExamDate) - v1) mod 7;'                              + LineEnding +
-    'end;'                                                                      + LineEnding +
-    ''                                                                          + LineEnding +
-    'function GetWeeksFromLMPDate(inLMPDate, inExamDate: TDateTime): Integer;' + LineEnding +
-    'begin'                                                                     + LineEnding +
-    '  result := (trunc(inExamDate) - Trunc(inLMPDate)) div 7;'               + LineEnding +
-    'end;'                                                                      + LineEnding +
-    ''                                                                          + LineEnding +
-    'function GetDaysFromLMPDate(inLMPDate, inExamDate: TDateTime): Integer;'  + LineEnding +
-    'begin'                                                                     + LineEnding +
-    '  result := (trunc(inExamDate) - Trunc(inLMPDate)) mod 7;'               + LineEnding +
-    'end;'                                                                      + LineEnding +
-    ''                                                                          + LineEnding +
-    'begin'                                                                     + LineEnding +
-    'end.';
+uses SourceLoader;
 
 procedure TTestGestationalAge.SetUp;
+var
+  Source: string;
 begin
   FSetupOk := False;
   FHost := TScriptHost.Create;
   FHost.Compiler.OnUses := @StandardOnUses;
 
-  if not FHost.CompileScript(GESTATIONAL_AGE_SOURCE) then
+  Source := LoadPascalSource('build/gestationalAge.pas') +
+            LineEnding + 'begin' + LineEnding + 'end.';
+
+  if not FHost.CompileScript(Source) then
   begin
     WriteLn('COMPILE ERROR: ', FHost.LastError);
     Exit;
