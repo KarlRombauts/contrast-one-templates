@@ -1,0 +1,7 @@
+{
+  "sample_shared/utils/strUtils.pas": ["StrToFloatDef"],
+  "sample_shared/utils/formatting.pas": ["AddFullStop"],
+  "sample_exam/report.pas": ["GetFindings", "ProduceMergeFieldData"],
+  "sample_exam/uiHandlers.pas": ["cbOptionOnClick"],
+  "sample_exam/script.pas": ["InitializeScreen", "StartScript"]
+}

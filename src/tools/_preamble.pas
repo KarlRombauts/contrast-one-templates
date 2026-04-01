@@ -1,0 +1,2 @@
+Var
+  GFlag: Boolean;
