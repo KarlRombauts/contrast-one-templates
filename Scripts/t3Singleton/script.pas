@@ -25,7 +25,6 @@
 
 // --- t3Singleton variants ---
 #include "shared/variants/GetGraphXValue.20week_t3Singleton.pas"
-#include "shared/variants/GetObstetricHistory.20week_t3Singleton.pas"
 #include "shared/variants/cbGestationTypeChange.t3Singleton.pas"
 #include "shared/variants/getCervixConclusion.t3Singleton.pas"
 #include "shared/variants/getFibroid.t3Singleton.pas"

@@ -11,18 +11,18 @@ begin
     if cxccbObstetricHistory.States[i] = 1 then
     begin
       if result <> '' then
-        result := result + '.  ';
+        result := AddFullStop(result);
       result := result + cxccbObstetricHistory.ShortDescription[i];
     end;
   end;
   if (cxccbObstetricHistory.States[cxccbObstetricHistory.Properties.Items.Count-1] = 1) then
   begin
     if result <> '' then
-      result := result + '.  ';
+      result := AddFullStop(result);
     result := result + trim(edtOtherPastHistory1.Text);
   end;
   if result <> '' then
-    result := AddFullStop(result);
+    result := 'Past History: ' + AddFullStop(result);
 end;
 
 procedure cxccbObstetricHistoryChange(Sender);

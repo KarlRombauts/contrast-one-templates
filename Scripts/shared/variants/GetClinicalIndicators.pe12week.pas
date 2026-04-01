@@ -19,7 +19,7 @@ begin
   begin
     if result <> '' then
       result := AddFullStop(result);
-    result := result + InItCaps(trim(edtReferralIndicator1.Text),False);
+    result := result + InitCaps(trim(edtReferralIndicator1.Text), False);
   end;
   if result <> '' then
     result := AddFullStop(result);

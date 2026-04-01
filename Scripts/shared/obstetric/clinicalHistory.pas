@@ -11,19 +11,18 @@ begin
     if cxccbReferralIndicators.States[i] = 1 then
     begin
       if result <> '' then
-        result := result + '.  ';
+        result := AddFullStop(result);
       result := result + cxccbReferralIndicators.ShortDescription[i];
     end;
-  end;                     
+  end;
   if (cxccbReferralIndicators.States[cxccbReferralIndicators.Properties.Items.Count-1] = 1) then
   begin
     if result <> '' then
-      result := result + '.  ';
-    result := result + trim(edtReferralIndicator1.Text);
+      result := AddFullStop(result);
+    result := result + InitCaps(trim(edtReferralIndicator1.Text), False);
   end;
   if result <> '' then
     result := AddFullStop(result);
-  result := result + ' ';  
 end;
 
 function GetClinicalHistory: String;
