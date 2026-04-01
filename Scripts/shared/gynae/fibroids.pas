@@ -20,43 +20,6 @@ begin
   result := InitCaps(result, False);
 end;
 
-function GetSingleCloseOrClear: String;
-begin
-  if cbCavityDistortion1.Checked then
-    result := 'close to the cervix'
-  else
-  begin
-    result := 'clear of the cervix';
-  end;
-  if seCloseToCrevix1.value > 0 then
-    result := result + ' (within ' + intToStr(Trunc(seCloseToCrevix1.value)) + ' mm)';
-end;
-
-function GetCavDistortionCount: Integer;
-begin
-  result := 0;
-  if (gbFibroid1.Visible) and (cbCavityDistortion1.Checked) and (cbCavityDistortion1.Enabled) then
-    result := Result + 1;
-  if (gbFibroid2.Visible) and (cbCavityDistortion2.Checked) and (cbCavityDistortion2.Enabled) then
-    result := Result + 1;
-  if (gbFibroid3.Visible) and (cbCavityDistortion3.Checked) and (cbCavityDistortion3.Enabled) then
-    result := Result + 1;
-  if (gbFibroid4.Visible) and (cbCavityDistortion4.Checked) and (cbCavityDistortion4.Enabled) then
-    result := Result + 1;
-  if (gbFibroid5.Visible) and (cbCavityDistortion5.Checked) and (cbCavityDistortion5.Enabled) then
-    result := Result + 1;
-  if (gbFibroid6.Visible) and (cbCavityDistortion6.Checked) and (cbCavityDistortion6.Enabled) then
-    result := Result + 1;
-  if (gbFibroid7.Visible) and (cbCavityDistortion7.Checked) and (cbCavityDistortion7.Enabled) then
-    result := Result + 1;
-  if (gbFibroid8.Visible) and (cbCavityDistortion8.Checked) and (cbCavityDistortion8.Enabled) then
-    result := Result + 1;
-  if (gbFibroid9.Visible) and (cbCavityDistortion9.Checked) and (cbCavityDistortion9.Enabled) then
-    result := Result + 1;
-  if (gbFibroid10.Visible) and (cbCavityDistortion10.Checked) and (cbCavityDistortion10.Enabled) then
-    result := Result + 1;
-end;
-
  function GetSingleFibroidDimensions: string;
 var
   v1, v2, v3,v4: Integer;
@@ -87,6 +50,44 @@ begin
   end;
   if result <> '' then
     result := ' ' + result;
+end;
+
+function GetSingleCloseOrClear: String;
+begin
+  if cbCavityDistortion1.Checked then
+    result := 'close to the cervix'
+  else
+  begin
+    result := 'clear of the cervix';
+  end;
+  if seCloseToCrevix1.value > 0 then
+    result := result + ' (within ' + intToStr(Trunc(seCloseToCrevix1.value)) + ' mm)';
+end;
+
+#ifndef NOGUI
+function GetCavDistortionCount: Integer;
+begin
+  result := 0;
+  if (gbFibroid1.Visible) and (cbCavityDistortion1.Checked) and (cbCavityDistortion1.Enabled) then
+    result := Result + 1;
+  if (gbFibroid2.Visible) and (cbCavityDistortion2.Checked) and (cbCavityDistortion2.Enabled) then
+    result := Result + 1;
+  if (gbFibroid3.Visible) and (cbCavityDistortion3.Checked) and (cbCavityDistortion3.Enabled) then
+    result := Result + 1;
+  if (gbFibroid4.Visible) and (cbCavityDistortion4.Checked) and (cbCavityDistortion4.Enabled) then
+    result := Result + 1;
+  if (gbFibroid5.Visible) and (cbCavityDistortion5.Checked) and (cbCavityDistortion5.Enabled) then
+    result := Result + 1;
+  if (gbFibroid6.Visible) and (cbCavityDistortion6.Checked) and (cbCavityDistortion6.Enabled) then
+    result := Result + 1;
+  if (gbFibroid7.Visible) and (cbCavityDistortion7.Checked) and (cbCavityDistortion7.Enabled) then
+    result := Result + 1;
+  if (gbFibroid8.Visible) and (cbCavityDistortion8.Checked) and (cbCavityDistortion8.Enabled) then
+    result := Result + 1;
+  if (gbFibroid9.Visible) and (cbCavityDistortion9.Checked) and (cbCavityDistortion9.Enabled) then
+    result := Result + 1;
+  if (gbFibroid10.Visible) and (cbCavityDistortion10.Checked) and (cbCavityDistortion10.Enabled) then
+    result := Result + 1;
 end;
 
 function GetSingleFibroid: string;
@@ -426,4 +427,5 @@ result := '';
      result :='';
 end;
 
+#endif
 #endif

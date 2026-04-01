@@ -27,6 +27,7 @@ begin
   result := (trunc(inExamDate) - Trunc(inLMPDate)) mod 7;
 end;
 
+#ifndef NOGUI
 function GetLMPWeeks(inDate: TDateTime): Integer;
 begin
   result := (trunc(now) - trunc(inDate)) div 7;
@@ -61,4 +62,5 @@ begin
     result :=  inW;
 end;
 
+#endif
 #endif

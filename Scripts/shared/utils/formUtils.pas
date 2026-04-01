@@ -16,6 +16,7 @@ begin
   end;
 end;
 
+#ifndef NOGUI
 procedure cbToggleCheckOnClick(Sender: TObject);
 var
   i: Integer;
@@ -34,6 +35,7 @@ begin
     end;
   end;
 end;
+#endif
 
 function Max(A, B: Integer): Integer;
 begin

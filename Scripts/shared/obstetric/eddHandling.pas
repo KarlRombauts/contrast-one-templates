@@ -91,6 +91,7 @@ begin
   PopulateEDDControls(deIVFEDD, seIVFGAWeeks, seIVFGADays);
 end;
 
+#ifndef NOGUI
 procedure cbDateOfConceptionOnChange(Sender);
 begin
   if deConceptionDate.Date > 0 then
@@ -188,4 +189,5 @@ begin
   cbPregnancyRedatedYes.checked := not(cbPregnancyRedatedYes.checked )
 end;
 
+#endif
 #endif
