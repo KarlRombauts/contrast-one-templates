@@ -1,0 +1,9 @@
+{
+  "splits": [
+    {"node_name": "cxGroupBox1", "filename": "patient-details.dfm"},
+    {"node_name": "cxtsFetusGeneral1", "filename": "fetus-general.dfm"},
+    {"node_name": "cxTabSheet4", "filename": "anatomy.dfm"},
+    {"node_name": "cxtsPlacentaLiquor", "filename": "placenta-liquor.dfm"},
+    {"node_name": "cxtsPlacenta", "filename": "maternal.dfm"}
+  ]
+}
