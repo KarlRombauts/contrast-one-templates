@@ -5056,7 +5056,6 @@ inherited Gynae: TGynae
                   end
                   object liPODOblLabel: TdxLayoutLabeledItem
                     CaptionOptions.Text = 'Obliteration'
-                    CaptionOptions.Layout = clTop
                   end
                   object liPODNone: TdxLayoutItem
                     CaptionOptions.Visible = False
