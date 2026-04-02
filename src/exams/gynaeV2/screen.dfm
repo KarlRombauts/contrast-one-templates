@@ -1591,58 +1591,32 @@ inherited Gynae: TGynae
                       Control = seFibroidCount
                       ControlOptions.ShowBorder = False
                     end
-                    object lgFibroidHeader: TdxLayoutGroup
-                      CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liFibHdr0: TdxLayoutLabeledItem
-                        CaptionOptions.Text = '#'
-                      end
-                      object liFibHdrSide: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Side'
-                      end
-                      object liFibHdrPos: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Position'
-                      end
-                      object liFibHdrType: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Type'
-                      end
-                      object liFibHdrDims: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Dimensions (mm)'
-                      end
-                      object liFibHdrCav: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Cavity'
-                      end
-                    end
 object lgFibroid1: TdxLayoutGroup
   CaptionOptions.Visible = False
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
   ShowBorder = True
-  Offsets.Top = 1
-  Offsets.Bottom = 1
   Visible = True
   object liFibIdx1: TdxLayoutLabeledItem
     CaptionOptions.Text = '#1'
   end
   object liFibSide1: TdxLayoutItem
-    CaptionOptions.Visible = False
+    CaptionOptions.Text = 'Side'
     Control = cmbFibroidSide1
     ControlOptions.ShowBorder = False
   end
   object liFibPos1: TdxLayoutItem
-    CaptionOptions.Visible = False
+    CaptionOptions.Text = 'Position'
     Control = cmbFibroidPosition1
     ControlOptions.ShowBorder = False
   end
   object liFibType1: TdxLayoutItem
-    CaptionOptions.Visible = False
+    CaptionOptions.Text = 'Type'
     Control = cmbFibroidType1
     ControlOptions.ShowBorder = False
   end
   object liFibL1: TdxLayoutItem
-    CaptionOptions.Visible = False
+    CaptionOptions.Text = 'Dimensions'
     Control = seFibroidLength1
     ControlOptions.ShowBorder = False
   end
@@ -1666,6 +1640,7 @@ object lgFibroid1: TdxLayoutGroup
     CaptionOptions.Text = 'mm'
   end
   object liFibCav1: TdxLayoutItem
+    CaptionOptions.Text = 'Cavity'
     CaptionOptions.Visible = False
     Control = chkCavityDistortion1
     ControlOptions.ShowBorder = False
@@ -1676,8 +1651,6 @@ object lgFibroid2: TdxLayoutGroup
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
   ShowBorder = True
-  Offsets.Top = 1
-  Offsets.Bottom = 1
   Visible = False
   object liFibIdx2: TdxLayoutLabeledItem
     CaptionOptions.Text = '#2'
@@ -1732,8 +1705,6 @@ object lgFibroid3: TdxLayoutGroup
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
   ShowBorder = True
-  Offsets.Top = 1
-  Offsets.Bottom = 1
   Visible = False
   object liFibIdx3: TdxLayoutLabeledItem
     CaptionOptions.Text = '#3'
@@ -1788,8 +1759,6 @@ object lgFibroid4: TdxLayoutGroup
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
   ShowBorder = True
-  Offsets.Top = 1
-  Offsets.Bottom = 1
   Visible = False
   object liFibIdx4: TdxLayoutLabeledItem
     CaptionOptions.Text = '#4'
@@ -1844,8 +1813,6 @@ object lgFibroid5: TdxLayoutGroup
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
   ShowBorder = True
-  Offsets.Top = 1
-  Offsets.Bottom = 1
   Visible = False
   object liFibIdx5: TdxLayoutLabeledItem
     CaptionOptions.Text = '#5'
@@ -1900,8 +1867,6 @@ object lgFibroid6: TdxLayoutGroup
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
   ShowBorder = True
-  Offsets.Top = 1
-  Offsets.Bottom = 1
   Visible = False
   object liFibIdx6: TdxLayoutLabeledItem
     CaptionOptions.Text = '#6'
@@ -1956,8 +1921,6 @@ object lgFibroid7: TdxLayoutGroup
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
   ShowBorder = True
-  Offsets.Top = 1
-  Offsets.Bottom = 1
   Visible = False
   object liFibIdx7: TdxLayoutLabeledItem
     CaptionOptions.Text = '#7'
@@ -2012,8 +1975,6 @@ object lgFibroid8: TdxLayoutGroup
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
   ShowBorder = True
-  Offsets.Top = 1
-  Offsets.Bottom = 1
   Visible = False
   object liFibIdx8: TdxLayoutLabeledItem
     CaptionOptions.Text = '#8'
@@ -2487,32 +2448,18 @@ end
                     Control = sePolypCount
                     ControlOptions.ShowBorder = False
                   end
-                  object lgPolypHeader: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liPHdrDims: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'Dimensions (mm)'
-                    end
-                    object liPHdrLoc: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'Location'
-                    end
-                  end
                   object lgPolyp1: TdxLayoutGroup
                     CaptionOptions.Text = '#1'
                     CaptionOptions.Visible = True
                     ButtonOptions.Buttons = <>
                     ShowBorder = True
-                    Offsets.Top = 1
-                    Offsets.Bottom = 1
                     object lgPolyp1Dims: TdxLayoutGroup
                       CaptionOptions.Visible = False
                       ButtonOptions.Buttons = <>
                       LayoutDirection = ldHorizontal
                       ShowBorder = False
                       object liPolyp1L: TdxLayoutItem
-                        CaptionOptions.Visible = False
+                        CaptionOptions.Text = 'Dims'
                         Control = sePolypLength1
                         ControlOptions.ShowBorder = False
                       end
@@ -2552,8 +2499,6 @@ object lgPolyp2: TdxLayoutGroup
                     CaptionOptions.Visible = True
                     ButtonOptions.Buttons = <>
                     ShowBorder = True
-                    Offsets.Top = 1
-                    Offsets.Bottom = 1
                     Visible = False
                     object lgPolyp2Dims: TdxLayoutGroup
                       CaptionOptions.Visible = False
@@ -2596,8 +2541,6 @@ object lgPolyp3: TdxLayoutGroup
                     CaptionOptions.Visible = True
                     ButtonOptions.Buttons = <>
                     ShowBorder = True
-                    Offsets.Top = 1
-                    Offsets.Bottom = 1
                     Visible = False
                     object lgPolyp3Dims: TdxLayoutGroup
                       CaptionOptions.Visible = False
@@ -2640,8 +2583,6 @@ object lgPolyp4: TdxLayoutGroup
                     CaptionOptions.Visible = True
                     ButtonOptions.Buttons = <>
                     ShowBorder = True
-                    Offsets.Top = 1
-                    Offsets.Bottom = 1
                     Visible = False
                     object lgPolyp4Dims: TdxLayoutGroup
                       CaptionOptions.Visible = False
@@ -6463,31 +6404,11 @@ object lgPolyp4: TdxLayoutGroup
                       Control = seBowelNoduleCount
                       ControlOptions.ShowBorder = False
                     end
-                    object lgBowelHeader: TdxLayoutGroup
-                      CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liBNHdrDims: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Dimensions'
-                      end
-                      object liBNHdrDist: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Distance'
-                      end
-                      object liBNHdrInv: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Invasion'
-                      end
-                      object liBNHdrStuck: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Stuck to'
-                      end
-                    end
                     object lgBowelNod1: TdxLayoutGroup
                       CaptionOptions.Text = '#1'
                       CaptionOptions.Visible = True
                       ButtonOptions.Buttons = <>
                       ShowBorder = True
-                      Offsets.Top = 1
-                      Offsets.Bottom = 1
                       object lgBN1Row1: TdxLayoutGroup
                         CaptionOptions.Visible = False
                         ButtonOptions.Buttons = <>
@@ -6521,7 +6442,7 @@ object lgPolyp4: TdxLayoutGroup
                           CaptionOptions.Text = 'mm'
                         end
                         object liBN1Dist: TdxLayoutItem
-                          CaptionOptions.Text = 'Distance from anus'
+                          CaptionOptions.Text = 'Dist. from anus'
                           Control = seBowelNod1DistAnus
                           ControlOptions.ShowBorder = False
                         end
@@ -6548,8 +6469,6 @@ object lgPolyp4: TdxLayoutGroup
                       CaptionOptions.Visible = True
                       ButtonOptions.Buttons = <>
                       ShowBorder = True
-                      Offsets.Top = 1
-                      Offsets.Bottom = 1
                       Visible = False
                       object lgBN2Row1: TdxLayoutGroup
                         CaptionOptions.Visible = False
@@ -6611,8 +6530,6 @@ object lgPolyp4: TdxLayoutGroup
                       CaptionOptions.Visible = True
                       ButtonOptions.Buttons = <>
                       ShowBorder = True
-                      Offsets.Top = 1
-                      Offsets.Bottom = 1
                       Visible = False
                       object lgBN3Row1: TdxLayoutGroup
                         CaptionOptions.Visible = False
