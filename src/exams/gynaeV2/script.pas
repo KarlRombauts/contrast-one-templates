@@ -125,12 +125,12 @@ end;
 
 procedure chkRightParaOvarianCystClick(Sender)
 begin
-  lgRightParaDims.Visible := chkRightParaOvarianCyst.Checked;
+  gbDimsRightParaCyst.Visible := chkRightParaOvarianCyst.Checked;
 end;
 
 procedure chkLeftParaOvarianCystClick(Sender)
 begin
-  lgLeftParaDims.Visible := chkLeftParaOvarianCyst.Checked;
+  gbDimsLeftParaCyst.Visible := chkLeftParaOvarianCyst.Checked;
 end;
 
 // --- Common Pathologies (layout groups) ---
