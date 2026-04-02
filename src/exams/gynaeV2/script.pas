@@ -275,6 +275,84 @@ begin
   lgTubalDetails.Visible := chkTubalPatencyPerformed.Checked;
 end;
 
+// --- Vaginal Vault: visualised hides detail ---
+
+procedure chkVaultVisualisedClick(Sender)
+begin
+  chkVaultThinRegular.Enabled := chkVaultVisualised.Checked;
+  chkVaginalNodule.Enabled := chkVaultVisualised.Checked;
+  if not chkVaultVisualised.Checked then
+  begin
+    chkVaultThinRegular.Checked := False;
+    chkVaginalNodule.Checked := False;
+    lgVaultDetails.Visible := False;
+  end;
+end;
+
+// --- Ovaries: haemorrhagic CL size conditional ---
+
+procedure chkRightHaemCLClick(Sender)
+begin
+  seRightHaemCLSize.Enabled := chkRightHaemorrhagicCL.Checked;
+end;
+
+procedure chkLeftHaemCLClick(Sender)
+begin
+  seLeftHaemCLSize.Enabled := chkLeftHaemorrhagicCL.Checked;
+end;
+
+// --- Ovaries: Total AFC calculation ---
+
+procedure UpdateTotalAFC(Sender)
+begin
+  lblTotalAFC.Caption := IntToStr(seRightAFC.Value + seLeftAFC.Value);
+end;
+
+// --- POD: free fluid enables depth ---
+
+procedure chkFreeFluidClick(Sender)
+begin
+  sePODDepth.Enabled := chkFreeFluid.Checked;
+end;
+
+// --- IOTA Simple Rules result ---
+
+procedure UpdateSimpleRulesResult(Sender)
+var
+  bCount, mCount: Integer;
+begin
+  bCount := 0;
+  mCount := 0;
+  if chkB1Unilocular.Checked then bCount := bCount + 1;
+  if chkB2SolidLessThan7.Checked then bCount := bCount + 1;
+  if chkB3AcousticShadows.Checked then bCount := bCount + 1;
+  if chkB4SmoothMultilocular.Checked then bCount := bCount + 1;
+  if chkB5NoBloodFlow.Checked then bCount := bCount + 1;
+  if chkM1IrregularSolid.Checked then mCount := mCount + 1;
+  if chkM2Ascites.Checked then mCount := mCount + 1;
+  if chkM3PapillaryProjections.Checked then mCount := mCount + 1;
+  if chkM4IrregularMultilocular.Checked then mCount := mCount + 1;
+  if chkM5HighBloodFlow.Checked then mCount := mCount + 1;
+
+  if (bCount > 0) and (mCount = 0) then
+    lblSimpleRulesResult.Caption := 'Benign'
+  else if (mCount > 0) and (bCount = 0) then
+    lblSimpleRulesResult.Caption := 'Malignant'
+  else if (bCount > 0) and (mCount > 0) then
+    lblSimpleRulesResult.Caption := 'Inconclusive'
+  else
+    lblSimpleRulesResult.Caption := '';
+end;
+
+// --- LMP/Cycle: hide when postmenopausal/amenorrhoea/unknown ---
+
+procedure LMPStatusClick(Sender)
+begin
+  deLMPDate.Enabled := not (chkLMPUnknown.Checked or chkAmenorrhoea.Checked or chkPostMenopausal.Checked);
+  seStartDay.Enabled := not (chkAmenorrhoea.Checked or chkPostMenopausal.Checked);
+  seCycleMinDays.Enabled := not (chkAmenorrhoea.Checked or chkPostMenopausal.Checked);
+end;
+
 // --- Uterus Mobility (radio toggle) ---
 
 procedure UterusMobilityClick(Sender)
@@ -393,6 +471,37 @@ begin
   // --- Kidneys ---
   chkRightKidneyVisualised.OnClick := 'chkRightKidneyVisualisedClick';
   chkLeftKidneyVisualised.OnClick := 'chkLeftKidneyVisualisedClick';
+
+  // --- Vaginal Vault ---
+  chkVaultVisualised.OnClick := 'chkVaultVisualisedClick';
+
+  // --- Ovary haemorrhagic CL ---
+  chkRightHaemorrhagicCL.OnClick := 'chkRightHaemCLClick';
+  chkLeftHaemorrhagicCL.OnClick := 'chkLeftHaemCLClick';
+
+  // --- Total AFC ---
+  seRightAFC.Properties.OnChange := 'UpdateTotalAFC';
+  seLeftAFC.Properties.OnChange := 'UpdateTotalAFC';
+
+  // --- POD free fluid ---
+  chkFreeFluid.OnClick := 'chkFreeFluidClick';
+
+  // --- IOTA Simple Rules ---
+  chkB1Unilocular.OnClick := 'UpdateSimpleRulesResult';
+  chkB2SolidLessThan7.OnClick := 'UpdateSimpleRulesResult';
+  chkB3AcousticShadows.OnClick := 'UpdateSimpleRulesResult';
+  chkB4SmoothMultilocular.OnClick := 'UpdateSimpleRulesResult';
+  chkB5NoBloodFlow.OnClick := 'UpdateSimpleRulesResult';
+  chkM1IrregularSolid.OnClick := 'UpdateSimpleRulesResult';
+  chkM2Ascites.OnClick := 'UpdateSimpleRulesResult';
+  chkM3PapillaryProjections.OnClick := 'UpdateSimpleRulesResult';
+  chkM4IrregularMultilocular.OnClick := 'UpdateSimpleRulesResult';
+  chkM5HighBloodFlow.OnClick := 'UpdateSimpleRulesResult';
+
+  // --- LMP status ---
+  chkLMPUnknown.OnClick := 'LMPStatusClick';
+  chkAmenorrhoea.OnClick := 'LMPStatusClick';
+  chkPostMenopausal.OnClick := 'LMPStatusClick';
 
   // --- Procedures ---
   chkSHGPerformed.OnClick := 'chkSHGPerformedClick';

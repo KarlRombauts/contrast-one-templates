@@ -469,7 +469,7 @@ inherited Gynae: TGynae
           object lblVersion: TcxLabel
             Left = 109
             Top = 215
-            Caption = 'v2.0 Gynae'
+            Caption = 'v3.0 Gynae'
             Transparent = True
           end
         end
@@ -1306,728 +1306,662 @@ inherited Gynae: TGynae
                 Hidden = True
                 LayoutDirection = ldVertical
                 ShowBorder = False
-              object liPosition: TdxLayoutItem
-                CaptionOptions.Text = 'Position'
-                Control = cmbUterusPosition
-                ControlOptions.ShowBorder = False
-              end
-              object lgMeasurements: TdxLayoutGroup
-                CaptionOptions.Text = 'Measurements'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liUterusL: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                CaptionOptions.Visible = False
-                Control = seUterusLength
-                ControlOptions.ShowBorder = False
-              end
-              object liUxW: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liUterusW: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seUterusWidth
-                ControlOptions.ShowBorder = False
-              end
-              object liUxH: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liUterusH: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seUterusHeight
-                ControlOptions.ShowBorder = False
-              end
-              object liUmm: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              object liUterusVol: TdxLayoutItem
-                CaptionOptions.Text = 'Vol'
-                Control = seUterusVolume
-                ControlOptions.ShowBorder = False
-              end
-              object liUcc: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'cc'
-              end
-              object liSizeClass: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = lblUterusSizeClass
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgHysterectomy: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liHysterectomy: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkHysterectomy
-                ControlOptions.ShowBorder = False
-              end
-              object liCervixPresent: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCervixPresent
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object liCongenital: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCongenitalAbnormality
-                ControlOptions.ShowBorder = False
-              end
-              object lgCongenitalDetails: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object liCongenitalType: TdxLayoutItem
-                CaptionOptions.Text = 'Type'
-                Control = cmbCongenitalType
-                ControlOptions.ShowBorder = False
-              end
-              object lgSeptum: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liSeptumLabel: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'Septum'
-              end
-              object liSeptumL: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                Control = seSeptumLength
-                ControlOptions.ShowBorder = False
-              end
-              object liSeptumW: TdxLayoutItem
-                CaptionOptions.Text = 'W'
-                Control = seSeptumWidth
-                ControlOptions.ShowBorder = False
-              end
-              object liSeptumMM: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              end
-              end
-              object liLSCS: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkLSCSScar
-                ControlOptions.ShowBorder = False
-              end
-              object liMyoSep: TdxLayoutSeparatorItem
-                CaptionOptions.Text = 'Myometrium'
-              end
-              object liAdenomyosis: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkAdenomyosis
-                ControlOptions.ShowBorder = False
-              end
-              object lgAdenomyosisDetails: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object lgAdenoType: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liAdenoDiffuse: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = rbAdenoDiffuse
-                ControlOptions.ShowBorder = False
-              end
-              object liAdenoFocal: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = rbAdenoFocal
-                ControlOptions.ShowBorder = False
-              end
-              object liInfiltratingSerosa: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkInfiltratingSerosa
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object liIrregularJZ: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkIrregularJunctionalZone
-                ControlOptions.ShowBorder = False
-              end
-              object liAdenoSeverity: TdxLayoutItem
-                CaptionOptions.Text = 'Severity'
-                Control = cmbAdenomyosisSeverity
-                ControlOptions.ShowBorder = False
-              end
-              object lgAdenoFeatures: TdxLayoutGroup
-                CaptionOptions.Text = 'Associated features'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liEndoBuds: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkEndometrialBuds
-                ControlOptions.ShowBorder = False
-              end
-              object liEndoIslets: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkEndometrialIslets
-                ControlOptions.ShowBorder = False
-              end
-              object liMyoCysts: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkMyometrialCysts
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgAdenoFeatures2: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liVenetian: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkVenetianBlind
-                ControlOptions.ShowBorder = False
-              end
-              object liPriorAblation: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkPriorAblation
-                ControlOptions.ShowBorder = False
-              end
-              end
-              end
-              object liFibSep: TdxLayoutSeparatorItem
-                CaptionOptions.Text = 'Fibroids'
-              end
-              object liFibroidsPresent: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkFibroidsPresent
-                ControlOptions.ShowBorder = False
-              end
-              object lgFibroidsDetails: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object liFibroidCount: TdxLayoutItem
-                CaptionOptions.Text = 'Count'
-                Control = seFibroidCount
-                ControlOptions.ShowBorder = False
-              end
-              object lgFibroid1: TdxLayoutGroup
-                CaptionOptions.Text = 'Fibroid 1'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-              object lgFib1Row1: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibSide1: TdxLayoutItem
-                CaptionOptions.Text = 'Side'
-                Control = cmbFibroidSide1
-                ControlOptions.ShowBorder = False
-              end
-              object liFibPos1: TdxLayoutItem
-                CaptionOptions.Text = 'Position'
-                Control = cmbFibroidPosition1
-                ControlOptions.ShowBorder = False
-              end
-              object liFibType1: TdxLayoutItem
-                CaptionOptions.Text = 'Type'
-                Control = cmbFibroidType1
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgFib1Row2: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibL1: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                CaptionOptions.Visible = False
-                Control = seFibroidLength1
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx1a: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibW1: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidWidth1
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx1b: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibD1: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidDepth1
-                ControlOptions.ShowBorder = False
-              end
-              object liFibmm1: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              object liFibCav1: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCavityDistortion1
-                ControlOptions.ShowBorder = False
-              end
-              end
-              end
-              object lgFibroid2: TdxLayoutGroup
-                CaptionOptions.Text = 'Fibroid 2'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object lgFib2Row1: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibSide2: TdxLayoutItem
-                CaptionOptions.Text = 'Side'
-                Control = cmbFibroidSide2
-                ControlOptions.ShowBorder = False
-              end
-              object liFibPos2: TdxLayoutItem
-                CaptionOptions.Text = 'Position'
-                Control = cmbFibroidPosition2
-                ControlOptions.ShowBorder = False
-              end
-              object liFibType2: TdxLayoutItem
-                CaptionOptions.Text = 'Type'
-                Control = cmbFibroidType2
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgFib2Row2: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibL2: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                CaptionOptions.Visible = False
-                Control = seFibroidLength2
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx2a: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibW2: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidWidth2
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx2b: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibD2: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidDepth2
-                ControlOptions.ShowBorder = False
-              end
-              object liFibmm2: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              object liFibCav2: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCavityDistortion2
-                ControlOptions.ShowBorder = False
-              end
-              end
-              end
-              object lgFibroid3: TdxLayoutGroup
-                CaptionOptions.Text = 'Fibroid 3'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object lgFib3Row1: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibSide3: TdxLayoutItem
-                CaptionOptions.Text = 'Side'
-                Control = cmbFibroidSide3
-                ControlOptions.ShowBorder = False
-              end
-              object liFibPos3: TdxLayoutItem
-                CaptionOptions.Text = 'Position'
-                Control = cmbFibroidPosition3
-                ControlOptions.ShowBorder = False
-              end
-              object liFibType3: TdxLayoutItem
-                CaptionOptions.Text = 'Type'
-                Control = cmbFibroidType3
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgFib3Row2: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibL3: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                CaptionOptions.Visible = False
-                Control = seFibroidLength3
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx3a: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibW3: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidWidth3
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx3b: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibD3: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidDepth3
-                ControlOptions.ShowBorder = False
-              end
-              object liFibmm3: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              object liFibCav3: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCavityDistortion3
-                ControlOptions.ShowBorder = False
-              end
-              end
-              end
-              object lgFibroid4: TdxLayoutGroup
-                CaptionOptions.Text = 'Fibroid 4'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object lgFib4Row1: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibSide4: TdxLayoutItem
-                CaptionOptions.Text = 'Side'
-                Control = cmbFibroidSide4
-                ControlOptions.ShowBorder = False
-              end
-              object liFibPos4: TdxLayoutItem
-                CaptionOptions.Text = 'Position'
-                Control = cmbFibroidPosition4
-                ControlOptions.ShowBorder = False
-              end
-              object liFibType4: TdxLayoutItem
-                CaptionOptions.Text = 'Type'
-                Control = cmbFibroidType4
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgFib4Row2: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibL4: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                CaptionOptions.Visible = False
-                Control = seFibroidLength4
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx4a: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibW4: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidWidth4
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx4b: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibD4: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidDepth4
-                ControlOptions.ShowBorder = False
-              end
-              object liFibmm4: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              object liFibCav4: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCavityDistortion4
-                ControlOptions.ShowBorder = False
-              end
-              end
-              end
-              object lgFibroid5: TdxLayoutGroup
-                CaptionOptions.Text = 'Fibroid 5'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object lgFib5Row1: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibSide5: TdxLayoutItem
-                CaptionOptions.Text = 'Side'
-                Control = cmbFibroidSide5
-                ControlOptions.ShowBorder = False
-              end
-              object liFibPos5: TdxLayoutItem
-                CaptionOptions.Text = 'Position'
-                Control = cmbFibroidPosition5
-                ControlOptions.ShowBorder = False
-              end
-              object liFibType5: TdxLayoutItem
-                CaptionOptions.Text = 'Type'
-                Control = cmbFibroidType5
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgFib5Row2: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibL5: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                CaptionOptions.Visible = False
-                Control = seFibroidLength5
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx5a: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibW5: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidWidth5
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx5b: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibD5: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidDepth5
-                ControlOptions.ShowBorder = False
-              end
-              object liFibmm5: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              object liFibCav5: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCavityDistortion5
-                ControlOptions.ShowBorder = False
-              end
-              end
-              end
-              object lgFibroid6: TdxLayoutGroup
-                CaptionOptions.Text = 'Fibroid 6'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object lgFib6Row1: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibSide6: TdxLayoutItem
-                CaptionOptions.Text = 'Side'
-                Control = cmbFibroidSide6
-                ControlOptions.ShowBorder = False
-              end
-              object liFibPos6: TdxLayoutItem
-                CaptionOptions.Text = 'Position'
-                Control = cmbFibroidPosition6
-                ControlOptions.ShowBorder = False
-              end
-              object liFibType6: TdxLayoutItem
-                CaptionOptions.Text = 'Type'
-                Control = cmbFibroidType6
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgFib6Row2: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibL6: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                CaptionOptions.Visible = False
-                Control = seFibroidLength6
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx6a: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibW6: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidWidth6
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx6b: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibD6: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidDepth6
-                ControlOptions.ShowBorder = False
-              end
-              object liFibmm6: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              object liFibCav6: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCavityDistortion6
-                ControlOptions.ShowBorder = False
-              end
-              end
-              end
-              object lgFibroid7: TdxLayoutGroup
-                CaptionOptions.Text = 'Fibroid 7'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object lgFib7Row1: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibSide7: TdxLayoutItem
-                CaptionOptions.Text = 'Side'
-                Control = cmbFibroidSide7
-                ControlOptions.ShowBorder = False
-              end
-              object liFibPos7: TdxLayoutItem
-                CaptionOptions.Text = 'Position'
-                Control = cmbFibroidPosition7
-                ControlOptions.ShowBorder = False
-              end
-              object liFibType7: TdxLayoutItem
-                CaptionOptions.Text = 'Type'
-                Control = cmbFibroidType7
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgFib7Row2: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibL7: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                CaptionOptions.Visible = False
-                Control = seFibroidLength7
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx7a: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibW7: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidWidth7
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx7b: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibD7: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidDepth7
-                ControlOptions.ShowBorder = False
-              end
-              object liFibmm7: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              object liFibCav7: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCavityDistortion7
-                ControlOptions.ShowBorder = False
-              end
-              end
-              end
-              object lgFibroid8: TdxLayoutGroup
-                CaptionOptions.Text = 'Fibroid 8'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = False
-                Visible = False
-              object lgFib8Row1: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibSide8: TdxLayoutItem
-                CaptionOptions.Text = 'Side'
-                Control = cmbFibroidSide8
-                ControlOptions.ShowBorder = False
-              end
-              object liFibPos8: TdxLayoutItem
-                CaptionOptions.Text = 'Position'
-                Control = cmbFibroidPosition8
-                ControlOptions.ShowBorder = False
-              end
-              object liFibType8: TdxLayoutItem
-                CaptionOptions.Text = 'Type'
-                Control = cmbFibroidType8
-                ControlOptions.ShowBorder = False
-              end
-              end
-              object lgFib8Row2: TdxLayoutGroup
-                CaptionOptions.Visible = False
-                ButtonOptions.Buttons = <>
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-              object liFibL8: TdxLayoutItem
-                CaptionOptions.Text = 'L'
-                CaptionOptions.Visible = False
-                Control = seFibroidLength8
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx8a: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibW8: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidWidth8
-                ControlOptions.ShowBorder = False
-              end
-              object liFibx8b: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'x'
-              end
-              object liFibD8: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = seFibroidDepth8
-                ControlOptions.ShowBorder = False
-              end
-              object liFibmm8: TdxLayoutLabeledItem
-                CaptionOptions.Text = 'mm'
-              end
-              object liFibCav8: TdxLayoutItem
-                CaptionOptions.Visible = False
-                Control = chkCavityDistortion8
-                ControlOptions.ShowBorder = False
-              end
-              end
-              end
-              end
+
+                object lgGeneral: TdxLayoutGroup
+                  CaptionOptions.Text = 'General'
+                  CaptionOptions.Visible = True
+                  ButtonOptions.Buttons = <>
+                  ShowBorder = True
+                  object liPosition: TdxLayoutItem
+                    CaptionOptions.Text = 'Position'
+                    Control = cmbUterusPosition
+                    ControlOptions.ShowBorder = False
+                  end
+                  object lgMeasurements: TdxLayoutGroup
+                    CaptionOptions.Visible = False
+                    ButtonOptions.Buttons = <>
+                    LayoutDirection = ldHorizontal
+                    ShowBorder = False
+                    object liUterusL: TdxLayoutItem
+                      CaptionOptions.Text = 'Measured'
+                      Control = seUterusLength
+                      ControlOptions.ShowBorder = False
+                    end
+                    object liUxW: TdxLayoutLabeledItem
+                      CaptionOptions.Text = 'x'
+                    end
+                    object liUterusW: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = seUterusWidth
+                      ControlOptions.ShowBorder = False
+                    end
+                    object liUxH: TdxLayoutLabeledItem
+                      CaptionOptions.Text = 'x'
+                    end
+                    object liUterusH: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = seUterusHeight
+                      ControlOptions.ShowBorder = False
+                    end
+                    object liUmm: TdxLayoutLabeledItem
+                      CaptionOptions.Text = 'mm'
+                    end
+                    object liUterusVol: TdxLayoutItem
+                      CaptionOptions.Text = 'Vol'
+                      Control = seUterusVolume
+                      ControlOptions.ShowBorder = False
+                    end
+                    object liUcc: TdxLayoutLabeledItem
+                      CaptionOptions.Text = 'cc'
+                    end
+                    object liSizeClass: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = lblUterusSizeClass
+                      ControlOptions.ShowBorder = False
+                    end
+                  end
+                  object lgHysterectomy: TdxLayoutGroup
+                    CaptionOptions.Visible = False
+                    ButtonOptions.Buttons = <>
+                    LayoutDirection = ldHorizontal
+                    ShowBorder = False
+                    object liHysterectomy: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = chkHysterectomy
+                      ControlOptions.ShowBorder = False
+                    end
+                    object liCervixPresent: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = chkCervixPresent
+                      ControlOptions.ShowBorder = False
+                    end
+                  end
+                  object liCongenital: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = chkCongenitalAbnormality
+                    ControlOptions.ShowBorder = False
+                  end
+                  object lgCongenitalDetails: TdxLayoutGroup
+                    CaptionOptions.Visible = False
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = False
+                    Visible = False
+                    object liCongenitalType: TdxLayoutItem
+                      CaptionOptions.Text = 'Type'
+                      Control = cmbCongenitalType
+                      ControlOptions.ShowBorder = False
+                    end
+                    object lgSeptum: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liSeptumLabel: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'Septum'
+                      end
+                      object liSeptumL: TdxLayoutItem
+                        CaptionOptions.Text = 'L'
+                        Control = seSeptumLength
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liSeptumW: TdxLayoutItem
+                        CaptionOptions.Text = 'W'
+                        Control = seSeptumWidth
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liSeptumMM: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                    end
+                  end
+                  object liLSCS: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = chkLSCSScar
+                    ControlOptions.ShowBorder = False
+                  end
+                end
+
+                object lgAdenomyosis: TdxLayoutGroup
+                  CaptionOptions.Text = 'Adenomyosis'
+                  CaptionOptions.Visible = True
+                  ButtonOptions.Buttons = <>
+                  ShowBorder = True
+                  object liAdenomyosis: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = chkAdenomyosis
+                    ControlOptions.ShowBorder = False
+                  end
+                  object lgAdenomyosisDetails: TdxLayoutGroup
+                    CaptionOptions.Visible = False
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = False
+                    Visible = False
+                    object lgAdenoType: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liAdenoDiffuse: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = rbAdenoDiffuse
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liAdenoFocal: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = rbAdenoFocal
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liInfiltratingSerosa: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = chkInfiltratingSerosa
+                        ControlOptions.ShowBorder = False
+                      end
+                    end
+                    object liIrregularJZ: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = chkIrregularJunctionalZone
+                      ControlOptions.ShowBorder = False
+                    end
+                    object liAdenoSeverity: TdxLayoutItem
+                      CaptionOptions.Text = 'Severity'
+                      Control = cmbAdenomyosisSeverity
+                      ControlOptions.ShowBorder = False
+                    end
+                    object lgAdenoFeatures: TdxLayoutGroup
+                      CaptionOptions.Text = 'Associated features'
+                      CaptionOptions.Visible = True
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liEndoBuds: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = chkEndometrialBuds
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liEndoIslets: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = chkEndometrialIslets
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liMyoCysts: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = chkMyometrialCysts
+                        ControlOptions.ShowBorder = False
+                      end
+                    end
+                    object lgAdenoFeatures2: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liVenetian: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = chkVenetianBlind
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPriorAblation: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = chkPriorAblation
+                        ControlOptions.ShowBorder = False
+                      end
+                    end
+                  end
+                end
+
+                object lgFibroids: TdxLayoutGroup
+                  CaptionOptions.Text = 'Fibroids'
+                  CaptionOptions.Visible = True
+                  ButtonOptions.Buttons = <>
+                  ShowBorder = True
+                  object liFibroidsPresent: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = chkFibroidsPresent
+                    ControlOptions.ShowBorder = False
+                  end
+                  object lgFibroidsDetails: TdxLayoutGroup
+                    CaptionOptions.Visible = False
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = False
+                    Visible = False
+                    object liFibroidCount: TdxLayoutItem
+                      CaptionOptions.Text = 'Count'
+                      Control = seFibroidCount
+                      ControlOptions.ShowBorder = False
+                    end
+object lgFibroid1: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  Visible = True
+  object liFibIdx1: TdxLayoutLabeledItem
+    CaptionOptions.Text = '#1'
+  end
+  object liFibSide1: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidSide1
+    ControlOptions.ShowBorder = False
+  end
+  object liFibPos1: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidPosition1
+    ControlOptions.ShowBorder = False
+  end
+  object liFibType1: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidType1
+    ControlOptions.ShowBorder = False
+  end
+  object liFibL1: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidLength1
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx1a: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibW1: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidWidth1
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx1b: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibD1: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidDepth1
+    ControlOptions.ShowBorder = False
+  end
+  object liFibmm1: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'mm'
+  end
+  object liFibCav1: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkCavityDistortion1
+    ControlOptions.ShowBorder = False
+  end
+end
+object lgFibroid2: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  Visible = False
+  object liFibIdx2: TdxLayoutLabeledItem
+    CaptionOptions.Text = '#2'
+  end
+  object liFibSide2: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidSide2
+    ControlOptions.ShowBorder = False
+  end
+  object liFibPos2: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidPosition2
+    ControlOptions.ShowBorder = False
+  end
+  object liFibType2: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidType2
+    ControlOptions.ShowBorder = False
+  end
+  object liFibL2: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidLength2
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx2a: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibW2: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidWidth2
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx2b: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibD2: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidDepth2
+    ControlOptions.ShowBorder = False
+  end
+  object liFibmm2: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'mm'
+  end
+  object liFibCav2: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkCavityDistortion2
+    ControlOptions.ShowBorder = False
+  end
+end
+object lgFibroid3: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  Visible = False
+  object liFibIdx3: TdxLayoutLabeledItem
+    CaptionOptions.Text = '#3'
+  end
+  object liFibSide3: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidSide3
+    ControlOptions.ShowBorder = False
+  end
+  object liFibPos3: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidPosition3
+    ControlOptions.ShowBorder = False
+  end
+  object liFibType3: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidType3
+    ControlOptions.ShowBorder = False
+  end
+  object liFibL3: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidLength3
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx3a: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibW3: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidWidth3
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx3b: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibD3: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidDepth3
+    ControlOptions.ShowBorder = False
+  end
+  object liFibmm3: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'mm'
+  end
+  object liFibCav3: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkCavityDistortion3
+    ControlOptions.ShowBorder = False
+  end
+end
+object lgFibroid4: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  Visible = False
+  object liFibIdx4: TdxLayoutLabeledItem
+    CaptionOptions.Text = '#4'
+  end
+  object liFibSide4: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidSide4
+    ControlOptions.ShowBorder = False
+  end
+  object liFibPos4: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidPosition4
+    ControlOptions.ShowBorder = False
+  end
+  object liFibType4: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidType4
+    ControlOptions.ShowBorder = False
+  end
+  object liFibL4: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidLength4
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx4a: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibW4: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidWidth4
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx4b: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibD4: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidDepth4
+    ControlOptions.ShowBorder = False
+  end
+  object liFibmm4: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'mm'
+  end
+  object liFibCav4: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkCavityDistortion4
+    ControlOptions.ShowBorder = False
+  end
+end
+object lgFibroid5: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  Visible = False
+  object liFibIdx5: TdxLayoutLabeledItem
+    CaptionOptions.Text = '#5'
+  end
+  object liFibSide5: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidSide5
+    ControlOptions.ShowBorder = False
+  end
+  object liFibPos5: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidPosition5
+    ControlOptions.ShowBorder = False
+  end
+  object liFibType5: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidType5
+    ControlOptions.ShowBorder = False
+  end
+  object liFibL5: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidLength5
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx5a: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibW5: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidWidth5
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx5b: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibD5: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidDepth5
+    ControlOptions.ShowBorder = False
+  end
+  object liFibmm5: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'mm'
+  end
+  object liFibCav5: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkCavityDistortion5
+    ControlOptions.ShowBorder = False
+  end
+end
+object lgFibroid6: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  Visible = False
+  object liFibIdx6: TdxLayoutLabeledItem
+    CaptionOptions.Text = '#6'
+  end
+  object liFibSide6: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidSide6
+    ControlOptions.ShowBorder = False
+  end
+  object liFibPos6: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidPosition6
+    ControlOptions.ShowBorder = False
+  end
+  object liFibType6: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidType6
+    ControlOptions.ShowBorder = False
+  end
+  object liFibL6: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidLength6
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx6a: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibW6: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidWidth6
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx6b: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibD6: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidDepth6
+    ControlOptions.ShowBorder = False
+  end
+  object liFibmm6: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'mm'
+  end
+  object liFibCav6: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkCavityDistortion6
+    ControlOptions.ShowBorder = False
+  end
+end
+object lgFibroid7: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  Visible = False
+  object liFibIdx7: TdxLayoutLabeledItem
+    CaptionOptions.Text = '#7'
+  end
+  object liFibSide7: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidSide7
+    ControlOptions.ShowBorder = False
+  end
+  object liFibPos7: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidPosition7
+    ControlOptions.ShowBorder = False
+  end
+  object liFibType7: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidType7
+    ControlOptions.ShowBorder = False
+  end
+  object liFibL7: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidLength7
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx7a: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibW7: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidWidth7
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx7b: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibD7: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidDepth7
+    ControlOptions.ShowBorder = False
+  end
+  object liFibmm7: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'mm'
+  end
+  object liFibCav7: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkCavityDistortion7
+    ControlOptions.ShowBorder = False
+  end
+end
+object lgFibroid8: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  Visible = False
+  object liFibIdx8: TdxLayoutLabeledItem
+    CaptionOptions.Text = '#8'
+  end
+  object liFibSide8: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidSide8
+    ControlOptions.ShowBorder = False
+  end
+  object liFibPos8: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidPosition8
+    ControlOptions.ShowBorder = False
+  end
+  object liFibType8: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = cmbFibroidType8
+    ControlOptions.ShowBorder = False
+  end
+  object liFibL8: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidLength8
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx8a: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibW8: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidWidth8
+    ControlOptions.ShowBorder = False
+  end
+  object liFibx8b: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'x'
+  end
+  object liFibD8: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = seFibroidDepth8
+    ControlOptions.ShowBorder = False
+  end
+  object liFibmm8: TdxLayoutLabeledItem
+    CaptionOptions.Text = 'mm'
+  end
+  object liFibCav8: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkCavityDistortion8
+    ControlOptions.ShowBorder = False
+  end
+end
+                  end
+                end
               end
             end
           end
@@ -5011,6 +4945,15 @@ inherited Gynae: TGynae
                 Transparent = True
                 Width = 130
               end
+              object sePODDepth: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Enabled = False
+                TabOrder = 74
+                Width = 35
+              end
               object rbPODNoObliteration: TcxCheckBox
                 Left = 10000
                 Top = 10000
@@ -5698,6 +5641,9 @@ inherited Gynae: TGynae
                       ControlOptions.ShowBorder = False
                     end
                   end
+                  object liVaultSep: TdxLayoutSeparatorItem
+                    CaptionOptions.Text = 'Vaginal Nodule'
+                  end
                   object liVagNodule: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = chkVaginalNodule
@@ -5754,10 +5700,24 @@ inherited Gynae: TGynae
                   CaptionOptions.Visible = True
                   ButtonOptions.Buttons = <>
                   ShowBorder = True
-                  object liFreeFluid: TdxLayoutItem
+                  object lgFreeFluidRow: TdxLayoutGroup
                     CaptionOptions.Visible = False
-                    Control = chkFreeFluid
-                    ControlOptions.ShowBorder = False
+                    ButtonOptions.Buttons = <>
+                    LayoutDirection = ldHorizontal
+                    ShowBorder = False
+                    object liFreeFluid: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = chkFreeFluid
+                      ControlOptions.ShowBorder = False
+                    end
+                    object liPODDepth: TdxLayoutItem
+                      CaptionOptions.Text = 'Depth'
+                      Control = sePODDepth
+                      ControlOptions.ShowBorder = False
+                    end
+                    object liPODmm: TdxLayoutLabeledItem
+                      CaptionOptions.Text = 'mm'
+                    end
                   end
                   object liPODOblLabel: TdxLayoutLabeledItem
                     CaptionOptions.Text = 'Obliteration'
@@ -5892,32 +5852,43 @@ inherited Gynae: TGynae
                       CaptionOptions.Text = 'Stuck to'
                       CaptionOptions.Visible = True
                       ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
                       ShowBorder = False
-                      object liRCStuckLO: TdxLayoutItem
+                      object lgRCStuckRow1: TdxLayoutGroup
                         CaptionOptions.Visible = False
-                        Control = chkRCStuckLeftOvary
-                        ControlOptions.ShowBorder = False
+                        ButtonOptions.Buttons = <>
+                        LayoutDirection = ldHorizontal
+                        ShowBorder = False
+                        object liRCStuckLO: TdxLayoutItem
+                          CaptionOptions.Visible = False
+                          Control = chkRCStuckLeftOvary
+                          ControlOptions.ShowBorder = False
+                        end
+                        object liRCStuckRO: TdxLayoutItem
+                          CaptionOptions.Visible = False
+                          Control = chkRCStuckRightOvary
+                          ControlOptions.ShowBorder = False
+                        end
+                        object liRCStuckBowel: TdxLayoutItem
+                          CaptionOptions.Visible = False
+                          Control = chkRCStuckBowel
+                          ControlOptions.ShowBorder = False
+                        end
                       end
-                      object liRCStuckRO: TdxLayoutItem
+                      object lgRCStuckRow2: TdxLayoutGroup
                         CaptionOptions.Visible = False
-                        Control = chkRCStuckRightOvary
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRCStuckBowel: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRCStuckBowel
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRCStuckBN: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRCStuckBowelNodule
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRCStuckBF: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRCStuckBowelFat
-                        ControlOptions.ShowBorder = False
+                        ButtonOptions.Buttons = <>
+                        LayoutDirection = ldHorizontal
+                        ShowBorder = False
+                        object liRCStuckBN: TdxLayoutItem
+                          CaptionOptions.Visible = False
+                          Control = chkRCStuckBowelNodule
+                          ControlOptions.ShowBorder = False
+                        end
+                        object liRCStuckBF: TdxLayoutItem
+                          CaptionOptions.Visible = False
+                          Control = chkRCStuckBowelFat
+                          ControlOptions.ShowBorder = False
+                        end
                       end
                     end
                     object lgRCTenderness: TdxLayoutGroup

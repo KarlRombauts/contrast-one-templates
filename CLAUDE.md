@@ -31,8 +31,14 @@ cd Scripts/tools && python3 reversesync.py ../earlyT1Singleton/mapping.json expo
 # Decompose an exported binary template into its component files
 bash Scripts/tools/filesplit.sh <export_file> <output_directory>
 
+# Query/navigate DFM files (ALWAYS use this when editing DFM files)
+python3 src/tools/dfmquery.py list <file> [--type TYPE] [--depth N]
+python3 src/tools/dfmquery.py get <file> <name> [--children] [--offsets]
+python3 src/tools/dfmquery.py children <file> <name>
+python3 src/tools/dfmquery.py validate <file>
+
 # Run tests
-cd Scripts/tools && .venv/bin/python3 -m pytest tests/ -v
+cd src/tools && .venv/bin/python3 -m pytest tests/ -v
 ```
 
 ### GPP Preprocessor Directives
