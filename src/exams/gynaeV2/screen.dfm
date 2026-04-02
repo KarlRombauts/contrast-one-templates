@@ -874,7 +874,7 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Edges = []
                 TabOrder = 0
                 Transparent = True
                 Height = 22
@@ -979,9 +979,9 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Color = 15790320
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Visible = False
                 Height = 22
                 Width = 620
@@ -1085,7 +1085,7 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Edges = []
                 TabOrder = 0
                 Transparent = True
                 Visible = False
@@ -1191,9 +1191,9 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Color = 15790320
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Visible = False
                 Height = 22
                 Width = 620
@@ -1297,7 +1297,7 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Edges = []
                 TabOrder = 0
                 Transparent = True
                 Visible = False
@@ -1403,9 +1403,9 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Color = 15790320
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Visible = False
                 Height = 22
                 Width = 620
@@ -1509,7 +1509,7 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Edges = []
                 TabOrder = 0
                 Transparent = True
                 Visible = False
@@ -1615,9 +1615,9 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Color = 15790320
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Visible = False
                 Height = 22
                 Width = 620
@@ -1721,7 +1721,7 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Edges = []
                 TabOrder = 0
                 Transparent = True
                 Visible = False
@@ -1827,9 +1827,9 @@ inherited Gynae: TGynae
                 Top = 10000
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
-                Style.Edges = [bBottom]
+                Style.Color = 15790320
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Visible = False
                 Height = 22
                 Width = 620
