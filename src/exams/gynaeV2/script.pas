@@ -41,7 +41,7 @@ end;
 
 procedure ccbPastSurgeryChange(Sender)
 begin
-  gbLaparoscopy.Visible := (ccbPastSurgery.States[6] = 1);
+  lgLaparoscopy.Visible := (ccbPastSurgery.States[6] = 1);
 end;
 
 // --- Uterus ---
@@ -90,6 +90,14 @@ end;
 procedure chkRPOCClick(Sender)
 begin
   lgRPOCDetails.Visible := chkRPOC.Checked;
+end;
+
+procedure sePolypCountChange(Sender)
+begin
+  lgPolyp1.Visible := (sePolypCount.Value >= 1);
+  lgPolyp2.Visible := (sePolypCount.Value >= 2);
+  lgPolyp3.Visible := (sePolypCount.Value >= 3);
+  lgPolyp4.Visible := (sePolypCount.Value >= 4);
 end;
 
 // --- Ovary Status (radio checkboxes) ---
@@ -420,6 +428,7 @@ begin
 
   // --- Endometrium ---
   chkFocalLesion.OnClick := 'chkFocalLesionClick';
+  sePolypCount.Properties.OnChange := 'sePolypCountChange';
   chkRPOC.OnClick := 'chkRPOCClick';
 
   // --- Ovary Status (radio checkboxes) ---
