@@ -872,11 +872,10 @@ inherited Gynae: TGynae
               object gbFibRow1: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Height = 22
                 Width = 620
                 object lblFibIdx1: TcxLabel
@@ -977,9 +976,9 @@ inherited Gynae: TGynae
               object gbFibRow2: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                Color = 15790320
+                ParentColor = False
                 Style.BorderStyle = ebsNone
-                Style.Color = 15790320
                 Style.Edges = []
                 TabOrder = 0
                 Visible = False
@@ -1083,11 +1082,10 @@ inherited Gynae: TGynae
               object gbFibRow3: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Visible = False
                 Height = 22
                 Width = 620
@@ -1189,9 +1187,9 @@ inherited Gynae: TGynae
               object gbFibRow4: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                Color = 15790320
+                ParentColor = False
                 Style.BorderStyle = ebsNone
-                Style.Color = 15790320
                 Style.Edges = []
                 TabOrder = 0
                 Visible = False
@@ -1295,11 +1293,10 @@ inherited Gynae: TGynae
               object gbFibRow5: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Visible = False
                 Height = 22
                 Width = 620
@@ -1401,9 +1398,9 @@ inherited Gynae: TGynae
               object gbFibRow6: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                Color = 15790320
+                ParentColor = False
                 Style.BorderStyle = ebsNone
-                Style.Color = 15790320
                 Style.Edges = []
                 TabOrder = 0
                 Visible = False
@@ -1507,11 +1504,10 @@ inherited Gynae: TGynae
               object gbFibRow7: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Visible = False
                 Height = 22
                 Width = 620
@@ -1613,9 +1609,9 @@ inherited Gynae: TGynae
               object gbFibRow8: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                Color = 15790320
+                ParentColor = False
                 Style.BorderStyle = ebsNone
-                Style.Color = 15790320
                 Style.Edges = []
                 TabOrder = 0
                 Visible = False
@@ -1719,11 +1715,10 @@ inherited Gynae: TGynae
               object gbFibRow9: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
-                Transparent = True
                 Visible = False
                 Height = 22
                 Width = 620
@@ -1825,9 +1820,9 @@ inherited Gynae: TGynae
               object gbFibRow10: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                Color = 15790320
+                ParentColor = False
                 Style.BorderStyle = ebsNone
-                Style.Color = 15790320
                 Style.Edges = []
                 TabOrder = 0
                 Visible = False
