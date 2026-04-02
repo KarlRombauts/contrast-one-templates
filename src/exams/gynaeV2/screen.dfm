@@ -5299,11 +5299,10 @@ object lgPolyp4: TdxLayoutGroup
               object gbDimsBladder: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 1
-                Transparent = True
                 Height = 22
                 Width = 175
                 object seBladderNoduleLength: TcxSpinEdit
@@ -5814,213 +5813,6 @@ object lgPolyp4: TdxLayoutGroup
                 Value = 1
                 Width = 35
               end
-              object seBowelNod1Length: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 52
-                Width = 35
-              end
-              object seBowelNod1Width: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 53
-                Width = 35
-              end
-              object seBowelNod1Depth: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 54
-                Width = 35
-              end
-              object seBowelNod1DistAnus: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 55
-                Width = 40
-              end
-              object cmbBowelNod1Invasion: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'muscularis'
-                  'submucosa'
-                  'mucosa')
-                TabOrder = 56
-                Width = 120
-              end
-              object cmbBowelNod1StuckTo: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'free-lying loop'
-                  'retro-cervical nodule'
-                  'left ovary'
-                  'right ovary'
-                  'uterosacral ligament nodule'
-                  'vaginal vault'
-                  'none')
-                TabOrder = 57
-                Width = 200
-              end
-              object seBowelNod2Length: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 58
-                Width = 35
-              end
-              object seBowelNod2Width: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 59
-                Width = 35
-              end
-              object seBowelNod2Depth: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 60
-                Width = 35
-              end
-              object seBowelNod2DistPrev: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 61
-                Width = 40
-              end
-              object cmbBowelNod2Invasion: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'muscularis'
-                  'submucosa'
-                  'mucosa')
-                TabOrder = 62
-                Width = 120
-              end
-              object cmbBowelNod2StuckTo: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'free-lying loop'
-                  'retro-cervical nodule'
-                  'left ovary'
-                  'right ovary'
-                  'uterosacral ligament nodule'
-                  'vaginal vault'
-                  'none')
-                TabOrder = 63
-                Width = 200
-              end
-              object seBowelNod3Length: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 64
-                Width = 35
-              end
-              object seBowelNod3Width: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 65
-                Width = 35
-              end
-              object seBowelNod3Depth: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 66
-                Width = 35
-              end
-              object seBowelNod3DistPrev: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 67
-                Width = 40
-              end
-              object cmbBowelNod3Invasion: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'muscularis'
-                  'submucosa'
-                  'mucosa')
-                TabOrder = 68
-                Width = 120
-              end
-              object cmbBowelNod3StuckTo: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'free-lying loop'
-                  'retro-cervical nodule'
-                  'left ovary'
-                  'right ovary'
-                  'uterosacral ligament nodule'
-                  'vaginal vault'
-                  'none')
-                TabOrder = 69
-                Width = 200
-              end
               object chkRightKidneyVisualised: TcxCheckBox
                 Left = 10000
                 Top = 10000
@@ -6054,6 +5846,422 @@ object lgPolyp4: TdxLayoutGroup
                 TabOrder = 73
                 Transparent = True
                 Width = 90
+              end
+
+              object gbBowelNoduleTable: TcxGroupBox
+                Left = 10000
+                Top = 10000
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
+                TabOrder = 0
+                Transparent = True
+                Height = 48
+                Width = 700
+                object lblBNHdrIdx: TcxLabel
+                  Left = 7
+                  Top = 1
+                  Caption = '#'
+                  ParentFont = False
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lblBNHdrDims: TcxLabel
+                  Left = 27
+                  Top = 1
+                  Caption = 'Dimensions'
+                  ParentFont = False
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lblBNHdrDist: TcxLabel
+                  Left = 212
+                  Top = 1
+                  Caption = 'Distance'
+                  ParentFont = False
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lblBNHdrInv: TcxLabel
+                  Left = 277
+                  Top = 1
+                  Caption = 'Invasion'
+                  ParentFont = False
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lblBNHdrStuck: TcxLabel
+                  Left = 412
+                  Top = 1
+                  Caption = 'Stuck to'
+                  ParentFont = False
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object gbBowelRow1: TcxGroupBox
+                  Left = 2
+                  Top = 20
+                  ParentBackground = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 1
+                  Height = 24
+                  Width = 700
+                  object lblBNIdx1: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#1'
+                    Transparent = True
+                  end
+                  object gbDimsBowel1: TcxGroupBox
+                    Left = 25
+                    Top = 0
+                    ParentBackground = True
+                    Style.BorderStyle = ebsNone
+                    Style.Edges = []
+                    TabOrder = 0
+                    Height = 22
+                    Width = 175
+                    object seBowelNod1Length: TcxSpinEdit
+                      Left = 0
+                      Top = 0
+                      Properties.AssignedValues.MinValue = True
+                      Properties.SpinButtons.Visible = False
+                      Properties.DisplayFormat = '#0.0'
+                      Properties.EditFormat = '#0.0'
+                      Properties.ValueType = vtFloat
+                      TabOrder = 0
+                      Width = 35
+                    end
+                    object lblBN1x1: TcxLabel
+                      Left = 37
+                      Top = 2
+                      Caption = 'x'
+                      Transparent = True
+                    end
+                    object seBowelNod1Width: TcxSpinEdit
+                      Left = 47
+                      Top = 0
+                      Properties.AssignedValues.MinValue = True
+                      Properties.SpinButtons.Visible = False
+                      Properties.DisplayFormat = '#0.0'
+                      Properties.EditFormat = '#0.0'
+                      Properties.ValueType = vtFloat
+                      TabOrder = 1
+                      Width = 35
+                    end
+                    object lblBN1x2: TcxLabel
+                      Left = 84
+                      Top = 2
+                      Caption = 'x'
+                      Transparent = True
+                    end
+                    object seBowelNod1Depth: TcxSpinEdit
+                      Left = 94
+                      Top = 0
+                      Properties.AssignedValues.MinValue = True
+                      Properties.SpinButtons.Visible = False
+                      Properties.DisplayFormat = '#0.0'
+                      Properties.EditFormat = '#0.0'
+                      Properties.ValueType = vtFloat
+                      TabOrder = 2
+                      Width = 35
+                    end
+                    object lblBN1mm: TcxLabel
+                      Left = 131
+                      Top = 2
+                      Caption = 'mm'
+                      Transparent = True
+                    end
+                  end
+                  object seBowelNod1DistAnus: TcxSpinEdit
+                    Left = 210
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 1
+                    Width = 40
+                  end
+                  object lblBNDistMM1: TcxLabel
+                    Left = 250
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object cmbBowelNod1Invasion: TcxComboBox
+                    Left = 275
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'muscularis'
+                      'submucosa'
+                      'mucosa')
+                    TabOrder = 2
+                    Width = 120
+                  end
+                  object cmbBowelNod1StuckTo: TcxComboBox
+                    Left = 410
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'free-lying loop'
+                      'retro-cervical nodule'
+                      'left ovary'
+                      'right ovary'
+                      'uterosacral ligament nodule'
+                      'vaginal vault'
+                      'none')
+                    TabOrder = 3
+                    Width = 200
+                  end
+                end
+                object gbBowelRow2: TcxGroupBox
+                  Left = 2
+                  Top = 44
+                  ParentBackground = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 2
+                  Visible = False
+                  Height = 24
+                  Width = 700
+                  object lblBNIdx2: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#2'
+                    Transparent = True
+                  end
+                  object gbDimsBowel2: TcxGroupBox
+                    Left = 25
+                    Top = 0
+                    ParentBackground = True
+                    Style.BorderStyle = ebsNone
+                    Style.Edges = []
+                    TabOrder = 0
+                    Height = 22
+                    Width = 175
+                    object seBowelNod2Length: TcxSpinEdit
+                      Left = 0
+                      Top = 0
+                      Properties.AssignedValues.MinValue = True
+                      Properties.SpinButtons.Visible = False
+                      Properties.DisplayFormat = '#0.0'
+                      Properties.EditFormat = '#0.0'
+                      Properties.ValueType = vtFloat
+                      TabOrder = 0
+                      Width = 35
+                    end
+                    object lblBN2x1: TcxLabel
+                      Left = 37
+                      Top = 2
+                      Caption = 'x'
+                      Transparent = True
+                    end
+                    object seBowelNod2Width: TcxSpinEdit
+                      Left = 47
+                      Top = 0
+                      Properties.AssignedValues.MinValue = True
+                      Properties.SpinButtons.Visible = False
+                      Properties.DisplayFormat = '#0.0'
+                      Properties.EditFormat = '#0.0'
+                      Properties.ValueType = vtFloat
+                      TabOrder = 1
+                      Width = 35
+                    end
+                    object lblBN2x2: TcxLabel
+                      Left = 84
+                      Top = 2
+                      Caption = 'x'
+                      Transparent = True
+                    end
+                    object seBowelNod2Depth: TcxSpinEdit
+                      Left = 94
+                      Top = 0
+                      Properties.AssignedValues.MinValue = True
+                      Properties.SpinButtons.Visible = False
+                      Properties.DisplayFormat = '#0.0'
+                      Properties.EditFormat = '#0.0'
+                      Properties.ValueType = vtFloat
+                      TabOrder = 2
+                      Width = 35
+                    end
+                    object lblBN2mm: TcxLabel
+                      Left = 131
+                      Top = 2
+                      Caption = 'mm'
+                      Transparent = True
+                    end
+                  end
+                  object seBowelNod2DistPrev: TcxSpinEdit
+                    Left = 210
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 1
+                    Width = 40
+                  end
+                  object lblBNDistMM2: TcxLabel
+                    Left = 250
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object cmbBowelNod2Invasion: TcxComboBox
+                    Left = 275
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'muscularis'
+                      'submucosa'
+                      'mucosa')
+                    TabOrder = 2
+                    Width = 120
+                  end
+                  object cmbBowelNod2StuckTo: TcxComboBox
+                    Left = 410
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'free-lying loop'
+                      'retro-cervical nodule'
+                      'left ovary'
+                      'right ovary'
+                      'uterosacral ligament nodule'
+                      'vaginal vault'
+                      'none')
+                    TabOrder = 3
+                    Width = 200
+                  end
+                end
+                object gbBowelRow3: TcxGroupBox
+                  Left = 2
+                  Top = 68
+                  ParentBackground = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 3
+                  Visible = False
+                  Height = 24
+                  Width = 700
+                  object lblBNIdx3: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#3'
+                    Transparent = True
+                  end
+                  object gbDimsBowel3: TcxGroupBox
+                    Left = 25
+                    Top = 0
+                    ParentBackground = True
+                    Style.BorderStyle = ebsNone
+                    Style.Edges = []
+                    TabOrder = 0
+                    Height = 22
+                    Width = 175
+                    object seBowelNod3Length: TcxSpinEdit
+                      Left = 0
+                      Top = 0
+                      Properties.AssignedValues.MinValue = True
+                      Properties.SpinButtons.Visible = False
+                      Properties.DisplayFormat = '#0.0'
+                      Properties.EditFormat = '#0.0'
+                      Properties.ValueType = vtFloat
+                      TabOrder = 0
+                      Width = 35
+                    end
+                    object lblBN3x1: TcxLabel
+                      Left = 37
+                      Top = 2
+                      Caption = 'x'
+                      Transparent = True
+                    end
+                    object seBowelNod3Width: TcxSpinEdit
+                      Left = 47
+                      Top = 0
+                      Properties.AssignedValues.MinValue = True
+                      Properties.SpinButtons.Visible = False
+                      Properties.DisplayFormat = '#0.0'
+                      Properties.EditFormat = '#0.0'
+                      Properties.ValueType = vtFloat
+                      TabOrder = 1
+                      Width = 35
+                    end
+                    object lblBN3x2: TcxLabel
+                      Left = 84
+                      Top = 2
+                      Caption = 'x'
+                      Transparent = True
+                    end
+                    object seBowelNod3Depth: TcxSpinEdit
+                      Left = 94
+                      Top = 0
+                      Properties.AssignedValues.MinValue = True
+                      Properties.SpinButtons.Visible = False
+                      Properties.DisplayFormat = '#0.0'
+                      Properties.EditFormat = '#0.0'
+                      Properties.ValueType = vtFloat
+                      TabOrder = 2
+                      Width = 35
+                    end
+                    object lblBN3mm: TcxLabel
+                      Left = 131
+                      Top = 2
+                      Caption = 'mm'
+                      Transparent = True
+                    end
+                  end
+                  object seBowelNod3DistPrev: TcxSpinEdit
+                    Left = 210
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 1
+                    Width = 40
+                  end
+                  object lblBNDistMM3: TcxLabel
+                    Left = 250
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object cmbBowelNod3Invasion: TcxComboBox
+                    Left = 275
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'muscularis'
+                      'submucosa'
+                      'mucosa')
+                    TabOrder = 2
+                    Width = 120
+                  end
+                  object cmbBowelNod3StuckTo: TcxComboBox
+                    Left = 410
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'free-lying loop'
+                      'retro-cervical nodule'
+                      'left ovary'
+                      'right ovary'
+                      'uterosacral ligament nodule'
+                      'vaginal vault'
+                      'none')
+                    TabOrder = 3
+                    Width = 200
+                  end
+                end
               end
 
               object lcEndometriosisGroup_Root: TdxLayoutGroup
@@ -6544,190 +6752,14 @@ object lgPolyp4: TdxLayoutGroup
                     Visible = False
                     object liBowelCount: TdxLayoutItem
                       CaptionOptions.Text = 'Count'
+                      AlignHorz = ahLeft
                       Control = seBowelNoduleCount
                       ControlOptions.ShowBorder = False
                     end
-                    object lgBowelNod1: TdxLayoutGroup
-                      CaptionOptions.Text = '#1'
-                      CaptionOptions.Visible = True
-                      ButtonOptions.Buttons = <>
-                      ShowBorder = True
-                      object lgBN1Row1: TdxLayoutGroup
-                        CaptionOptions.Visible = False
-                        ButtonOptions.Buttons = <>
-                        LayoutDirection = ldHorizontal
-                        ShowBorder = False
-                        object liBN1DimLabel: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'Dimensions'
-                        end
-                        object liBN1L: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = seBowelNod1Length
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN1Sep1: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'x'
-                        end
-                        object liBN1W: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = seBowelNod1Width
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN1Sep2: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'x'
-                        end
-                        object liBN1D: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = seBowelNod1Depth
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN1MM: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'mm'
-                        end
-                        object liBN1Dist: TdxLayoutItem
-                          CaptionOptions.Text = 'Dist. from anus'
-                          Control = seBowelNod1DistAnus
-                          ControlOptions.ShowBorder = False
-                        end
-                      end
-                      object lgBN1Row2: TdxLayoutGroup
-                        CaptionOptions.Visible = False
-                        ButtonOptions.Buttons = <>
-                        LayoutDirection = ldHorizontal
-                        ShowBorder = False
-                        object liBN1Invasion: TdxLayoutItem
-                          CaptionOptions.Text = 'Depth of invasion'
-                          Control = cmbBowelNod1Invasion
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN1Stuck: TdxLayoutItem
-                          CaptionOptions.Text = 'Stuck to'
-                          Control = cmbBowelNod1StuckTo
-                          ControlOptions.ShowBorder = False
-                        end
-                      end
-                    end
-                    object lgBowelNod2: TdxLayoutGroup
-                      CaptionOptions.Text = '#2'
-                      CaptionOptions.Visible = True
-                      ButtonOptions.Buttons = <>
-                      ShowBorder = True
-                      Visible = False
-                      object lgBN2Row1: TdxLayoutGroup
-                        CaptionOptions.Visible = False
-                        ButtonOptions.Buttons = <>
-                        LayoutDirection = ldHorizontal
-                        ShowBorder = False
-                        object liBN2DimLabel: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'Dimensions'
-                        end
-                        object liBN2L: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = seBowelNod2Length
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN2Sep1: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'x'
-                        end
-                        object liBN2W: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = seBowelNod2Width
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN2Sep2: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'x'
-                        end
-                        object liBN2D: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = seBowelNod2Depth
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN2MM: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'mm'
-                        end
-                        object liBN2Dist: TdxLayoutItem
-                          CaptionOptions.Text = 'Distance from prev'
-                          Control = seBowelNod2DistPrev
-                          ControlOptions.ShowBorder = False
-                        end
-                      end
-                      object lgBN2Row2: TdxLayoutGroup
-                        CaptionOptions.Visible = False
-                        ButtonOptions.Buttons = <>
-                        LayoutDirection = ldHorizontal
-                        ShowBorder = False
-                        object liBN2Invasion: TdxLayoutItem
-                          CaptionOptions.Text = 'Depth of invasion'
-                          Control = cmbBowelNod2Invasion
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN2Stuck: TdxLayoutItem
-                          CaptionOptions.Text = 'Stuck to'
-                          Control = cmbBowelNod2StuckTo
-                          ControlOptions.ShowBorder = False
-                        end
-                      end
-                    end
-                    object lgBowelNod3: TdxLayoutGroup
-                      CaptionOptions.Text = '#3'
-                      CaptionOptions.Visible = True
-                      ButtonOptions.Buttons = <>
-                      ShowBorder = True
-                      Visible = False
-                      object lgBN3Row1: TdxLayoutGroup
-                        CaptionOptions.Visible = False
-                        ButtonOptions.Buttons = <>
-                        LayoutDirection = ldHorizontal
-                        ShowBorder = False
-                        object liBN3DimLabel: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'Dimensions'
-                        end
-                        object liBN3L: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = seBowelNod3Length
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN3Sep1: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'x'
-                        end
-                        object liBN3W: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = seBowelNod3Width
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN3Sep2: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'x'
-                        end
-                        object liBN3D: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = seBowelNod3Depth
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN3MM: TdxLayoutLabeledItem
-                          CaptionOptions.Text = 'mm'
-                        end
-                        object liBN3Dist: TdxLayoutItem
-                          CaptionOptions.Text = 'Distance from prev'
-                          Control = seBowelNod3DistPrev
-                          ControlOptions.ShowBorder = False
-                        end
-                      end
-                      object lgBN3Row2: TdxLayoutGroup
-                        CaptionOptions.Visible = False
-                        ButtonOptions.Buttons = <>
-                        LayoutDirection = ldHorizontal
-                        ShowBorder = False
-                        object liBN3Invasion: TdxLayoutItem
-                          CaptionOptions.Text = 'Depth of invasion'
-                          Control = cmbBowelNod3Invasion
-                          ControlOptions.ShowBorder = False
-                        end
-                        object liBN3Stuck: TdxLayoutItem
-                          CaptionOptions.Text = 'Stuck to'
-                          Control = cmbBowelNod3StuckTo
-                          ControlOptions.ShowBorder = False
-                        end
-                      end
+                    object liBowelTable: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = gbBowelNoduleTable
+                      ControlOptions.ShowBorder = False
                     end
                   end
                 end

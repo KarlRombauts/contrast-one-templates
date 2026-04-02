@@ -224,13 +224,16 @@ end;
 procedure chkBowelNodulePresentClick(Sender)
 begin
   lgBowelDetails.Visible := chkBowelNodulePresent.Checked;
+  if chkBowelNodulePresent.Checked and (seBowelNoduleCount.Value < 1) then
+    seBowelNoduleCount.Value := 1;
 end;
 
 procedure seBowelNoduleCountChange(Sender)
 begin
-  lgBowelNod1.Visible := (seBowelNoduleCount.Value >= 1);
-  lgBowelNod2.Visible := (seBowelNoduleCount.Value >= 2);
-  lgBowelNod3.Visible := (seBowelNoduleCount.Value >= 3);
+  gbBowelRow1.Visible := (seBowelNoduleCount.Value >= 1);
+  gbBowelRow2.Visible := (seBowelNoduleCount.Value >= 2);
+  gbBowelRow3.Visible := (seBowelNoduleCount.Value >= 3);
+  gbBowelNoduleTable.Height := 20 + seBowelNoduleCount.Value * 24 + 4;
 end;
 
 // --- POD Obliteration (radio toggle) ---
