@@ -2151,6 +2151,7 @@ inherited Gynae: TGynae
                     Visible = False
                     object liFibroidCount: TdxLayoutItem
                       CaptionOptions.Text = 'Count'
+                      AlignHorz = ahLeft
                       Control = seFibroidCount
                       ControlOptions.ShowBorder = False
                     end
