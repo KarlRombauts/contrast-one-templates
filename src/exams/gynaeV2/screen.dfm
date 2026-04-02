@@ -5296,38 +5296,67 @@ object lgPolyp4: TdxLayoutGroup
                 Transparent = True
                 Width = 165
               end
-              object seBladderNoduleLength: TcxSpinEdit
+              object gbDimsBladder: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 1
-                Width = 35
-              end
-              object seBladderNoduleWidth: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 2
-                Width = 35
-              end
-              object seBladderNoduleDepth: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 3
-                Width = 35
+                Transparent = True
+                Height = 22
+                Width = 175
+                object seBladderNoduleLength: TcxSpinEdit
+                  Left = 0
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                  Properties.DisplayFormat = '#0.0'
+                  Properties.EditFormat = '#0.0'
+                  Properties.ValueType = vtFloat
+                  TabOrder = 0
+                  Width = 35
+                end
+                object lblBladderDimsx1: TcxLabel
+                  Left = 37
+                  Top = 2
+                  Caption = 'x'
+                  Transparent = True
+                end
+                object seBladderNoduleWidth: TcxSpinEdit
+                  Left = 47
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                  Properties.DisplayFormat = '#0.0'
+                  Properties.EditFormat = '#0.0'
+                  Properties.ValueType = vtFloat
+                  TabOrder = 1
+                  Width = 35
+                end
+                object lblBladderDimsx2: TcxLabel
+                  Left = 84
+                  Top = 2
+                  Caption = 'x'
+                  Transparent = True
+                end
+                object seBladderNoduleDepth: TcxSpinEdit
+                  Left = 94
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                  Properties.DisplayFormat = '#0.0'
+                  Properties.EditFormat = '#0.0'
+                  Properties.ValueType = vtFloat
+                  TabOrder = 2
+                  Width = 35
+                end
+                object lblBladderDimsmm: TcxLabel
+                  Left = 131
+                  Top = 2
+                  Caption = 'mm'
+                  Transparent = True
+                end
               end
               object cmbBladderNoduleLocation: TcxComboBox
                 Left = 10000
@@ -6048,35 +6077,13 @@ object lgPolyp4: TdxLayoutGroup
                   object lgBladderDetails: TdxLayoutGroup
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
                     ShowBorder = False
                     Visible = False
-                    object liBladderDimLabel: TdxLayoutLabeledItem
+                    object liBladderDims: TdxLayoutItem
                       CaptionOptions.Text = 'Dimensions'
-                    end
-                    object liBladderL: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = seBladderNoduleLength
+                      AlignHorz = ahLeft
+                      Control = gbDimsBladder
                       ControlOptions.ShowBorder = False
-                    end
-                    object liBladderSep1: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'x'
-                    end
-                    object liBladderW: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = seBladderNoduleWidth
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liBladderSep2: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'x'
-                    end
-                    object liBladderD: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = seBladderNoduleDepth
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liBladderMM: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'mm'
                     end
                   end
                   object lgBladderLocation: TdxLayoutGroup
