@@ -1,3 +1,22 @@
+procedure cbToggleCheckOnClick(Sender)
+var
+  i: Integer;
+begin
+  if TcxCheckBox(Sender).Checked then
+  begin
+    for i := 0 to TWinControl(Sender.Parent).ControlCount - 1 do
+    begin
+      if (Sender.Parent.Controls[i] is TcxCheckBox) then
+      begin
+        if (TcxCheckBox(Sender.Parent.Controls[i]).Checked) and (Sender.Parent.Controls[i] <> Sender) then
+        begin
+          TcxCheckBox(Sender.Parent.Controls[i]).Checked := false;
+        end;
+      end;
+    end;
+  end;
+end;
+
 function CheckFormComplete: Boolean;
 begin
   result := True;
@@ -109,17 +128,41 @@ end;
 
 procedure RightOvaryStatusClick(Sender)
 begin
-  chkRightOvaryIdentified.Checked := (Sender = chkRightOvaryIdentified);
-  chkRightOvaryNotIdentified.Checked := (Sender = chkRightOvaryNotIdentified);
-  chkRightOvaryAbsent.Checked := (Sender = chkRightOvaryAbsent);
+  if chkRightOvaryIdentified.Checked then
+  begin
+    chkRightOvaryNotIdentified.Checked := False;
+    chkRightOvaryAbsent.Checked := False;
+  end;
+  if chkRightOvaryNotIdentified.Checked then
+  begin
+    chkRightOvaryIdentified.Checked := False;
+    chkRightOvaryAbsent.Checked := False;
+  end;
+  if chkRightOvaryAbsent.Checked then
+  begin
+    chkRightOvaryIdentified.Checked := False;
+    chkRightOvaryNotIdentified.Checked := False;
+  end;
   lgRightOvaryDetails.Visible := chkRightOvaryIdentified.Checked;
 end;
 
 procedure LeftOvaryStatusClick(Sender)
 begin
-  chkLeftOvaryIdentified.Checked := (Sender = chkLeftOvaryIdentified);
-  chkLeftOvaryNotIdentified.Checked := (Sender = chkLeftOvaryNotIdentified);
-  chkLeftOvaryAbsent.Checked := (Sender = chkLeftOvaryAbsent);
+  if chkLeftOvaryIdentified.Checked then
+  begin
+    chkLeftOvaryNotIdentified.Checked := False;
+    chkLeftOvaryAbsent.Checked := False;
+  end;
+  if chkLeftOvaryNotIdentified.Checked then
+  begin
+    chkLeftOvaryIdentified.Checked := False;
+    chkLeftOvaryAbsent.Checked := False;
+  end;
+  if chkLeftOvaryAbsent.Checked then
+  begin
+    chkLeftOvaryIdentified.Checked := False;
+    chkLeftOvaryNotIdentified.Checked := False;
+  end;
   lgLeftOvaryDetails.Visible := chkLeftOvaryIdentified.Checked;
 end;
 
@@ -240,10 +283,30 @@ end;
 
 procedure PODObliterationClick(Sender)
 begin
-  rbPODNoObliteration.Checked := (Sender = rbPODNoObliteration);
-  rbPODPartialObliteration.Checked := (Sender = rbPODPartialObliteration);
-  rbPODCompleteObliteration.Checked := (Sender = rbPODCompleteObliteration);
-  rbPODPostSurgical.Checked := (Sender = rbPODPostSurgical);
+  if rbPODNoObliteration.Checked then
+  begin
+    rbPODPartialObliteration.Checked := False;
+    rbPODCompleteObliteration.Checked := False;
+    rbPODPostSurgical.Checked := False;
+  end;
+  if rbPODPartialObliteration.Checked then
+  begin
+    rbPODNoObliteration.Checked := False;
+    rbPODCompleteObliteration.Checked := False;
+    rbPODPostSurgical.Checked := False;
+  end;
+  if rbPODCompleteObliteration.Checked then
+  begin
+    rbPODNoObliteration.Checked := False;
+    rbPODPartialObliteration.Checked := False;
+    rbPODPostSurgical.Checked := False;
+  end;
+  if rbPODPostSurgical.Checked then
+  begin
+    rbPODNoObliteration.Checked := False;
+    rbPODPartialObliteration.Checked := False;
+    rbPODCompleteObliteration.Checked := False;
+  end;
   cmbPODPartialSide.Enabled := rbPODPartialObliteration.Checked;
 end;
 
@@ -295,8 +358,7 @@ end;
 
 procedure chkVaultVisualisedClick(Sender)
 begin
-  chkVaultThinRegular.Enabled := chkVaultVisualised.Checked;
-  chkVaginalNodule.Enabled := chkVaultVisualised.Checked;
+  lgVaultContent.Visible := chkVaultVisualised.Checked;
   if not chkVaultVisualised.Checked then
   begin
     chkVaultThinRegular.Checked := False;
@@ -373,45 +435,103 @@ end;
 
 procedure UterusMobilityClick(Sender)
 begin
-  chkUterusMobile.Checked := (Sender = chkUterusMobile);
-  chkUterusLimitedMobility.Checked := (Sender = chkUterusLimitedMobility);
-  chkUterusFixed.Checked := (Sender = chkUterusFixed);
+  if chkUterusMobile.Checked then
+  begin
+    chkUterusLimitedMobility.Checked := False;
+    chkUterusFixed.Checked := False;
+  end;
+  if chkUterusLimitedMobility.Checked then
+  begin
+    chkUterusMobile.Checked := False;
+    chkUterusFixed.Checked := False;
+  end;
+  if chkUterusFixed.Checked then
+  begin
+    chkUterusMobile.Checked := False;
+    chkUterusLimitedMobility.Checked := False;
+  end;
 end;
 
 procedure UterusTendernessClick(Sender)
 begin
-  chkUterusTender.Checked := (Sender = chkUterusTender);
-  chkUterusNonTender.Checked := (Sender = chkUterusNonTender);
+  if chkUterusTender.Checked then
+    chkUterusNonTender.Checked := False;
+  if chkUterusNonTender.Checked then
+    chkUterusTender.Checked := False;
 end;
 
 // --- Ovary Mobility (radio toggle) ---
 
 procedure chkRightMobileClick(Sender)
 begin
-  chkRightMobile.Checked := (Sender = chkRightMobile);
-  chkRightReducedMobility.Checked := (Sender = chkRightReducedMobility);
-  chkRightStuck.Checked := (Sender = chkRightStuck);
-  chkRightRigid.Checked := (Sender = chkRightRigid);
+  if chkRightMobile.Checked then
+  begin
+    chkRightReducedMobility.Checked := False;
+    chkRightStuck.Checked := False;
+    chkRightRigid.Checked := False;
+  end;
+  if chkRightReducedMobility.Checked then
+  begin
+    chkRightMobile.Checked := False;
+    chkRightStuck.Checked := False;
+    chkRightRigid.Checked := False;
+  end;
+  if chkRightStuck.Checked then
+  begin
+    chkRightMobile.Checked := False;
+    chkRightReducedMobility.Checked := False;
+    chkRightRigid.Checked := False;
+  end;
+  if chkRightRigid.Checked then
+  begin
+    chkRightMobile.Checked := False;
+    chkRightReducedMobility.Checked := False;
+    chkRightStuck.Checked := False;
+  end;
 end;
 
 procedure chkLeftMobileClick(Sender)
 begin
-  chkLeftMobile.Checked := (Sender = chkLeftMobile);
-  chkLeftReducedMobility.Checked := (Sender = chkLeftReducedMobility);
-  chkLeftStuck.Checked := (Sender = chkLeftStuck);
-  chkLeftRigid.Checked := (Sender = chkLeftRigid);
+  if chkLeftMobile.Checked then
+  begin
+    chkLeftReducedMobility.Checked := False;
+    chkLeftStuck.Checked := False;
+    chkLeftRigid.Checked := False;
+  end;
+  if chkLeftReducedMobility.Checked then
+  begin
+    chkLeftMobile.Checked := False;
+    chkLeftStuck.Checked := False;
+    chkLeftRigid.Checked := False;
+  end;
+  if chkLeftStuck.Checked then
+  begin
+    chkLeftMobile.Checked := False;
+    chkLeftReducedMobility.Checked := False;
+    chkLeftRigid.Checked := False;
+  end;
+  if chkLeftRigid.Checked then
+  begin
+    chkLeftMobile.Checked := False;
+    chkLeftReducedMobility.Checked := False;
+    chkLeftStuck.Checked := False;
+  end;
 end;
 
 procedure chkRightTenderClick(Sender)
 begin
-  chkRightTender.Checked := (Sender = chkRightTender);
-  chkRightNonTender.Checked := (Sender = chkRightNonTender);
+  if chkRightTender.Checked then
+    chkRightNonTender.Checked := False;
+  if chkRightNonTender.Checked then
+    chkRightTender.Checked := False;
 end;
 
 procedure chkLeftTenderClick(Sender)
 begin
-  chkLeftTender.Checked := (Sender = chkLeftTender);
-  chkLeftNonTender.Checked := (Sender = chkLeftNonTender);
+  if chkLeftTender.Checked then
+    chkLeftNonTender.Checked := False;
+  if chkLeftNonTender.Checked then
+    chkLeftTender.Checked := False;
 end;
 
 // ======================== StartScript =====================================//

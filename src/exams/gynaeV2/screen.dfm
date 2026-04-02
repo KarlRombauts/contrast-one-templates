@@ -5803,7 +5803,7 @@ object lgPolyp4: TdxLayoutGroup
                   Transparent = True
                 end
                 object lblBNHdrInv: TcxLabel
-                  Left = 277
+                  Left = 292
                   Top = 1
                   Caption = 'Invasion'
                   ParentFont = False
@@ -5812,7 +5812,7 @@ object lgPolyp4: TdxLayoutGroup
                   Transparent = True
                 end
                 object lblBNHdrStuck: TcxLabel
-                  Left = 412
+                  Left = 427
                   Top = 1
                   Caption = 'Stuck to'
                   ParentFont = False
@@ -5911,7 +5911,7 @@ object lgPolyp4: TdxLayoutGroup
                     Transparent = True
                   end
                   object cmbBowelNod1Invasion: TcxComboBox
-                    Left = 275
+                    Left = 290
                     Top = 1
                     Properties.DropDownListStyle = lsFixedList
                     Properties.Items.Strings = (
@@ -5923,7 +5923,7 @@ object lgPolyp4: TdxLayoutGroup
                     Width = 120
                   end
                   object cmbBowelNod1StuckTo: TcxComboBox
-                    Left = 410
+                    Left = 425
                     Top = 1
                     Properties.DropDownListStyle = lsFixedList
                     Properties.Items.Strings = (
@@ -6031,7 +6031,7 @@ object lgPolyp4: TdxLayoutGroup
                     Transparent = True
                   end
                   object cmbBowelNod2Invasion: TcxComboBox
-                    Left = 275
+                    Left = 290
                     Top = 1
                     Properties.DropDownListStyle = lsFixedList
                     Properties.Items.Strings = (
@@ -6043,7 +6043,7 @@ object lgPolyp4: TdxLayoutGroup
                     Width = 120
                   end
                   object cmbBowelNod2StuckTo: TcxComboBox
-                    Left = 410
+                    Left = 425
                     Top = 1
                     Properties.DropDownListStyle = lsFixedList
                     Properties.Items.Strings = (
@@ -6151,7 +6151,7 @@ object lgPolyp4: TdxLayoutGroup
                     Transparent = True
                   end
                   object cmbBowelNod3Invasion: TcxComboBox
-                    Left = 275
+                    Left = 290
                     Top = 1
                     Properties.DropDownListStyle = lsFixedList
                     Properties.Items.Strings = (
@@ -6163,7 +6163,7 @@ object lgPolyp4: TdxLayoutGroup
                     Width = 120
                   end
                   object cmbBowelNod3StuckTo: TcxComboBox
-                    Left = 410
+                    Left = 425
                     Top = 1
                     Properties.DropDownListStyle = lsFixedList
                     Properties.Items.Strings = (
@@ -6475,31 +6475,30 @@ object lgPolyp4: TdxLayoutGroup
                   CaptionOptions.Visible = True
                   ButtonOptions.Buttons = <>
                   ShowBorder = True
-                  object lgVaultStatus: TdxLayoutGroup
+                  object liVaultVis: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = chkVaultVisualised
+                    ControlOptions.ShowBorder = False
+                  end
+                  object lgVaultContent: TdxLayoutGroup
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
                     ShowBorder = False
-                    object liVaultVis: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkVaultVisualised
-                      ControlOptions.ShowBorder = False
-                    end
+                    Visible = False
                     object liVaultThin: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = chkVaultThinRegular
                       ControlOptions.ShowBorder = False
                     end
-                  end
-                  object liVaultSep: TdxLayoutSeparatorItem
-                    CaptionOptions.Text = 'Vaginal Nodule'
-                  end
-                  object liVagNodule: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = chkVaginalNodule
-                    ControlOptions.ShowBorder = False
-                  end
-                  object lgVaultDetails: TdxLayoutGroup
+                    object liVaultSep: TdxLayoutSeparatorItem
+                      CaptionOptions.Text = 'Vaginal Nodule'
+                    end
+                    object liVagNodule: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = chkVaginalNodule
+                      ControlOptions.ShowBorder = False
+                    end
+                    object lgVaultDetails: TdxLayoutGroup
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
@@ -6512,9 +6511,11 @@ object lgPolyp4: TdxLayoutGroup
                     end
                     object liVagStuckTo: TdxLayoutItem
                       CaptionOptions.Text = 'Stuck to'
+                      AlignHorz = ahLeft
                       Control = cmbVagNoduleStuckTo
                       ControlOptions.ShowBorder = False
                     end
+                  end
                   end
                 end
 

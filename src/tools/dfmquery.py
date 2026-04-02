@@ -360,6 +360,7 @@ def cmd_xref(args):
         'Items', 'Count', 'Properties', 'States', 'OnClick', 'OnChange',
         'Checked', 'Enabled', 'Visible', 'Text', 'Value', 'Caption',
         'Date', 'Height', 'Width', 'ItemIndex', 'Lines',
+        'Parent', 'Controls', 'ControlCount', 'Name',
     }
 
     # Extract all identifiers before a dot (control references)
