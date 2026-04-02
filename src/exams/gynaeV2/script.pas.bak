@@ -109,8 +109,6 @@ end;
 procedure chkFocalLesionClick(Sender)
 begin
   lgPolypDetails.Visible := chkFocalLesion.Checked;
-  if chkFocalLesion.Checked and (sePolypCount.Value < 1) then
-    sePolypCount.Value := 1;
 end;
 
 procedure chkRPOCClick(Sender)
@@ -120,11 +118,10 @@ end;
 
 procedure sePolypCountChange(Sender)
 begin
-  gbPolypRow1.Visible := (sePolypCount.Value >= 1);
-  gbPolypRow2.Visible := (sePolypCount.Value >= 2);
-  gbPolypRow3.Visible := (sePolypCount.Value >= 3);
-  gbPolypRow4.Visible := (sePolypCount.Value >= 4);
-  gbPolypTable.Height := 18 + sePolypCount.Value * 24 + 4;
+  lgPolyp1.Visible := (sePolypCount.Value >= 1);
+  lgPolyp2.Visible := (sePolypCount.Value >= 2);
+  lgPolyp3.Visible := (sePolypCount.Value >= 3);
+  lgPolyp4.Visible := (sePolypCount.Value >= 4);
 end;
 
 // --- Ovary Status (radio checkboxes) ---
@@ -216,33 +213,37 @@ end;
 procedure chkRightEndometriomaClick(Sender)
 begin
   lgRightEndoDetails.Visible := chkRightEndometrioma.Checked;
-  if chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value < 1) then
-    seRightEndometriomaCount.Value := 1;
-  seRightEndometriomaCountChange(nil);
+  if chkRightEndometrioma.Checked then
+  begin
+    lgRightEndo1.Visible := (seRightEndometriomaCount.Value >= 1);
+    lgRightEndo2.Visible := (seRightEndometriomaCount.Value >= 2);
+    lgRightEndo3.Visible := (seRightEndometriomaCount.Value >= 3);
+  end;
 end;
 
 procedure chkLeftEndometriomaClick(Sender)
 begin
   lgLeftEndoDetails.Visible := chkLeftEndometrioma.Checked;
-  if chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value < 1) then
-    seLeftEndometriomaCount.Value := 1;
-  seLeftEndometriomaCountChange(nil);
+  if chkLeftEndometrioma.Checked then
+  begin
+    lgLeftEndo1.Visible := (seLeftEndometriomaCount.Value >= 1);
+    lgLeftEndo2.Visible := (seLeftEndometriomaCount.Value >= 2);
+    lgLeftEndo3.Visible := (seLeftEndometriomaCount.Value >= 3);
+  end;
 end;
 
 procedure seRightEndometriomaCountChange(Sender)
 begin
-  gbEndoRowRight1.Visible := chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 1);
-  gbEndoRowRight2.Visible := chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 2);
-  gbEndoRowRight3.Visible := chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 3);
-  gbEndoTableRight.Height := 18 + seRightEndometriomaCount.Value * 24 + 4;
+  lgRightEndo1.Visible := chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 1);
+  lgRightEndo2.Visible := chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 2);
+  lgRightEndo3.Visible := chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 3);
 end;
 
 procedure seLeftEndometriomaCountChange(Sender)
 begin
-  gbEndoRowLeft1.Visible := chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 1);
-  gbEndoRowLeft2.Visible := chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 2);
-  gbEndoRowLeft3.Visible := chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 3);
-  gbEndoTableLeft.Height := 18 + seLeftEndometriomaCount.Value * 24 + 4;
+  lgLeftEndo1.Visible := chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 1);
+  lgLeftEndo2.Visible := chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 2);
+  lgLeftEndo3.Visible := chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 3);
 end;
 
 // --- Endometriosis: Layout group visibility ---
@@ -329,14 +330,14 @@ end;
 
 procedure chkRightKidneyVisualisedClick(Sender)
 begin
-  chkRightKidneyObstructed.Visible := chkRightKidneyVisualised.Checked;
+  chkRightKidneyObstructed.Enabled := chkRightKidneyVisualised.Checked;
   if not chkRightKidneyVisualised.Checked then
     chkRightKidneyObstructed.Checked := False;
 end;
 
 procedure chkLeftKidneyVisualisedClick(Sender)
 begin
-  chkLeftKidneyObstructed.Visible := chkLeftKidneyVisualised.Checked;
+  chkLeftKidneyObstructed.Enabled := chkLeftKidneyVisualised.Checked;
   if not chkLeftKidneyVisualised.Checked then
     chkLeftKidneyObstructed.Checked := False;
 end;

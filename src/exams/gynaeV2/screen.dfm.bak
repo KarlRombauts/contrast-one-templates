@@ -2235,6 +2235,21 @@ inherited Gynae: TGynae
                 Value = 1
                 Width = 35
               end
+              object cmbPolypLocation1: TcxComboBox
+                Left = 10000
+                Top = 10000
+                Properties.DropDownListStyle = lsFixedList
+                Properties.Items.Strings = (
+                  ''
+                  'anterior'
+                  'posterior'
+                  'fundal'
+                  'left lateral'
+                  'right lateral'
+                  'cervical')
+                TabOrder = 8
+                Width = 110
+              end
               object chkVascularStalk: TcxCheckBox
                 Left = 10000
                 Top = 10000
@@ -2242,6 +2257,51 @@ inherited Gynae: TGynae
                 TabOrder = 9
                 Transparent = True
                 Width = 100
+              end
+              object cmbPolypLocation2: TcxComboBox
+                Left = 10000
+                Top = 10000
+                Properties.DropDownListStyle = lsFixedList
+                Properties.Items.Strings = (
+                  ''
+                  'anterior'
+                  'posterior'
+                  'fundal'
+                  'left lateral'
+                  'right lateral'
+                  'cervical')
+                TabOrder = 0
+                Width = 110
+              end
+              object cmbPolypLocation3: TcxComboBox
+                Left = 10000
+                Top = 10000
+                Properties.DropDownListStyle = lsFixedList
+                Properties.Items.Strings = (
+                  ''
+                  'anterior'
+                  'posterior'
+                  'fundal'
+                  'left lateral'
+                  'right lateral'
+                  'cervical')
+                TabOrder = 0
+                Width = 110
+              end
+              object cmbPolypLocation4: TcxComboBox
+                Left = 10000
+                Top = 10000
+                Properties.DropDownListStyle = lsFixedList
+                Properties.Items.Strings = (
+                  ''
+                  'anterior'
+                  'posterior'
+                  'fundal'
+                  'left lateral'
+                  'right lateral'
+                  'cervical')
+                TabOrder = 0
+                Width = 110
               end
               object chkIUDCorrect: TcxCheckBox
                 Left = 10000
@@ -2312,415 +2372,249 @@ inherited Gynae: TGynae
                 Width = 160
               end
 
-
-              object gbPolypTable: TcxGroupBox
+                            object gbDimsPolyp1: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
-                Transparent = True
-                Height = 46
-                Width = 400
-                object lblPolypHdrIdx: TcxLabel
-                  Left = 5
-                  Top = 1
-                  Caption = '#'
-                  ParentFont = False
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
+                Height = 22
+                Width = 175
+                object sePolypLength1: TcxSpinEdit
+                  Left = 0
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 0
+                  Width = 35
+                end
+                object lblgbDimsPolyp1x1: TcxLabel
+                  Left = 37
+                  Top = 2
+                  Caption = 'x'
                   Transparent = True
                 end
-                object lblPolypHdrDims: TcxLabel
-                  Left = 27
-                  Top = 1
-                  Caption = 'Dimensions'
-                  ParentFont = False
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
+                object sePolypWidth1: TcxSpinEdit
+                  Left = 47
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 1
+                  Width = 35
+                end
+                object lblgbDimsPolyp1x2: TcxLabel
+                  Left = 84
+                  Top = 2
+                  Caption = 'x'
                   Transparent = True
                 end
-                object lblPolypHdrLoc: TcxLabel
-                  Left = 212
-                  Top = 1
-                  Caption = 'Location'
-                  ParentFont = False
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
+                object sePolypDepth1: TcxSpinEdit
+                  Left = 94
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 2
+                  Width = 35
+                end
+                object lblgbDimsPolyp1mm: TcxLabel
+                  Left = 131
+                  Top = 2
+                  Caption = 'mm'
                   Transparent = True
                 end
-                  object gbPolypRow1: TcxGroupBox
-                    Left = 2
-                    Top = 18
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 1
-                    Height = 24
-                    Width = 400
-                    object lblPolypIdx1: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#1'
-                      Transparent = True
-                    end
-                    object gbDimsPolyp1: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object sePolypLength1: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblPolyp1x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object sePolypWidth1: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblPolyp1x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object sePolypDepth1: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblPolyp1mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                    object cmbPolypLocation1: TcxComboBox
-                      Left = 210
-                      Top = 1
-                      Properties.DropDownListStyle = lsFixedList
-                      Properties.Items.Strings = (
-                        ''
-                        'anterior'
-                        'posterior'
-                        'fundal'
-                        'left lateral'
-                        'right lateral'
-                        'cervical')
-                      TabOrder = 1
-                      Width = 100
-                    end
-                  end
-                  object gbPolypRow2: TcxGroupBox
-                    Left = 2
-                    Top = 42
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 2
-                    Visible = False
-                    Height = 24
-                    Width = 400
-                    object lblPolypIdx2: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#2'
-                      Transparent = True
-                    end
-                    object gbDimsPolyp2: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object sePolypLength2: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblPolyp2x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object sePolypWidth2: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblPolyp2x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object sePolypDepth2: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblPolyp2mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                    object cmbPolypLocation2: TcxComboBox
-                      Left = 210
-                      Top = 1
-                      Properties.DropDownListStyle = lsFixedList
-                      Properties.Items.Strings = (
-                        ''
-                        'anterior'
-                        'posterior'
-                        'fundal'
-                        'left lateral'
-                        'right lateral'
-                        'cervical')
-                      TabOrder = 1
-                      Width = 100
-                    end
-                  end
-                  object gbPolypRow3: TcxGroupBox
-                    Left = 2
-                    Top = 66
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 3
-                    Visible = False
-                    Height = 24
-                    Width = 400
-                    object lblPolypIdx3: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#3'
-                      Transparent = True
-                    end
-                    object gbDimsPolyp3: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object sePolypLength3: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblPolyp3x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object sePolypWidth3: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblPolyp3x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object sePolypDepth3: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblPolyp3mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                    object cmbPolypLocation3: TcxComboBox
-                      Left = 210
-                      Top = 1
-                      Properties.DropDownListStyle = lsFixedList
-                      Properties.Items.Strings = (
-                        ''
-                        'anterior'
-                        'posterior'
-                        'fundal'
-                        'left lateral'
-                        'right lateral'
-                        'cervical')
-                      TabOrder = 1
-                      Width = 100
-                    end
-                  end
-                  object gbPolypRow4: TcxGroupBox
-                    Left = 2
-                    Top = 90
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 4
-                    Visible = False
-                    Height = 24
-                    Width = 400
-                    object lblPolypIdx4: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#4'
-                      Transparent = True
-                    end
-                    object gbDimsPolyp4: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object sePolypLength4: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblPolyp4x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object sePolypWidth4: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblPolyp4x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object sePolypDepth4: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblPolyp4mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                    object cmbPolypLocation4: TcxComboBox
-                      Left = 210
-                      Top = 1
-                      Properties.DropDownListStyle = lsFixedList
-                      Properties.Items.Strings = (
-                        ''
-                        'anterior'
-                        'posterior'
-                        'fundal'
-                        'left lateral'
-                        'right lateral'
-                        'cervical')
-                      TabOrder = 1
-                      Width = 100
-                    end
-                  end
+              end
+              object gbDimsPolyp2: TcxGroupBox
+                Left = 10000
+                Top = 10000
+                ParentBackground = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
+                TabOrder = 0
+                Height = 22
+                Width = 175
+                object sePolypLength2: TcxSpinEdit
+                  Left = 0
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 0
+                  Width = 35
+                end
+                object lblgbDimsPolyp2x1: TcxLabel
+                  Left = 37
+                  Top = 2
+                  Caption = 'x'
+                  Transparent = True
+                end
+                object sePolypWidth2: TcxSpinEdit
+                  Left = 47
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 1
+                  Width = 35
+                end
+                object lblgbDimsPolyp2x2: TcxLabel
+                  Left = 84
+                  Top = 2
+                  Caption = 'x'
+                  Transparent = True
+                end
+                object sePolypDepth2: TcxSpinEdit
+                  Left = 94
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 2
+                  Width = 35
+                end
+                object lblgbDimsPolyp2mm: TcxLabel
+                  Left = 131
+                  Top = 2
+                  Caption = 'mm'
+                  Transparent = True
+                end
+              end
+              object gbDimsPolyp3: TcxGroupBox
+                Left = 10000
+                Top = 10000
+                ParentBackground = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
+                TabOrder = 0
+                Height = 22
+                Width = 175
+                object sePolypLength3: TcxSpinEdit
+                  Left = 0
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 0
+                  Width = 35
+                end
+                object lblgbDimsPolyp3x1: TcxLabel
+                  Left = 37
+                  Top = 2
+                  Caption = 'x'
+                  Transparent = True
+                end
+                object sePolypWidth3: TcxSpinEdit
+                  Left = 47
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 1
+                  Width = 35
+                end
+                object lblgbDimsPolyp3x2: TcxLabel
+                  Left = 84
+                  Top = 2
+                  Caption = 'x'
+                  Transparent = True
+                end
+                object sePolypDepth3: TcxSpinEdit
+                  Left = 94
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 2
+                  Width = 35
+                end
+                object lblgbDimsPolyp3mm: TcxLabel
+                  Left = 131
+                  Top = 2
+                  Caption = 'mm'
+                  Transparent = True
+                end
+              end
+              object gbDimsPolyp4: TcxGroupBox
+                Left = 10000
+                Top = 10000
+                ParentBackground = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
+                TabOrder = 0
+                Height = 22
+                Width = 175
+                object sePolypLength4: TcxSpinEdit
+                  Left = 0
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 0
+                  Width = 35
+                end
+                object lblgbDimsPolyp4x1: TcxLabel
+                  Left = 37
+                  Top = 2
+                  Caption = 'x'
+                  Transparent = True
+                end
+                object sePolypWidth4: TcxSpinEdit
+                  Left = 47
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 1
+                  Width = 35
+                end
+                object lblgbDimsPolyp4x2: TcxLabel
+                  Left = 84
+                  Top = 2
+                  Caption = 'x'
+                  Transparent = True
+                end
+                object sePolypDepth4: TcxSpinEdit
+                  Left = 94
+                  Top = 0
+                  Properties.AssignedValues.MinValue = True
+                  Properties.SpinButtons.Visible = False
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
+                  TabOrder = 2
+                  Width = 35
+                end
+                object lblgbDimsPolyp4mm: TcxLabel
+                  Left = 131
+                  Top = 2
+                  Caption = 'mm'
+                  Transparent = True
+                end
               end
               object gbDimsRPOC: TcxGroupBox
                 Left = 10000
@@ -2736,13 +2630,13 @@ inherited Gynae: TGynae
                   Top = 0
                   Properties.AssignedValues.MinValue = True
                   Properties.SpinButtons.Visible = False
-                  Properties.DisplayFormat = '#0.0'
-                  Properties.EditFormat = '#0.0'
-                  Properties.ValueType = vtFloat
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
                   TabOrder = 0
                   Width = 35
                 end
-                object lblRPOCx1: TcxLabel
+                object lblgbDimsRPOCx1: TcxLabel
                   Left = 37
                   Top = 2
                   Caption = 'x'
@@ -2753,13 +2647,13 @@ inherited Gynae: TGynae
                   Top = 0
                   Properties.AssignedValues.MinValue = True
                   Properties.SpinButtons.Visible = False
-                  Properties.DisplayFormat = '#0.0'
-                  Properties.EditFormat = '#0.0'
-                  Properties.ValueType = vtFloat
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
                   TabOrder = 1
                   Width = 35
                 end
-                object lblRPOCx2: TcxLabel
+                object lblgbDimsRPOCx2: TcxLabel
                   Left = 84
                   Top = 2
                   Caption = 'x'
@@ -2770,13 +2664,13 @@ inherited Gynae: TGynae
                   Top = 0
                   Properties.AssignedValues.MinValue = True
                   Properties.SpinButtons.Visible = False
-                  Properties.DisplayFormat = '#0.0'
-                  Properties.EditFormat = '#0.0'
-                  Properties.ValueType = vtFloat
+                    Properties.DisplayFormat = '#0.0'
+                    Properties.EditFormat = '#0.0'
+                    Properties.ValueType = vtFloat
                   TabOrder = 2
                   Width = 35
                 end
-                object lblRPOCmm: TcxLabel
+                object lblgbDimsRPOCmm: TcxLabel
                   Left = 131
                   Top = 2
                   Caption = 'mm'
@@ -2792,146 +2686,181 @@ inherited Gynae: TGynae
                 LayoutDirection = ldVertical
                 ShowBorder = False
 
-                object lgEndoGeneral: TdxLayoutGroup
-                  CaptionOptions.Text = 'General'
-                  CaptionOptions.Visible = True
+                object liEndoPhase: TdxLayoutItem
+                  CaptionOptions.Text = 'Phase'
+                  Control = cmbEndometriumPhase
+                  ControlOptions.ShowBorder = False
+                end
+                object lgEndoThickness: TdxLayoutGroup
+                  CaptionOptions.Visible = False
                   ButtonOptions.Buttons = <>
-                  ShowBorder = True
-                  object liEndoPhase: TdxLayoutItem
-                    CaptionOptions.Text = 'Phase'
-                    AlignHorz = ahLeft
-                    Control = cmbEndometriumPhase
+                  LayoutDirection = ldHorizontal
+                  ShowBorder = False
+                  object liEndoThickness: TdxLayoutItem
+                    CaptionOptions.Text = 'Thickness'
+                    Control = seEndometriumThickness
                     ControlOptions.ShowBorder = False
                   end
-                  object lgEndoThickness: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liEndoThickness: TdxLayoutItem
-                      CaptionOptions.Text = 'Thickness'
-                      Control = seEndometriumThickness
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liEndoMM: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'mm'
-                    end
-                    object liInSync: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkInSync
-                      ControlOptions.ShowBorder = False
-                    end
+                  object liEndoMM: TdxLayoutLabeledItem
+                    CaptionOptions.Text = 'mm'
                   end
-                  object lgIUD: TdxLayoutGroup
+                  object liInSync: TdxLayoutItem
                     CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liIUDCorrect: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkIUDCorrect
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liIUDIncorrect: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkIUDIncorrect
-                      ControlOptions.ShowBorder = False
-                    end
+                    Control = chkInSync
+                    ControlOptions.ShowBorder = False
                   end
                 end
 
-                object lgPolyps: TdxLayoutGroup
+                object liPolypSep: TdxLayoutSeparatorItem
                   CaptionOptions.Text = 'Endometrial Polyp'
-                  CaptionOptions.Visible = True
+                end
+                object liPolyp: TdxLayoutItem
+                  CaptionOptions.Visible = False
+                  Control = chkFocalLesion
+                  ControlOptions.ShowBorder = False
+                end
+                object lgPolypDetails: TdxLayoutGroup
+                  CaptionOptions.Visible = False
                   ButtonOptions.Buttons = <>
-                  ShowBorder = True
-                  object liPolyp: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = chkFocalLesion
+                  ShowBorder = False
+                  Visible = False
+                  object liPolypCount: TdxLayoutItem
+                    CaptionOptions.Text = 'Count'
+                    Control = sePolypCount
                     ControlOptions.ShowBorder = False
                   end
-                  object lgPolypDetails: TdxLayoutGroup
-                    CaptionOptions.Visible = False
+                  object lgPolyp1: TdxLayoutGroup
+                    CaptionOptions.Text = '#1'
+                    CaptionOptions.Visible = True
                     ButtonOptions.Buttons = <>
-                    ShowBorder = False
-                    Visible = False
-                    object liPolypCount: TdxLayoutItem
-                      CaptionOptions.Text = 'Count'
-                      AlignHorz = ahLeft
-                      Control = sePolypCount
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liPolypTable: TdxLayoutItem
+                    ShowBorder = True
+                    object liPolyp1Dims: TdxLayoutItem
                       CaptionOptions.Visible = False
-                      Control = gbPolypTable
+                      AlignHorz = ahLeft
+                      Control = gbDimsPolyp1
                       ControlOptions.ShowBorder = False
                     end
-                    object liVascStalk: TdxLayoutItem
+                    object liVascStalk1: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = chkVascularStalk
                       ControlOptions.ShowBorder = False
                     end
                   end
+object lgPolyp2: TdxLayoutGroup
+                    CaptionOptions.Text = '#2'
+                    CaptionOptions.Visible = True
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = True
+                    Visible = False
+                    object liPolyp2Dims: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      AlignHorz = ahLeft
+                      Control = gbDimsPolyp2
+                      ControlOptions.ShowBorder = False
+                    end
+                  end
+object lgPolyp3: TdxLayoutGroup
+                    CaptionOptions.Text = '#3'
+                    CaptionOptions.Visible = True
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = True
+                    Visible = False
+                    object liPolyp3Dims: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      AlignHorz = ahLeft
+                      Control = gbDimsPolyp3
+                      ControlOptions.ShowBorder = False
+                    end
+                  end
+object lgPolyp4: TdxLayoutGroup
+                    CaptionOptions.Text = '#4'
+                    CaptionOptions.Visible = True
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = True
+                    Visible = False
+                    object liPolyp4Dims: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      AlignHorz = ahLeft
+                      Control = gbDimsPolyp4
+                      ControlOptions.ShowBorder = False
+                    end
+                  end
                 end
 
-                object lgRPOC: TdxLayoutGroup
-                  CaptionOptions.Text = 'RPOC'
-                  CaptionOptions.Visible = True
+                object liIUDSep: TdxLayoutSeparatorItem
+                  CaptionOptions.Text = 'IUD'
+                end
+                object lgIUD: TdxLayoutGroup
+                  CaptionOptions.Visible = False
                   ButtonOptions.Buttons = <>
-                  ShowBorder = True
-                  object liRPOC: TdxLayoutItem
+                  LayoutDirection = ldHorizontal
+                  ShowBorder = False
+                  object liIUDCorrect: TdxLayoutItem
                     CaptionOptions.Visible = False
-                    Control = chkRPOC
+                    Control = chkIUDCorrect
                     ControlOptions.ShowBorder = False
                   end
-                  object lgRPOCDetails: TdxLayoutGroup
+                  object liIUDIncorrect: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = chkIUDIncorrect
+                    ControlOptions.ShowBorder = False
+                  end
+                end
+
+                object liRPOCSep: TdxLayoutSeparatorItem
+                  CaptionOptions.Text = 'RPOC'
+                end
+                object liRPOC: TdxLayoutItem
+                  CaptionOptions.Visible = False
+                  Control = chkRPOC
+                  ControlOptions.ShowBorder = False
+                end
+                object lgRPOCDetails: TdxLayoutGroup
+                  CaptionOptions.Visible = False
+                  ButtonOptions.Buttons = <>
+                  ShowBorder = False
+                  Visible = False
+                  object liRPOCDims: TdxLayoutItem
+                    CaptionOptions.Text = 'Dimensions'
+                    AlignHorz = ahLeft
+                    Control = gbDimsRPOC
+                    ControlOptions.ShowBorder = False
+                  end
+                  object liRPOCLoc: TdxLayoutItem
+                    CaptionOptions.Text = 'Location'
+                    Control = cmbRPOCLocation
+                    ControlOptions.ShowBorder = False
+                  end
+                  object lgRPOCVasc: TdxLayoutGroup
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
+                    LayoutDirection = ldHorizontal
                     ShowBorder = False
-                    Visible = False
-                    object liRPOCDims: TdxLayoutItem
-                      CaptionOptions.Text = 'Dimensions'
-                      AlignHorz = ahLeft
-                      Control = gbDimsRPOC
+                    object liRPOCVascular: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = rbRPOCVascular
                       ControlOptions.ShowBorder = False
                     end
-                    object liRPOCLoc: TdxLayoutItem
-                      CaptionOptions.Text = 'Location'
-                      AlignHorz = ahLeft
-                      Control = cmbRPOCLocation
+                    object liRPOCAvascular: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = rbRPOCAvascular
                       ControlOptions.ShowBorder = False
                     end
-                    object lgRPOCVasc: TdxLayoutGroup
+                  end
+                  object lgRPOCExtra: TdxLayoutGroup
+                    CaptionOptions.Visible = False
+                    ButtonOptions.Buttons = <>
+                    LayoutDirection = ldHorizontal
+                    ShowBorder = False
+                    object liRPOCSliding: TdxLayoutItem
                       CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liRPOCVascular: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = rbRPOCVascular
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRPOCAvascular: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = rbRPOCAvascular
-                        ControlOptions.ShowBorder = False
-                      end
+                      Control = chkRPOCSliding
+                      ControlOptions.ShowBorder = False
                     end
-                    object lgRPOCExtra: TdxLayoutGroup
+                    object liRPOCInflam: TdxLayoutItem
                       CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liRPOCSliding: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRPOCSliding
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRPOCInflam: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRPOCInflammatory
-                        ControlOptions.ShowBorder = False
-                      end
+                      Control = chkRPOCInflammatory
+                      ControlOptions.ShowBorder = False
                     end
                   end
                 end
@@ -4062,6 +3991,87 @@ inherited Gynae: TGynae
                     Value = 1
                     Width = 35
                   end
+                  object seRightEndo1L: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seRightEndo1W: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seRightEndo1D: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seRightEndo2L: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seRightEndo2W: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seRightEndo2D: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seRightEndo3L: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seRightEndo3W: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seRightEndo3D: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
                   object chkRightDermoid: TcxCheckBox
                     Left = 10000
                     Top = 10000
@@ -4185,6 +4195,87 @@ inherited Gynae: TGynae
                     Value = 1
                     Width = 35
                   end
+                  object seLeftEndo1L: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seLeftEndo1W: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seLeftEndo1D: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seLeftEndo2L: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seLeftEndo2W: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seLeftEndo2D: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seLeftEndo3L: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seLeftEndo3W: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
+                  object seLeftEndo3D: TcxSpinEdit
+                    Left = 10000
+                    Top = 10000
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    Enabled = False
+                    TabOrder = 0
+                    Width = 35
+                  end
                   object chkLeftDermoid: TcxCheckBox
                     Left = 10000
                     Top = 10000
@@ -4256,532 +4347,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
 
-                  object gbEndoTableRight: TcxGroupBox
-                Left = 10000
-                Top = 10000
-                PanelStyle.Active = True
-                Style.BorderStyle = ebsNone
-                Style.Edges = []
-                TabOrder = 0
-                Transparent = True
-                Height = 46
-                Width = 220
-                object lblEndoHdrRightIdx: TcxLabel
-                  Left = 5
-                  Top = 1
-                  Caption = '#'
-                  ParentFont = False
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lblEndoHdrRightDims: TcxLabel
-                  Left = 27
-                  Top = 1
-                  Caption = 'Dimensions'
-                  ParentFont = False
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                  object gbEndoRowRight1: TcxGroupBox
-                    Left = 2
-                    Top = 18
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 1
-                    Height = 24
-                    Width = 220
-                    object lblEndoIdxRight1: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#1'
-                      Transparent = True
-                    end
-                    object gbDimsEndoRight1: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object seRightEndo1L: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblEndoRight1x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seRightEndo1W: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblEndoRight1x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seRightEndo1D: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblEndoRight1mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                  end
-                  object gbEndoRowRight2: TcxGroupBox
-                    Left = 2
-                    Top = 42
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 2
-                    Visible = False
-                    Height = 24
-                    Width = 220
-                    object lblEndoIdxRight2: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#2'
-                      Transparent = True
-                    end
-                    object gbDimsEndoRight2: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object seRightEndo2L: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblEndoRight2x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seRightEndo2W: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblEndoRight2x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seRightEndo2D: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblEndoRight2mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                  end
-                  object gbEndoRowRight3: TcxGroupBox
-                    Left = 2
-                    Top = 66
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 3
-                    Visible = False
-                    Height = 24
-                    Width = 220
-                    object lblEndoIdxRight3: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#3'
-                      Transparent = True
-                    end
-                    object gbDimsEndoRight3: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object seRightEndo3L: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblEndoRight3x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seRightEndo3W: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblEndoRight3x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seRightEndo3D: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblEndoRight3mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                  end
-              end
-              object gbEndoTableLeft: TcxGroupBox
-                Left = 10000
-                Top = 10000
-                PanelStyle.Active = True
-                Style.BorderStyle = ebsNone
-                Style.Edges = []
-                TabOrder = 0
-                Transparent = True
-                Height = 46
-                Width = 220
-                object lblEndoHdrLeftIdx: TcxLabel
-                  Left = 5
-                  Top = 1
-                  Caption = '#'
-                  ParentFont = False
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lblEndoHdrLeftDims: TcxLabel
-                  Left = 27
-                  Top = 1
-                  Caption = 'Dimensions'
-                  ParentFont = False
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                  object gbEndoRowLeft1: TcxGroupBox
-                    Left = 2
-                    Top = 18
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 1
-                    Height = 24
-                    Width = 220
-                    object lblEndoIdxLeft1: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#1'
-                      Transparent = True
-                    end
-                    object gbDimsEndoLeft1: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object seLeftEndo1L: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblEndoLeft1x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seLeftEndo1W: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblEndoLeft1x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seLeftEndo1D: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblEndoLeft1mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                  end
-                  object gbEndoRowLeft2: TcxGroupBox
-                    Left = 2
-                    Top = 42
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 2
-                    Visible = False
-                    Height = 24
-                    Width = 220
-                    object lblEndoIdxLeft2: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#2'
-                      Transparent = True
-                    end
-                    object gbDimsEndoLeft2: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object seLeftEndo2L: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblEndoLeft2x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seLeftEndo2W: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblEndoLeft2x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seLeftEndo2D: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblEndoLeft2mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                  end
-                  object gbEndoRowLeft3: TcxGroupBox
-                    Left = 2
-                    Top = 66
-                    ParentBackground = True
-                    Style.BorderStyle = ebsNone
-                    Style.Edges = []
-                    TabOrder = 3
-                    Visible = False
-                    Height = 24
-                    Width = 220
-                    object lblEndoIdxLeft3: TcxLabel
-                      Left = 3
-                      Top = 3
-                      Caption = '#3'
-                      Transparent = True
-                    end
-                    object gbDimsEndoLeft3: TcxGroupBox
-                      Left = 25
-                      Top = 0
-                      ParentBackground = True
-                      Style.BorderStyle = ebsNone
-                      Style.Edges = []
-                      TabOrder = 0
-                      Height = 22
-                      Width = 175
-                      object seLeftEndo3L: TcxSpinEdit
-                        Left = 0
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 0
-                        Width = 35
-                      end
-                      object lblEndoLeft3x1: TcxLabel
-                        Left = 37
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seLeftEndo3W: TcxSpinEdit
-                        Left = 47
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 1
-                        Width = 35
-                      end
-                      object lblEndoLeft3x2: TcxLabel
-                        Left = 84
-                        Top = 2
-                        Caption = 'x'
-                        Transparent = True
-                      end
-                      object seLeftEndo3D: TcxSpinEdit
-                        Left = 94
-                        Top = 0
-                        Properties.AssignedValues.MinValue = True
-                        Properties.SpinButtons.Visible = False
-                        Properties.DisplayFormat = '#0.0'
-                        Properties.EditFormat = '#0.0'
-                        Properties.ValueType = vtFloat
-                        TabOrder = 2
-                        Width = 35
-                      end
-                      object lblEndoLeft3mm: TcxLabel
-                        Left = 131
-                        Top = 2
-                        Caption = 'mm'
-                        Transparent = True
-                      end
-                    end
-                  end
-              end
-
-              object lcCommonPathGroup_Root: TdxLayoutGroup
+                  object lcCommonPathGroup_Root: TdxLayoutGroup
                     AlignHorz = ahClient
                     AlignVert = avTop
                     ButtonOptions.Buttons = <>
@@ -4793,7 +4359,6 @@ inherited Gynae: TGynae
                       CaptionOptions.Visible = True
                       ButtonOptions.Buttons = <>
                       ShowBorder = True
-                      SizeOptions.Width = 350
                       object liRightSimpleCyst: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = chkRightSimpleCyst
@@ -4847,14 +4412,119 @@ inherited Gynae: TGynae
                         Visible = False
                         object liRightEndoCount: TdxLayoutItem
                           CaptionOptions.Text = 'Count'
-                          AlignHorz = ahLeft
                           Control = seRightEndometriomaCount
                           ControlOptions.ShowBorder = False
                         end
-                        object liRightEndoTable: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = gbEndoTableRight
-                          ControlOptions.ShowBorder = False
+                        object lgRightEndo1: TdxLayoutGroup
+                          CaptionOptions.Text = '#1'
+                          CaptionOptions.Visible = True
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          Visible = True
+                          object lgRightE1Dims: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liRightE1L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seRightEndo1L
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liRightE1x1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liRightE1W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seRightEndo1W
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liRightE1x2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liRightE1D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seRightEndo1D
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liRightE1mm: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                    end
+                        end
+                        object lgRightEndo2: TdxLayoutGroup
+                          CaptionOptions.Text = '#2'
+                          CaptionOptions.Visible = True
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          Visible = False
+                          object lgRightE2Dims: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liRightE2L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seRightEndo2L
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liRightE2x1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liRightE2W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seRightEndo2W
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liRightE2x2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liRightE2D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seRightEndo2D
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liRightE2mm: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                    end
+                        end
+                        object lgRightEndo3: TdxLayoutGroup
+                          CaptionOptions.Text = '#3'
+                          CaptionOptions.Visible = True
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          Visible = False
+                          object lgRightE3Dims: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liRightE3L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seRightEndo3L
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liRightE3x1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liRightE3W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seRightEndo3W
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liRightE3x2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liRightE3D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seRightEndo3D
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liRightE3mm: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                    end
                         end
                       end
                       object liRightDermoid: TdxLayoutItem
@@ -4945,7 +4615,6 @@ inherited Gynae: TGynae
                       CaptionOptions.Visible = True
                       ButtonOptions.Buttons = <>
                       ShowBorder = True
-                      SizeOptions.Width = 350
                       object liLeftSimpleCyst: TdxLayoutItem
                         CaptionOptions.Visible = False
                         Control = chkLeftSimpleCyst
@@ -4999,14 +4668,119 @@ inherited Gynae: TGynae
                         Visible = False
                         object liLeftEndoCount: TdxLayoutItem
                           CaptionOptions.Text = 'Count'
-                          AlignHorz = ahLeft
                           Control = seLeftEndometriomaCount
                           ControlOptions.ShowBorder = False
                         end
-                        object liLeftEndoTable: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = gbEndoTableLeft
-                          ControlOptions.ShowBorder = False
+                        object lgLeftEndo1: TdxLayoutGroup
+                          CaptionOptions.Text = '#1'
+                          CaptionOptions.Visible = True
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          Visible = True
+                          object lgLeftE1Dims: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liLeftE1L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seLeftEndo1L
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liLeftE1x1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liLeftE1W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seLeftEndo1W
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liLeftE1x2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liLeftE1D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seLeftEndo1D
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liLeftE1mm: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                    end
+                        end
+                        object lgLeftEndo2: TdxLayoutGroup
+                          CaptionOptions.Text = '#2'
+                          CaptionOptions.Visible = True
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          Visible = False
+                          object lgLeftE2Dims: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liLeftE2L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seLeftEndo2L
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liLeftE2x1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liLeftE2W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seLeftEndo2W
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liLeftE2x2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liLeftE2D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seLeftEndo2D
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liLeftE2mm: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                    end
+                        end
+                        object lgLeftEndo3: TdxLayoutGroup
+                          CaptionOptions.Text = '#3'
+                          CaptionOptions.Visible = True
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          Visible = False
+                          object lgLeftE3Dims: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liLeftE3L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seLeftEndo3L
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liLeftE3x1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liLeftE3W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seLeftEndo3W
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liLeftE3x2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liLeftE3D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = seLeftEndo3D
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liLeftE3mm: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                    end
                         end
                       end
                       object liLeftDermoid: TdxLayoutItem
@@ -7082,7 +6856,8 @@ inherited Gynae: TGynae
                     CaptionOptions.Text = 'Right Kidney'
                     CaptionOptions.Visible = True
                     ButtonOptions.Buttons = <>
-                    ShowBorder = True
+                    LayoutDirection = ldHorizontal
+                    ShowBorder = False
                     object liRKVis: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = chkRightKidneyVisualised
@@ -7090,7 +6865,6 @@ inherited Gynae: TGynae
                     end
                     object liRKObs: TdxLayoutItem
                       CaptionOptions.Visible = False
-                      Visible = False
                       Control = chkRightKidneyObstructed
                       ControlOptions.ShowBorder = False
                     end
@@ -7099,7 +6873,8 @@ inherited Gynae: TGynae
                     CaptionOptions.Text = 'Left Kidney'
                     CaptionOptions.Visible = True
                     ButtonOptions.Buttons = <>
-                    ShowBorder = True
+                    LayoutDirection = ldHorizontal
+                    ShowBorder = False
                     object liLKVis: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = chkLeftKidneyVisualised
@@ -7107,7 +6882,6 @@ inherited Gynae: TGynae
                     end
                     object liLKObs: TdxLayoutItem
                       CaptionOptions.Visible = False
-                      Visible = False
                       Control = chkLeftKidneyObstructed
                       ControlOptions.ShowBorder = False
                     end
@@ -7333,4 +7107,3 @@ inherited Gynae: TGynae
   object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
   end
 end
-
