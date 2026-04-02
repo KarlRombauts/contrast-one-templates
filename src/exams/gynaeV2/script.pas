@@ -80,6 +80,7 @@ begin
   gbFibRow8.Visible := (seFibroidCount.Value >= 8);
   gbFibRow9.Visible := (seFibroidCount.Value >= 9);
   gbFibRow10.Visible := (seFibroidCount.Value >= 10);
+  gbFibroidTable.Height := 20 + seFibroidCount.Value * 24 + 4;
 end;
 
 // --- Endometrium ---
