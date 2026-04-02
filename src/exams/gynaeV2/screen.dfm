@@ -816,7 +816,7 @@ inherited Gynae: TGynae
                 Height = 48
                 Width = 620
                 object lblFibHdrIdx: TcxLabel
-                  Left = 5
+                  Left = 7
                   Top = 1
                   Caption = '#'
                   ParentFont = False
@@ -825,7 +825,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object lblFibHdrSide: TcxLabel
-                  Left = 25
+                  Left = 27
                   Top = 1
                   Caption = 'Side'
                   ParentFont = False
@@ -834,7 +834,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object lblFibHdrPos: TcxLabel
-                  Left = 110
+                  Left = 112
                   Top = 1
                   Caption = 'Position'
                   ParentFont = False
@@ -843,7 +843,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object lblFibHdrType: TcxLabel
-                  Left = 205
+                  Left = 207
                   Top = 1
                   Caption = 'Type'
                   ParentFont = False
@@ -852,7 +852,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object lblFibHdrDims: TcxLabel
-                  Left = 320
+                  Left = 322
                   Top = 1
                   Caption = 'Dimensions'
                   ParentFont = False
@@ -861,7 +861,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object lblFibHdrCav: TcxLabel
-                  Left = 480
+                  Left = 482
                   Top = 1
                   Caption = 'Cavity'
                   ParentFont = False
@@ -870,7 +870,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object gbFibRow1: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 20
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
@@ -974,7 +974,7 @@ inherited Gynae: TGynae
                   end
                 end
                 object gbFibRow2: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 44
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
@@ -1080,7 +1080,7 @@ inherited Gynae: TGynae
                   end
                 end
                 object gbFibRow3: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 68
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
@@ -1185,7 +1185,7 @@ inherited Gynae: TGynae
                   end
                 end
                 object gbFibRow4: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 92
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
@@ -1291,7 +1291,7 @@ inherited Gynae: TGynae
                   end
                 end
                 object gbFibRow5: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 116
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
@@ -1396,7 +1396,7 @@ inherited Gynae: TGynae
                   end
                 end
                 object gbFibRow6: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 140
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
@@ -1502,7 +1502,7 @@ inherited Gynae: TGynae
                   end
                 end
                 object gbFibRow7: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 164
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
@@ -1607,7 +1607,7 @@ inherited Gynae: TGynae
                   end
                 end
                 object gbFibRow8: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 188
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
@@ -1713,7 +1713,7 @@ inherited Gynae: TGynae
                   end
                 end
                 object gbFibRow9: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 212
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
@@ -1818,7 +1818,7 @@ inherited Gynae: TGynae
                   end
                 end
                 object gbFibRow10: TcxGroupBox
-                  Left = 0
+                  Left = 2
                   Top = 236
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
