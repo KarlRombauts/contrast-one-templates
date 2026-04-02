@@ -801,565 +801,943 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Width = 35
               end
-              object cmbFibroidSide1: TcxComboBox
+
+              object gbFibroidTable: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'Left'
-                  'Right'
-                  'Fundal')
-                TabOrder = 0
-                Width = 80
-              end
-              object cmbFibroidPosition1: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'anterior'
-                  'posterior'
-                  'lateral'
-                  'cervical')
-                TabOrder = 0
-                Width = 90
-              end
-              object cmbFibroidType1: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'intramural'
-                  'subserosal'
-                  'submucosal'
-                  'pedunculated')
-                TabOrder = 0
-                Width = 110
-              end
-              object seFibroidLength1: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidWidth1: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidDepth1: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object chkCavityDistortion1: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Cavity distortion'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 0
                 Transparent = True
-                Width = 120
-              end
-              object cmbFibroidSide2: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'Left'
-                  'Right'
-                  'Fundal')
-                TabOrder = 0
-                Width = 80
-              end
-              object cmbFibroidPosition2: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'anterior'
-                  'posterior'
-                  'lateral'
-                  'cervical')
-                TabOrder = 0
-                Width = 90
-              end
-              object cmbFibroidType2: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'intramural'
-                  'subserosal'
-                  'submucosal'
-                  'pedunculated')
-                TabOrder = 0
-                Width = 110
-              end
-              object seFibroidLength2: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidWidth2: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidDepth2: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object chkCavityDistortion2: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Cavity distortion'
-                TabOrder = 0
-                Transparent = True
-                Width = 120
-              end
-              object cmbFibroidSide3: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'Left'
-                  'Right'
-                  'Fundal')
-                TabOrder = 0
-                Width = 80
-              end
-              object cmbFibroidPosition3: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'anterior'
-                  'posterior'
-                  'lateral'
-                  'cervical')
-                TabOrder = 0
-                Width = 90
-              end
-              object cmbFibroidType3: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'intramural'
-                  'subserosal'
-                  'submucosal'
-                  'pedunculated')
-                TabOrder = 0
-                Width = 110
-              end
-              object seFibroidLength3: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidWidth3: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidDepth3: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object chkCavityDistortion3: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Cavity distortion'
-                TabOrder = 0
-                Transparent = True
-                Width = 120
-              end
-              object cmbFibroidSide4: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'Left'
-                  'Right'
-                  'Fundal')
-                TabOrder = 0
-                Width = 80
-              end
-              object cmbFibroidPosition4: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'anterior'
-                  'posterior'
-                  'lateral'
-                  'cervical')
-                TabOrder = 0
-                Width = 90
-              end
-              object cmbFibroidType4: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'intramural'
-                  'subserosal'
-                  'submucosal'
-                  'pedunculated')
-                TabOrder = 0
-                Width = 110
-              end
-              object seFibroidLength4: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidWidth4: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidDepth4: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object chkCavityDistortion4: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Cavity distortion'
-                TabOrder = 0
-                Transparent = True
-                Width = 120
-              end
-              object cmbFibroidSide5: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'Left'
-                  'Right'
-                  'Fundal')
-                TabOrder = 0
-                Width = 80
-              end
-              object cmbFibroidPosition5: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'anterior'
-                  'posterior'
-                  'lateral'
-                  'cervical')
-                TabOrder = 0
-                Width = 90
-              end
-              object cmbFibroidType5: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'intramural'
-                  'subserosal'
-                  'submucosal'
-                  'pedunculated')
-                TabOrder = 0
-                Width = 110
-              end
-              object seFibroidLength5: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidWidth5: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidDepth5: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object chkCavityDistortion5: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Cavity distortion'
-                TabOrder = 0
-                Transparent = True
-                Width = 120
-              end
-              object cmbFibroidSide6: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'Left'
-                  'Right'
-                  'Fundal')
-                TabOrder = 0
-                Width = 80
-              end
-              object cmbFibroidPosition6: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'anterior'
-                  'posterior'
-                  'lateral'
-                  'cervical')
-                TabOrder = 0
-                Width = 90
-              end
-              object cmbFibroidType6: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'intramural'
-                  'subserosal'
-                  'submucosal'
-                  'pedunculated')
-                TabOrder = 0
-                Width = 110
-              end
-              object seFibroidLength6: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidWidth6: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidDepth6: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object chkCavityDistortion6: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Cavity distortion'
-                TabOrder = 0
-                Transparent = True
-                Width = 120
-              end
-              object cmbFibroidSide7: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'Left'
-                  'Right'
-                  'Fundal')
-                TabOrder = 0
-                Width = 80
-              end
-              object cmbFibroidPosition7: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'anterior'
-                  'posterior'
-                  'lateral'
-                  'cervical')
-                TabOrder = 0
-                Width = 90
-              end
-              object cmbFibroidType7: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'intramural'
-                  'subserosal'
-                  'submucosal'
-                  'pedunculated')
-                TabOrder = 0
-                Width = 110
-              end
-              object seFibroidLength7: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidWidth7: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidDepth7: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object chkCavityDistortion7: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Cavity distortion'
-                TabOrder = 0
-                Transparent = True
-                Width = 120
-              end
-              object cmbFibroidSide8: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'Left'
-                  'Right'
-                  'Fundal')
-                TabOrder = 0
-                Width = 80
-              end
-              object cmbFibroidPosition8: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'anterior'
-                  'posterior'
-                  'lateral'
-                  'cervical')
-                TabOrder = 0
-                Width = 90
-              end
-              object cmbFibroidType8: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'intramural'
-                  'subserosal'
-                  'submucosal'
-                  'pedunculated')
-                TabOrder = 0
-                Width = 110
-              end
-              object seFibroidLength8: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidWidth8: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object seFibroidDepth8: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                TabOrder = 0
-                Width = 35
-              end
-              object chkCavityDistortion8: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Cavity distortion'
-                TabOrder = 0
-                Transparent = True
-                Width = 120
+                Height = 219
+                Width = 620
+                object lblFibHdrIdx: TcxLabel
+                  Left = 5
+                  Top = 2
+                  Caption = '#'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lblFibHdrSide: TcxLabel
+                  Left = 30
+                  Top = 2
+                  Caption = 'Side'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lblFibHdrPos: TcxLabel
+                  Left = 115
+                  Top = 2
+                  Caption = 'Position'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lblFibHdrType: TcxLabel
+                  Left = 210
+                  Top = 2
+                  Caption = 'Type'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lblFibHdrDims: TcxLabel
+                  Left = 325
+                  Top = 2
+                  Caption = 'Dimensions'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lblFibHdrCav: TcxLabel
+                  Left = 490
+                  Top = 2
+                  Caption = 'Cavity'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = [fsBold]
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object gbFibRow1: TcxGroupBox
+                  Left = 0
+                  Top = 22
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 1
+                  Transparent = True
+                  Visible = True
+                  Height = 24
+                  Width = 620
+                  object lblFibIdx1: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#1'
+                    Transparent = True
+                  end
+                  object cmbFibroidSide1: TcxComboBox
+                    Left = 30
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'Left'
+                      'Right'
+                      'Fundal')
+                    TabOrder = 0
+                    Width = 80
+                  end
+                  object cmbFibroidPosition1: TcxComboBox
+                    Left = 115
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'anterior'
+                      'posterior'
+                      'lateral'
+                      'cervical')
+                    TabOrder = 1
+                    Width = 90
+                  end
+                  object cmbFibroidType1: TcxComboBox
+                    Left = 210
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'intramural'
+                      'subserosal'
+                      'submucosal'
+                      'pedunculated')
+                    TabOrder = 2
+                    Width = 110
+                  end
+                  object seFibroidLength1: TcxSpinEdit
+                    Left = 325
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 3
+                    Width = 35
+                  end
+                  object lblFibx1a: TcxLabel
+                    Left = 362
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidWidth1: TcxSpinEdit
+                    Left = 372
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 4
+                    Width = 35
+                  end
+                  object lblFibx1b: TcxLabel
+                    Left = 409
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidDepth1: TcxSpinEdit
+                    Left = 419
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 5
+                    Width = 35
+                  end
+                  object lblFibmm1: TcxLabel
+                    Left = 456
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object chkCavityDistortion1: TcxCheckBox
+                    Left = 490
+                    Top = 1
+                    Caption = 'Yes'
+                    TabOrder = 6
+                    Transparent = True
+                    Width = 50
+                  end
+                end
+                object gbFibRow2: TcxGroupBox
+                  Left = 0
+                  Top = 46
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 2
+                  Transparent = True
+                  Visible = False
+                  Height = 24
+                  Width = 620
+                  object lblFibIdx2: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#2'
+                    Transparent = True
+                  end
+                  object cmbFibroidSide2: TcxComboBox
+                    Left = 30
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'Left'
+                      'Right'
+                      'Fundal')
+                    TabOrder = 0
+                    Width = 80
+                  end
+                  object cmbFibroidPosition2: TcxComboBox
+                    Left = 115
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'anterior'
+                      'posterior'
+                      'lateral'
+                      'cervical')
+                    TabOrder = 1
+                    Width = 90
+                  end
+                  object cmbFibroidType2: TcxComboBox
+                    Left = 210
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'intramural'
+                      'subserosal'
+                      'submucosal'
+                      'pedunculated')
+                    TabOrder = 2
+                    Width = 110
+                  end
+                  object seFibroidLength2: TcxSpinEdit
+                    Left = 325
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 3
+                    Width = 35
+                  end
+                  object lblFibx2a: TcxLabel
+                    Left = 362
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidWidth2: TcxSpinEdit
+                    Left = 372
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 4
+                    Width = 35
+                  end
+                  object lblFibx2b: TcxLabel
+                    Left = 409
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidDepth2: TcxSpinEdit
+                    Left = 419
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 5
+                    Width = 35
+                  end
+                  object lblFibmm2: TcxLabel
+                    Left = 456
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object chkCavityDistortion2: TcxCheckBox
+                    Left = 490
+                    Top = 1
+                    Caption = 'Yes'
+                    TabOrder = 6
+                    Transparent = True
+                    Width = 50
+                  end
+                end
+                object gbFibRow3: TcxGroupBox
+                  Left = 0
+                  Top = 70
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 3
+                  Transparent = True
+                  Visible = False
+                  Height = 24
+                  Width = 620
+                  object lblFibIdx3: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#3'
+                    Transparent = True
+                  end
+                  object cmbFibroidSide3: TcxComboBox
+                    Left = 30
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'Left'
+                      'Right'
+                      'Fundal')
+                    TabOrder = 0
+                    Width = 80
+                  end
+                  object cmbFibroidPosition3: TcxComboBox
+                    Left = 115
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'anterior'
+                      'posterior'
+                      'lateral'
+                      'cervical')
+                    TabOrder = 1
+                    Width = 90
+                  end
+                  object cmbFibroidType3: TcxComboBox
+                    Left = 210
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'intramural'
+                      'subserosal'
+                      'submucosal'
+                      'pedunculated')
+                    TabOrder = 2
+                    Width = 110
+                  end
+                  object seFibroidLength3: TcxSpinEdit
+                    Left = 325
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 3
+                    Width = 35
+                  end
+                  object lblFibx3a: TcxLabel
+                    Left = 362
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidWidth3: TcxSpinEdit
+                    Left = 372
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 4
+                    Width = 35
+                  end
+                  object lblFibx3b: TcxLabel
+                    Left = 409
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidDepth3: TcxSpinEdit
+                    Left = 419
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 5
+                    Width = 35
+                  end
+                  object lblFibmm3: TcxLabel
+                    Left = 456
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object chkCavityDistortion3: TcxCheckBox
+                    Left = 490
+                    Top = 1
+                    Caption = 'Yes'
+                    TabOrder = 6
+                    Transparent = True
+                    Width = 50
+                  end
+                end
+                object gbFibRow4: TcxGroupBox
+                  Left = 0
+                  Top = 94
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 4
+                  Transparent = True
+                  Visible = False
+                  Height = 24
+                  Width = 620
+                  object lblFibIdx4: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#4'
+                    Transparent = True
+                  end
+                  object cmbFibroidSide4: TcxComboBox
+                    Left = 30
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'Left'
+                      'Right'
+                      'Fundal')
+                    TabOrder = 0
+                    Width = 80
+                  end
+                  object cmbFibroidPosition4: TcxComboBox
+                    Left = 115
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'anterior'
+                      'posterior'
+                      'lateral'
+                      'cervical')
+                    TabOrder = 1
+                    Width = 90
+                  end
+                  object cmbFibroidType4: TcxComboBox
+                    Left = 210
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'intramural'
+                      'subserosal'
+                      'submucosal'
+                      'pedunculated')
+                    TabOrder = 2
+                    Width = 110
+                  end
+                  object seFibroidLength4: TcxSpinEdit
+                    Left = 325
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 3
+                    Width = 35
+                  end
+                  object lblFibx4a: TcxLabel
+                    Left = 362
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidWidth4: TcxSpinEdit
+                    Left = 372
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 4
+                    Width = 35
+                  end
+                  object lblFibx4b: TcxLabel
+                    Left = 409
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidDepth4: TcxSpinEdit
+                    Left = 419
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 5
+                    Width = 35
+                  end
+                  object lblFibmm4: TcxLabel
+                    Left = 456
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object chkCavityDistortion4: TcxCheckBox
+                    Left = 490
+                    Top = 1
+                    Caption = 'Yes'
+                    TabOrder = 6
+                    Transparent = True
+                    Width = 50
+                  end
+                end
+                object gbFibRow5: TcxGroupBox
+                  Left = 0
+                  Top = 118
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 5
+                  Transparent = True
+                  Visible = False
+                  Height = 24
+                  Width = 620
+                  object lblFibIdx5: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#5'
+                    Transparent = True
+                  end
+                  object cmbFibroidSide5: TcxComboBox
+                    Left = 30
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'Left'
+                      'Right'
+                      'Fundal')
+                    TabOrder = 0
+                    Width = 80
+                  end
+                  object cmbFibroidPosition5: TcxComboBox
+                    Left = 115
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'anterior'
+                      'posterior'
+                      'lateral'
+                      'cervical')
+                    TabOrder = 1
+                    Width = 90
+                  end
+                  object cmbFibroidType5: TcxComboBox
+                    Left = 210
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'intramural'
+                      'subserosal'
+                      'submucosal'
+                      'pedunculated')
+                    TabOrder = 2
+                    Width = 110
+                  end
+                  object seFibroidLength5: TcxSpinEdit
+                    Left = 325
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 3
+                    Width = 35
+                  end
+                  object lblFibx5a: TcxLabel
+                    Left = 362
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidWidth5: TcxSpinEdit
+                    Left = 372
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 4
+                    Width = 35
+                  end
+                  object lblFibx5b: TcxLabel
+                    Left = 409
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidDepth5: TcxSpinEdit
+                    Left = 419
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 5
+                    Width = 35
+                  end
+                  object lblFibmm5: TcxLabel
+                    Left = 456
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object chkCavityDistortion5: TcxCheckBox
+                    Left = 490
+                    Top = 1
+                    Caption = 'Yes'
+                    TabOrder = 6
+                    Transparent = True
+                    Width = 50
+                  end
+                end
+                object gbFibRow6: TcxGroupBox
+                  Left = 0
+                  Top = 142
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 6
+                  Transparent = True
+                  Visible = False
+                  Height = 24
+                  Width = 620
+                  object lblFibIdx6: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#6'
+                    Transparent = True
+                  end
+                  object cmbFibroidSide6: TcxComboBox
+                    Left = 30
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'Left'
+                      'Right'
+                      'Fundal')
+                    TabOrder = 0
+                    Width = 80
+                  end
+                  object cmbFibroidPosition6: TcxComboBox
+                    Left = 115
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'anterior'
+                      'posterior'
+                      'lateral'
+                      'cervical')
+                    TabOrder = 1
+                    Width = 90
+                  end
+                  object cmbFibroidType6: TcxComboBox
+                    Left = 210
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'intramural'
+                      'subserosal'
+                      'submucosal'
+                      'pedunculated')
+                    TabOrder = 2
+                    Width = 110
+                  end
+                  object seFibroidLength6: TcxSpinEdit
+                    Left = 325
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 3
+                    Width = 35
+                  end
+                  object lblFibx6a: TcxLabel
+                    Left = 362
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidWidth6: TcxSpinEdit
+                    Left = 372
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 4
+                    Width = 35
+                  end
+                  object lblFibx6b: TcxLabel
+                    Left = 409
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidDepth6: TcxSpinEdit
+                    Left = 419
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 5
+                    Width = 35
+                  end
+                  object lblFibmm6: TcxLabel
+                    Left = 456
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object chkCavityDistortion6: TcxCheckBox
+                    Left = 490
+                    Top = 1
+                    Caption = 'Yes'
+                    TabOrder = 6
+                    Transparent = True
+                    Width = 50
+                  end
+                end
+                object gbFibRow7: TcxGroupBox
+                  Left = 0
+                  Top = 166
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 7
+                  Transparent = True
+                  Visible = False
+                  Height = 24
+                  Width = 620
+                  object lblFibIdx7: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#7'
+                    Transparent = True
+                  end
+                  object cmbFibroidSide7: TcxComboBox
+                    Left = 30
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'Left'
+                      'Right'
+                      'Fundal')
+                    TabOrder = 0
+                    Width = 80
+                  end
+                  object cmbFibroidPosition7: TcxComboBox
+                    Left = 115
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'anterior'
+                      'posterior'
+                      'lateral'
+                      'cervical')
+                    TabOrder = 1
+                    Width = 90
+                  end
+                  object cmbFibroidType7: TcxComboBox
+                    Left = 210
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'intramural'
+                      'subserosal'
+                      'submucosal'
+                      'pedunculated')
+                    TabOrder = 2
+                    Width = 110
+                  end
+                  object seFibroidLength7: TcxSpinEdit
+                    Left = 325
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 3
+                    Width = 35
+                  end
+                  object lblFibx7a: TcxLabel
+                    Left = 362
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidWidth7: TcxSpinEdit
+                    Left = 372
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 4
+                    Width = 35
+                  end
+                  object lblFibx7b: TcxLabel
+                    Left = 409
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidDepth7: TcxSpinEdit
+                    Left = 419
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 5
+                    Width = 35
+                  end
+                  object lblFibmm7: TcxLabel
+                    Left = 456
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object chkCavityDistortion7: TcxCheckBox
+                    Left = 490
+                    Top = 1
+                    Caption = 'Yes'
+                    TabOrder = 6
+                    Transparent = True
+                    Width = 50
+                  end
+                end
+                object gbFibRow8: TcxGroupBox
+                  Left = 0
+                  Top = 190
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  Style.Edges = []
+                  TabOrder = 8
+                  Transparent = True
+                  Visible = False
+                  Height = 24
+                  Width = 620
+                  object lblFibIdx8: TcxLabel
+                    Left = 5
+                    Top = 3
+                    Caption = '#8'
+                    Transparent = True
+                  end
+                  object cmbFibroidSide8: TcxComboBox
+                    Left = 30
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'Left'
+                      'Right'
+                      'Fundal')
+                    TabOrder = 0
+                    Width = 80
+                  end
+                  object cmbFibroidPosition8: TcxComboBox
+                    Left = 115
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'anterior'
+                      'posterior'
+                      'lateral'
+                      'cervical')
+                    TabOrder = 1
+                    Width = 90
+                  end
+                  object cmbFibroidType8: TcxComboBox
+                    Left = 210
+                    Top = 1
+                    Properties.DropDownListStyle = lsFixedList
+                    Properties.Items.Strings = (
+                      ''
+                      'intramural'
+                      'subserosal'
+                      'submucosal'
+                      'pedunculated')
+                    TabOrder = 2
+                    Width = 110
+                  end
+                  object seFibroidLength8: TcxSpinEdit
+                    Left = 325
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 3
+                    Width = 35
+                  end
+                  object lblFibx8a: TcxLabel
+                    Left = 362
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidWidth8: TcxSpinEdit
+                    Left = 372
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 4
+                    Width = 35
+                  end
+                  object lblFibx8b: TcxLabel
+                    Left = 409
+                    Top = 3
+                    Caption = 'x'
+                    Transparent = True
+                  end
+                  object seFibroidDepth8: TcxSpinEdit
+                    Left = 419
+                    Top = 1
+                    Properties.AssignedValues.MinValue = True
+                    Properties.SpinButtons.Visible = False
+                    TabOrder = 5
+                    Width = 35
+                  end
+                  object lblFibmm8: TcxLabel
+                    Left = 456
+                    Top = 3
+                    Caption = 'mm'
+                    Transparent = True
+                  end
+                  object chkCavityDistortion8: TcxCheckBox
+                    Left = 490
+                    Top = 1
+                    Caption = 'Yes'
+                    TabOrder = 6
+                    Transparent = True
+                    Width = 50
+                  end
+                end
               end
 
               object lcUterusGroup_Root: TdxLayoutGroup
@@ -1591,439 +1969,11 @@ inherited Gynae: TGynae
                       Control = seFibroidCount
                       ControlOptions.ShowBorder = False
                     end
-object lgFibroid1: TdxLayoutGroup
-  CaptionOptions.Visible = False
-  ButtonOptions.Buttons = <>
-  LayoutDirection = ldHorizontal
-  ShowBorder = True
-  Visible = True
-  object liFibIdx1: TdxLayoutLabeledItem
-    CaptionOptions.Text = '#1'
-  end
-  object liFibSide1: TdxLayoutItem
-    CaptionOptions.Text = 'Side'
-    Control = cmbFibroidSide1
-    ControlOptions.ShowBorder = False
-  end
-  object liFibPos1: TdxLayoutItem
-    CaptionOptions.Text = 'Position'
-    Control = cmbFibroidPosition1
-    ControlOptions.ShowBorder = False
-  end
-  object liFibType1: TdxLayoutItem
-    CaptionOptions.Text = 'Type'
-    Control = cmbFibroidType1
-    ControlOptions.ShowBorder = False
-  end
-  object liFibL1: TdxLayoutItem
-    CaptionOptions.Text = 'Dimensions'
-    Control = seFibroidLength1
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx1a: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibW1: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidWidth1
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx1b: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibD1: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidDepth1
-    ControlOptions.ShowBorder = False
-  end
-  object liFibmm1: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'mm'
-  end
-  object liFibCav1: TdxLayoutItem
-    CaptionOptions.Text = 'Cavity'
-    CaptionOptions.Visible = False
-    Control = chkCavityDistortion1
-    ControlOptions.ShowBorder = False
-  end
-end
-object lgFibroid2: TdxLayoutGroup
-  CaptionOptions.Visible = False
-  ButtonOptions.Buttons = <>
-  LayoutDirection = ldHorizontal
-  ShowBorder = True
-  Visible = False
-  object liFibIdx2: TdxLayoutLabeledItem
-    CaptionOptions.Text = '#2'
-  end
-  object liFibSide2: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidSide2
-    ControlOptions.ShowBorder = False
-  end
-  object liFibPos2: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidPosition2
-    ControlOptions.ShowBorder = False
-  end
-  object liFibType2: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidType2
-    ControlOptions.ShowBorder = False
-  end
-  object liFibL2: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidLength2
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx2a: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibW2: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidWidth2
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx2b: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibD2: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidDepth2
-    ControlOptions.ShowBorder = False
-  end
-  object liFibmm2: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'mm'
-  end
-  object liFibCav2: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = chkCavityDistortion2
-    ControlOptions.ShowBorder = False
-  end
-end
-object lgFibroid3: TdxLayoutGroup
-  CaptionOptions.Visible = False
-  ButtonOptions.Buttons = <>
-  LayoutDirection = ldHorizontal
-  ShowBorder = True
-  Visible = False
-  object liFibIdx3: TdxLayoutLabeledItem
-    CaptionOptions.Text = '#3'
-  end
-  object liFibSide3: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidSide3
-    ControlOptions.ShowBorder = False
-  end
-  object liFibPos3: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidPosition3
-    ControlOptions.ShowBorder = False
-  end
-  object liFibType3: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidType3
-    ControlOptions.ShowBorder = False
-  end
-  object liFibL3: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidLength3
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx3a: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibW3: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidWidth3
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx3b: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibD3: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidDepth3
-    ControlOptions.ShowBorder = False
-  end
-  object liFibmm3: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'mm'
-  end
-  object liFibCav3: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = chkCavityDistortion3
-    ControlOptions.ShowBorder = False
-  end
-end
-object lgFibroid4: TdxLayoutGroup
-  CaptionOptions.Visible = False
-  ButtonOptions.Buttons = <>
-  LayoutDirection = ldHorizontal
-  ShowBorder = True
-  Visible = False
-  object liFibIdx4: TdxLayoutLabeledItem
-    CaptionOptions.Text = '#4'
-  end
-  object liFibSide4: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidSide4
-    ControlOptions.ShowBorder = False
-  end
-  object liFibPos4: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidPosition4
-    ControlOptions.ShowBorder = False
-  end
-  object liFibType4: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidType4
-    ControlOptions.ShowBorder = False
-  end
-  object liFibL4: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidLength4
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx4a: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibW4: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidWidth4
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx4b: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibD4: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidDepth4
-    ControlOptions.ShowBorder = False
-  end
-  object liFibmm4: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'mm'
-  end
-  object liFibCav4: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = chkCavityDistortion4
-    ControlOptions.ShowBorder = False
-  end
-end
-object lgFibroid5: TdxLayoutGroup
-  CaptionOptions.Visible = False
-  ButtonOptions.Buttons = <>
-  LayoutDirection = ldHorizontal
-  ShowBorder = True
-  Visible = False
-  object liFibIdx5: TdxLayoutLabeledItem
-    CaptionOptions.Text = '#5'
-  end
-  object liFibSide5: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidSide5
-    ControlOptions.ShowBorder = False
-  end
-  object liFibPos5: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidPosition5
-    ControlOptions.ShowBorder = False
-  end
-  object liFibType5: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidType5
-    ControlOptions.ShowBorder = False
-  end
-  object liFibL5: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidLength5
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx5a: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibW5: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidWidth5
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx5b: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibD5: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidDepth5
-    ControlOptions.ShowBorder = False
-  end
-  object liFibmm5: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'mm'
-  end
-  object liFibCav5: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = chkCavityDistortion5
-    ControlOptions.ShowBorder = False
-  end
-end
-object lgFibroid6: TdxLayoutGroup
-  CaptionOptions.Visible = False
-  ButtonOptions.Buttons = <>
-  LayoutDirection = ldHorizontal
-  ShowBorder = True
-  Visible = False
-  object liFibIdx6: TdxLayoutLabeledItem
-    CaptionOptions.Text = '#6'
-  end
-  object liFibSide6: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidSide6
-    ControlOptions.ShowBorder = False
-  end
-  object liFibPos6: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidPosition6
-    ControlOptions.ShowBorder = False
-  end
-  object liFibType6: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidType6
-    ControlOptions.ShowBorder = False
-  end
-  object liFibL6: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidLength6
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx6a: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibW6: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidWidth6
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx6b: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibD6: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidDepth6
-    ControlOptions.ShowBorder = False
-  end
-  object liFibmm6: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'mm'
-  end
-  object liFibCav6: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = chkCavityDistortion6
-    ControlOptions.ShowBorder = False
-  end
-end
-object lgFibroid7: TdxLayoutGroup
-  CaptionOptions.Visible = False
-  ButtonOptions.Buttons = <>
-  LayoutDirection = ldHorizontal
-  ShowBorder = True
-  Visible = False
-  object liFibIdx7: TdxLayoutLabeledItem
-    CaptionOptions.Text = '#7'
-  end
-  object liFibSide7: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidSide7
-    ControlOptions.ShowBorder = False
-  end
-  object liFibPos7: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidPosition7
-    ControlOptions.ShowBorder = False
-  end
-  object liFibType7: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidType7
-    ControlOptions.ShowBorder = False
-  end
-  object liFibL7: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidLength7
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx7a: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibW7: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidWidth7
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx7b: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibD7: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidDepth7
-    ControlOptions.ShowBorder = False
-  end
-  object liFibmm7: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'mm'
-  end
-  object liFibCav7: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = chkCavityDistortion7
-    ControlOptions.ShowBorder = False
-  end
-end
-object lgFibroid8: TdxLayoutGroup
-  CaptionOptions.Visible = False
-  ButtonOptions.Buttons = <>
-  LayoutDirection = ldHorizontal
-  ShowBorder = True
-  Visible = False
-  object liFibIdx8: TdxLayoutLabeledItem
-    CaptionOptions.Text = '#8'
-  end
-  object liFibSide8: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidSide8
-    ControlOptions.ShowBorder = False
-  end
-  object liFibPos8: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidPosition8
-    ControlOptions.ShowBorder = False
-  end
-  object liFibType8: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = cmbFibroidType8
-    ControlOptions.ShowBorder = False
-  end
-  object liFibL8: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidLength8
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx8a: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibW8: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidWidth8
-    ControlOptions.ShowBorder = False
-  end
-  object liFibx8b: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'x'
-  end
-  object liFibD8: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = seFibroidDepth8
-    ControlOptions.ShowBorder = False
-  end
-  object liFibmm8: TdxLayoutLabeledItem
-    CaptionOptions.Text = 'mm'
-  end
-  object liFibCav8: TdxLayoutItem
-    CaptionOptions.Visible = False
-    Control = chkCavityDistortion8
-    ControlOptions.ShowBorder = False
-  end
-end
+                    object liFibroidTable: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = gbFibroidTable
+                      ControlOptions.ShowBorder = False
+                    end
                   end
                 end
               end
