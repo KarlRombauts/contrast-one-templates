@@ -40,9 +40,17 @@ end;
 
 // --- Scan Type ---
 
+procedure chkTransabdominalClick(Sender)
+begin
+  if chkTransabdominal.Checked then
+    chkTransvaginal.Checked := False;
+end;
+
 procedure chkTransvaginalClick(Sender)
 begin
-  chkPainWithProbe.Enabled := chkTransvaginal.Checked;
+  if chkTransvaginal.Checked then
+    chkTransabdominal.Checked := False;
+  chkPainWithProbe.Visible := chkTransvaginal.Checked;
   if not chkTransvaginal.Checked then
     chkPainWithProbe.Checked := False;
 end;
@@ -183,32 +191,32 @@ end;
 
 procedure chkRightSimpleCystClick(Sender)
 begin
-  lgRightSimpleCystDims.Visible := chkRightSimpleCyst.Checked;
+  gbDimsRightSimpleCyst.Visible := chkRightSimpleCyst.Checked;
 end;
 
 procedure chkLeftSimpleCystClick(Sender)
 begin
-  lgLeftSimpleCystDims.Visible := chkLeftSimpleCyst.Checked;
+  gbDimsLeftSimpleCyst.Visible := chkLeftSimpleCyst.Checked;
 end;
 
 procedure chkRightDermoidClick(Sender)
 begin
-  lgRightDermoidDims.Visible := chkRightDermoid.Checked;
+  gbDimsRightDermoid.Visible := chkRightDermoid.Checked;
 end;
 
 procedure chkLeftDermoidClick(Sender)
 begin
-  lgLeftDermoidDims.Visible := chkLeftDermoid.Checked;
+  gbDimsLeftDermoid.Visible := chkLeftDermoid.Checked;
 end;
 
 procedure chkRightFibromaClick(Sender)
 begin
-  lgRightFibromaDims.Visible := chkRightFibroma.Checked;
+  gbDimsRightFibroma.Visible := chkRightFibroma.Checked;
 end;
 
 procedure chkLeftFibromaClick(Sender)
 begin
-  lgLeftFibromaDims.Visible := chkLeftFibroma.Checked;
+  gbDimsLeftFibroma.Visible := chkLeftFibroma.Checked;
 end;
 
 // --- Common Pathologies: Endometrioma (multiple) ---
@@ -329,19 +337,41 @@ end;
 
 procedure chkRightKidneyVisualisedClick(Sender)
 begin
-  chkRightKidneyObstructed.Visible := chkRightKidneyVisualised.Checked;
+  chkRightKidneyObstructed.Enabled := chkRightKidneyVisualised.Checked;
   if not chkRightKidneyVisualised.Checked then
     chkRightKidneyObstructed.Checked := False;
 end;
 
 procedure chkLeftKidneyVisualisedClick(Sender)
 begin
-  chkLeftKidneyObstructed.Visible := chkLeftKidneyVisualised.Checked;
+  chkLeftKidneyObstructed.Enabled := chkLeftKidneyVisualised.Checked;
   if not chkLeftKidneyVisualised.Checked then
     chkLeftKidneyObstructed.Checked := False;
 end;
 
 // --- Procedures ---
+
+procedure rbRightTubeAbsentClick(Sender)
+begin
+  rbRightTubePatent.Visible := not rbRightTubeAbsent.Checked;
+  rbRightTubeNotDemonstrated.Visible := not rbRightTubeAbsent.Checked;
+  if rbRightTubeAbsent.Checked then
+  begin
+    rbRightTubePatent.Checked := False;
+    rbRightTubeNotDemonstrated.Checked := False;
+  end;
+end;
+
+procedure rbLeftTubeAbsentClick(Sender)
+begin
+  rbLeftTubePatent.Visible := not rbLeftTubeAbsent.Checked;
+  rbLeftTubeNotDemonstrated.Visible := not rbLeftTubeAbsent.Checked;
+  if rbLeftTubeAbsent.Checked then
+  begin
+    rbLeftTubePatent.Checked := False;
+    rbLeftTubeNotDemonstrated.Checked := False;
+  end;
+end;
 
 procedure chkSHGPerformedClick(Sender)
 begin
@@ -538,6 +568,7 @@ end;
 procedure StartScript;
 begin
   // --- Scan Type ---
+  chkTransabdominal.OnClick := 'chkTransabdominalClick';
   chkTransvaginal.OnClick := 'chkTransvaginalClick';
 
   // --- Medication ---
@@ -642,6 +673,8 @@ begin
   // --- Procedures ---
   chkSHGPerformed.OnClick := 'chkSHGPerformedClick';
   chkTubalPatencyPerformed.OnClick := 'chkTubalPatencyPerformedClick';
+  rbRightTubeAbsent.OnClick := 'rbRightTubeAbsentClick';
+  rbLeftTubeAbsent.OnClick := 'rbLeftTubeAbsentClick';
 
   // --- Ovary mobility/tenderness ---
   chkRightMobile.OnClick := 'chkRightMobileClick';
