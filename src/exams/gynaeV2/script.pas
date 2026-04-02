@@ -70,14 +70,16 @@ end;
 
 procedure seFibroidCountChange(Sender)
 begin
-  gbFibRow1.Visible := (seFibroidCount.Value >= 1);
-  gbFibRow2.Visible := (seFibroidCount.Value >= 2);
-  gbFibRow3.Visible := (seFibroidCount.Value >= 3);
-  gbFibRow4.Visible := (seFibroidCount.Value >= 4);
-  gbFibRow5.Visible := (seFibroidCount.Value >= 5);
-  gbFibRow6.Visible := (seFibroidCount.Value >= 6);
-  gbFibRow7.Visible := (seFibroidCount.Value >= 7);
-  gbFibRow8.Visible := (seFibroidCount.Value >= 8);
+  liFibRow1.Visible := (seFibroidCount.Value >= 1);
+  liFibRow2.Visible := (seFibroidCount.Value >= 2);
+  liFibRow3.Visible := (seFibroidCount.Value >= 3);
+  liFibRow4.Visible := (seFibroidCount.Value >= 4);
+  liFibRow5.Visible := (seFibroidCount.Value >= 5);
+  liFibRow6.Visible := (seFibroidCount.Value >= 6);
+  liFibRow7.Visible := (seFibroidCount.Value >= 7);
+  liFibRow8.Visible := (seFibroidCount.Value >= 8);
+  liFibRow9.Visible := (seFibroidCount.Value >= 9);
+  liFibRow10.Visible := (seFibroidCount.Value >= 10);
 end;
 
 // --- Endometrium ---
