@@ -799,7 +799,7 @@ inherited Gynae: TGynae
                 Properties.AssignedValues.MinValue = True
                 Properties.MaxValue = 10.000000000000000000
                 TabOrder = 0
-                Width = 25
+                Width = 35
               end
 
 
@@ -852,7 +852,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object lblFibHdrDims: TcxLabel
-                  Left = 322
+                  Left = 332
                   Top = 1
                   Caption = 'Dimensions'
                   ParentFont = False
@@ -861,7 +861,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object lblFibHdrCav: TcxLabel
-                  Left = 482
+                  Left = 492
                   Top = 1
                   Caption = 'Cavity'
                   ParentFont = False
@@ -931,7 +931,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx1a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -945,7 +945,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx1b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -959,7 +959,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm1: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True
@@ -1037,7 +1037,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx2a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1051,7 +1051,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx2b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1065,7 +1065,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm2: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True
@@ -1142,7 +1142,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx3a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1156,7 +1156,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx3b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1170,7 +1170,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm3: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True
@@ -1248,7 +1248,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx4a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1262,7 +1262,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx4b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1276,7 +1276,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm4: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True
@@ -1353,7 +1353,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx5a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1367,7 +1367,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx5b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1381,7 +1381,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm5: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True
@@ -1459,7 +1459,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx6a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1473,7 +1473,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx6b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1487,7 +1487,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm6: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True
@@ -1564,7 +1564,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx7a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1578,7 +1578,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx7b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1592,7 +1592,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm7: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True
@@ -1670,7 +1670,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx8a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1684,7 +1684,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx8b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1698,7 +1698,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm8: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True
@@ -1775,7 +1775,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx9a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1789,7 +1789,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx9b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1803,7 +1803,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm9: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True
@@ -1881,7 +1881,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx10a: TcxLabel
-                    Left = 357
+                    Left = 367
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1895,7 +1895,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibx10b: TcxLabel
-                    Left = 404
+                    Left = 414
                     Top = 3
                     Caption = 'x'
                     Transparent = True
@@ -1909,7 +1909,7 @@ inherited Gynae: TGynae
                     Width = 35
                   end
                   object lblFibmm10: TcxLabel
-                    Left = 451
+                    Left = 461
                     Top = 3
                     Caption = 'mm'
                     Transparent = True

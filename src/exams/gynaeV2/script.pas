@@ -65,7 +65,10 @@ end;
 
 procedure chkFibroidsPresentClick(Sender)
 begin
+  seFibroidCount.Visible := chkFibroidsPresent.Checked;
   lgFibroidsDetails.Visible := chkFibroidsPresent.Checked;
+  if not chkFibroidsPresent.Checked then
+    seFibroidCount.Value := 0;
 end;
 
 procedure seFibroidCountChange(Sender)
