@@ -404,6 +404,31 @@ def cmd_xref(args):
         for i, line in enumerate(script.split('\n')):
             if f"'{name}'" in line:
                 errors.append(f"Script L{i+1}: handler '{name}' not defined  |  {line.strip()[:60]}")
+
+    # Check procedure calls for forward references
+    # Pattern: identifier(  where identifier is a known procedure
+    script_lines = script.split('\n')
+    for i, line in enumerate(script_lines):
+        stripped = line.strip()
+        if stripped.startswith('//'):
+            continue
+        for m in re.finditer(r'\b(\w+)\s*\(', stripped):
+            callee = m.group(1)
+            # Skip keywords, type casts, built-in functions
+            if callee in builtins or callee in property_words:
+                continue
+            if callee in ('if', 'for', 'while', 'begin', 'end', 'TcxCheckBox', 'TWinControl', 'TcxSpinEdit', 'IntToStr', 'StrToInt', 'StrToFloat', 'FormatDateTime', 'ShowMessage', 'Trim', 'Format'):
+                continue
+            # Check if it's a procedure call (not a control reference)
+            if callee in defined_procs:
+                # Verify it's defined BEFORE this line (no forward refs)
+                def_line = None
+                for j, dl in enumerate(script_lines):
+                    if re.match(r'\s*(?:procedure|function)\s+' + re.escape(callee) + r'\b', dl):
+                        def_line = j
+                        break
+                if def_line is not None and def_line > i:
+                    errors.append(f"Script L{i+1}: forward call to '{callee}' (defined at L{def_line+1})  |  {stripped[:60]}")
                 break
 
     if errors:

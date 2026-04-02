@@ -213,22 +213,6 @@ end;
 
 // --- Common Pathologies: Endometrioma (multiple) ---
 
-procedure chkRightEndometriomaClick(Sender)
-begin
-  lgRightEndoDetails.Visible := chkRightEndometrioma.Checked;
-  if chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value < 1) then
-    seRightEndometriomaCount.Value := 1;
-  seRightEndometriomaCountChange(nil);
-end;
-
-procedure chkLeftEndometriomaClick(Sender)
-begin
-  lgLeftEndoDetails.Visible := chkLeftEndometrioma.Checked;
-  if chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value < 1) then
-    seLeftEndometriomaCount.Value := 1;
-  seLeftEndometriomaCountChange(nil);
-end;
-
 procedure seRightEndometriomaCountChange(Sender)
 begin
   gbEndoRowRight1.Visible := chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value >= 1);
@@ -243,6 +227,22 @@ begin
   gbEndoRowLeft2.Visible := chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 2);
   gbEndoRowLeft3.Visible := chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value >= 3);
   gbEndoTableLeft.Height := 18 + seLeftEndometriomaCount.Value * 24 + 4;
+end;
+
+procedure chkRightEndometriomaClick(Sender)
+begin
+  lgRightEndoDetails.Visible := chkRightEndometrioma.Checked;
+  if chkRightEndometrioma.Checked and (seRightEndometriomaCount.Value < 1) then
+    seRightEndometriomaCount.Value := 1;
+  seRightEndometriomaCountChange(nil);
+end;
+
+procedure chkLeftEndometriomaClick(Sender)
+begin
+  lgLeftEndoDetails.Visible := chkLeftEndometrioma.Checked;
+  if chkLeftEndometrioma.Checked and (seLeftEndometriomaCount.Value < 1) then
+    seLeftEndometriomaCount.Value := 1;
+  seLeftEndometriomaCountChange(nil);
 end;
 
 // --- Endometriosis: Layout group visibility ---
