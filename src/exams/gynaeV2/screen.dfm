@@ -29,450 +29,513 @@ inherited Gynae: TGynae
         object tsPatientDetails: TcxTabSheet
           Caption = 'Details'
           ImageIndex = 1
-          object sb1: TcxScrollBox
+          object lcPatientDetails: TdxLayoutControl
             Left = 0
             Top = 0
             Width = 1225
             Height = 652
             Align = alClient
             TabOrder = 0
-        object gbScanType: TcxGroupBox
-          Left = 4
-          Top = 0
-          Style.Edges = [bBottom]
-          TabOrder = 0
-          Height = 32
-          Width = 817
-          object chkTransabdominal: TcxCheckBox
-            Left = 10
-            Top = 7
-            Caption = 'Transabdominal'
-            TabOrder = 0
-            Transparent = True
-            Width = 120
-          end
-          object chkTransvaginal: TcxCheckBox
-            Left = 140
-            Top = 7
-            Caption = 'Transvaginal'
-            TabOrder = 1
-            Transparent = True
-            Width = 105
-          end
-          object chkPainWithProbe: TcxCheckBox
-            Left = 255
-            Top = 7
-            Caption = 'Pain with probe insertion'
-            Enabled = False
-            TabOrder = 2
-            Transparent = True
-            Width = 180
-          end
-          object chkIncompleteReport: TcxCheckBox
-            Left = 550
-            Top = 7
-            Caption = 'Incomplete report'
-            TabOrder = 3
-            Transparent = True
-            Width = 130
-          end
-        end
-        object gb5: TcxGroupBox
-          Left = 4
-          Top = 36
-          Style.Edges = [bBottom]
-          TabOrder = 1
-          Height = 247
-          Width = 817
-          object lbl1: TcxLabel
-            Left = 52
-            Top = 5
-            Caption = 'Exam date'
-            Transparent = True
-          end
-          object deExamDate: TcxDateEdit
-            Left = 109
-            Top = 3
-            Properties.ImmediatePost = True
-            Properties.ShowTime = False
-            TabOrder = 0
-            Width = 121
-          end
-          object lbl2: TcxLabel
-            Left = 52
-            Top = 30
-            Caption = 'LMP date'
-            Transparent = True
-          end
-          object deLMPDate: TcxDateEdit
-            Left = 109
-            Top = 28
-            Properties.ImmediatePost = True
-            Properties.ShowTime = False
-            TabOrder = 1
-            Width = 121
-          end
-          object chkLMPUnknown: TcxCheckBox
-            Left = 258
-            Top = 30
-            Caption = 'LMP unknown'
-            TabOrder = 2
-            Transparent = True
-            Width = 104
-          end
-          object chkAmenorrhoea: TcxCheckBox
-            Left = 370
-            Top = 30
-            Caption = 'Amenorrhoea'
-            TabOrder = 3
-            Transparent = True
-            Width = 104
-          end
-          object chkPostMenopausal: TcxCheckBox
-            Left = 480
-            Top = 30
-            Caption = 'Postmenopausal'
-            TabOrder = 4
-            Transparent = True
-            Width = 120
-          end
-          object lbl3: TcxLabel
-            Left = 84
-            Top = 56
-            Caption = 'Day'
-            Transparent = True
-          end
-          object seStartDay: TcxSpinEdit
-            Left = 109
-            Top = 54
-            Properties.AssignedValues.MinValue = True
-            Properties.MaxValue = 45.000000000000000000
-            TabOrder = 5
-            Width = 41
-          end
-          object lbl4: TcxLabel
-            Left = 154
-            Top = 56
-            Caption = 'Of'
-            Transparent = True
-          end
-          object seCycleMinDays: TcxSpinEdit
-            Left = 176
-            Top = 54
-            Properties.MaxValue = 45.000000000000000000
-            Properties.MinValue = 1.000000000000000000
-            TabOrder = 6
-            Value = 28
-            Width = 41
-          end
-          object lbl5: TcxLabel
-            Left = 220
-            Top = 56
-            Caption = 'day cycle'
-            Transparent = True
-          end
-          object lbl6: TcxLabel
-            Left = 90
-            Top = 83
-            Caption = 'G'
-            Transparent = True
-          end
-          object edtG: TcxSpinEdit
-            Left = 109
-            Top = 81
-            Properties.AssignedValues.MinValue = True
-            Properties.MaxValue = 20.000000000000000000
-            TabOrder = 7
-            Width = 35
-          end
-          object lbl7: TcxLabel
-            Left = 152
-            Top = 83
-            Caption = 'P'
-            Transparent = True
-          end
-          object edtP: TcxSpinEdit
-            Left = 165
-            Top = 81
-            Properties.AssignedValues.MinValue = True
-            Properties.MaxValue = 20.000000000000000000
-            TabOrder = 8
-            Width = 35
-          end
-          object lbl8: TcxLabel
-            Left = 52
-            Top = 109
-            Caption = 'Medication'
-            Transparent = True
-          end
-          object ccbMedication: TcxCheckComboBox
-            Left = 109
-            Top = 107
-            Properties.DropDownRows = 15
-            Properties.Items = <
-              item
-                Description = 'Oral contraceptive pill'
-                ShortDescription = 'OCP'
-              end
-              item
-                Description = 'Progesterone only pill'
-                ShortDescription = 'POP'
-              end
-              item
-                Description = 'Implanon'
-                ShortDescription = 'Implanon'
-              end
-              item
-                Description = 'IUS (Mirena)'
-                ShortDescription = 'Mirena'
-              end
-              item
-                Description = 'Tamoxifen'
-                ShortDescription = 'Tamoxifen'
-              end
-              item
-                Description = 'GnRH agonist (Zoladex)'
-                ShortDescription = 'GnRH agonist'
-              end
-              item
-                Description = 'HRT'
-                ShortDescription = 'HRT'
-              end
-              item
-                Description = 'Ovarian stimulation'
-                ShortDescription = 'Ovarian stim'
-              end
-              item
-                Description = 'Other'
-                ShortDescription = 'Other'
-              end>
-            TabOrder = 9
-            Width = 200
-          end
-          object edtOtherMedication: TcxTextEdit
-            Left = 316
-            Top = 107
-            Enabled = False
-            TabOrder = 10
-            Width = 200
-          end
-          object lbl9: TcxLabel
-            Left = 10
-            Top = 137
-            Caption = 'Referral indication'
-            Transparent = True
-          end
-          object ccbReferralIndication: TcxCheckComboBox
-            Left = 109
-            Top = 135
-            Properties.DropDownRows = 20
-            Properties.Items = <
-              item
-                Description = 'Pelvic pain'
-                ShortDescription = 'Pelvic pain'
-              end
-              item
-                Description = 'Dysmenorrhoea'
-                ShortDescription = 'Dysmenorrhoea'
-              end
-              item
-                Description = 'Dyspareunia'
-                ShortDescription = 'Dyspareunia'
-              end
-              item
-                Description = 'Dyschezia'
-                ShortDescription = 'Dyschezia'
-              end
-              item
-                Description = 'Abnormal bleeding'
-                ShortDescription = 'Abnormal bleeding'
-              end
-              item
-                Description = 'Postmenopausal bleeding'
-                ShortDescription = 'PMB'
-              end
-              item
-                Description = 'Fertility assessment'
-                ShortDescription = 'Fertility'
-              end
-              item
-                Description = 'Ovarian cyst follow-up'
-                ShortDescription = 'Cyst F/U'
-              end
-              item
-                Description = 'Endometriosis assessment'
-                ShortDescription = 'Endometriosis'
-              end
-              item
-                Description = 'Fibroid assessment'
-                ShortDescription = 'Fibroids'
-              end
-              item
-                Description = 'IUD check'
-                ShortDescription = 'IUD check'
-              end
-              item
-                Description = 'RPOC assessment'
-                ShortDescription = 'RPOC'
-              end
-              item
-                Description = 'Other'
-                ShortDescription = 'Other'
-              end>
-            Style.BorderColor = clRed
-            Style.BorderStyle = ebsThick
-            Style.Edges = [bLeft, bTop, bRight, bBottom]
-            Style.Shadow = False
-            TabOrder = 11
-            Width = 200
-          end
-          object lbl10: TcxLabel
-            Left = 21
-            Top = 163
-            Caption = 'Gynae history'
-            Transparent = True
-          end
-          object ccbClinicalHistory: TcxCheckComboBox
-            Left = 109
-            Top = 161
-            Properties.DropDownRows = 20
-            Properties.Items = <
-              item
-                Description = 'Endometriosis'
-                ShortDescription = 'Endometriosis'
-              end
-              item
-                Description = 'PCOS'
-                ShortDescription = 'PCOS'
-              end
-              item
-                Description = 'Fibroids'
-                ShortDescription = 'Fibroids'
-              end
-              item
-                Description = 'Previous ovarian cyst'
-                ShortDescription = 'Prev cyst'
-              end
-              item
-                Description = 'Infertility'
-                ShortDescription = 'Infertility'
-              end
-              item
-                Description = 'Recurrent miscarriage'
-                ShortDescription = 'Recurrent MC'
-              end
-              item
-                Description = 'Other'
-                ShortDescription = 'Other'
-              end>
-            Style.BorderColor = clRed
-            Style.BorderStyle = ebsThick
-            Style.Edges = [bLeft, bTop, bRight, bBottom]
-            Style.Shadow = False
-            TabOrder = 12
-            Width = 200
-          end
-          object lbl11: TcxLabel
-            Left = 20
-            Top = 189
-            Caption = 'Gynae surgery'
-            Transparent = True
-          end
-          object ccbPastSurgery: TcxCheckComboBox
-            Left = 109
-            Top = 187
-            Properties.DropDownRows = 15
-            Properties.Items = <
-              item
-                Description = 'Hysterectomy'
-                ShortDescription = 'Hysterectomy'
-              end
-              item
-                Description = 'Oophorectomy'
-                ShortDescription = 'Oophorectomy'
-              end
-              item
-                Description = 'Salpingectomy'
-                ShortDescription = 'Salpingectomy'
-              end
-              item
-                Description = 'Endometrial ablation'
-                ShortDescription = 'Ablation'
-              end
-              item
-                Description = 'Myomectomy'
-                ShortDescription = 'Myomectomy'
-              end
-              item
-                Description = 'Caesarean section'
-                ShortDescription = 'CS'
-              end
-              item
-                Description = 'Laparoscopy for endometriosis'
-                ShortDescription = 'Lap for endo'
-              end
-              item
-                Description = 'Other'
-                ShortDescription = 'Other'
-              end>
-            TabOrder = 13
-            Width = 200
-          end
-          object gbLaparoscopy: TcxGroupBox
-            Left = 316
-            Top = 183
-            PanelStyle.Active = True
-            Style.BorderStyle = ebsUltraFlat
-            Style.Edges = [bLeft, bTop, bRight, bBottom]
-            Style.LookAndFeel.NativeStyle = True
-            TabOrder = 14
-            Transparent = True
-            Visible = False
-            Height = 28
-            Width = 300
-            object lbl13: TcxLabel
-              Left = 5
-              Top = 4
-              Caption = 'How many'
+            AutoSize = True
+            LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
+
+            object chkTransabdominal: TcxCheckBox
+              Left = 10000
+              Top = 10000
+              Caption = 'Transabdominal'
+              TabOrder = 0
               Transparent = True
+              Width = 120
+            end
+            object chkTransvaginal: TcxCheckBox
+              Left = 10000
+              Top = 10000
+              Caption = 'Transvaginal'
+              TabOrder = 1
+              Transparent = True
+              Width = 105
+            end
+            object chkPainWithProbe: TcxCheckBox
+              Left = 10000
+              Top = 10000
+              Caption = 'Pain with probe insertion'
+              Enabled = False
+              TabOrder = 2
+              Transparent = True
+              Width = 180
+            end
+            object chkIncompleteReport: TcxCheckBox
+              Left = 10000
+              Top = 10000
+              Caption = 'Incomplete report'
+              TabOrder = 3
+              Transparent = True
+              Width = 130
+            end
+            object deExamDate: TcxDateEdit
+              Left = 10000
+              Top = 10000
+              Properties.ImmediatePost = True
+              Properties.ShowTime = False
+              TabOrder = 4
+              Width = 121
+            end
+            object deLMPDate: TcxDateEdit
+              Left = 10000
+              Top = 10000
+              Properties.ImmediatePost = True
+              Properties.ShowTime = False
+              TabOrder = 5
+              Width = 121
+            end
+            object chkLMPUnknown: TcxCheckBox
+              Left = 10000
+              Top = 10000
+              Caption = 'LMP unknown'
+              TabOrder = 6
+              Transparent = True
+              Width = 104
+            end
+            object chkAmenorrhoea: TcxCheckBox
+              Left = 10000
+              Top = 10000
+              Caption = 'Amenorrhoea'
+              TabOrder = 7
+              Transparent = True
+              Width = 104
+            end
+            object chkPostMenopausal: TcxCheckBox
+              Left = 10000
+              Top = 10000
+              Caption = 'Postmenopausal'
+              TabOrder = 8
+              Transparent = True
+              Width = 120
+            end
+            object seStartDay: TcxSpinEdit
+              Left = 10000
+              Top = 10000
+              Properties.AssignedValues.MinValue = True
+              Properties.MaxValue = 45.000000000000000000
+              TabOrder = 9
+              Width = 41
+            end
+            object seCycleMinDays: TcxSpinEdit
+              Left = 10000
+              Top = 10000
+              Properties.MaxValue = 45.000000000000000000
+              Properties.MinValue = 1.000000000000000000
+              TabOrder = 10
+              Value = 28
+              Width = 41
+            end
+            object edtG: TcxSpinEdit
+              Left = 10000
+              Top = 10000
+              Properties.AssignedValues.MinValue = True
+              Properties.MaxValue = 20.000000000000000000
+              TabOrder = 11
+              Width = 35
+            end
+            object edtP: TcxSpinEdit
+              Left = 10000
+              Top = 10000
+              Properties.AssignedValues.MinValue = True
+              Properties.MaxValue = 20.000000000000000000
+              TabOrder = 12
+              Width = 35
+            end
+            object ccbMedication: TcxCheckComboBox
+              Left = 10000
+              Top = 10000
+              Properties.DropDownRows = 15
+              Properties.Items = <
+                item
+                  Description = 'Oral contraceptive pill'
+                  ShortDescription = 'OCP'
+                end
+                item
+                  Description = 'Progesterone only pill'
+                  ShortDescription = 'POP'
+                end
+                item
+                  Description = 'Implanon'
+                  ShortDescription = 'Implanon'
+                end
+                item
+                  Description = 'IUS (Mirena)'
+                  ShortDescription = 'Mirena'
+                end
+                item
+                  Description = 'Tamoxifen'
+                  ShortDescription = 'Tamoxifen'
+                end
+                item
+                  Description = 'GnRH agonist (Zoladex)'
+                  ShortDescription = 'GnRH agonist'
+                end
+                item
+                  Description = 'HRT'
+                  ShortDescription = 'HRT'
+                end
+                item
+                  Description = 'Ovarian stimulation'
+                  ShortDescription = 'Ovarian stim'
+                end
+                item
+                  Description = 'Other'
+                  ShortDescription = 'Other'
+                end>
+              TabOrder = 13
+              Width = 200
+            end
+            object edtOtherMedication: TcxTextEdit
+              Left = 10000
+              Top = 10000
+              Enabled = False
+              TabOrder = 14
+              Width = 200
+            end
+            object ccbReferralIndication: TcxCheckComboBox
+              Left = 10000
+              Top = 10000
+              Properties.DropDownRows = 20
+              Properties.Items = <
+                item
+                  Description = 'Pelvic pain'
+                  ShortDescription = 'Pelvic pain'
+                end
+                item
+                  Description = 'Dysmenorrhoea'
+                  ShortDescription = 'Dysmenorrhoea'
+                end
+                item
+                  Description = 'Dyspareunia'
+                  ShortDescription = 'Dyspareunia'
+                end
+                item
+                  Description = 'Dyschezia'
+                  ShortDescription = 'Dyschezia'
+                end
+                item
+                  Description = 'Abnormal bleeding'
+                  ShortDescription = 'Abnormal bleeding'
+                end
+                item
+                  Description = 'Postmenopausal bleeding'
+                  ShortDescription = 'PMB'
+                end
+                item
+                  Description = 'Fertility assessment'
+                  ShortDescription = 'Fertility'
+                end
+                item
+                  Description = 'Ovarian cyst follow-up'
+                  ShortDescription = 'Cyst F/U'
+                end
+                item
+                  Description = 'Endometriosis assessment'
+                  ShortDescription = 'Endometriosis'
+                end
+                item
+                  Description = 'Fibroid assessment'
+                  ShortDescription = 'Fibroids'
+                end
+                item
+                  Description = 'IUD check'
+                  ShortDescription = 'IUD check'
+                end
+                item
+                  Description = 'RPOC assessment'
+                  ShortDescription = 'RPOC'
+                end
+                item
+                  Description = 'Other'
+                  ShortDescription = 'Other'
+                end>
+              TabOrder = 15
+              Width = 200
+            end
+            object ccbClinicalHistory: TcxCheckComboBox
+              Left = 10000
+              Top = 10000
+              Properties.DropDownRows = 20
+              Properties.Items = <
+                item
+                  Description = 'Endometriosis'
+                  ShortDescription = 'Endometriosis'
+                end
+                item
+                  Description = 'PCOS'
+                  ShortDescription = 'PCOS'
+                end
+                item
+                  Description = 'Fibroids'
+                  ShortDescription = 'Fibroids'
+                end
+                item
+                  Description = 'Previous ovarian cyst'
+                  ShortDescription = 'Prev cyst'
+                end
+                item
+                  Description = 'Infertility'
+                  ShortDescription = 'Infertility'
+                end
+                item
+                  Description = 'Recurrent miscarriage'
+                  ShortDescription = 'Recurrent MC'
+                end
+                item
+                  Description = 'Other'
+                  ShortDescription = 'Other'
+                end>
+              TabOrder = 16
+              Width = 200
+            end
+            object ccbPastSurgery: TcxCheckComboBox
+              Left = 10000
+              Top = 10000
+              Properties.DropDownRows = 15
+              Properties.Items = <
+                item
+                  Description = 'Hysterectomy'
+                  ShortDescription = 'Hysterectomy'
+                end
+                item
+                  Description = 'Oophorectomy'
+                  ShortDescription = 'Oophorectomy'
+                end
+                item
+                  Description = 'Salpingectomy'
+                  ShortDescription = 'Salpingectomy'
+                end
+                item
+                  Description = 'Endometrial ablation'
+                  ShortDescription = 'Ablation'
+                end
+                item
+                  Description = 'Myomectomy'
+                  ShortDescription = 'Myomectomy'
+                end
+                item
+                  Description = 'Caesarean section'
+                  ShortDescription = 'CS'
+                end
+                item
+                  Description = 'Laparoscopy for endometriosis'
+                  ShortDescription = 'Lap for endo'
+                end
+                item
+                  Description = 'Other'
+                  ShortDescription = 'Other'
+                end>
+              TabOrder = 17
+              Width = 200
             end
             object seLaparoscopyCount: TcxSpinEdit
-              Left = 70
-              Top = 2
+              Left = 10000
+              Top = 10000
               Properties.AssignedValues.MinValue = True
               Properties.MaxValue = 20.000000000000000000
               Properties.MinValue = 1.000000000000000000
-              TabOrder = 0
+              TabOrder = 18
               Width = 35
             end
-            object lbl14: TcxLabel
-              Left = 115
-              Top = 4
-              Caption = 'Year of last'
-              Transparent = True
-            end
             object seLaparoscopyYear: TcxSpinEdit
-              Left = 185
-              Top = 2
+              Left = 10000
+              Top = 10000
               Properties.MaxValue = 2040.000000000000000000
               Properties.MinValue = 1980.000000000000000000
-              TabOrder = 1
+              TabOrder = 19
               Width = 50
             end
-          end
-          object lbl12: TcxLabel
-            Left = 52
-            Top = 215
-            Caption = 'Version'
-            Transparent = True
-          end
-          object lblVersion: TcxLabel
-            Left = 109
-            Top = 215
-            Caption = 'v3.0 Gynae'
-            Transparent = True
-          end
-        end
+            object lblVersion: TcxLabel
+              Left = 10000
+              Top = 10000
+              Caption = 'v3.0 Gynae'
+              Transparent = True
+            end
+
+            object lcPatientDetailsGroup_Root: TdxLayoutGroup
+              AlignHorz = ahClient
+              AlignVert = avTop
+              ButtonOptions.Buttons = <>
+              Hidden = True
+              LayoutDirection = ldVertical
+              ShowBorder = False
+
+              object lgScanType: TdxLayoutGroup
+                CaptionOptions.Text = 'Scan Type'
+                CaptionOptions.Visible = True
+                ButtonOptions.Buttons = <>
+                LayoutDirection = ldHorizontal
+                ShowBorder = True
+                object liTransabdominal: TdxLayoutItem
+                  CaptionOptions.Visible = False
+                  Control = chkTransabdominal
+                  ControlOptions.ShowBorder = False
+                end
+                object liTransvaginal: TdxLayoutItem
+                  CaptionOptions.Visible = False
+                  Control = chkTransvaginal
+                  ControlOptions.ShowBorder = False
+                end
+                object liPainWithProbe: TdxLayoutItem
+                  CaptionOptions.Visible = False
+                  Control = chkPainWithProbe
+                  ControlOptions.ShowBorder = False
+                end
+                object liIncomplete: TdxLayoutItem
+                  CaptionOptions.Visible = False
+                  Control = chkIncompleteReport
+                  ControlOptions.ShowBorder = False
+                end
+              end
+
+              object lgPatientInfo: TdxLayoutGroup
+                CaptionOptions.Text = 'Patient Information'
+                CaptionOptions.Visible = True
+                ButtonOptions.Buttons = <>
+                ShowBorder = True
+                object liExamDate: TdxLayoutItem
+                  CaptionOptions.Text = 'Exam date'
+                  Control = deExamDate
+                  ControlOptions.ShowBorder = False
+                end
+                object lgLMP: TdxLayoutGroup
+                  CaptionOptions.Visible = False
+                  ButtonOptions.Buttons = <>
+                  LayoutDirection = ldHorizontal
+                  ShowBorder = False
+                  object liLMPDate: TdxLayoutItem
+                    CaptionOptions.Text = 'LMP date'
+                    Control = deLMPDate
+                    ControlOptions.ShowBorder = False
+                  end
+                  object liLMPUnknown: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = chkLMPUnknown
+                    ControlOptions.ShowBorder = False
+                  end
+                  object liAmenorrhoea: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = chkAmenorrhoea
+                    ControlOptions.ShowBorder = False
+                  end
+                  object liPostMenopausal: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = chkPostMenopausal
+                    ControlOptions.ShowBorder = False
+                  end
+                end
+                object lgCycle: TdxLayoutGroup
+                  CaptionOptions.Visible = False
+                  ButtonOptions.Buttons = <>
+                  LayoutDirection = ldHorizontal
+                  ShowBorder = False
+                  object liStartDay: TdxLayoutItem
+                    CaptionOptions.Text = 'Day'
+                    Control = seStartDay
+                    ControlOptions.ShowBorder = False
+                  end
+                  object liCycleOf: TdxLayoutLabeledItem
+                    CaptionOptions.Text = 'of'
+                  end
+                  object liCycleMin: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = seCycleMinDays
+                    ControlOptions.ShowBorder = False
+                  end
+                  object liCycleDays: TdxLayoutLabeledItem
+                    CaptionOptions.Text = 'day cycle'
+                  end
+                end
+                object lgGP: TdxLayoutGroup
+                  CaptionOptions.Visible = False
+                  ButtonOptions.Buttons = <>
+                  LayoutDirection = ldHorizontal
+                  ShowBorder = False
+                  object liG: TdxLayoutItem
+                    CaptionOptions.Text = 'G'
+                    Control = edtG
+                    ControlOptions.ShowBorder = False
+                  end
+                  object liP: TdxLayoutItem
+                    CaptionOptions.Text = 'P'
+                    Control = edtP
+                    ControlOptions.ShowBorder = False
+                  end
+                end
+              end
+
+              object lgClinical: TdxLayoutGroup
+                CaptionOptions.Text = 'Clinical'
+                CaptionOptions.Visible = True
+                ButtonOptions.Buttons = <>
+                ShowBorder = True
+                object lgMedRow: TdxLayoutGroup
+                  CaptionOptions.Visible = False
+                  ButtonOptions.Buttons = <>
+                  LayoutDirection = ldHorizontal
+                  ShowBorder = False
+                  object liMedication: TdxLayoutItem
+                    CaptionOptions.Text = 'Medication'
+                    Control = ccbMedication
+                    ControlOptions.ShowBorder = False
+                  end
+                  object liOtherMed: TdxLayoutItem
+                    CaptionOptions.Visible = False
+                    Control = edtOtherMedication
+                    ControlOptions.ShowBorder = False
+                  end
+                end
+                object liReferral: TdxLayoutItem
+                  CaptionOptions.Text = 'Referral indication'
+                  Control = ccbReferralIndication
+                  ControlOptions.ShowBorder = False
+                end
+                object liHistory: TdxLayoutItem
+                  CaptionOptions.Text = 'Gynae history'
+                  Control = ccbClinicalHistory
+                  ControlOptions.ShowBorder = False
+                end
+              end
+
+              object lgSurgery: TdxLayoutGroup
+                CaptionOptions.Text = 'Surgery'
+                CaptionOptions.Visible = True
+                ButtonOptions.Buttons = <>
+                ShowBorder = True
+                object liSurgery: TdxLayoutItem
+                  CaptionOptions.Text = 'Gynae surgery'
+                  Control = ccbPastSurgery
+                  ControlOptions.ShowBorder = False
+                end
+                object lgLaparoscopy: TdxLayoutGroup
+                  CaptionOptions.Visible = False
+                  ButtonOptions.Buttons = <>
+                  LayoutDirection = ldHorizontal
+                  ShowBorder = False
+                  Visible = False
+                  object liLapCount: TdxLayoutItem
+                    CaptionOptions.Text = 'How many'
+                    Control = seLaparoscopyCount
+                    ControlOptions.ShowBorder = False
+                  end
+                  object liLapYear: TdxLayoutItem
+                    CaptionOptions.Text = 'Year of last'
+                    Control = seLaparoscopyYear
+                    ControlOptions.ShowBorder = False
+                  end
+                end
+              end
+
+              object liVersion: TdxLayoutItem
+                CaptionOptions.Visible = False
+                Control = lblVersion
+                ControlOptions.ShowBorder = False
+              end
+            end
           end
         end
 
@@ -1532,7 +1595,7 @@ object lgFibroid1: TdxLayoutGroup
   CaptionOptions.Visible = False
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
-  ShowBorder = False
+  ShowBorder = True
   Visible = True
   object liFibIdx1: TdxLayoutLabeledItem
     CaptionOptions.Text = '#1'
@@ -1586,7 +1649,7 @@ object lgFibroid2: TdxLayoutGroup
   CaptionOptions.Visible = False
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
-  ShowBorder = False
+  ShowBorder = True
   Visible = False
   object liFibIdx2: TdxLayoutLabeledItem
     CaptionOptions.Text = '#2'
@@ -1640,7 +1703,7 @@ object lgFibroid3: TdxLayoutGroup
   CaptionOptions.Visible = False
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
-  ShowBorder = False
+  ShowBorder = True
   Visible = False
   object liFibIdx3: TdxLayoutLabeledItem
     CaptionOptions.Text = '#3'
@@ -1694,7 +1757,7 @@ object lgFibroid4: TdxLayoutGroup
   CaptionOptions.Visible = False
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
-  ShowBorder = False
+  ShowBorder = True
   Visible = False
   object liFibIdx4: TdxLayoutLabeledItem
     CaptionOptions.Text = '#4'
@@ -1748,7 +1811,7 @@ object lgFibroid5: TdxLayoutGroup
   CaptionOptions.Visible = False
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
-  ShowBorder = False
+  ShowBorder = True
   Visible = False
   object liFibIdx5: TdxLayoutLabeledItem
     CaptionOptions.Text = '#5'
@@ -1802,7 +1865,7 @@ object lgFibroid6: TdxLayoutGroup
   CaptionOptions.Visible = False
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
-  ShowBorder = False
+  ShowBorder = True
   Visible = False
   object liFibIdx6: TdxLayoutLabeledItem
     CaptionOptions.Text = '#6'
@@ -1856,7 +1919,7 @@ object lgFibroid7: TdxLayoutGroup
   CaptionOptions.Visible = False
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
-  ShowBorder = False
+  ShowBorder = True
   Visible = False
   object liFibIdx7: TdxLayoutLabeledItem
     CaptionOptions.Text = '#7'
@@ -1910,7 +1973,7 @@ object lgFibroid8: TdxLayoutGroup
   CaptionOptions.Visible = False
   ButtonOptions.Buttons = <>
   LayoutDirection = ldHorizontal
-  ShowBorder = False
+  ShowBorder = True
   Visible = False
   object liFibIdx8: TdxLayoutLabeledItem
     CaptionOptions.Text = '#8'
@@ -2087,6 +2150,150 @@ end
                 Transparent = True
                 Width = 100
               end
+              object sePolypLength2: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object sePolypWidth2: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object sePolypDepth2: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object cmbPolypLocation2: TcxComboBox
+                Left = 10000
+                Top = 10000
+                Properties.DropDownListStyle = lsFixedList
+                Properties.Items.Strings = (
+                  ''
+                  'anterior'
+                  'posterior'
+                  'fundal'
+                  'left lateral'
+                  'right lateral'
+                  'cervical')
+                TabOrder = 0
+                Width = 110
+              end
+              object sePolypLength3: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object sePolypWidth3: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object sePolypDepth3: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object cmbPolypLocation3: TcxComboBox
+                Left = 10000
+                Top = 10000
+                Properties.DropDownListStyle = lsFixedList
+                Properties.Items.Strings = (
+                  ''
+                  'anterior'
+                  'posterior'
+                  'fundal'
+                  'left lateral'
+                  'right lateral'
+                  'cervical')
+                TabOrder = 0
+                Width = 110
+              end
+              object sePolypLength4: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object sePolypWidth4: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object sePolypDepth4: TcxSpinEdit
+                Left = 10000
+                Top = 10000
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object cmbPolypLocation4: TcxComboBox
+                Left = 10000
+                Top = 10000
+                Properties.DropDownListStyle = lsFixedList
+                Properties.Items.Strings = (
+                  ''
+                  'anterior'
+                  'posterior'
+                  'fundal'
+                  'left lateral'
+                  'right lateral'
+                  'cervical')
+                TabOrder = 0
+                Width = 110
+              end
               object chkIUDCorrect: TcxCheckBox
                 Left = 10000
                 Top = 10000
@@ -2240,48 +2447,177 @@ end
                     Control = sePolypCount
                     ControlOptions.ShowBorder = False
                   end
-                  object lgPolypDims: TdxLayoutGroup
-                    CaptionOptions.Visible = False
+                  object lgPolyp1: TdxLayoutGroup
+                    CaptionOptions.Text = '#1'
+                    CaptionOptions.Visible = True
                     ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liPolypDimLabel: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'Dimensions'
-                    end
-                    object liPolypL: TdxLayoutItem
+                    ShowBorder = True
+                    object lgPolyp1Dims: TdxLayoutGroup
                       CaptionOptions.Visible = False
-                      Control = sePolypLength1
-                      ControlOptions.ShowBorder = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liPolyp1L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypLength1
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp1Sep1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liPolyp1W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypWidth1
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp1Sep2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liPolyp1D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypDepth1
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp1MM: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                      object liPolyp1Loc: TdxLayoutItem
+                        CaptionOptions.Text = 'Location'
+                        Control = cmbPolypLocation1
+                        ControlOptions.ShowBorder = False
+                      end
                     end
-                    object liPolypSep1: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'x'
-                    end
-                    object liPolypW: TdxLayoutItem
+                    object liVascStalk1: TdxLayoutItem
                       CaptionOptions.Visible = False
-                      Control = sePolypWidth1
+                      Control = chkVascularStalk
                       ControlOptions.ShowBorder = False
-                    end
-                    object liPolypSep2: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'x'
-                    end
-                    object liPolypD: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = sePolypDepth1
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liPolypMM: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'mm'
                     end
                   end
-                  object liPolypLoc: TdxLayoutItem
-                    CaptionOptions.Text = 'Location'
-                    Control = cmbPolypLocation1
-                    ControlOptions.ShowBorder = False
+object lgPolyp2: TdxLayoutGroup
+                    CaptionOptions.Text = '#2'
+                    CaptionOptions.Visible = True
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = True
+                    Visible = False
+                    object lgPolyp2Dims: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liPolyp2L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypLength2
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp2Sep1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liPolyp2W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypWidth2
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp2Sep2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liPolyp2D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypDepth2
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp2MM: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                      object liPolyp2Loc: TdxLayoutItem
+                        CaptionOptions.Text = 'Location'
+                        Control = cmbPolypLocation2
+                        ControlOptions.ShowBorder = False
+                      end
+                    end
                   end
-                  object liVascStalk: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = chkVascularStalk
-                    ControlOptions.ShowBorder = False
+object lgPolyp3: TdxLayoutGroup
+                    CaptionOptions.Text = '#3'
+                    CaptionOptions.Visible = True
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = True
+                    Visible = False
+                    object lgPolyp3Dims: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liPolyp3L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypLength3
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp3Sep1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liPolyp3W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypWidth3
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp3Sep2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liPolyp3D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypDepth3
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp3MM: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                      object liPolyp3Loc: TdxLayoutItem
+                        CaptionOptions.Text = 'Location'
+                        Control = cmbPolypLocation3
+                        ControlOptions.ShowBorder = False
+                      end
+                    end
+                  end
+object lgPolyp4: TdxLayoutGroup
+                    CaptionOptions.Text = '#4'
+                    CaptionOptions.Visible = True
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = True
+                    Visible = False
+                    object lgPolyp4Dims: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
+                      object liPolyp4L: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypLength4
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp4Sep1: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liPolyp4W: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypWidth4
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp4Sep2: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'x'
+                      end
+                      object liPolyp4D: TdxLayoutItem
+                        CaptionOptions.Visible = False
+                        Control = sePolypDepth4
+                        ControlOptions.ShowBorder = False
+                      end
+                      object liPolyp4MM: TdxLayoutLabeledItem
+                        CaptionOptions.Text = 'mm'
+                      end
+                      object liPolyp4Loc: TdxLayoutItem
+                        CaptionOptions.Text = 'Location'
+                        Control = cmbPolypLocation4
+                        ControlOptions.ShowBorder = False
+                      end
+                    end
                   end
                 end
 
@@ -5919,6 +6255,7 @@ end
                   CaptionOptions.Text = 'Uterosacral Ligaments'
                   CaptionOptions.Visible = True
                   ButtonOptions.Buttons = <>
+                  LayoutDirection = ldHorizontal
                   ShowBorder = True
                   object lgRightUSL: TdxLayoutGroup
                     CaptionOptions.Text = 'Right'
@@ -6067,11 +6404,11 @@ end
                       ControlOptions.ShowBorder = False
                     end
                     object lgBowelNod1: TdxLayoutGroup
-                      CaptionOptions.Text = 'Nodule 1'
+                      CaptionOptions.Text = '#1'
                       CaptionOptions.Visible = True
                       ButtonOptions.Buttons = <>
-                      ShowBorder = False
-                      object lgBN1Dims: TdxLayoutGroup
+                      ShowBorder = True
+                      object lgBN1Row1: TdxLayoutGroup
                         CaptionOptions.Visible = False
                         ButtonOptions.Buttons = <>
                         LayoutDirection = ldHorizontal
@@ -6103,30 +6440,36 @@ end
                         object liBN1MM: TdxLayoutLabeledItem
                           CaptionOptions.Text = 'mm'
                         end
+                        object liBN1Dist: TdxLayoutItem
+                          CaptionOptions.Text = 'Distance from anus'
+                          Control = seBowelNod1DistAnus
+                          ControlOptions.ShowBorder = False
+                        end
                       end
-                      object liBN1Dist: TdxLayoutItem
-                        CaptionOptions.Text = 'Distance from anus'
-                        Control = seBowelNod1DistAnus
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liBN1Invasion: TdxLayoutItem
-                        CaptionOptions.Text = 'Depth of invasion'
-                        Control = cmbBowelNod1Invasion
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liBN1Stuck: TdxLayoutItem
-                        CaptionOptions.Text = 'Stuck to'
-                        Control = cmbBowelNod1StuckTo
-                        ControlOptions.ShowBorder = False
+                      object lgBN1Row2: TdxLayoutGroup
+                        CaptionOptions.Visible = False
+                        ButtonOptions.Buttons = <>
+                        LayoutDirection = ldHorizontal
+                        ShowBorder = False
+                        object liBN1Invasion: TdxLayoutItem
+                          CaptionOptions.Text = 'Depth of invasion'
+                          Control = cmbBowelNod1Invasion
+                          ControlOptions.ShowBorder = False
+                        end
+                        object liBN1Stuck: TdxLayoutItem
+                          CaptionOptions.Text = 'Stuck to'
+                          Control = cmbBowelNod1StuckTo
+                          ControlOptions.ShowBorder = False
+                        end
                       end
                     end
                     object lgBowelNod2: TdxLayoutGroup
-                      CaptionOptions.Text = 'Nodule 2'
+                      CaptionOptions.Text = '#2'
                       CaptionOptions.Visible = True
                       ButtonOptions.Buttons = <>
-                      ShowBorder = False
+                      ShowBorder = True
                       Visible = False
-                      object lgBN2Dims: TdxLayoutGroup
+                      object lgBN2Row1: TdxLayoutGroup
                         CaptionOptions.Visible = False
                         ButtonOptions.Buttons = <>
                         LayoutDirection = ldHorizontal
@@ -6158,30 +6501,36 @@ end
                         object liBN2MM: TdxLayoutLabeledItem
                           CaptionOptions.Text = 'mm'
                         end
+                        object liBN2Dist: TdxLayoutItem
+                          CaptionOptions.Text = 'Distance from prev'
+                          Control = seBowelNod2DistPrev
+                          ControlOptions.ShowBorder = False
+                        end
                       end
-                      object liBN2Dist: TdxLayoutItem
-                        CaptionOptions.Text = 'Distance from prev'
-                        Control = seBowelNod2DistPrev
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liBN2Invasion: TdxLayoutItem
-                        CaptionOptions.Text = 'Depth of invasion'
-                        Control = cmbBowelNod2Invasion
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liBN2Stuck: TdxLayoutItem
-                        CaptionOptions.Text = 'Stuck to'
-                        Control = cmbBowelNod2StuckTo
-                        ControlOptions.ShowBorder = False
+                      object lgBN2Row2: TdxLayoutGroup
+                        CaptionOptions.Visible = False
+                        ButtonOptions.Buttons = <>
+                        LayoutDirection = ldHorizontal
+                        ShowBorder = False
+                        object liBN2Invasion: TdxLayoutItem
+                          CaptionOptions.Text = 'Depth of invasion'
+                          Control = cmbBowelNod2Invasion
+                          ControlOptions.ShowBorder = False
+                        end
+                        object liBN2Stuck: TdxLayoutItem
+                          CaptionOptions.Text = 'Stuck to'
+                          Control = cmbBowelNod2StuckTo
+                          ControlOptions.ShowBorder = False
+                        end
                       end
                     end
                     object lgBowelNod3: TdxLayoutGroup
-                      CaptionOptions.Text = 'Nodule 3'
+                      CaptionOptions.Text = '#3'
                       CaptionOptions.Visible = True
                       ButtonOptions.Buttons = <>
-                      ShowBorder = False
+                      ShowBorder = True
                       Visible = False
-                      object lgBN3Dims: TdxLayoutGroup
+                      object lgBN3Row1: TdxLayoutGroup
                         CaptionOptions.Visible = False
                         ButtonOptions.Buttons = <>
                         LayoutDirection = ldHorizontal
@@ -6213,21 +6562,27 @@ end
                         object liBN3MM: TdxLayoutLabeledItem
                           CaptionOptions.Text = 'mm'
                         end
+                        object liBN3Dist: TdxLayoutItem
+                          CaptionOptions.Text = 'Distance from prev'
+                          Control = seBowelNod3DistPrev
+                          ControlOptions.ShowBorder = False
+                        end
                       end
-                      object liBN3Dist: TdxLayoutItem
-                        CaptionOptions.Text = 'Distance from prev'
-                        Control = seBowelNod3DistPrev
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liBN3Invasion: TdxLayoutItem
-                        CaptionOptions.Text = 'Depth of invasion'
-                        Control = cmbBowelNod3Invasion
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liBN3Stuck: TdxLayoutItem
-                        CaptionOptions.Text = 'Stuck to'
-                        Control = cmbBowelNod3StuckTo
-                        ControlOptions.ShowBorder = False
+                      object lgBN3Row2: TdxLayoutGroup
+                        CaptionOptions.Visible = False
+                        ButtonOptions.Buttons = <>
+                        LayoutDirection = ldHorizontal
+                        ShowBorder = False
+                        object liBN3Invasion: TdxLayoutItem
+                          CaptionOptions.Text = 'Depth of invasion'
+                          Control = cmbBowelNod3Invasion
+                          ControlOptions.ShowBorder = False
+                        end
+                        object liBN3Stuck: TdxLayoutItem
+                          CaptionOptions.Text = 'Stuck to'
+                          Control = cmbBowelNod3StuckTo
+                          ControlOptions.ShowBorder = False
+                        end
                       end
                     end
                   end
@@ -6237,6 +6592,7 @@ end
                   CaptionOptions.Text = 'Kidneys'
                   CaptionOptions.Visible = True
                   ButtonOptions.Buttons = <>
+                  LayoutDirection = ldHorizontal
                   ShowBorder = True
                   object lgRightKidney: TdxLayoutGroup
                     CaptionOptions.Text = 'Right Kidney'
@@ -6432,6 +6788,11 @@ end
                       Control = cmbEnhancementMethod
                       ControlOptions.ShowBorder = False
                     end
+                    object lgTubes: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      LayoutDirection = ldHorizontal
+                      ShowBorder = False
                     object lgRightTube: TdxLayoutGroup
                       CaptionOptions.Text = 'Right tube'
                       CaptionOptions.Visible = True
@@ -6475,6 +6836,7 @@ end
                         Control = rbLeftTubeAbsent
                         ControlOptions.ShowBorder = False
                       end
+                    end
                     end
                   end
                 end
