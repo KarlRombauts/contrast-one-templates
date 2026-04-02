@@ -324,6 +324,96 @@ def cmd_validate(args):
         sys.exit(1)
 
 
+def cmd_xref(args):
+    """Cross-validate a script.pas against a DFM file.
+
+    Checks that every identifier referenced in the script exists as either
+    a DFM object or a known scripting built-in.
+    """
+    with open(args.dfm) as f:
+        dfm_lines = f.readlines()
+    with open(args.script) as f:
+        script = f.read()
+
+    objects = parse_objects(dfm_lines)
+    dfm_names = {o['name'] for o in objects}
+
+    # Known scripting built-ins, keywords, and framework identifiers
+    builtins = {
+        'True', 'False', 'nil', 'Sender', 'result', 'now', 'not', 'and', 'or',
+        'IntToStr', 'StrToInt', 'StrToFloat', 'FormatDateTime',
+        'ShowMessage', 'Trim', 'Length', 'Pos', 'Format', 'Chr', 'Ord',
+        'TcxCheckBox', 'TWinControl', 'TControl',
+    }
+
+    # Strip comments and string literals before extracting references
+    script_clean = re.sub(r'//.*$', '', script, flags=re.MULTILINE)  # line comments
+    script_clean = re.sub(r'\{[^}]*\}', '', script_clean)  # block comments
+    script_clean = re.sub(r"'[^']*'", "''", script_clean)  # string literals
+
+    # Strip var blocks (local variable declarations) - multiline
+    # Matches: var\n  name1, name2: Type;\n  name3: Type;\n
+    script_clean = re.sub(r'\bvar\b\s*\n(?:\s+\w[\w, ]*:\s*\w+;\s*\n)*', '', script_clean)
+
+    # Property chain words to ignore (these follow a dot, not precede one)
+    property_words = {
+        'Items', 'Count', 'Properties', 'States', 'OnClick', 'OnChange',
+        'Checked', 'Enabled', 'Visible', 'Text', 'Value', 'Caption',
+        'Date', 'Height', 'Width', 'ItemIndex', 'Lines',
+    }
+
+    # Extract all identifiers before a dot (control references)
+    # Only the FIRST identifier in a chain: foo.bar.baz -> foo
+    ctrl_refs = set()
+    for m in re.finditer(r'\b([a-zA-Z]\w+)\s*\.', script_clean):
+        name = m.group(1)
+        if name not in builtins and name not in property_words and not name.startswith('Properties'):
+            ctrl_refs.add(name)
+
+    # Extract identifiers used in comparisons (Sender = controlName)
+    # Exclude := assignments -- only match standalone = or <>
+    for m in re.finditer(r'(?<![:])\b(?:=|<>)\s*([a-zA-Z]\w+)\b', script_clean):
+        name = m.group(1)
+        if name not in builtins and name not in property_words:
+            ctrl_refs.add(name)
+
+    # Extract identifiers in event wiring strings from ORIGINAL script (not cleaned)
+    # Only match OnClick/OnChange wiring: control.OnX := 'handlerName'
+    handler_names = set()
+    for m in re.finditer(r'\.\s*(?:OnClick|OnChange|Properties\.OnChange)\s*:=\s*\'(\w+)\'', script):
+        handler_names.add(m.group(1))
+
+    # Extract procedure/function names defined in script
+    defined_procs = set(re.findall(r'(?:procedure|function)\s+(\w+)', script))
+
+    errors = []
+
+    # Check control references against DFM
+    missing_ctrls = sorted(ctrl_refs - dfm_names - builtins - defined_procs)
+    for name in missing_ctrls:
+        # Find the line for context
+        for i, line in enumerate(script.split('\n')):
+            if re.search(r'\b' + re.escape(name) + r'\b', line):
+                errors.append(f"Script L{i+1}: '{name}' not found in DFM  |  {line.strip()[:60]}")
+                break
+
+    # Check handler strings reference defined procedures
+    missing_handlers = sorted(handler_names - defined_procs - {'StartScript'})
+    for name in missing_handlers:
+        for i, line in enumerate(script.split('\n')):
+            if f"'{name}'" in line:
+                errors.append(f"Script L{i+1}: handler '{name}' not defined  |  {line.strip()[:60]}")
+                break
+
+    if errors:
+        print(f"XREF ERRORS ({len(errors)}):")
+        for e in errors:
+            print(f"  {e}")
+        sys.exit(1)
+    else:
+        print(f"OK: {len(ctrl_refs)} control refs, {len(handler_names)} handler refs, all resolved")
+
+
 def main():
     parser = argparse.ArgumentParser(description='Query and navigate Delphi DFM files')
     subparsers = parser.add_subparsers(dest='command', required=True)
@@ -355,6 +445,11 @@ def main():
     p_validate = subparsers.add_parser('validate', help='Validate DFM structure')
     p_validate.add_argument('files', nargs='+', metavar='file')
 
+    # xref
+    p_xref = subparsers.add_parser('xref', help='Cross-validate script against DFM')
+    p_xref.add_argument('dfm', help='DFM file')
+    p_xref.add_argument('script', help='Pascal script file')
+
     args = parser.parse_args()
 
     if args.command == 'list':
@@ -367,6 +462,8 @@ def main():
         cmd_children(args)
     elif args.command == 'validate':
         cmd_validate(args)
+    elif args.command == 'xref':
+        cmd_xref(args)
 
 
 if __name__ == '__main__':
