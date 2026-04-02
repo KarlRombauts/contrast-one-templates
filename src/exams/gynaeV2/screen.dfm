@@ -797,9 +797,9 @@ inherited Gynae: TGynae
                 Left = 10000
                 Top = 10000
                 Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
+                Properties.MaxValue = 10.000000000000000000
                 TabOrder = 0
-                Width = 35
+                Width = 25
               end
 
 
@@ -2139,21 +2139,27 @@ inherited Gynae: TGynae
                   CaptionOptions.Visible = True
                   ButtonOptions.Buttons = <>
                   ShowBorder = True
-                  object liFibroidsPresent: TdxLayoutItem
+                  object lgFibroidsHeader: TdxLayoutGroup
                     CaptionOptions.Visible = False
-                    Control = chkFibroidsPresent
-                    ControlOptions.ShowBorder = False
+                    ButtonOptions.Buttons = <>
+                    LayoutDirection = ldHorizontal
+                    ShowBorder = False
+                    object liFibroidsPresent: TdxLayoutItem
+                      CaptionOptions.Visible = False
+                      Control = chkFibroidsPresent
+                      ControlOptions.ShowBorder = False
+                    end
+                    object liFibroidCount: TdxLayoutItem
+                      CaptionOptions.Text = 'Count'
+                      Control = seFibroidCount
+                      ControlOptions.ShowBorder = False
+                    end
                   end
                   object lgFibroidsDetails: TdxLayoutGroup
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
                     Visible = False
-                    object liFibroidCount: TdxLayoutItem
-                      CaptionOptions.Text = 'Count'
-                      Control = seFibroidCount
-                      ControlOptions.ShowBorder = False
-                    end
                     object liFibroidTable: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = gbFibroidTable
