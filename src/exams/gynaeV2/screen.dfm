@@ -923,7 +923,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength1: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -937,7 +937,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth1: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -951,7 +951,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth1: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -965,7 +965,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion1: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -1029,7 +1029,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength2: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1043,7 +1043,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth2: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1057,7 +1057,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth2: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1071,7 +1071,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion2: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -1134,7 +1134,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength3: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1148,7 +1148,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth3: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1162,7 +1162,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth3: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1176,7 +1176,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion3: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -1240,7 +1240,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength4: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1254,7 +1254,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth4: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1268,7 +1268,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth4: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1282,7 +1282,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion4: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -1345,7 +1345,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength5: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1359,7 +1359,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth5: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1373,7 +1373,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth5: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1387,7 +1387,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion5: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -1451,7 +1451,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength6: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1465,7 +1465,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth6: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1479,7 +1479,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth6: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1493,7 +1493,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion6: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -1556,7 +1556,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength7: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1570,7 +1570,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth7: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1584,7 +1584,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth7: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1598,7 +1598,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion7: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -1662,7 +1662,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength8: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1676,7 +1676,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth8: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1690,7 +1690,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth8: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1704,7 +1704,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion8: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -1767,7 +1767,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength9: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1781,7 +1781,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth9: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1795,7 +1795,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth9: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1809,7 +1809,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion9: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -1873,7 +1873,7 @@ inherited Gynae: TGynae
                     Width = 110
                   end
                   object seFibroidLength10: TcxSpinEdit
-                    Left = 320
+                    Left = 330
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1887,7 +1887,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidWidth10: TcxSpinEdit
-                    Left = 367
+                    Left = 377
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1901,7 +1901,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object seFibroidDepth10: TcxSpinEdit
-                    Left = 414
+                    Left = 424
                     Top = 1
                     Properties.AssignedValues.MinValue = True
                     Properties.SpinButtons.Visible = False
@@ -1915,7 +1915,7 @@ inherited Gynae: TGynae
                     Transparent = True
                   end
                   object chkCavityDistortion10: TcxCheckBox
-                    Left = 480
+                    Left = 490
                     Top = 1
                     Caption = 'Yes'
                     TabOrder = 6
@@ -2139,27 +2139,21 @@ inherited Gynae: TGynae
                   CaptionOptions.Visible = True
                   ButtonOptions.Buttons = <>
                   ShowBorder = True
-                  object lgFibroidsHeader: TdxLayoutGroup
+                  object liFibroidsPresent: TdxLayoutItem
                     CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liFibroidsPresent: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkFibroidsPresent
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liFibroidCount: TdxLayoutItem
-                      CaptionOptions.Text = 'Count'
-                      Control = seFibroidCount
-                      ControlOptions.ShowBorder = False
-                    end
+                    Control = chkFibroidsPresent
+                    ControlOptions.ShowBorder = False
                   end
                   object lgFibroidsDetails: TdxLayoutGroup
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
                     Visible = False
+                    object liFibroidCount: TdxLayoutItem
+                      CaptionOptions.Text = 'Count'
+                      Control = seFibroidCount
+                      ControlOptions.ShowBorder = False
+                    end
                     object liFibroidTable: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = gbFibroidTable
