@@ -36,9 +36,9 @@ begin
     deExamDate.Date := now;
 
   // --- Default visibility ---
-  chkPainWithProbe.Visible := False;
-  edtOtherMedication.Visible := False;
-  edtOtherSurgery.Visible := False;
+  lgPainWithProbe.Visible := False;
+  lgOtherMedication.Visible := False;
+  lgOtherSurgery.Visible := False;
   lgLaparoscopy.Visible := False;
   gbFibRow2.Visible := False;
   gbFibRow3.Visible := False;
@@ -82,7 +82,7 @@ begin
   lgSHGDetails.Visible := False;
   lgTubalDetails.Visible := False;
 
-  liCervixPresent.Visible := False;
+  lgCervixPresent.Visible := False;
   gbDimsRightParaCyst.Visible := False;
   gbDimsLeftParaCyst.Visible := False;
   gbEndoRowRight1.Visible := False;
@@ -117,6 +117,7 @@ begin
   seLeftUSLNoduleDepth.Enabled := False;
   chkRightKidneyObstructed.Enabled := False;
   chkLeftKidneyObstructed.Enabled := False;
+  cmbSHGFindings.Enabled := False;
 end;
 
 // ======================== Event Handlers ==================================//
@@ -133,7 +134,7 @@ procedure chkTransvaginalClick(Sender)
 begin
   if chkTransvaginal.Checked then
     chkTransabdominal.Checked := False;
-  chkPainWithProbe.Visible := chkTransvaginal.Checked;
+  lgPainWithProbe.Visible := chkTransvaginal.Checked;
   if not chkTransvaginal.Checked then
     chkPainWithProbe.Checked := False;
 end;
@@ -142,8 +143,8 @@ end;
 
 procedure ccbMedicationChange(Sender)
 begin
-  edtOtherMedication.Visible := (ccbMedication.States[ccbMedication.Properties.Items.Count-1] = 1);
-  if not edtOtherMedication.Visible then
+  lgOtherMedication.Visible := (ccbMedication.States[ccbMedication.Properties.Items.Count-1] = 1);
+  if not lgOtherMedication.Visible then
     edtOtherMedication.Text := '';
 end;
 
@@ -152,8 +153,8 @@ end;
 procedure ccbPastSurgeryChange(Sender)
 begin
   lgLaparoscopy.Visible := (ccbPastSurgery.States[6] = 1);
-  edtOtherSurgery.Visible := (ccbPastSurgery.States[ccbPastSurgery.Properties.Items.Count-1] = 1);
-  if not edtOtherSurgery.Visible then
+  lgOtherSurgery.Visible := (ccbPastSurgery.States[ccbPastSurgery.Properties.Items.Count-1] = 1);
+  if not lgOtherSurgery.Visible then
     edtOtherSurgery.Text := '';
 end;
 
@@ -161,7 +162,7 @@ end;
 
 procedure chkHysterectomyClick(Sender)
 begin
-  liCervixPresent.Visible := chkHysterectomy.Checked;
+  lgCervixPresent.Visible := chkHysterectomy.Checked;
   if not chkHysterectomy.Checked then
     chkCervixPresent.Checked := False;
 end;
@@ -213,6 +214,22 @@ begin
   lgPolypDetails.Visible := chkFocalLesion.Checked;
   if chkFocalLesion.Checked and (sePolypCount.Value < 1) then
     sePolypCount.Value := 1;
+end;
+
+procedure IUDToggleClick(Sender)
+begin
+  if chkIUDCorrect.Checked then
+    chkIUDIncorrect.Checked := False;
+  if chkIUDIncorrect.Checked then
+    chkIUDCorrect.Checked := False;
+end;
+
+procedure RPOCVascToggleClick(Sender)
+begin
+  if rbRPOCVascular.Checked then
+    rbRPOCAvascular.Checked := False;
+  if rbRPOCAvascular.Checked then
+    rbRPOCVascular.Checked := False;
 end;
 
 procedure chkRPOCClick(Sender)
@@ -447,8 +464,8 @@ end;
 
 procedure rbRightTubeAbsentClick(Sender)
 begin
-  rbRightTubePatent.Visible := not rbRightTubeAbsent.Checked;
-  rbRightTubeNotDemonstrated.Visible := not rbRightTubeAbsent.Checked;
+  lgRTPatent.Visible := not rbRightTubeAbsent.Checked;
+  lgRTNotDemo.Visible := not rbRightTubeAbsent.Checked;
   if rbRightTubeAbsent.Checked then
   begin
     rbRightTubePatent.Checked := False;
@@ -458,8 +475,8 @@ end;
 
 procedure rbLeftTubeAbsentClick(Sender)
 begin
-  rbLeftTubePatent.Visible := not rbLeftTubeAbsent.Checked;
-  rbLeftTubeNotDemonstrated.Visible := not rbLeftTubeAbsent.Checked;
+  lgLTPatent.Visible := not rbLeftTubeAbsent.Checked;
+  lgLTNotDemo.Visible := not rbLeftTubeAbsent.Checked;
   if rbLeftTubeAbsent.Checked then
   begin
     rbLeftTubePatent.Checked := False;
@@ -699,6 +716,10 @@ begin
   // --- Endometrium ---
   chkFocalLesion.OnClick := 'chkFocalLesionClick';
   sePolypCount.Properties.OnChange := 'sePolypCountChange';
+  chkIUDCorrect.OnClick := 'IUDToggleClick';
+  chkIUDIncorrect.OnClick := 'IUDToggleClick';
+  rbRPOCVascular.OnClick := 'RPOCVascToggleClick';
+  rbRPOCAvascular.OnClick := 'RPOCVascToggleClick';
   chkRPOC.OnClick := 'chkRPOCClick';
 
   // --- Ovary Status (radio checkboxes) ---

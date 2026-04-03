@@ -62,6 +62,7 @@ inherited Gynae: TGynae
               TabOrder = 2
               Transparent = True
               Width = 180
+                          Visible = False
             end
             object chkIncompleteReport: TcxCheckBox
               Left = 10000
@@ -193,6 +194,7 @@ inherited Gynae: TGynae
               Top = 10000
               TabOrder = 14
               Width = 200
+                          Visible = False
             end
             object ccbReferralIndication: TcxCheckComboBox
               Left = 10000
@@ -359,6 +361,7 @@ inherited Gynae: TGynae
               Top = 10000
               TabOrder = 20
               Width = 200
+                          Visible = False
             end
             object lcPatientDetailsGroup_Root: TdxLayoutGroup
               AlignHorz = ahClient
@@ -396,10 +399,16 @@ inherited Gynae: TGynae
                     Control = chkTransvaginal
                     ControlOptions.ShowBorder = False
                   end
-                  object liPainWithProbe: TdxLayoutItem
+                  object lgPainWithProbe: TdxLayoutGroup
+                    CaptionOptions.Visible = False
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = False
+                    Visible = False
+                    object liPainWithProbe: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = chkPainWithProbe
                     ControlOptions.ShowBorder = False
+                  end
                   end
                 end
               end
@@ -470,11 +479,13 @@ inherited Gynae: TGynae
                   LayoutDirection = ldHorizontal
                   ShowBorder = False
                   object liG: TdxLayoutItem
+                    AlignHorz = ahLeft
                     CaptionOptions.Text = 'G'
                     Control = edtG
                     ControlOptions.ShowBorder = False
                   end
                   object liP: TdxLayoutItem
+                    AlignHorz = ahLeft
                     CaptionOptions.Text = 'P'
                     Control = edtP
                     ControlOptions.ShowBorder = False
@@ -493,14 +504,21 @@ inherited Gynae: TGynae
                   LayoutDirection = ldHorizontal
                   ShowBorder = False
                   object liMedication: TdxLayoutItem
+                    AlignHorz = ahLeft
                     CaptionOptions.Text = 'Medication'
                     Control = ccbMedication
                     ControlOptions.ShowBorder = False
                   end
-                  object liOtherMed: TdxLayoutItem
+                  object lgOtherMedication: TdxLayoutGroup
+                    CaptionOptions.Visible = False
+                    ButtonOptions.Buttons = <>
+                    ShowBorder = False
+                    Visible = False
+                    object liOtherMed: TdxLayoutItem
                     CaptionOptions.Visible = False
                     Control = edtOtherMedication
                     ControlOptions.ShowBorder = False
+                  end
                   end
                 end
                 object liReferral: TdxLayoutItem
@@ -528,11 +546,24 @@ inherited Gynae: TGynae
                   Control = ccbPastSurgery
                   ControlOptions.ShowBorder = False
                 end
+                object lgOtherSurgery: TdxLayoutGroup
+                  CaptionOptions.Visible = False
+                  ButtonOptions.Buttons = <>
+                  ShowBorder = False
+                  Visible = False
+                  object liOtherSurgery: TdxLayoutItem
+                    CaptionOptions.Text = 'Other'
+                    AlignHorz = ahLeft
+                    Control = edtOtherSurgery
+                    ControlOptions.ShowBorder = False
+                  end
+                end
                 object lgLaparoscopy: TdxLayoutGroup
                   CaptionOptions.Visible = False
                   ButtonOptions.Buttons = <>
                   LayoutDirection = ldHorizontal
                   ShowBorder = False
+                                  Visible = False
                   object liLapCount: TdxLayoutItem
                     CaptionOptions.Text = 'How many'
                     Control = seLaparoscopyCount
@@ -665,6 +696,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Transparent = True
                 Width = 195
+                              Enabled = False
               end
               object chkIrregularJunctionalZone: TcxCheckBox
                 Left = 10000
@@ -924,6 +956,7 @@ inherited Gynae: TGynae
                   TabOrder = 2
                   Height = 24
                   Width = 620
+                                  Visible = False
                   object lblFibIdx2: TcxLabel
                     Left = 5
                     Top = 3
@@ -1028,6 +1061,7 @@ inherited Gynae: TGynae
                   TabOrder = 3
                   Height = 24
                   Width = 620
+                                  Visible = False
                   object lblFibIdx3: TcxLabel
                     Left = 5
                     Top = 3
@@ -1133,6 +1167,7 @@ inherited Gynae: TGynae
                   TabOrder = 4
                   Height = 24
                   Width = 620
+                                  Visible = False
                   object lblFibIdx4: TcxLabel
                     Left = 5
                     Top = 3
@@ -1237,6 +1272,7 @@ inherited Gynae: TGynae
                   TabOrder = 5
                   Height = 24
                   Width = 620
+                                  Visible = False
                   object lblFibIdx5: TcxLabel
                     Left = 5
                     Top = 3
@@ -1342,6 +1378,7 @@ inherited Gynae: TGynae
                   TabOrder = 6
                   Height = 24
                   Width = 620
+                                  Visible = False
                   object lblFibIdx6: TcxLabel
                     Left = 5
                     Top = 3
@@ -1446,6 +1483,7 @@ inherited Gynae: TGynae
                   TabOrder = 7
                   Height = 24
                   Width = 620
+                                  Visible = False
                   object lblFibIdx7: TcxLabel
                     Left = 5
                     Top = 3
@@ -1551,6 +1589,7 @@ inherited Gynae: TGynae
                   TabOrder = 8
                   Height = 24
                   Width = 620
+                                  Visible = False
                   object lblFibIdx8: TcxLabel
                     Left = 5
                     Top = 3
@@ -1655,6 +1694,7 @@ inherited Gynae: TGynae
                   TabOrder = 9
                   Height = 24
                   Width = 620
+                                  Visible = False
                   object lblFibIdx9: TcxLabel
                     Left = 5
                     Top = 3
@@ -1760,6 +1800,7 @@ inherited Gynae: TGynae
                   TabOrder = 10
                   Height = 24
                   Width = 620
+                                  Visible = False
                   object lblFibIdx10: TcxLabel
                     Left = 5
                     Top = 3
@@ -1876,6 +1917,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 0
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbMeasUterusx1: TcxLabel
                   Left = 37
@@ -1893,6 +1935,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 1
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbMeasUterusx2: TcxLabel
                   Left = 84
@@ -1910,6 +1953,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 2
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbMeasUterusmm: TcxLabel
                   Left = 131
@@ -1933,6 +1977,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 3
                   Width = 40
+                                  Enabled = False
                 end
                 object lblgbMeasUteruscc: TcxLabel
                   Left = 217
@@ -2027,10 +2072,17 @@ inherited Gynae: TGynae
                       Control = chkHysterectomy
                       ControlOptions.ShowBorder = False
                     end
-                    object liCervixPresent: TdxLayoutItem
+                    object lgCervixPresent: TdxLayoutGroup
+                      CaptionOptions.Visible = False
+                      ButtonOptions.Buttons = <>
+                      ShowBorder = False
+                      Visible = False
+                      object liCervixPresent: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = chkCervixPresent
                       ControlOptions.ShowBorder = False
+                                          Visible = False
+                    end
                     end
                   end
                   object liCongenital: TdxLayoutItem
@@ -2043,6 +2095,7 @@ inherited Gynae: TGynae
                     ButtonOptions.Buttons = <>
                     LayoutDirection = ldHorizontal
                     ShowBorder = False
+                                      Visible = False
                     object liCongenitalType: TdxLayoutItem
                       CaptionOptions.Text = 'Type'
                       AlignHorz = ahLeft
@@ -2077,6 +2130,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object lgAdenoType: TdxLayoutGroup
                       CaptionOptions.Visible = False
                       ButtonOptions.Buttons = <>
@@ -2110,6 +2164,7 @@ inherited Gynae: TGynae
                         CaptionOptions.Text = ''
                       end
                       object liAdenoSeverity: TdxLayoutItem
+                        AlignHorz = ahLeft
                       CaptionOptions.Text = 'Severity'
                       Control = cmbAdenomyosisSeverity
                       ControlOptions.ShowBorder = False
@@ -2172,6 +2227,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liFibroidCount: TdxLayoutItem
                       CaptionOptions.Text = 'Count'
                       AlignHorz = ahLeft
@@ -2227,6 +2283,7 @@ inherited Gynae: TGynae
                 Properties.ValueType = vtFloat
                 TabOrder = 1
                 Width = 35
+                              Enabled = False
               end
               object chkInSync: TcxCheckBox
                 Left = 10000
@@ -2469,6 +2526,7 @@ inherited Gynae: TGynae
                     TabOrder = 2
                     Height = 24
                     Width = 400
+                                      Visible = False
                     object lblPolypIdx2: TcxLabel
                       Left = 3
                       Top = 3
@@ -2561,6 +2619,7 @@ inherited Gynae: TGynae
                     TabOrder = 3
                     Height = 24
                     Width = 400
+                                      Visible = False
                     object lblPolypIdx3: TcxLabel
                       Left = 3
                       Top = 3
@@ -2653,6 +2712,7 @@ inherited Gynae: TGynae
                     TabOrder = 4
                     Height = 24
                     Width = 400
+                                      Visible = False
                     object lblPolypIdx4: TcxLabel
                       Left = 3
                       Top = 3
@@ -2872,6 +2932,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liPolypCount: TdxLayoutItem
                       CaptionOptions.Text = 'Count'
                       AlignHorz = ahLeft
@@ -2905,6 +2966,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liRPOCDims: TdxLayoutItem
                       CaptionOptions.Text = 'Dimensions'
                       AlignHorz = ahLeft
@@ -3046,6 +3108,7 @@ inherited Gynae: TGynae
                 Properties.SpinButtons.Visible = False
                 TabOrder = 0
                 Width = 35
+                              Enabled = False
               end
               object chkRightResolvingCL: TcxCheckBox
                 Left = 10000
@@ -3213,6 +3276,7 @@ inherited Gynae: TGynae
                 Properties.SpinButtons.Visible = False
                 TabOrder = 0
                 Width = 35
+                              Enabled = False
               end
               object chkLeftResolvingCL: TcxCheckBox
                 Left = 10000
@@ -3328,6 +3392,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 0
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbMeasRightOvaryx1: TcxLabel
                   Left = 37
@@ -3345,6 +3410,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 1
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbMeasRightOvaryx2: TcxLabel
                   Left = 84
@@ -3362,6 +3428,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 2
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbMeasRightOvarymm: TcxLabel
                   Left = 131
@@ -3385,6 +3452,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 3
                   Width = 40
+                                  Enabled = False
                 end
                 object lblgbMeasRightOvarycc: TcxLabel
                   Left = 217
@@ -3412,6 +3480,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 0
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbMeasLeftOvaryx1: TcxLabel
                   Left = 37
@@ -3429,6 +3498,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 1
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbMeasLeftOvaryx2: TcxLabel
                   Left = 84
@@ -3446,6 +3516,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 2
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbMeasLeftOvarymm: TcxLabel
                   Left = 131
@@ -3469,6 +3540,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 3
                   Width = 40
+                                  Enabled = False
                 end
                 object lblgbMeasLeftOvarycc: TcxLabel
                   Left = 217
@@ -3486,6 +3558,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Height = 22
                 Width = 175
+                              Visible = False
                 object seRightParaCystLength: TcxSpinEdit
                   Left = 0
                   Top = 0
@@ -3547,6 +3620,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Height = 22
                 Width = 175
+                              Visible = False
                 object seLeftParaCystLength: TcxSpinEdit
                   Left = 0
                   Top = 0
@@ -3638,6 +3712,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liRightMeasurements: TdxLayoutItem
                       CaptionOptions.Text = 'Measured'
                       AlignHorz = ahLeft
@@ -3645,6 +3720,7 @@ inherited Gynae: TGynae
                       ControlOptions.ShowBorder = False
                     end
                     object liRightAppearance: TdxLayoutItem
+                      AlignHorz = ahLeft
                       CaptionOptions.Text = 'Appearance'
                       Control = cmbRightOvaryAppearance
                       ControlOptions.ShowBorder = False
@@ -3817,6 +3893,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liLeftMeasurements: TdxLayoutItem
                       CaptionOptions.Text = 'Measured'
                       AlignHorz = ahLeft
@@ -3824,6 +3901,7 @@ inherited Gynae: TGynae
                       ControlOptions.ShowBorder = False
                     end
                     object liLeftAppearance: TdxLayoutItem
+                      AlignHorz = ahLeft
                       CaptionOptions.Text = 'Appearance'
                       Control = cmbLeftOvaryAppearance
                       ControlOptions.ShowBorder = False
@@ -4037,6 +4115,7 @@ inherited Gynae: TGynae
                     TabOrder = 0
                     Value = 1
                     Width = 35
+                                      Enabled = False
                   end
                   object chkRightDermoid: TcxCheckBox
                     Left = 10000
@@ -4078,6 +4157,7 @@ inherited Gynae: TGynae
                     TabOrder = 0
                     Value = 1
                     Width = 35
+                                      Enabled = False
                   end
                   object chkLeftDermoid: TcxCheckBox
                     Left = 10000
@@ -4133,6 +4213,7 @@ inherited Gynae: TGynae
                     TabOrder = 1
                     Height = 24
                     Width = 220
+                                      Visible = False
                     object lblEndoIdxRight1: TcxLabel
                       Left = 3
                       Top = 3
@@ -4210,6 +4291,7 @@ inherited Gynae: TGynae
                     TabOrder = 2
                     Height = 24
                     Width = 220
+                                      Visible = False
                     object lblEndoIdxRight2: TcxLabel
                       Left = 3
                       Top = 3
@@ -4287,6 +4369,7 @@ inherited Gynae: TGynae
                     TabOrder = 3
                     Height = 24
                     Width = 220
+                                      Visible = False
                     object lblEndoIdxRight3: TcxLabel
                       Left = 3
                       Top = 3
@@ -4393,6 +4476,7 @@ inherited Gynae: TGynae
                     TabOrder = 1
                     Height = 24
                     Width = 220
+                                      Visible = False
                     object lblEndoIdxLeft1: TcxLabel
                       Left = 3
                       Top = 3
@@ -4470,6 +4554,7 @@ inherited Gynae: TGynae
                     TabOrder = 2
                     Height = 24
                     Width = 220
+                                      Visible = False
                     object lblEndoIdxLeft2: TcxLabel
                       Left = 3
                       Top = 3
@@ -4547,6 +4632,7 @@ inherited Gynae: TGynae
                     TabOrder = 3
                     Height = 24
                     Width = 220
+                                      Visible = False
                     object lblEndoIdxLeft3: TcxLabel
                       Left = 3
                       Top = 3
@@ -4626,6 +4712,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Height = 22
                 Width = 175
+                              Visible = False
                 object seRightSimpleCystL: TcxSpinEdit
                   Left = 0
                   Top = 0
@@ -4687,6 +4774,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Height = 22
                 Width = 175
+                              Visible = False
                 object seRightDermoidL: TcxSpinEdit
                   Left = 0
                   Top = 0
@@ -4748,6 +4836,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Height = 22
                 Width = 175
+                              Visible = False
                 object seRightFibromaL: TcxSpinEdit
                   Left = 0
                   Top = 0
@@ -4809,6 +4898,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Height = 22
                 Width = 175
+                              Visible = False
                 object seLeftSimpleCystL: TcxSpinEdit
                   Left = 0
                   Top = 0
@@ -4870,6 +4960,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Height = 22
                 Width = 175
+                              Visible = False
                 object seLeftDermoidL: TcxSpinEdit
                   Left = 0
                   Top = 0
@@ -4931,6 +5022,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Height = 22
                 Width = 175
+                              Visible = False
                 object seLeftFibromaL: TcxSpinEdit
                   Left = 0
                   Top = 0
@@ -5019,6 +5111,7 @@ inherited Gynae: TGynae
                         CaptionOptions.Visible = False
                         ButtonOptions.Buttons = <>
                         ShowBorder = False
+                                              Visible = False
                         object liRightEndoCount: TdxLayoutItem
                           CaptionOptions.Text = 'Count'
                           AlignHorz = ahLeft
@@ -5089,6 +5182,7 @@ inherited Gynae: TGynae
                         CaptionOptions.Visible = False
                         ButtonOptions.Buttons = <>
                         ShowBorder = False
+                                              Visible = False
                         object liLeftEndoCount: TdxLayoutItem
                           CaptionOptions.Text = 'Count'
                           AlignHorz = ahLeft
@@ -5307,6 +5401,7 @@ inherited Gynae: TGynae
                       ButtonOptions.Buttons = <>
                       ShowBorder = True
                       object liRightClass: TdxLayoutItem
+                        AlignHorz = ahLeft
                         CaptionOptions.Text = 'Classification'
                         Control = cmbIOTAClassRight
                         ControlOptions.ShowBorder = False
@@ -5336,11 +5431,13 @@ inherited Gynae: TGynae
                         end
                       end
                       object liRightContent: TdxLayoutItem
+                        AlignHorz = ahLeft
                         CaptionOptions.Text = 'Internal content'
                         Control = cmbInternalContentRight
                         ControlOptions.ShowBorder = False
                       end
                       object liRightVasc: TdxLayoutItem
+                        AlignHorz = ahLeft
                         CaptionOptions.Text = 'Vascularity'
                         Control = cmbVascularityRight
                         ControlOptions.ShowBorder = False
@@ -5357,6 +5454,7 @@ inherited Gynae: TGynae
                       ButtonOptions.Buttons = <>
                       ShowBorder = True
                       object liLeftClass: TdxLayoutItem
+                        AlignHorz = ahLeft
                         CaptionOptions.Text = 'Classification'
                         Control = cmbIOTAClassLeft
                         ControlOptions.ShowBorder = False
@@ -5386,11 +5484,13 @@ inherited Gynae: TGynae
                         end
                       end
                       object liLeftContent: TdxLayoutItem
+                        AlignHorz = ahLeft
                         CaptionOptions.Text = 'Internal content'
                         Control = cmbInternalContentLeft
                         ControlOptions.ShowBorder = False
                       end
                       object liLeftVasc: TdxLayoutItem
+                        AlignHorz = ahLeft
                         CaptionOptions.Text = 'Vascularity'
                         Control = cmbVascularityLeft
                         ControlOptions.ShowBorder = False
@@ -5739,6 +5839,7 @@ inherited Gynae: TGynae
                 Properties.SpinButtons.Visible = False
                 TabOrder = 74
                 Width = 35
+                              Enabled = False
               end
               object rbPODNoObliteration: TcxCheckBox
                 Left = 10000
@@ -5766,6 +5867,7 @@ inherited Gynae: TGynae
                   'right')
                 TabOrder = 15
                 Width = 80
+                              Enabled = False
               end
               object rbPODCompleteObliteration: TcxCheckBox
                 Left = 10000
@@ -6007,6 +6109,7 @@ inherited Gynae: TGynae
                 TabOrder = 71
                 Transparent = True
                 Width = 90
+                              Enabled = False
               end
               object chkLeftKidneyVisualised: TcxCheckBox
                 Left = 10000
@@ -6023,6 +6126,7 @@ inherited Gynae: TGynae
                 TabOrder = 73
                 Transparent = True
                 Width = 90
+                              Enabled = False
               end
 
               object gbBowelNoduleTable: TcxGroupBox
@@ -6208,6 +6312,7 @@ inherited Gynae: TGynae
                   TabOrder = 2
                   Height = 24
                   Width = 700
+                                  Visible = False
                   object lblBNIdx2: TcxLabel
                     Left = 5
                     Top = 3
@@ -6327,6 +6432,7 @@ inherited Gynae: TGynae
                   TabOrder = 3
                   Height = 24
                   Width = 700
+                                  Visible = False
                   object lblBNIdx3: TcxLabel
                     Left = 5
                     Top = 3
@@ -6580,6 +6686,7 @@ inherited Gynae: TGynae
                     Properties.ValueType = vtFloat
                   TabOrder = 0
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbDimsRightUSLx1: TcxLabel
                   Left = 37
@@ -6597,6 +6704,7 @@ inherited Gynae: TGynae
                     Properties.ValueType = vtFloat
                   TabOrder = 1
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbDimsRightUSLx2: TcxLabel
                   Left = 84
@@ -6614,6 +6722,7 @@ inherited Gynae: TGynae
                     Properties.ValueType = vtFloat
                   TabOrder = 2
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbDimsRightUSLmm: TcxLabel
                   Left = 131
@@ -6641,6 +6750,7 @@ inherited Gynae: TGynae
                     Properties.ValueType = vtFloat
                   TabOrder = 0
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbDimsLeftUSLx1: TcxLabel
                   Left = 37
@@ -6658,6 +6768,7 @@ inherited Gynae: TGynae
                     Properties.ValueType = vtFloat
                   TabOrder = 1
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbDimsLeftUSLx2: TcxLabel
                   Left = 84
@@ -6675,6 +6786,7 @@ inherited Gynae: TGynae
                     Properties.ValueType = vtFloat
                   TabOrder = 2
                   Width = 35
+                                  Enabled = False
                 end
                 object lblgbDimsLeftUSLmm: TcxLabel
                   Left = 131
@@ -6706,6 +6818,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liBladderDims: TdxLayoutItem
                       CaptionOptions.Text = 'Dimensions'
                       AlignHorz = ahLeft
@@ -6718,7 +6831,9 @@ inherited Gynae: TGynae
                     ButtonOptions.Buttons = <>
                     LayoutDirection = ldHorizontal
                     ShowBorder = False
+                                      Visible = False
                     object liBladderLoc: TdxLayoutItem
+                      AlignHorz = ahLeft
                       CaptionOptions.Text = 'Location'
                       Control = cmbBladderNoduleLocation
                       ControlOptions.ShowBorder = False
@@ -6740,6 +6855,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liVaultThin: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = chkVaultThinRegular
@@ -6757,6 +6873,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                          Visible = False
                     object liVaultDims: TdxLayoutItem
                       CaptionOptions.Text = 'Dimensions'
                       AlignHorz = ahLeft
@@ -6816,6 +6933,7 @@ inherited Gynae: TGynae
                       ControlOptions.ShowBorder = False
                     end
                     object liPODSide: TdxLayoutItem
+                      AlignHorz = ahLeft
                       CaptionOptions.Visible = False
                       Control = cmbPODPartialSide
                       ControlOptions.ShowBorder = False
@@ -6887,6 +7005,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liRCDims: TdxLayoutItem
                       CaptionOptions.Text = 'Dimensions'
                       AlignHorz = ahLeft
@@ -6986,6 +7105,7 @@ inherited Gynae: TGynae
                     ButtonOptions.Buttons = <>
                     ShowBorder = True
                     object liRUSLApp: TdxLayoutItem
+                      AlignHorz = ahLeft
                       CaptionOptions.Text = 'Appearance'
                       Control = cmbRightUSLAppearance
                       ControlOptions.ShowBorder = False
@@ -7030,6 +7150,7 @@ inherited Gynae: TGynae
                     ButtonOptions.Buttons = <>
                     ShowBorder = True
                     object liLUSLApp: TdxLayoutItem
+                      AlignHorz = ahLeft
                       CaptionOptions.Text = 'Appearance'
                       Control = cmbLeftUSLAppearance
                       ControlOptions.ShowBorder = False
@@ -7084,6 +7205,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liBowelCount: TdxLayoutItem
                       CaptionOptions.Text = 'Count'
                       AlignHorz = ahLeft
@@ -7266,6 +7388,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liSHGFindings: TdxLayoutItem
                       AlignHorz = ahLeft
                       CaptionOptions.Text = 'Findings'
@@ -7289,6 +7412,7 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
+                                      Visible = False
                     object liEnhancement: TdxLayoutItem
                       AlignHorz = ahLeft
                       CaptionOptions.Text = 'Enhancement method'
@@ -7318,15 +7442,25 @@ inherited Gynae: TGynae
                         ButtonOptions.Buttons = <>
                         LayoutDirection = ldHorizontal
                         ShowBorder = False
-                        object liRTPatent: TdxLayoutItem
+                        object lgRTPatent: TdxLayoutGroup
+                          CaptionOptions.Visible = False
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          object liRTPatent: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = rbRightTubePatent
                           ControlOptions.ShowBorder = False
                         end
-                        object liRTNotDemo: TdxLayoutItem
+                        end
+                        object lgRTNotDemo: TdxLayoutGroup
+                          CaptionOptions.Visible = False
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          object liRTNotDemo: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = rbRightTubeNotDemonstrated
                           ControlOptions.ShowBorder = False
+                        end
                         end
                       end
                     end
@@ -7348,15 +7482,25 @@ inherited Gynae: TGynae
                         ButtonOptions.Buttons = <>
                         LayoutDirection = ldHorizontal
                         ShowBorder = False
-                        object liLTPatent: TdxLayoutItem
+                        object lgLTPatent: TdxLayoutGroup
+                          CaptionOptions.Visible = False
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          object liLTPatent: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = rbLeftTubePatent
                           ControlOptions.ShowBorder = False
                         end
-                        object liLTNotDemo: TdxLayoutItem
+                        end
+                        object lgLTNotDemo: TdxLayoutGroup
+                          CaptionOptions.Visible = False
+                          ButtonOptions.Buttons = <>
+                          ShowBorder = False
+                          object liLTNotDemo: TdxLayoutItem
                           CaptionOptions.Visible = False
                           Control = rbLeftTubeNotDemonstrated
                           ControlOptions.ShowBorder = False
+                        end
                         end
                       end
                     end
