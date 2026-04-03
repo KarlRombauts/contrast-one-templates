@@ -70,6 +70,22 @@ cmbPODPartialSide.Enabled := rbPODPartialObliteration.Checked;
 
 **Never** set `.Visible` directly on a control inside a `TdxLayoutItem`. Always go through a layout group.
 
+## Don't Disable Controls Inside Hidden Groups
+
+If a control is inside a layout group that starts hidden (`Visible = False`), do **NOT** also set `Enabled = False` on the control. The group visibility already hides everything. Adding `Enabled = False` creates a bug: when the group is shown, the control stays greyed out because no handler re-enables it.
+
+**Only** use `Enabled = False` on controls that are **visible but need greying out** until a condition is met. Examples:
+- `sePODDepth` -- visible in the POD section, greyed until "Free fluid" is checked
+- `cmbPODPartialSide` -- visible, greyed until "Partial obliteration" is checked
+- `chkRightKidneyObstructed` -- visible, greyed until "Visualised" is checked
+- `seRightUSLNoduleLength` etc -- visible, greyed until "Nodule" is checked
+
+Use `dfmquery.py find` to audit:
+```bash
+# Find all Enabled=False -- each should have a handler that enables it
+dfmquery.py find screen.dfm --prop "Enabled=False"
+```
+
 ## Default States
 
 Both DFM and `InitializeScreen` should set defaults:

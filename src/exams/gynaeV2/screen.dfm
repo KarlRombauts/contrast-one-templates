@@ -5093,11 +5093,17 @@ inherited Gynae: TGynae
                         Control = chkRightSimpleCyst
                         ControlOptions.ShowBorder = False
                       end
-                      object liRightSimpleCystDims: TdxLayoutItem
+                      object lgRightSimpleCystDims: TdxLayoutGroup
+                        CaptionOptions.Visible = False
+                        ButtonOptions.Buttons = <>
+                        ShowBorder = False
+                        Visible = False
+                        object liRightSimpleCystDims: TdxLayoutItem
                         CaptionOptions.Visible = False
                         AlignHorz = ahLeft
                         Control = gbDimsRightSimpleCyst
                         ControlOptions.ShowBorder = False
+                        end
                       end
                       object liSepRightEndometrioma: TdxLayoutSeparatorItem
                       CaptionOptions.Text = ''
@@ -5132,11 +5138,17 @@ inherited Gynae: TGynae
                         Control = chkRightDermoid
                         ControlOptions.ShowBorder = False
                       end
-                      object liRightDermoidDims: TdxLayoutItem
+                      object lgRightDermoidDims: TdxLayoutGroup
+                        CaptionOptions.Visible = False
+                        ButtonOptions.Buttons = <>
+                        ShowBorder = False
+                        Visible = False
+                        object liRightDermoidDims: TdxLayoutItem
                         CaptionOptions.Visible = False
                         AlignHorz = ahLeft
                         Control = gbDimsRightDermoid
                         ControlOptions.ShowBorder = False
+                        end
                       end
                       object liSepRightFibroma: TdxLayoutSeparatorItem
                       CaptionOptions.Text = ''
@@ -5146,11 +5158,17 @@ inherited Gynae: TGynae
                         Control = chkRightFibroma
                         ControlOptions.ShowBorder = False
                       end
-                      object liRightFibromaDims: TdxLayoutItem
+                      object lgRightFibromaDims: TdxLayoutGroup
+                        CaptionOptions.Visible = False
+                        ButtonOptions.Buttons = <>
+                        ShowBorder = False
+                        Visible = False
+                        object liRightFibromaDims: TdxLayoutItem
                         CaptionOptions.Visible = False
                         AlignHorz = ahLeft
                         Control = gbDimsRightFibroma
                         ControlOptions.ShowBorder = False
+                        end
                       end
                     end
                     object lgLeftPathology: TdxLayoutGroup
@@ -5164,11 +5182,17 @@ inherited Gynae: TGynae
                         Control = chkLeftSimpleCyst
                         ControlOptions.ShowBorder = False
                       end
-                      object liLeftSimpleCystDims: TdxLayoutItem
+                      object lgLeftSimpleCystDims: TdxLayoutGroup
+                        CaptionOptions.Visible = False
+                        ButtonOptions.Buttons = <>
+                        ShowBorder = False
+                        Visible = False
+                        object liLeftSimpleCystDims: TdxLayoutItem
                         CaptionOptions.Visible = False
                         AlignHorz = ahLeft
                         Control = gbDimsLeftSimpleCyst
                         ControlOptions.ShowBorder = False
+                        end
                       end
                       object liSepLeftEndometrioma: TdxLayoutSeparatorItem
                       CaptionOptions.Text = ''
@@ -5203,11 +5227,17 @@ inherited Gynae: TGynae
                         Control = chkLeftDermoid
                         ControlOptions.ShowBorder = False
                       end
-                      object liLeftDermoidDims: TdxLayoutItem
+                      object lgLeftDermoidDims: TdxLayoutGroup
+                        CaptionOptions.Visible = False
+                        ButtonOptions.Buttons = <>
+                        ShowBorder = False
+                        Visible = False
+                        object liLeftDermoidDims: TdxLayoutItem
                         CaptionOptions.Visible = False
                         AlignHorz = ahLeft
                         Control = gbDimsLeftDermoid
                         ControlOptions.ShowBorder = False
+                        end
                       end
                       object liSepLeftFibroma: TdxLayoutSeparatorItem
                       CaptionOptions.Text = ''
@@ -5217,11 +5247,17 @@ inherited Gynae: TGynae
                         Control = chkLeftFibroma
                         ControlOptions.ShowBorder = False
                       end
-                      object liLeftFibromaDims: TdxLayoutItem
+                      object lgLeftFibromaDims: TdxLayoutGroup
+                        CaptionOptions.Visible = False
+                        ButtonOptions.Buttons = <>
+                        ShowBorder = False
+                        Visible = False
+                        object liLeftFibromaDims: TdxLayoutItem
                         CaptionOptions.Visible = False
                         AlignHorz = ahLeft
                         Control = gbDimsLeftFibroma
                         ControlOptions.ShowBorder = False
+                        end
                       end
                     end
                   end

@@ -63,12 +63,12 @@ begin
   gbEndoRowRight3.Visible := False;
   gbEndoRowLeft2.Visible := False;
   gbEndoRowLeft3.Visible := False;
-  gbDimsRightSimpleCyst.Enabled := False;
-  gbDimsRightDermoid.Enabled := False;
-  gbDimsRightFibroma.Enabled := False;
-  gbDimsLeftSimpleCyst.Enabled := False;
-  gbDimsLeftDermoid.Enabled := False;
-  gbDimsLeftFibroma.Enabled := False;
+  lgRightSimpleCystDims.Visible := False;
+  lgRightDermoidDims.Visible := False;
+  lgRightFibromaDims.Visible := False;
+  lgLeftSimpleCystDims.Visible := False;
+  lgLeftDermoidDims.Visible := False;
+  lgLeftFibromaDims.Visible := False;
   lgRightEndoDetails.Visible := False;
   lgLeftEndoDetails.Visible := False;
   gbBowelRow2.Visible := False;
@@ -285,32 +285,32 @@ end;
 
 procedure chkRightSimpleCystClick(Sender)
 begin
-  gbDimsRightSimpleCyst.Enabled := chkRightSimpleCyst.Checked;
+  lgRightSimpleCystDims.Visible := chkRightSimpleCyst.Checked;
 end;
 
 procedure chkLeftSimpleCystClick(Sender)
 begin
-  gbDimsLeftSimpleCyst.Enabled := chkLeftSimpleCyst.Checked;
+  lgLeftSimpleCystDims.Visible := chkLeftSimpleCyst.Checked;
 end;
 
 procedure chkRightDermoidClick(Sender)
 begin
-  gbDimsRightDermoid.Enabled := chkRightDermoid.Checked;
+  lgRightDermoidDims.Visible := chkRightDermoid.Checked;
 end;
 
 procedure chkLeftDermoidClick(Sender)
 begin
-  gbDimsLeftDermoid.Enabled := chkLeftDermoid.Checked;
+  lgLeftDermoidDims.Visible := chkLeftDermoid.Checked;
 end;
 
 procedure chkRightFibromaClick(Sender)
 begin
-  gbDimsRightFibroma.Enabled := chkRightFibroma.Checked;
+  lgRightFibromaDims.Visible := chkRightFibroma.Checked;
 end;
 
 procedure chkLeftFibromaClick(Sender)
 begin
-  gbDimsLeftFibroma.Enabled := chkLeftFibroma.Checked;
+  lgLeftFibromaDims.Visible := chkLeftFibroma.Checked;
 end;
 
 // --- Common Pathologies: Endometrioma (multiple) ---

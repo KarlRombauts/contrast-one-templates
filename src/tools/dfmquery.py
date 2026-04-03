@@ -334,50 +334,52 @@ def cmd_validate(args):
         sys.exit(1)
 
 
+def _parse_filters(prop_list, missing_prop_list):
+    """Parse --prop and --missing-prop args into filter dicts."""
+    filters = {}
+    for f_str in (prop_list or []):
+        if '=' in f_str:
+            k, _, v = f_str.partition('=')
+            filters[k.strip()] = v.strip()
+        else:
+            filters[f_str.strip()] = None
+    missing = {}
+    for f_str in (missing_prop_list or []):
+        if '=' in f_str:
+            k, _, v = f_str.partition('=')
+            missing[k.strip()] = v.strip()
+        else:
+            missing[f_str.strip()] = None
+    return filters, missing
+
+
+def _match_object(obj, filters, missing_filters, type_filter=None):
+    """Check if an object matches the given filters."""
+    for prop, val in filters.items():
+        if prop not in obj['properties']:
+            return False
+        if val is not None and obj['properties'][prop] != val:
+            return False
+    for prop, val in missing_filters.items():
+        if val is None and prop in obj['properties']:
+            return False
+        if val is not None and obj['properties'].get(prop) == val:
+            return False
+    if type_filter and obj['type'] != type_filter:
+        return False
+    return True
+
+
 def cmd_find(args):
     """Find objects with specific property values."""
     with open(args.file) as f:
         lines = f.readlines()
 
     objects = parse_objects(lines)
-
-    # Parse prop=value filters
-    filters = {}
-    for f_str in args.prop:
-        if '=' in f_str:
-            k, _, v = f_str.partition('=')
-            filters[k.strip()] = v.strip()
-        else:
-            filters[f_str.strip()] = None  # just check existence
-
-    # Parse missing-prop filters
-    missing_filters = {}
-    for f_str in (args.missing_prop or []):
-        if '=' in f_str:
-            k, _, v = f_str.partition('=')
-            missing_filters[k.strip()] = v.strip()
-        else:
-            missing_filters[f_str.strip()] = None
+    filters, missing = _parse_filters(args.prop, args.missing_prop)
 
     for obj in objects:
-        match = True
-        for prop, val in filters.items():
-            if prop not in obj['properties']:
-                match = False
-                break
-            if val is not None and obj['properties'][prop] != val:
-                match = False
-                break
-        for prop, val in missing_filters.items():
-            if val is None and prop in obj['properties']:
-                match = False
-                break
-            if val is not None and obj['properties'].get(prop) == val:
-                match = False
-                break
-        if args.type and obj['type'] != args.type:
-            match = False
-        if match:
+        if _match_object(obj, filters, missing, args.type):
             ls = obj['line_start'] + 1
             le = obj['line_end'] + 1
             print(f"{ls}-{le}\td={obj['depth']}\t{obj['name']}: {obj['type']}")
@@ -413,49 +415,73 @@ def _get_indent(line):
     return line[:len(line) - len(line.lstrip())]
 
 
-def cmd_set_prop(args):
-    """Add or update a property on a named object.
-
-    Usage: dfmquery.py set-prop <file> <name> <prop=value>
-    """
-    with open(args.file) as f:
-        lines = f.readlines()
-
-    start, end = _find_object_lines(lines, args.name)
-    if start is None:
-        print(f"Error: object '{args.name}' not found", file=sys.stderr)
-        sys.exit(1)
-
-    prop_name, _, prop_val = args.property.partition('=')
-    prop_name = prop_name.strip()
-    prop_val = prop_val.strip()
-    prop_line_text = f"{prop_name} = {prop_val}"
-
-    # Check if property already exists on this object (before any child object)
+def _set_prop_on_object(lines, start, end, prop_line_text):
+    """Set a property on an object at lines[start:end+1]. Returns (lines, was_update)."""
+    prop_name = prop_line_text.split('=')[0].strip()
     indent = _get_indent(lines[start]) + '  '
-    updated = False
+
     for i in range(start + 1, end + 1):
         stripped = lines[i].strip()
-        # Stop at first child object or end
         if re.match(r'^(?:object|inherited)\s+\w+\s*:', stripped) or stripped == 'item':
             break
         if stripped == 'end' or stripped == 'end>':
             break
-        # Check if this line is the property we want to set
         if stripped.startswith(prop_name + ' =') or stripped.startswith(prop_name + '='):
             lines[i] = f"{indent}{prop_line_text}\n"
-            updated = True
-            break
+            return lines, True
 
-    if not updated:
-        # Insert after the object declaration line
-        lines.insert(start + 1, f"{indent}{prop_line_text}\n")
+    lines.insert(start + 1, f"{indent}{prop_line_text}\n")
+    return lines, False
 
-    with open(args.file, 'w') as f:
-        f.writelines(lines)
 
-    action = "Updated" if updated else "Added"
-    print(f"{action}: {args.name}.{prop_line_text}")
+def cmd_set_prop(args):
+    """Add or update a property on named object(s).
+
+    Usage:
+      dfmquery.py set-prop <file> <property> --name <name>
+      dfmquery.py set-prop <file> <property> --type TYPE [--prop P] [--missing-prop P]
+    """
+    with open(args.file) as f:
+        lines = f.readlines()
+
+    prop_name, _, prop_val = args.property.partition('=')
+    prop_line_text = f"{prop_name.strip()} = {prop_val.strip()}"
+
+    if args.name:
+        # Single object mode
+        start, end = _find_object_lines(lines, args.name)
+        if start is None:
+            print(f"Error: object '{args.name}' not found", file=sys.stderr)
+            sys.exit(1)
+        lines, was_update = _set_prop_on_object(lines, start, end, prop_line_text)
+        with open(args.file, 'w') as f:
+            f.writelines(lines)
+        action = "Updated" if was_update else "Added"
+        print(f"{action}: {args.name}.{prop_line_text}")
+    else:
+        # Bulk mode using filters
+        objects = parse_objects(lines)
+        filters, missing = _parse_filters(args.prop, args.missing_prop)
+        if not filters and not missing and not args.type:
+            print("Error: provide --name, or at least one of --type/--prop/--missing-prop", file=sys.stderr)
+            sys.exit(1)
+
+        targets = [obj for obj in objects if _match_object(obj, filters, missing, args.type)]
+        if not targets:
+            print("No matching objects found")
+            return
+
+        # Apply in reverse order so line insertions don't shift later indices
+        count = 0
+        for obj in reversed(targets):
+            start, end = _find_object_lines(lines, obj['name'])
+            if start is not None:
+                lines, _ = _set_prop_on_object(lines, start, end, prop_line_text)
+                count += 1
+
+        with open(args.file, 'w') as f:
+            f.writelines(lines)
+        print(f"Set {prop_line_text} on {count} objects")
 
 
 def cmd_replace(args):
@@ -699,10 +725,13 @@ def main():
     p_find.add_argument('--type', help='Filter by Delphi type')
 
     # set-prop
-    p_setprop = subparsers.add_parser('set-prop', help='Add or update a property on a named object')
+    p_setprop = subparsers.add_parser('set-prop', help='Add or update a property (single or bulk)')
     p_setprop.add_argument('file')
-    p_setprop.add_argument('name')
     p_setprop.add_argument('property', help='Property assignment (e.g. "AlignHorz = ahLeft")')
+    p_setprop.add_argument('--name', help='Single object name')
+    p_setprop.add_argument('--type', help='Filter by type (bulk mode)')
+    p_setprop.add_argument('--prop', action='append', default=[], help='Filter: has property')
+    p_setprop.add_argument('--missing-prop', action='append', help='Filter: missing property')
 
     # replace
     p_replace = subparsers.add_parser('replace', help='Replace a named object with new DFM content')
