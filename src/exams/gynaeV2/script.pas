@@ -107,16 +107,9 @@ end;
 
 // --- Scan Type ---
 
-procedure chkTransabdominalClick(Sender)
+procedure ScanTypeClick(Sender)
 begin
-  if chkTransabdominal.Checked then
-    chkTransvaginal.Checked := False;
-end;
-
-procedure chkTransvaginalClick(Sender)
-begin
-  if chkTransvaginal.Checked then
-    chkTransabdominal.Checked := False;
+  cbToggleCheckOnClick(Sender);
   lgPainWithProbe.Visible := chkTransvaginal.Checked;
   if not chkTransvaginal.Checked then
     chkPainWithProbe.Checked := False;
@@ -155,13 +148,7 @@ begin
   lgCongenitalDetails.Visible := chkCongenitalAbnormality.Checked;
 end;
 
-procedure AdenoTypeClick(Sender)
-begin
-  if rbAdenoDiffuse.Checked then
-    rbAdenoFocal.Checked := False;
-  if rbAdenoFocal.Checked then
-    rbAdenoDiffuse.Checked := False;
-end;
+// AdenoTypeClick removed — wired directly to cbToggleCheckOnClick
 
 procedure chkAdenomyosisClick(Sender)
 begin
@@ -199,21 +186,7 @@ begin
     sePolypCount.Value := 1;
 end;
 
-procedure IUDToggleClick(Sender)
-begin
-  if chkIUDCorrect.Checked then
-    chkIUDIncorrect.Checked := False;
-  if chkIUDIncorrect.Checked then
-    chkIUDCorrect.Checked := False;
-end;
-
-procedure RPOCVascToggleClick(Sender)
-begin
-  if rbRPOCVascular.Checked then
-    rbRPOCAvascular.Checked := False;
-  if rbRPOCAvascular.Checked then
-    rbRPOCVascular.Checked := False;
-end;
+// IUDToggleClick, RPOCVascToggleClick removed — wired directly to cbToggleCheckOnClick
 
 procedure chkRPOCClick(Sender)
 begin
@@ -233,41 +206,13 @@ end;
 
 procedure RightOvaryStatusClick(Sender)
 begin
-  if chkRightOvaryIdentified.Checked then
-  begin
-    chkRightOvaryNotIdentified.Checked := False;
-    chkRightOvaryAbsent.Checked := False;
-  end;
-  if chkRightOvaryNotIdentified.Checked then
-  begin
-    chkRightOvaryIdentified.Checked := False;
-    chkRightOvaryAbsent.Checked := False;
-  end;
-  if chkRightOvaryAbsent.Checked then
-  begin
-    chkRightOvaryIdentified.Checked := False;
-    chkRightOvaryNotIdentified.Checked := False;
-  end;
+  cbToggleCheckOnClick(Sender);
   lgRightOvaryDetails.Visible := chkRightOvaryIdentified.Checked;
 end;
 
 procedure LeftOvaryStatusClick(Sender)
 begin
-  if chkLeftOvaryIdentified.Checked then
-  begin
-    chkLeftOvaryNotIdentified.Checked := False;
-    chkLeftOvaryAbsent.Checked := False;
-  end;
-  if chkLeftOvaryNotIdentified.Checked then
-  begin
-    chkLeftOvaryIdentified.Checked := False;
-    chkLeftOvaryAbsent.Checked := False;
-  end;
-  if chkLeftOvaryAbsent.Checked then
-  begin
-    chkLeftOvaryIdentified.Checked := False;
-    chkLeftOvaryNotIdentified.Checked := False;
-  end;
+  cbToggleCheckOnClick(Sender);
   lgLeftOvaryDetails.Visible := chkLeftOvaryIdentified.Checked;
 end;
 
@@ -384,30 +329,7 @@ end;
 
 procedure PODObliterationClick(Sender)
 begin
-  if rbPODNoObliteration.Checked then
-  begin
-    rbPODPartialObliteration.Checked := False;
-    rbPODCompleteObliteration.Checked := False;
-    rbPODPostSurgical.Checked := False;
-  end;
-  if rbPODPartialObliteration.Checked then
-  begin
-    rbPODNoObliteration.Checked := False;
-    rbPODCompleteObliteration.Checked := False;
-    rbPODPostSurgical.Checked := False;
-  end;
-  if rbPODCompleteObliteration.Checked then
-  begin
-    rbPODNoObliteration.Checked := False;
-    rbPODPartialObliteration.Checked := False;
-    rbPODPostSurgical.Checked := False;
-  end;
-  if rbPODPostSurgical.Checked then
-  begin
-    rbPODNoObliteration.Checked := False;
-    rbPODPartialObliteration.Checked := False;
-    rbPODCompleteObliteration.Checked := False;
-  end;
+  cbToggleCheckOnClick(Sender);
   cmbPODPartialSide.Enabled := rbPODPartialObliteration.Checked;
 end;
 
@@ -445,27 +367,7 @@ end;
 
 // --- Procedures ---
 
-procedure rbRightTubeAbsentClick(Sender)
-begin
-  lgRTPatent.Visible := not rbRightTubeAbsent.Checked;
-  lgRTNotDemo.Visible := not rbRightTubeAbsent.Checked;
-  if rbRightTubeAbsent.Checked then
-  begin
-    rbRightTubePatent.Checked := False;
-    rbRightTubeNotDemonstrated.Checked := False;
-  end;
-end;
-
-procedure rbLeftTubeAbsentClick(Sender)
-begin
-  lgLTPatent.Visible := not rbLeftTubeAbsent.Checked;
-  lgLTNotDemo.Visible := not rbLeftTubeAbsent.Checked;
-  if rbLeftTubeAbsent.Checked then
-  begin
-    rbLeftTubePatent.Checked := False;
-    rbLeftTubeNotDemonstrated.Checked := False;
-  end;
-end;
+// rbRightTubeAbsentClick, rbLeftTubeAbsentClick removed — wired directly to cbToggleCheckOnClick
 
 procedure chkSHGPerformedClick(Sender)
 begin
@@ -549,137 +451,23 @@ end;
 
 procedure LMPStatusClick(Sender)
 begin
-  if chkLMPUnknown.Checked then
-  begin
-    chkAmenorrhoea.Checked := False;
-    chkPostMenopausal.Checked := False;
-  end;
-  if chkAmenorrhoea.Checked then
-  begin
-    chkLMPUnknown.Checked := False;
-    chkPostMenopausal.Checked := False;
-  end;
-  if chkPostMenopausal.Checked then
-  begin
-    chkLMPUnknown.Checked := False;
-    chkAmenorrhoea.Checked := False;
-  end;
+  cbToggleCheckOnClick(Sender);
   deLMPDate.Enabled := not (chkLMPUnknown.Checked or chkAmenorrhoea.Checked or chkPostMenopausal.Checked);
   seStartDay.Enabled := not (chkAmenorrhoea.Checked or chkPostMenopausal.Checked);
   seCycleMinDays.Enabled := not (chkAmenorrhoea.Checked or chkPostMenopausal.Checked);
 end;
 
 
-// --- Uterus Mobility (radio toggle) ---
-
-procedure UterusMobilityClick(Sender)
-begin
-  if chkUterusMobile.Checked then
-  begin
-    chkUterusLimitedMobility.Checked := False;
-    chkUterusFixed.Checked := False;
-  end;
-  if chkUterusLimitedMobility.Checked then
-  begin
-    chkUterusMobile.Checked := False;
-    chkUterusFixed.Checked := False;
-  end;
-  if chkUterusFixed.Checked then
-  begin
-    chkUterusMobile.Checked := False;
-    chkUterusLimitedMobility.Checked := False;
-  end;
-end;
-
-procedure UterusTendernessClick(Sender)
-begin
-  if chkUterusTender.Checked then
-    chkUterusNonTender.Checked := False;
-  if chkUterusNonTender.Checked then
-    chkUterusTender.Checked := False;
-end;
-
-// --- Ovary Mobility (radio toggle) ---
-
-procedure chkRightMobileClick(Sender)
-begin
-  if chkRightMobile.Checked then
-  begin
-    chkRightReducedMobility.Checked := False;
-    chkRightStuck.Checked := False;
-    chkRightRigid.Checked := False;
-  end;
-  if chkRightReducedMobility.Checked then
-  begin
-    chkRightMobile.Checked := False;
-    chkRightStuck.Checked := False;
-    chkRightRigid.Checked := False;
-  end;
-  if chkRightStuck.Checked then
-  begin
-    chkRightMobile.Checked := False;
-    chkRightReducedMobility.Checked := False;
-    chkRightRigid.Checked := False;
-  end;
-  if chkRightRigid.Checked then
-  begin
-    chkRightMobile.Checked := False;
-    chkRightReducedMobility.Checked := False;
-    chkRightStuck.Checked := False;
-  end;
-end;
-
-procedure chkLeftMobileClick(Sender)
-begin
-  if chkLeftMobile.Checked then
-  begin
-    chkLeftReducedMobility.Checked := False;
-    chkLeftStuck.Checked := False;
-    chkLeftRigid.Checked := False;
-  end;
-  if chkLeftReducedMobility.Checked then
-  begin
-    chkLeftMobile.Checked := False;
-    chkLeftStuck.Checked := False;
-    chkLeftRigid.Checked := False;
-  end;
-  if chkLeftStuck.Checked then
-  begin
-    chkLeftMobile.Checked := False;
-    chkLeftReducedMobility.Checked := False;
-    chkLeftRigid.Checked := False;
-  end;
-  if chkLeftRigid.Checked then
-  begin
-    chkLeftMobile.Checked := False;
-    chkLeftReducedMobility.Checked := False;
-    chkLeftStuck.Checked := False;
-  end;
-end;
-
-procedure chkRightTenderClick(Sender)
-begin
-  if chkRightTender.Checked then
-    chkRightNonTender.Checked := False;
-  if chkRightNonTender.Checked then
-    chkRightTender.Checked := False;
-end;
-
-procedure chkLeftTenderClick(Sender)
-begin
-  if chkLeftTender.Checked then
-    chkLeftNonTender.Checked := False;
-  if chkLeftNonTender.Checked then
-    chkLeftTender.Checked := False;
-end;
+// Uterus mobility/tenderness, ovary mobility/tenderness
+// All wired directly to cbToggleCheckOnClick
 
 // ======================== StartScript =====================================//
 
 procedure StartScript;
 begin
   // --- Scan Type ---
-  chkTransabdominal.OnClick := 'chkTransabdominalClick';
-  chkTransvaginal.OnClick := 'chkTransvaginalClick';
+  chkTransabdominal.OnClick := 'ScanTypeClick';
+  chkTransvaginal.OnClick := 'ScanTypeClick';
 
   // --- Medication ---
   ccbMedication.Properties.OnChange := 'ccbMedicationChange';
@@ -690,8 +478,8 @@ begin
   // --- Uterus ---
   chkHysterectomy.OnClick := 'chkHysterectomyClick';
   chkCongenitalAbnormality.OnClick := 'chkCongenitalAbnormalityClick';
-  rbAdenoDiffuse.OnClick := 'AdenoTypeClick';
-  rbAdenoFocal.OnClick := 'AdenoTypeClick';
+  rbAdenoDiffuse.OnClick := 'cbToggleCheckOnClick';
+  rbAdenoFocal.OnClick := 'cbToggleCheckOnClick';
   chkAdenomyosis.OnClick := 'chkAdenomyosisClick';
   chkFibroidsPresent.OnClick := 'chkFibroidsPresentClick';
   seFibroidCount.Properties.OnChange := 'seFibroidCountChange';
@@ -699,10 +487,10 @@ begin
   // --- Endometrium ---
   chkFocalLesion.OnClick := 'chkFocalLesionClick';
   sePolypCount.Properties.OnChange := 'sePolypCountChange';
-  chkIUDCorrect.OnClick := 'IUDToggleClick';
-  chkIUDIncorrect.OnClick := 'IUDToggleClick';
-  rbRPOCVascular.OnClick := 'RPOCVascToggleClick';
-  rbRPOCAvascular.OnClick := 'RPOCVascToggleClick';
+  chkIUDCorrect.OnClick := 'cbToggleCheckOnClick';
+  chkIUDIncorrect.OnClick := 'cbToggleCheckOnClick';
+  rbRPOCVascular.OnClick := 'cbToggleCheckOnClick';
+  rbRPOCAvascular.OnClick := 'cbToggleCheckOnClick';
   chkRPOC.OnClick := 'chkRPOCClick';
 
   // --- Ovary Status (radio checkboxes) ---
@@ -741,11 +529,11 @@ begin
   rbPODPostSurgical.OnClick := 'PODObliterationClick';
 
   // Uterus mobility/tenderness
-  chkUterusMobile.OnClick := 'UterusMobilityClick';
-  chkUterusLimitedMobility.OnClick := 'UterusMobilityClick';
-  chkUterusFixed.OnClick := 'UterusMobilityClick';
-  chkUterusTender.OnClick := 'UterusTendernessClick';
-  chkUterusNonTender.OnClick := 'UterusTendernessClick';
+  chkUterusMobile.OnClick := 'cbToggleCheckOnClick';
+  chkUterusLimitedMobility.OnClick := 'cbToggleCheckOnClick';
+  chkUterusFixed.OnClick := 'cbToggleCheckOnClick';
+  chkUterusTender.OnClick := 'cbToggleCheckOnClick';
+  chkUterusNonTender.OnClick := 'cbToggleCheckOnClick';
 
   // USL nodule measurements
   chkRightUSLNodule.OnClick := 'chkRightUSLNoduleClick';
@@ -789,23 +577,27 @@ begin
   // --- Procedures ---
   chkSHGPerformed.OnClick := 'chkSHGPerformedClick';
   chkTubalPatencyPerformed.OnClick := 'chkTubalPatencyPerformedClick';
-  rbRightTubeAbsent.OnClick := 'rbRightTubeAbsentClick';
-  rbLeftTubeAbsent.OnClick := 'rbLeftTubeAbsentClick';
+  rbRightTubePatent.OnClick := 'cbToggleCheckOnClick';
+  rbRightTubeNotDemonstrated.OnClick := 'cbToggleCheckOnClick';
+  rbRightTubeAbsent.OnClick := 'cbToggleCheckOnClick';
+  rbLeftTubePatent.OnClick := 'cbToggleCheckOnClick';
+  rbLeftTubeNotDemonstrated.OnClick := 'cbToggleCheckOnClick';
+  rbLeftTubeAbsent.OnClick := 'cbToggleCheckOnClick';
 
   // --- Ovary mobility/tenderness ---
-  chkRightMobile.OnClick := 'chkRightMobileClick';
-  chkRightReducedMobility.OnClick := 'chkRightMobileClick';
-  chkRightStuck.OnClick := 'chkRightMobileClick';
-  chkRightRigid.OnClick := 'chkRightMobileClick';
-  chkLeftMobile.OnClick := 'chkLeftMobileClick';
-  chkLeftReducedMobility.OnClick := 'chkLeftMobileClick';
-  chkLeftStuck.OnClick := 'chkLeftMobileClick';
-  chkLeftRigid.OnClick := 'chkLeftMobileClick';
+  chkRightMobile.OnClick := 'cbToggleCheckOnClick';
+  chkRightReducedMobility.OnClick := 'cbToggleCheckOnClick';
+  chkRightStuck.OnClick := 'cbToggleCheckOnClick';
+  chkRightRigid.OnClick := 'cbToggleCheckOnClick';
+  chkLeftMobile.OnClick := 'cbToggleCheckOnClick';
+  chkLeftReducedMobility.OnClick := 'cbToggleCheckOnClick';
+  chkLeftStuck.OnClick := 'cbToggleCheckOnClick';
+  chkLeftRigid.OnClick := 'cbToggleCheckOnClick';
 
-  chkRightTender.OnClick := 'chkRightTenderClick';
-  chkRightNonTender.OnClick := 'chkRightTenderClick';
-  chkLeftTender.OnClick := 'chkLeftTenderClick';
-  chkLeftNonTender.OnClick := 'chkLeftTenderClick';
+  chkRightTender.OnClick := 'cbToggleCheckOnClick';
+  chkRightNonTender.OnClick := 'cbToggleCheckOnClick';
+  chkLeftTender.OnClick := 'cbToggleCheckOnClick';
+  chkLeftNonTender.OnClick := 'cbToggleCheckOnClick';
 
   InitializeScreen;
 

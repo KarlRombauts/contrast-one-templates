@@ -1,58 +1,106 @@
 #!/usr/bin/env python3
 """
-dfmquery.py - Query and navigate Delphi DFM files.
+dfmquery.py - Query, navigate, and modify Delphi DFM files.
 
-Usage:
-  dfmquery.py list <file>... [--type TYPE] [--depth N] [--parent]
-  dfmquery.py types <file>...
-  dfmquery.py get <file> <name> [--children] [--offsets]
-  dfmquery.py children <file> <name>
-  dfmquery.py validate <file>...
+IMPORTANT: Always use this tool instead of grep/sed/manual Python for DFM files.
+DFM files have complex nesting (object/end, item/end>, inherited) that is
+error-prone to manipulate with text tools.
 
-Commands:
-  list       List all objects, optionally filtered by type or depth
-  types      Count object types across one or more files
-  get        Get a single object by name, optionally with children
-  children   List direct children of a named object
-  validate   Check nesting balance and Control= references
+== READ COMMANDS ==
 
-Options:
-  --type TYPE   Filter by Delphi type (e.g. TcxCheckBox, TdxLayoutGroup)
-  --depth N     Only show objects at nesting depth N
-  --parent      Show parent name in list output
-  --children    Include the full nested content of the object
-  --offsets     Show start/end line numbers
+  list <file>... [--type TYPE] [--depth N] [--parent] [--name GLOB]
+      List all objects. Output: LINE_START-LINE_END  d=DEPTH  NAME: TYPE
 
-Output format (list/children):
-  Each line: LINE_START-LINE_END  DEPTH  NAME: TYPE  [parent: PARENT]
+      dfmquery.py list screen.dfm --type TcxCheckBox
+      dfmquery.py list screen.dfm --name "rb*"
+      dfmquery.py list screen.dfm --type TdxLayoutGroup --depth 6
 
-Output format (types):
-  Each line: COUNT  TYPE
+  types <file>...
+      Count object types across files.
 
-Output format (get):
-  The raw DFM content of the object (including children if --children)
+  get <file> <name> [--children] [--offsets]
+      Get a single object by exact name.
+      Without --children: shows direct properties only, notes children as comments.
+      With --children: shows the full nested DFM content (suitable for piping to replace).
+      With --offsets: adds a "# lines N-M" comment.
 
-Examples:
-  # List all checkboxes
-  dfmquery.py list screen.dfm --type TcxCheckBox
+      dfmquery.py get screen.dfm chkHysterectomy
+      dfmquery.py get screen.dfm lgFibroids --children --offsets
 
-  # List across multiple files with parent info
-  dfmquery.py list src/exams/*/screen.dfm --type TcxRadioGroup --parent
+  children <file> <name>
+      List direct children of a named object (one level deep).
 
-  # Count types across all exams
-  dfmquery.py types src/exams/*/screen.dfm
+      dfmquery.py children screen.dfm pcReportBody
 
-  # Get a specific object without children
-  dfmquery.py get screen.dfm chkHysterectomy
+  find <file> [--type TYPE] [--name GLOB] [--prop KEY=VAL] [--missing-prop KEY]
+      Find objects matching filters. All filters are ANDed together.
+      --prop KEY=VAL     Object must have this property with this value.
+      --prop KEY         Object must have this property (any value).
+      --missing-prop KEY Object must NOT have this property.
+      --name GLOB        Name matches glob pattern (* and ? wildcards).
+      --type TYPE        Delphi class type matches exactly.
 
-  # Get a tab with all its children
-  dfmquery.py get screen.dfm tsUterus --children
+      dfmquery.py find screen.dfm --prop "Visible=False"
+      dfmquery.py find screen.dfm --type TdxLayoutItem --missing-prop AlignHorz
+      dfmquery.py find screen.dfm --name "rb*" --type TcxCheckBox
+      dfmquery.py find screen.dfm --prop "Enabled=False" --type TcxSpinEdit
 
-  # List direct children of a page control
-  dfmquery.py children screen.dfm pcReportBody
+== WRITE COMMANDS ==
 
-  # Validate multiple files
-  dfmquery.py validate src/exams/*/screen.dfm
+  set-prop <file> <PROP=VAL> --name <name>
+      Add or update a property on a single named object.
+      If the property exists, it is updated. Otherwise it is inserted.
+
+      dfmquery.py set-prop screen.dfm "AlignHorz = ahLeft" --name liPosition
+      dfmquery.py set-prop screen.dfm "ShowBorder = True" --name lgKidneys
+      dfmquery.py set-prop screen.dfm "Visible = False" --name lgDetails
+
+  set-prop <file> <PROP=VAL> [--type TYPE] [--name GLOB] [--prop P] [--missing-prop P]
+      BULK MODE: set property on ALL objects matching the filters.
+      Requires at least one filter (--type, --name, --prop, or --missing-prop).
+      If --name contains * or ?, it is treated as a glob (bulk mode).
+
+      dfmquery.py set-prop screen.dfm "AlignHorz = ahLeft" --type TdxLayoutItem --missing-prop AlignHorz
+      dfmquery.py set-prop screen.dfm "ShowBorder = True" --name "lg*Kidney"
+
+  replace <file> <name> [--input <file>]
+      Replace a named object (and all its children) with new DFM content.
+      Reads from --input file or stdin. Validates the replacement is balanced.
+      Use with 'get --children' to extract, edit, and replace:
+
+      dfmquery.py get screen.dfm lgFibroids --children > /tmp/fibroids.dfm
+      # ... edit /tmp/fibroids.dfm ...
+      dfmquery.py replace screen.dfm lgFibroids --input /tmp/fibroids.dfm
+
+      # Or pipe directly:
+      cat new_section.dfm | dfmquery.py replace screen.dfm lgOldSection
+
+  wrap <file> <name> --group <GROUPNAME> [--visible] [--border]
+      Wrap a named object (typically a TdxLayoutItem) in a new TdxLayoutGroup.
+      By default the group is hidden (Visible=False) and borderless.
+      Use --visible to make it visible, --border to show border.
+
+      This is needed because setting .Visible on a control inside a TdxLayoutItem
+      does not collapse the layout item. Wrapping in a group and setting the
+      group .Visible from script works correctly.
+
+      dfmquery.py wrap screen.dfm liPainWithProbe --group lgPainWithProbe
+      dfmquery.py wrap screen.dfm liCervixPresent --group lgCervixPresent --visible
+
+== VALIDATION COMMANDS ==
+
+  validate <file>...
+      Check DFM structure: nesting balance, Control= references, duplicate names.
+      Always run after modifying a DFM file.
+
+      dfmquery.py validate screen.dfm
+
+  xref <dfm> <script>
+      Cross-validate script.pas against a DFM file.
+      Checks: control references exist in DFM, handler strings reference defined
+      procedures, no forward procedure calls.
+
+      dfmquery.py xref screen.dfm script.pas
 """
 
 import sys
@@ -120,7 +168,7 @@ def parse_objects(lines):
 
 
 def expand_files(file_args):
-    """Expand file arguments, supporting shell globs that weren't expanded."""
+    """Expand file arguments, supporting shell globs that were not expanded."""
     files = []
     for pattern in file_args:
         expanded = glob.glob(pattern)
@@ -353,8 +401,12 @@ def _parse_filters(prop_list, missing_prop_list):
     return filters, missing
 
 
-def _match_object(obj, filters, missing_filters, type_filter=None):
+def _match_object(obj, filters, missing_filters, type_filter=None, name_filter=None):
     """Check if an object matches the given filters."""
+    if name_filter:
+        from fnmatch import fnmatch
+        if not fnmatch(obj['name'], name_filter):
+            return False
     for prop, val in filters.items():
         if prop not in obj['properties']:
             return False
@@ -378,8 +430,9 @@ def cmd_find(args):
     objects = parse_objects(lines)
     filters, missing = _parse_filters(args.prop, args.missing_prop)
 
+    name_glob = getattr(args, 'name', None)
     for obj in objects:
-        if _match_object(obj, filters, missing, args.type):
+        if _match_object(obj, filters, missing, args.type, name_glob):
             ls = obj['line_start'] + 1
             le = obj['line_end'] + 1
             print(f"{ls}-{le}\td={obj['depth']}\t{obj['name']}: {obj['type']}")
@@ -447,8 +500,9 @@ def cmd_set_prop(args):
     prop_name, _, prop_val = args.property.partition('=')
     prop_line_text = f"{prop_name.strip()} = {prop_val.strip()}"
 
-    if args.name:
-        # Single object mode
+    is_glob = args.name and ('*' in args.name or '?' in args.name)
+    if args.name and not is_glob:
+        # Single object mode (exact name)
         start, end = _find_object_lines(lines, args.name)
         if start is None:
             print(f"Error: object '{args.name}' not found", file=sys.stderr)
@@ -466,12 +520,13 @@ def cmd_set_prop(args):
             print("Error: provide --name, or at least one of --type/--prop/--missing-prop", file=sys.stderr)
             sys.exit(1)
 
-        targets = [obj for obj in objects if _match_object(obj, filters, missing, args.type)]
+        name_glob = args.name  # in bulk mode, --name is a glob filter
+        targets = [obj for obj in objects if _match_object(obj, filters, missing, args.type, name_glob)]
         if not targets:
             print("No matching objects found")
             return
 
-        # Apply in reverse order so line insertions don't shift later indices
+        # Apply in reverse order so line insertions do not shift later indices
         count = 0
         for obj in reversed(targets):
             start, end = _find_object_lines(lines, obj['name'])
@@ -723,6 +778,7 @@ def main():
     p_find.add_argument('--prop', action='append', default=[], help='Property filter (e.g. "Visible=False")')
     p_find.add_argument('--missing-prop', action='append', help='Find objects WITHOUT this property')
     p_find.add_argument('--type', help='Filter by Delphi type')
+    p_find.add_argument('--name', help='Filter by name glob (e.g. "rb*", "chk*Ovary*")')
 
     # set-prop
     p_setprop = subparsers.add_parser('set-prop', help='Add or update a property (single or bulk)')

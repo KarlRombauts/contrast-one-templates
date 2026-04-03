@@ -39,21 +39,31 @@ inherited Gynae: TGynae
             AutoSize = True
             LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
 
-            object chkTransabdominal: TcxCheckBox
+            object gbScanMethod: TcxGroupBox
               Left = 10000
               Top = 10000
-              Caption = 'Transabdominal'
+              PanelStyle.Active = True
+              Style.BorderStyle = ebsNone
+              Style.Edges = []
               TabOrder = 0
-              Transparent = True
-              Width = 120
-            end
-            object chkTransvaginal: TcxCheckBox
-              Left = 10000
-              Top = 10000
-              Caption = 'Transvaginal'
-              TabOrder = 1
-              Transparent = True
-              Width = 105
+              Height = 22
+              Width = 230
+              object chkTransabdominal: TcxCheckBox
+                Left = 0
+                Top = 0
+                Caption = 'Transabdominal'
+                TabOrder = 0
+                Transparent = True
+                Width = 120
+              end
+              object chkTransvaginal: TcxCheckBox
+                Left = 120
+                Top = 0
+                Caption = 'Transvaginal'
+                TabOrder = 1
+                Transparent = True
+                Width = 105
+              end
             end
             object chkPainWithProbe: TcxCheckBox
               Left = 10000
@@ -88,29 +98,39 @@ inherited Gynae: TGynae
               TabOrder = 5
               Width = 121
             end
-            object chkLMPUnknown: TcxCheckBox
+            object gbLMPStatus: TcxGroupBox
               Left = 10000
               Top = 10000
-              Caption = 'LMP unknown'
+              PanelStyle.Active = True
+              Style.BorderStyle = ebsNone
+              Style.Edges = []
               TabOrder = 6
-              Transparent = True
-              Width = 104
-            end
-            object chkAmenorrhoea: TcxCheckBox
-              Left = 10000
-              Top = 10000
-              Caption = 'Amenorrhoea'
-              TabOrder = 7
-              Transparent = True
-              Width = 104
-            end
-            object chkPostMenopausal: TcxCheckBox
-              Left = 10000
-              Top = 10000
-              Caption = 'Postmenopausal'
-              TabOrder = 8
-              Transparent = True
-              Width = 120
+              Height = 22
+              Width = 330
+              object chkLMPUnknown: TcxCheckBox
+                Left = 0
+                Top = 0
+                Caption = 'LMP unknown'
+                TabOrder = 0
+                Transparent = True
+                Width = 104
+              end
+              object chkAmenorrhoea: TcxCheckBox
+                Left = 104
+                Top = 0
+                Caption = 'Amenorrhoea'
+                TabOrder = 1
+                Transparent = True
+                Width = 104
+              end
+              object chkPostMenopausal: TcxCheckBox
+                Left = 208
+                Top = 0
+                Caption = 'Postmenopausal'
+                TabOrder = 2
+                Transparent = True
+                Width = 120
+              end
             end
             object seStartDay: TcxSpinEdit
               Left = 10000
@@ -384,33 +404,28 @@ inherited Gynae: TGynae
                 object liScanSep: TdxLayoutSeparatorItem
                   CaptionOptions.Text = ''
                 end
-                object lgScanMethod: TdxLayoutGroup
-                  CaptionOptions.Visible = False
-                  ButtonOptions.Buttons = <>
-                  LayoutDirection = ldHorizontal
-                  ShowBorder = False
-                  object liTransabdominal: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = chkTransabdominal
-                    ControlOptions.ShowBorder = False
-                  end
-                  object liTransvaginal: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = chkTransvaginal
-                    ControlOptions.ShowBorder = False
-                  end
-                  object lgPainWithProbe: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    ShowBorder = False
-                    Visible = False
-                    object liPainWithProbe: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = chkPainWithProbe
-                    ControlOptions.ShowBorder = False
-                  end
-                  end
-                end
+object lgScanMethod: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  object liScanMethod: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = gbScanMethod
+    ControlOptions.ShowBorder = False
+  end
+  object lgPainWithProbe: TdxLayoutGroup
+    CaptionOptions.Visible = False
+    ButtonOptions.Buttons = <>
+    ShowBorder = False
+    Visible = False
+    object liPainWithProbe: TdxLayoutItem
+      CaptionOptions.Visible = False
+      Control = chkPainWithProbe
+      ControlOptions.ShowBorder = False
+    end
+  end
+end
               end
 
               object lgPatientInfo: TdxLayoutGroup
@@ -424,33 +439,23 @@ inherited Gynae: TGynae
                   Control = deExamDate
                   ControlOptions.ShowBorder = False
                 end
-                object lgLMP: TdxLayoutGroup
-                  CaptionOptions.Visible = False
-                  ButtonOptions.Buttons = <>
-                  LayoutDirection = ldHorizontal
-                  ShowBorder = False
-                  object liLMPDate: TdxLayoutItem
-                      AlignHorz = ahLeft
-                    CaptionOptions.Text = 'LMP date'
-                    Control = deLMPDate
-                    ControlOptions.ShowBorder = False
-                  end
-                  object liLMPUnknown: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = chkLMPUnknown
-                    ControlOptions.ShowBorder = False
-                  end
-                  object liAmenorrhoea: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = chkAmenorrhoea
-                    ControlOptions.ShowBorder = False
-                  end
-                  object liPostMenopausal: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = chkPostMenopausal
-                    ControlOptions.ShowBorder = False
-                  end
-                end
+object lgLMP: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  object liLMPDate: TdxLayoutItem
+    AlignHorz = ahLeft
+    CaptionOptions.Text = 'LMP date'
+    Control = deLMPDate
+    ControlOptions.ShowBorder = False
+  end
+  object liLMPStatus: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = gbLMPStatus
+    ControlOptions.ShowBorder = False
+  end
+end
                 object lgCycle: TdxLayoutGroup
                   CaptionOptions.Visible = False
                   ButtonOptions.Buttons = <>
@@ -673,21 +678,31 @@ inherited Gynae: TGynae
                 Transparent = True
                 Width = 160
               end
-              object rbAdenoDiffuse: TcxCheckBox
+              object gbAdenoType: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Diffuse'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
-                Width = 80
-              end
-              object rbAdenoFocal: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Focal'
-                TabOrder = 0
-                Transparent = True
-                Width = 60
+                Height = 22
+                Width = 145
+                object rbAdenoDiffuse: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Diffuse'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 80
+                end
+                object rbAdenoFocal: TcxCheckBox
+                  Left = 80
+                  Top = 0
+                  Caption = 'Focal'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 60
+                end
               end
               object chkInfiltratingSerosa: TcxCheckBox
                 Left = 10000
@@ -2131,27 +2146,22 @@ inherited Gynae: TGynae
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
                                       Visible = False
-                    object lgAdenoType: TdxLayoutGroup
-                      CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liAdenoDiffuse: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = rbAdenoDiffuse
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liAdenoFocal: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = rbAdenoFocal
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liInfiltratingSerosa: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkInfiltratingSerosa
-                        ControlOptions.ShowBorder = False
-                      end
-                    end
+object lgAdenoType: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  object liAdenoType: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = gbAdenoType
+    ControlOptions.ShowBorder = False
+  end
+  object liInfiltratingSerosa: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkInfiltratingSerosa
+    ControlOptions.ShowBorder = False
+  end
+end
                     object liAdenoSep1: TdxLayoutSeparatorItem
                         CaptionOptions.Text = ''
                       end
@@ -2318,21 +2328,31 @@ inherited Gynae: TGynae
                 Transparent = True
                 Width = 100
               end
-              object chkIUDCorrect: TcxCheckBox
+              object gbIUD: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'IUD correct'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 10
-                Transparent = True
-                Width = 90
-              end
-              object chkIUDIncorrect: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'IUD incorrectly positioned'
-                TabOrder = 11
-                Transparent = True
-                Width = 185
+                Height = 22
+                Width = 280
+                object chkIUDCorrect: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'IUD correct'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 90
+                end
+                object chkIUDIncorrect: TcxCheckBox
+                  Left = 90
+                  Top = 0
+                  Caption = 'IUD incorrectly positioned'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 185
+                end
               end
               object chkRPOC: TcxCheckBox
                 Left = 10000
@@ -2354,21 +2374,31 @@ inherited Gynae: TGynae
                 TabOrder = 16
                 Width = 100
               end
-              object rbRPOCVascular: TcxCheckBox
+              object gbRPOCVasc: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Vascular'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 17
-                Transparent = True
-                Width = 75
-              end
-              object rbRPOCAvascular: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Avascular'
-                TabOrder = 18
-                Transparent = True
-                Width = 80
+                Height = 22
+                Width = 160
+                object rbRPOCVascular: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Vascular'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 75
+                end
+                object rbRPOCAvascular: TcxCheckBox
+                  Left = 75
+                  Top = 0
+                  Caption = 'Avascular'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 80
+                end
               end
               object chkRPOCSliding: TcxCheckBox
                 Left = 10000
@@ -2900,22 +2930,11 @@ inherited Gynae: TGynae
                   object liEndoGenSep: TdxLayoutSeparatorItem
                     CaptionOptions.Text = ''
                   end
-                  object lgIUD: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liIUDCorrect: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkIUDCorrect
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liIUDIncorrect: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkIUDIncorrect
-                      ControlOptions.ShowBorder = False
-                    end
-                  end
+object liIUD: TdxLayoutItem
+  CaptionOptions.Visible = False
+  Control = gbIUD
+  ControlOptions.ShowBorder = False
+end
                 end
 
                 object lgPolyps: TdxLayoutGroup
@@ -2979,22 +2998,11 @@ inherited Gynae: TGynae
                       Control = cmbRPOCLocation
                       ControlOptions.ShowBorder = False
                     end
-                    object lgRPOCVasc: TdxLayoutGroup
-                      CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liRPOCVascular: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = rbRPOCVascular
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRPOCAvascular: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = rbRPOCAvascular
-                        ControlOptions.ShowBorder = False
-                      end
-                    end
+object liRPOCVasc: TdxLayoutItem
+  CaptionOptions.Visible = False
+  Control = gbRPOCVasc
+  ControlOptions.ShowBorder = False
+end
                     object lgRPOCExtra: TdxLayoutGroup
                       CaptionOptions.Visible = False
                       ButtonOptions.Buttons = <>
@@ -3030,29 +3038,39 @@ inherited Gynae: TGynae
               AutoSize = True
               LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
 
-              object chkRightOvaryIdentified: TcxCheckBox
+              object gbRightOvaryStatus: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Identified'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
-                Width = 110
-              end
-              object chkRightOvaryNotIdentified: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Not identified'
-                TabOrder = 0
-                Transparent = True
-                Width = 110
-              end
-              object chkRightOvaryAbsent: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Absent'
-                TabOrder = 0
-                Transparent = True
-                Width = 110
+                Height = 22
+                Width = 330
+                object chkRightOvaryIdentified: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Identified'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 110
+                end
+                object chkRightOvaryNotIdentified: TcxCheckBox
+                  Left = 110
+                  Top = 0
+                  Caption = 'Not identified'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 110
+                end
+                object chkRightOvaryAbsent: TcxCheckBox
+                  Left = 220
+                  Top = 0
+                  Caption = 'Absent'
+                  TabOrder = 2
+                  Transparent = True
+                  Width = 110
+                end
               end
               object cmbRightOvaryAppearance: TcxComboBox
                 Left = 10000
@@ -3118,53 +3136,73 @@ inherited Gynae: TGynae
                 Transparent = True
                 Width = 100
               end
-              object chkRightMobile: TcxCheckBox
+              object gbRightMobility: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Mobile'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
-                Width = 80
+                Height = 22
+                Width = 320
+                object chkRightMobile: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Mobile'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 80
+                end
+                object chkRightReducedMobility: TcxCheckBox
+                  Left = 80
+                  Top = 0
+                  Caption = 'Reduced'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 80
+                end
+                object chkRightStuck: TcxCheckBox
+                  Left = 160
+                  Top = 0
+                  Caption = 'Stuck'
+                  TabOrder = 2
+                  Transparent = True
+                  Width = 80
+                end
+                object chkRightRigid: TcxCheckBox
+                  Left = 240
+                  Top = 0
+                  Caption = 'Rigid'
+                  TabOrder = 3
+                  Transparent = True
+                  Width = 80
+                end
               end
-              object chkRightReducedMobility: TcxCheckBox
+              object gbRightTenderness: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Reduced'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
-                Width = 80
-              end
-              object chkRightStuck: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Stuck'
-                TabOrder = 0
-                Transparent = True
-                Width = 80
-              end
-              object chkRightRigid: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Rigid'
-                TabOrder = 0
-                Transparent = True
-                Width = 80
-              end
-              object chkRightTender: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Tender'
-                TabOrder = 0
-                Transparent = True
-                Width = 90
-              end
-              object chkRightNonTender: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Non-tender'
-                TabOrder = 0
-                Transparent = True
-                Width = 90
+                Height = 22
+                Width = 180
+                object chkRightTender: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Tender'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 90
+                end
+                object chkRightNonTender: TcxCheckBox
+                  Left = 90
+                  Top = 0
+                  Caption = 'Non-tender'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 90
+                end
               end
               object chkRightAccessible: TcxCheckBox
                 Left = 10000
@@ -3198,29 +3236,39 @@ inherited Gynae: TGynae
                 Transparent = True
                 Width = 135
               end
-              object chkLeftOvaryIdentified: TcxCheckBox
+              object gbLeftOvaryStatus: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Identified'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
-                Width = 110
-              end
-              object chkLeftOvaryNotIdentified: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Not identified'
-                TabOrder = 0
-                Transparent = True
-                Width = 110
-              end
-              object chkLeftOvaryAbsent: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Absent'
-                TabOrder = 0
-                Transparent = True
-                Width = 110
+                Height = 22
+                Width = 330
+                object chkLeftOvaryIdentified: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Identified'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 110
+                end
+                object chkLeftOvaryNotIdentified: TcxCheckBox
+                  Left = 110
+                  Top = 0
+                  Caption = 'Not identified'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 110
+                end
+                object chkLeftOvaryAbsent: TcxCheckBox
+                  Left = 220
+                  Top = 0
+                  Caption = 'Absent'
+                  TabOrder = 2
+                  Transparent = True
+                  Width = 110
+                end
               end
               object cmbLeftOvaryAppearance: TcxComboBox
                 Left = 10000
@@ -3286,53 +3334,73 @@ inherited Gynae: TGynae
                 Transparent = True
                 Width = 100
               end
-              object chkLeftMobile: TcxCheckBox
+              object gbLeftMobility: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Mobile'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
-                Width = 80
+                Height = 22
+                Width = 320
+                object chkLeftMobile: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Mobile'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 80
+                end
+                object chkLeftReducedMobility: TcxCheckBox
+                  Left = 80
+                  Top = 0
+                  Caption = 'Reduced'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 80
+                end
+                object chkLeftStuck: TcxCheckBox
+                  Left = 160
+                  Top = 0
+                  Caption = 'Stuck'
+                  TabOrder = 2
+                  Transparent = True
+                  Width = 80
+                end
+                object chkLeftRigid: TcxCheckBox
+                  Left = 240
+                  Top = 0
+                  Caption = 'Rigid'
+                  TabOrder = 3
+                  Transparent = True
+                  Width = 80
+                end
               end
-              object chkLeftReducedMobility: TcxCheckBox
+              object gbLeftTenderness: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Reduced'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 0
-                Transparent = True
-                Width = 80
-              end
-              object chkLeftStuck: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Stuck'
-                TabOrder = 0
-                Transparent = True
-                Width = 80
-              end
-              object chkLeftRigid: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Rigid'
-                TabOrder = 0
-                Transparent = True
-                Width = 80
-              end
-              object chkLeftTender: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Tender'
-                TabOrder = 0
-                Transparent = True
-                Width = 90
-              end
-              object chkLeftNonTender: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Non-tender'
-                TabOrder = 0
-                Transparent = True
-                Width = 90
+                Height = 22
+                Width = 180
+                object chkLeftTender: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Tender'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 90
+                end
+                object chkLeftNonTender: TcxCheckBox
+                  Left = 90
+                  Top = 0
+                  Caption = 'Non-tender'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 90
+                end
               end
               object chkLeftAccessible: TcxCheckBox
                 Left = 10000
@@ -3687,27 +3755,11 @@ inherited Gynae: TGynae
                   CaptionOptions.Visible = True
                   ButtonOptions.Buttons = <>
                   ShowBorder = True
-                  object lgRightStatus: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liRightIdentified: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkRightOvaryIdentified
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liRightNotIdentified: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkRightOvaryNotIdentified
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liRightAbsent: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkRightOvaryAbsent
-                      ControlOptions.ShowBorder = False
-                    end
-                  end
+object liRightStatus: TdxLayoutItem
+  CaptionOptions.Visible = False
+  Control = gbRightOvaryStatus
+  ControlOptions.ShowBorder = False
+end
                   object lgRightOvaryDetails: TdxLayoutGroup
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
@@ -3779,53 +3831,27 @@ inherited Gynae: TGynae
                     object liRightMobSep: TdxLayoutSeparatorItem
                       CaptionOptions.Text = 'Mobility'
                     end
-                    object lgRightMobility: TdxLayoutGroup
-                      CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liRightMobile: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRightMobile
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRightReduced: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRightReducedMobility
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRightStuck: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRightStuck
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRightRigid: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRightRigid
-                        ControlOptions.ShowBorder = False
-                      end
-                    end
-                    object lgRightTender: TdxLayoutGroup
-                      CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liRightTender: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRightTender
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRightNonTender: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRightNonTender
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRightAccessible: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkRightAccessible
-                        ControlOptions.ShowBorder = False
-                      end
-                    end
+object liRightMobility: TdxLayoutItem
+  CaptionOptions.Visible = False
+  Control = gbRightMobility
+  ControlOptions.ShowBorder = False
+end
+object lgRightTender: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  object liRightTenderness: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = gbRightTenderness
+    ControlOptions.ShowBorder = False
+  end
+  object liRightAccessible: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkRightAccessible
+    ControlOptions.ShowBorder = False
+  end
+end
                     object liRightOtherSep: TdxLayoutSeparatorItem
                       CaptionOptions.Text = 'Other'
                     end
@@ -3868,27 +3894,11 @@ inherited Gynae: TGynae
                   CaptionOptions.Visible = True
                   ButtonOptions.Buttons = <>
                   ShowBorder = True
-                  object lgLeftStatus: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liLeftIdentified: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkLeftOvaryIdentified
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liLeftNotIdentified: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkLeftOvaryNotIdentified
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liLeftAbsent: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkLeftOvaryAbsent
-                      ControlOptions.ShowBorder = False
-                    end
-                  end
+object liLeftStatus: TdxLayoutItem
+  CaptionOptions.Visible = False
+  Control = gbLeftOvaryStatus
+  ControlOptions.ShowBorder = False
+end
                   object lgLeftOvaryDetails: TdxLayoutGroup
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
@@ -3960,53 +3970,27 @@ inherited Gynae: TGynae
                     object liLeftMobSep: TdxLayoutSeparatorItem
                       CaptionOptions.Text = 'Mobility'
                     end
-                    object lgLeftMobility: TdxLayoutGroup
-                      CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liLeftMobile: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkLeftMobile
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liLeftReduced: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkLeftReducedMobility
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liLeftStuck: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkLeftStuck
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liLeftRigid: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkLeftRigid
-                        ControlOptions.ShowBorder = False
-                      end
-                    end
-                    object lgLeftTender: TdxLayoutGroup
-                      CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liLeftTender: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkLeftTender
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liLeftNonTender: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkLeftNonTender
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liLeftAccessible: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = chkLeftAccessible
-                        ControlOptions.ShowBorder = False
-                      end
-                    end
+object liLeftMobility: TdxLayoutItem
+  CaptionOptions.Visible = False
+  Control = gbLeftMobility
+  ControlOptions.ShowBorder = False
+end
+object lgLeftTender: TdxLayoutGroup
+  CaptionOptions.Visible = False
+  ButtonOptions.Buttons = <>
+  LayoutDirection = ldHorizontal
+  ShowBorder = False
+  object liLeftTenderness: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = gbLeftTenderness
+    ControlOptions.ShowBorder = False
+  end
+  object liLeftAccessible: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = chkLeftAccessible
+    ControlOptions.ShowBorder = False
+  end
+end
                     object liLeftOtherSep: TdxLayoutSeparatorItem
                       CaptionOptions.Text = 'Other'
                     end
@@ -5877,21 +5861,47 @@ inherited Gynae: TGynae
                 Width = 35
                               Enabled = False
               end
-              object rbPODNoObliteration: TcxCheckBox
+              object gbPODObliteration: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'No obliteration'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 13
-                Transparent = True
-                Width = 120
-              end
-              object rbPODPartialObliteration: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Partial obliteration'
-                TabOrder = 14
-                Transparent = True
-                Width = 140
+                Height = 22
+                Width = 680
+                object rbPODNoObliteration: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'No obliteration'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 120
+                end
+                object rbPODPartialObliteration: TcxCheckBox
+                  Left = 120
+                  Top = 0
+                  Caption = 'Partial obliteration'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 140
+                end
+                object rbPODCompleteObliteration: TcxCheckBox
+                  Left = 260
+                  Top = 0
+                  Caption = 'Complete obliteration'
+                  TabOrder = 2
+                  Transparent = True
+                  Width = 155
+                end
+                object rbPODPostSurgical: TcxCheckBox
+                  Left = 415
+                  Top = 0
+                  Caption = 'No longer obliterated, post-surgical'
+                  TabOrder = 3
+                  Transparent = True
+                  Width = 260
+                end
               end
               object cmbPODPartialSide: TcxComboBox
                 Left = 10000
@@ -5905,61 +5915,65 @@ inherited Gynae: TGynae
                 Width = 80
                               Enabled = False
               end
-              object rbPODCompleteObliteration: TcxCheckBox
+              object gbUterusMobility: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Complete obliteration'
-                TabOrder = 16
-                Transparent = True
-                Width = 155
-              end
-              object rbPODPostSurgical: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'No longer obliterated, post-surgical'
-                TabOrder = 17
-                Transparent = True
-                Width = 260
-              end
-              object chkUterusMobile: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Mobile'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 18
-                Transparent = True
-                Width = 70
+                Height = 22
+                Width = 250
+                object chkUterusMobile: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Mobile'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 70
+                end
+                object chkUterusLimitedMobility: TcxCheckBox
+                  Left = 70
+                  Top = 0
+                  Caption = 'Limited mobility'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 115
+                end
+                object chkUterusFixed: TcxCheckBox
+                  Left = 185
+                  Top = 0
+                  Caption = 'Fixed'
+                  TabOrder = 2
+                  Transparent = True
+                  Width = 60
+                end
               end
-              object chkUterusLimitedMobility: TcxCheckBox
+              object gbUterusTenderness: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Limited mobility'
-                TabOrder = 19
-                Transparent = True
-                Width = 115
-              end
-              object chkUterusFixed: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Fixed'
-                TabOrder = 20
-                Transparent = True
-                Width = 60
-              end
-              object chkUterusTender: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Tender'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 21
-                Transparent = True
-                Width = 70
-              end
-              object chkUterusNonTender: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Non-tender'
-                TabOrder = 22
-                Transparent = True
-                Width = 90
+                Height = 22
+                Width = 165
+                object chkUterusTender: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Tender'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 70
+                end
+                object chkUterusNonTender: TcxCheckBox
+                  Left = 70
+                  Top = 0
+                  Caption = 'Non-tender'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 90
+                end
               end
               object chkRetroCervicalNodule: TcxCheckBox
                 Left = 10000
@@ -6926,106 +6940,64 @@ inherited Gynae: TGynae
                   end
                 end
 
-                object lgPOD: TdxLayoutGroup
-                  CaptionOptions.Text = 'Pouch of Douglas'
-                  CaptionOptions.Visible = True
-                  ButtonOptions.Buttons = <>
-                  ShowBorder = True
-                  object lgFreeFluidRow: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liFreeFluid: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkFreeFluid
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liPODDepth: TdxLayoutItem
-                      CaptionOptions.Text = 'Depth'
-                      Control = sePODDepth
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liPODmm: TdxLayoutLabeledItem
-                      CaptionOptions.Text = 'mm'
-                    end
-                  end
-                  object liPODSep: TdxLayoutSeparatorItem
-                    CaptionOptions.Text = ''
-                  end
-                  object liPODNone: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = rbPODNoObliteration
-                    ControlOptions.ShowBorder = False
-                  end
-                  object lgPODPartial: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liPODPartial: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = rbPODPartialObliteration
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liPODSide: TdxLayoutItem
-                      AlignHorz = ahLeft
-                      CaptionOptions.Visible = False
-                      Control = cmbPODPartialSide
-                      ControlOptions.ShowBorder = False
-                    end
-                  end
-                  object liPODComplete: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = rbPODCompleteObliteration
-                    ControlOptions.ShowBorder = False
-                  end
-                  object liPODPost: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = rbPODPostSurgical
-                    ControlOptions.ShowBorder = False
-                  end
-                  object liUterusMobLabel: TdxLayoutSeparatorItem
-                    CaptionOptions.Text = 'Uterus Mobility'
-                  end
-                  object lgMobility: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liUMobile: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkUterusMobile
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liULimited: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkUterusLimitedMobility
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liUFixed: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkUterusFixed
-                      ControlOptions.ShowBorder = False
-                    end
-                  end
-                  object lgTenderness: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    LayoutDirection = ldHorizontal
-                    ShowBorder = False
-                    object liUTender: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkUterusTender
-                      ControlOptions.ShowBorder = False
-                    end
-                    object liUNonTender: TdxLayoutItem
-                      CaptionOptions.Visible = False
-                      Control = chkUterusNonTender
-                      ControlOptions.ShowBorder = False
-                    end
-                  end
-                end
+object lgPOD: TdxLayoutGroup
+  CaptionOptions.Text = 'Pouch of Douglas'
+  CaptionOptions.Visible = True
+  ButtonOptions.Buttons = <>
+  ShowBorder = True
+  object lgFreeFluidRow: TdxLayoutGroup
+    CaptionOptions.Visible = False
+    ButtonOptions.Buttons = <>
+    LayoutDirection = ldHorizontal
+    ShowBorder = False
+    object liFreeFluid: TdxLayoutItem
+      CaptionOptions.Visible = False
+      Control = chkFreeFluid
+      ControlOptions.ShowBorder = False
+    end
+    object liPODDepth: TdxLayoutItem
+      CaptionOptions.Text = 'Depth'
+      Control = sePODDepth
+      ControlOptions.ShowBorder = False
+    end
+    object liPODmm: TdxLayoutLabeledItem
+      CaptionOptions.Text = 'mm'
+    end
+  end
+  object liPODSep: TdxLayoutSeparatorItem
+    CaptionOptions.Text = ''
+  end
+  object lgPODOblitRow: TdxLayoutGroup
+    CaptionOptions.Visible = False
+    ButtonOptions.Buttons = <>
+    LayoutDirection = ldHorizontal
+    ShowBorder = False
+    object liPODObliteration: TdxLayoutItem
+      CaptionOptions.Visible = False
+      Control = gbPODObliteration
+      ControlOptions.ShowBorder = False
+    end
+    object liPODSide: TdxLayoutItem
+      AlignHorz = ahLeft
+      CaptionOptions.Visible = False
+      Control = cmbPODPartialSide
+      ControlOptions.ShowBorder = False
+    end
+  end
+  object liUterusMobLabel: TdxLayoutSeparatorItem
+    CaptionOptions.Text = 'Uterus Mobility'
+  end
+  object liUterusMobility: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = gbUterusMobility
+    ControlOptions.ShowBorder = False
+  end
+  object liUterusTenderness: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = gbUterusTenderness
+    ControlOptions.ShowBorder = False
+  end
+end
 
                 object lgRetroCervical: TdxLayoutGroup
                   CaptionOptions.Text = 'Retro-cervical'
@@ -7354,53 +7326,73 @@ inherited Gynae: TGynae
                 TabOrder = 3
                 Width = 120
               end
-              object rbRightTubePatent: TcxCheckBox
+              object gbRightTube: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Patent'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 4
-                Transparent = True
-                Width = 65
+                Height = 22
+                Width = 370
+                object rbRightTubePatent: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Patent'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 65
+                end
+                object rbRightTubeNotDemonstrated: TcxCheckBox
+                  Left = 65
+                  Top = 0
+                  Caption = 'Patency could not be demonstrated'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 240
+                end
+                object rbRightTubeAbsent: TcxCheckBox
+                  Left = 305
+                  Top = 0
+                  Caption = 'Absent'
+                  TabOrder = 2
+                  Transparent = True
+                  Width = 65
+                end
               end
-              object rbRightTubeNotDemonstrated: TcxCheckBox
+              object gbLeftTube: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Caption = 'Patency could not be demonstrated'
-                TabOrder = 5
-                Transparent = True
-                Width = 240
-              end
-              object rbRightTubeAbsent: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Absent'
-                TabOrder = 6
-                Transparent = True
-                Width = 65
-              end
-              object rbLeftTubePatent: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Patent'
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                Style.Edges = []
                 TabOrder = 7
-                Transparent = True
-                Width = 65
-              end
-              object rbLeftTubeNotDemonstrated: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Patency could not be demonstrated'
-                TabOrder = 8
-                Transparent = True
-                Width = 240
-              end
-              object rbLeftTubeAbsent: TcxCheckBox
-                Left = 10000
-                Top = 10000
-                Caption = 'Absent'
-                TabOrder = 9
-                Transparent = True
-                Width = 65
+                Height = 22
+                Width = 370
+                object rbLeftTubePatent: TcxCheckBox
+                  Left = 0
+                  Top = 0
+                  Caption = 'Patent'
+                  TabOrder = 0
+                  Transparent = True
+                  Width = 65
+                end
+                object rbLeftTubeNotDemonstrated: TcxCheckBox
+                  Left = 65
+                  Top = 0
+                  Caption = 'Patency could not be demonstrated'
+                  TabOrder = 1
+                  Transparent = True
+                  Width = 240
+                end
+                object rbLeftTubeAbsent: TcxCheckBox
+                  Left = 305
+                  Top = 0
+                  Caption = 'Absent'
+                  TabOrder = 2
+                  Transparent = True
+                  Width = 65
+                end
               end
 
               object lcProceduresGroup_Root: TdxLayoutGroup
@@ -7461,46 +7453,17 @@ inherited Gynae: TGynae
                       ButtonOptions.Buttons = <>
                       LayoutDirection = ldHorizontal
                       ShowBorder = False
-                    object lgRightTube: TdxLayoutGroup
-                      CaptionOptions.Text = 'Right tube'
-                      CaptionOptions.Visible = True
-                      ButtonOptions.Buttons = <>
-                      ShowBorder = True
-                      object liRTAbsent: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = rbRightTubeAbsent
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liRTSep: TdxLayoutSeparatorItem
-                        CaptionOptions.Text = ''
-                      end
-                      object lgRTPatency: TdxLayoutGroup
-                        CaptionOptions.Visible = False
-                        ButtonOptions.Buttons = <>
-                        LayoutDirection = ldHorizontal
-                        ShowBorder = False
-                        object lgRTPatent: TdxLayoutGroup
-                          CaptionOptions.Visible = False
-                          ButtonOptions.Buttons = <>
-                          ShowBorder = False
-                          object liRTPatent: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = rbRightTubePatent
-                          ControlOptions.ShowBorder = False
-                        end
-                        end
-                        object lgRTNotDemo: TdxLayoutGroup
-                          CaptionOptions.Visible = False
-                          ButtonOptions.Buttons = <>
-                          ShowBorder = False
-                          object liRTNotDemo: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = rbRightTubeNotDemonstrated
-                          ControlOptions.ShowBorder = False
-                        end
-                        end
-                      end
-                    end
+object lgRightTube: TdxLayoutGroup
+  CaptionOptions.Text = 'Right tube'
+  CaptionOptions.Visible = True
+  ButtonOptions.Buttons = <>
+  ShowBorder = True
+  object liRightTube: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = gbRightTube
+    ControlOptions.ShowBorder = False
+  end
+end
                     object lgLeftTube: TdxLayoutGroup
                       CaptionOptions.Text = 'Left tube'
                       CaptionOptions.Visible = True

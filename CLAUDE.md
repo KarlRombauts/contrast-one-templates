@@ -31,11 +31,19 @@ cd Scripts/tools && python3 reversesync.py ../earlyT1Singleton/mapping.json expo
 # Decompose an exported binary template into its component files
 bash Scripts/tools/filesplit.sh <export_file> <output_directory>
 
-# Query/navigate DFM files (ALWAYS use this when editing DFM files)
+# DFM files: ALWAYS use dfmquery.py instead of grep/sed/manual Python
+# Do NOT use grep to search DFM files. Do NOT use Edit for DFM property changes.
+# Do NOT write custom Python scripts to modify DFM files.
 python3 src/tools/dfmquery.py list <file> [--type TYPE] [--depth N]
+python3 src/tools/dfmquery.py find <file> [--type TYPE] [--prop P] [--missing-prop P] [--name GLOB]
 python3 src/tools/dfmquery.py get <file> <name> [--children] [--offsets]
 python3 src/tools/dfmquery.py children <file> <name>
+python3 src/tools/dfmquery.py set-prop <file> <prop=val> --name <name>
+python3 src/tools/dfmquery.py set-prop <file> <prop=val> --type T [--missing-prop P]  # bulk
+python3 src/tools/dfmquery.py replace <file> <name> --input <new.dfm>  # or stdin
+python3 src/tools/dfmquery.py wrap <file> <name> --group <groupname> [--visible] [--border]
 python3 src/tools/dfmquery.py validate <file>
+python3 src/tools/dfmquery.py xref <dfm> <script>
 
 # Run tests
 cd src/tools && .venv/bin/python3 -m pytest tests/ -v
