@@ -34,7 +34,7 @@ procedure InitializeScreen;
 begin
   if (deExamDate.Date < 100) then
     deExamDate.Date := now;
-  if (seLaparoscopyYear.Value < 1980) then
+  if (seLaparoscopyYear.Value <= 1980) then
     seLaparoscopyYear.Value := StrToInt(FormatDateTime('yyyy', now));
 
   // --- Default visibility ---

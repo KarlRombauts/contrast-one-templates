@@ -532,7 +532,8 @@ object lgClinical: TdxLayoutGroup
       ShowBorder = False
       Visible = False
       object liOtherMed: TdxLayoutItem
-        CaptionOptions.Visible = False
+        CaptionOptions.Text = 'Other'
+        CaptionOptions.Visible = True
         Control = edtOtherMedication
         ControlOptions.ShowBorder = False
       end
@@ -555,7 +556,8 @@ object lgClinical: TdxLayoutGroup
       ShowBorder = False
       Visible = False
       object liOtherReferral: TdxLayoutItem
-        CaptionOptions.Visible = False
+        CaptionOptions.Text = 'Other'
+        CaptionOptions.Visible = True
         Control = edtOtherReferral
         ControlOptions.ShowBorder = False
       end
@@ -578,7 +580,8 @@ object lgClinical: TdxLayoutGroup
       ShowBorder = False
       Visible = False
       object liOtherHistory: TdxLayoutItem
-        CaptionOptions.Visible = False
+        CaptionOptions.Text = 'Other'
+        CaptionOptions.Visible = True
         Control = edtOtherHistory
         ControlOptions.ShowBorder = False
       end
