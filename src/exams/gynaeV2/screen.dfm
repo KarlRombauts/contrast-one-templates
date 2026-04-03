@@ -42,7 +42,7 @@ inherited Gynae: TGynae
             object gbScanMethod: TcxGroupBox
               Left = 10000
               Top = 10000
-              PanelStyle.Active = True
+              ParentBackground = True
               Style.BorderStyle = ebsNone
               Style.Edges = []
               TabOrder = 0
@@ -101,7 +101,7 @@ inherited Gynae: TGynae
             object gbLMPStatus: TcxGroupBox
               Left = 10000
               Top = 10000
-              PanelStyle.Active = True
+              ParentBackground = True
               Style.BorderStyle = ebsNone
               Style.Edges = []
               TabOrder = 6
@@ -681,7 +681,7 @@ end
               object gbAdenoType: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -796,7 +796,7 @@ end
               object gbFibroidTable: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -2331,7 +2331,7 @@ end
               object gbIUD: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 10
@@ -2377,7 +2377,7 @@ end
               object gbRPOCVasc: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 17
@@ -2421,7 +2421,7 @@ end
               object gbPolypTable: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -3041,7 +3041,7 @@ end
               object gbRightOvaryStatus: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -3139,7 +3139,7 @@ end
               object gbRightMobility: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -3181,7 +3181,7 @@ end
               object gbRightTenderness: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -3239,7 +3239,7 @@ end
               object gbLeftOvaryStatus: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -3337,7 +3337,7 @@ end
               object gbLeftMobility: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -3379,7 +3379,7 @@ end
               object gbLeftTenderness: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -4163,7 +4163,7 @@ end
                   object gbEndoTableRight: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -4426,7 +4426,7 @@ end
               object gbEndoTableLeft: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -5861,64 +5861,64 @@ end
                 Width = 35
                               Enabled = False
               end
-              object gbPODObliteration: TcxGroupBox
-                Left = 10000
-                Top = 10000
-                PanelStyle.Active = True
-                Style.BorderStyle = ebsNone
-                Style.Edges = []
-                TabOrder = 13
-                Height = 22
-                Width = 680
-                object rbPODNoObliteration: TcxCheckBox
-                  Left = 0
-                  Top = 0
-                  Caption = 'No obliteration'
-                  TabOrder = 0
-                  Transparent = True
-                  Width = 120
-                end
-                object rbPODPartialObliteration: TcxCheckBox
-                  Left = 120
-                  Top = 0
-                  Caption = 'Partial obliteration'
-                  TabOrder = 1
-                  Transparent = True
-                  Width = 140
-                end
-                object rbPODCompleteObliteration: TcxCheckBox
-                  Left = 260
-                  Top = 0
-                  Caption = 'Complete obliteration'
-                  TabOrder = 2
-                  Transparent = True
-                  Width = 155
-                end
-                object rbPODPostSurgical: TcxCheckBox
-                  Left = 415
-                  Top = 0
-                  Caption = 'No longer obliterated, post-surgical'
-                  TabOrder = 3
-                  Transparent = True
-                  Width = 260
-                end
-              end
-              object cmbPODPartialSide: TcxComboBox
-                Left = 10000
-                Top = 10000
-                Properties.DropDownListStyle = lsFixedList
-                Properties.Items.Strings = (
-                  ''
-                  'left'
-                  'right')
-                TabOrder = 15
-                Width = 80
-                              Enabled = False
-              end
+object gbPODObliteration: TcxGroupBox
+  Left = 10000
+  Top = 10000
+  ParentBackground = True
+  Style.BorderStyle = ebsNone
+  Style.Edges = []
+  TabOrder = 13
+  Height = 88
+  Width = 350
+  object rbPODNoObliteration: TcxCheckBox
+    Left = 0
+    Top = 0
+    Caption = 'No obliteration'
+    TabOrder = 0
+    Transparent = True
+    Width = 120
+  end
+  object rbPODPartialObliteration: TcxCheckBox
+    Left = 0
+    Top = 22
+    Caption = 'Partial obliteration'
+    TabOrder = 1
+    Transparent = True
+    Width = 140
+  end
+  object cmbPODPartialSide: TcxComboBox
+    Left = 140
+    Top = 22
+    Properties.DropDownListStyle = lsFixedList
+    Properties.Items.Strings = (
+      ''
+      'left'
+      'right')
+    TabOrder = 4
+    Width = 80
+    Enabled = False
+  end
+  object rbPODCompleteObliteration: TcxCheckBox
+    Left = 0
+    Top = 44
+    Caption = 'Complete obliteration'
+    TabOrder = 2
+    Transparent = True
+    Width = 155
+  end
+  object rbPODPostSurgical: TcxCheckBox
+    Left = 0
+    Top = 66
+    Caption = 'No longer obliterated, post-surgical'
+    TabOrder = 3
+    Transparent = True
+    Width = 260
+  end
+end
               object gbUterusMobility: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 18
@@ -5952,7 +5952,7 @@ end
               object gbUterusTenderness: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 21
@@ -6182,7 +6182,7 @@ end
               object gbBowelNoduleTable: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 0
@@ -6967,23 +6967,11 @@ object lgPOD: TdxLayoutGroup
   object liPODSep: TdxLayoutSeparatorItem
     CaptionOptions.Text = ''
   end
-  object lgPODOblitRow: TdxLayoutGroup
-    CaptionOptions.Visible = False
-    ButtonOptions.Buttons = <>
-    LayoutDirection = ldHorizontal
-    ShowBorder = False
-    object liPODObliteration: TdxLayoutItem
-      CaptionOptions.Visible = False
-      Control = gbPODObliteration
-      ControlOptions.ShowBorder = False
-    end
-    object liPODSide: TdxLayoutItem
-      AlignHorz = ahLeft
-      CaptionOptions.Visible = False
-      Control = cmbPODPartialSide
-      ControlOptions.ShowBorder = False
-    end
-  end
+object liPODObliteration: TdxLayoutItem
+  CaptionOptions.Visible = False
+  Control = gbPODObliteration
+  ControlOptions.ShowBorder = False
+end
   object liUterusMobLabel: TdxLayoutSeparatorItem
     CaptionOptions.Text = 'Uterus Mobility'
   end
@@ -7329,7 +7317,7 @@ end
               object gbRightTube: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 4
@@ -7363,7 +7351,7 @@ end
               object gbLeftTube: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                PanelStyle.Active = True
+                ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
                 TabOrder = 7
@@ -7464,46 +7452,17 @@ object lgRightTube: TdxLayoutGroup
     ControlOptions.ShowBorder = False
   end
 end
-                    object lgLeftTube: TdxLayoutGroup
-                      CaptionOptions.Text = 'Left tube'
-                      CaptionOptions.Visible = True
-                      ButtonOptions.Buttons = <>
-                      ShowBorder = True
-                      object liLTAbsent: TdxLayoutItem
-                        CaptionOptions.Visible = False
-                        Control = rbLeftTubeAbsent
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liLTSep: TdxLayoutSeparatorItem
-                        CaptionOptions.Text = ''
-                      end
-                      object lgLTPatency: TdxLayoutGroup
-                        CaptionOptions.Visible = False
-                        ButtonOptions.Buttons = <>
-                        LayoutDirection = ldHorizontal
-                        ShowBorder = False
-                        object lgLTPatent: TdxLayoutGroup
-                          CaptionOptions.Visible = False
-                          ButtonOptions.Buttons = <>
-                          ShowBorder = False
-                          object liLTPatent: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = rbLeftTubePatent
-                          ControlOptions.ShowBorder = False
-                        end
-                        end
-                        object lgLTNotDemo: TdxLayoutGroup
-                          CaptionOptions.Visible = False
-                          ButtonOptions.Buttons = <>
-                          ShowBorder = False
-                          object liLTNotDemo: TdxLayoutItem
-                          CaptionOptions.Visible = False
-                          Control = rbLeftTubeNotDemonstrated
-                          ControlOptions.ShowBorder = False
-                        end
-                        end
-                      end
-                    end
+object lgLeftTube: TdxLayoutGroup
+  CaptionOptions.Text = 'Left tube'
+  CaptionOptions.Visible = True
+  ButtonOptions.Buttons = <>
+  ShowBorder = True
+  object liLeftTube: TdxLayoutItem
+    CaptionOptions.Visible = False
+    Control = gbLeftTube
+    ControlOptions.ShowBorder = False
+  end
+end
                     end
                   end
                 end
