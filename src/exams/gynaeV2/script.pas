@@ -63,12 +63,12 @@ begin
   gbEndoRowRight3.Visible := False;
   gbEndoRowLeft2.Visible := False;
   gbEndoRowLeft3.Visible := False;
-  gbDimsRightSimpleCyst.Visible := False;
-  gbDimsRightDermoid.Visible := False;
-  gbDimsRightFibroma.Visible := False;
-  gbDimsLeftSimpleCyst.Visible := False;
-  gbDimsLeftDermoid.Visible := False;
-  gbDimsLeftFibroma.Visible := False;
+  gbDimsRightSimpleCyst.Enabled := False;
+  gbDimsRightDermoid.Enabled := False;
+  gbDimsRightFibroma.Enabled := False;
+  gbDimsLeftSimpleCyst.Enabled := False;
+  gbDimsLeftDermoid.Enabled := False;
+  gbDimsLeftFibroma.Enabled := False;
   lgRightEndoDetails.Visible := False;
   lgLeftEndoDetails.Visible := False;
   gbBowelRow2.Visible := False;
@@ -83,30 +83,14 @@ begin
   lgTubalDetails.Visible := False;
 
   lgCervixPresent.Visible := False;
-  gbDimsRightParaCyst.Visible := False;
-  gbDimsLeftParaCyst.Visible := False;
+  gbDimsRightParaCyst.Enabled := False;
+  gbDimsLeftParaCyst.Enabled := False;
   gbEndoRowRight1.Visible := False;
   gbEndoRowLeft1.Visible := False;
 
   // --- Default enabled ---
-  chkInfiltratingSerosa.Enabled := False;
-  seUterusLength.Enabled := False;
-  seUterusWidth.Enabled := False;
-  seUterusHeight.Enabled := False;
-  seUterusVolume.Enabled := False;
-  seEndometriumThickness.Enabled := False;
-  seRightHaemCLSize.Enabled := False;
-  seLeftHaemCLSize.Enabled := False;
-  seRightOvaryLength.Enabled := False;
-  seRightOvaryWidth.Enabled := False;
-  seRightOvaryHeight.Enabled := False;
-  seRightOvaryCC.Enabled := False;
-  seLeftOvaryLength.Enabled := False;
-  seLeftOvaryWidth.Enabled := False;
-  seLeftOvaryHeight.Enabled := False;
-  seLeftOvaryCC.Enabled := False;
-  seRightEndometriomaCount.Enabled := False;
-  seLeftEndometriomaCount.Enabled := False;
+  // Only disable controls that are VISIBLE but need greying out.
+  // Controls inside hidden layout groups don't need disabling.
   sePODDepth.Enabled := False;
   cmbPODPartialSide.Enabled := False;
   seRightUSLNoduleLength.Enabled := False;
@@ -117,7 +101,6 @@ begin
   seLeftUSLNoduleDepth.Enabled := False;
   chkRightKidneyObstructed.Enabled := False;
   chkLeftKidneyObstructed.Enabled := False;
-  cmbSHGFindings.Enabled := False;
 end;
 
 // ======================== Event Handlers ==================================//
@@ -290,44 +273,44 @@ end;
 
 procedure chkRightParaOvarianCystClick(Sender)
 begin
-  gbDimsRightParaCyst.Visible := chkRightParaOvarianCyst.Checked;
+  gbDimsRightParaCyst.Enabled := chkRightParaOvarianCyst.Checked;
 end;
 
 procedure chkLeftParaOvarianCystClick(Sender)
 begin
-  gbDimsLeftParaCyst.Visible := chkLeftParaOvarianCyst.Checked;
+  gbDimsLeftParaCyst.Enabled := chkLeftParaOvarianCyst.Checked;
 end;
 
 // --- Common Pathologies (layout groups) ---
 
 procedure chkRightSimpleCystClick(Sender)
 begin
-  gbDimsRightSimpleCyst.Visible := chkRightSimpleCyst.Checked;
+  gbDimsRightSimpleCyst.Enabled := chkRightSimpleCyst.Checked;
 end;
 
 procedure chkLeftSimpleCystClick(Sender)
 begin
-  gbDimsLeftSimpleCyst.Visible := chkLeftSimpleCyst.Checked;
+  gbDimsLeftSimpleCyst.Enabled := chkLeftSimpleCyst.Checked;
 end;
 
 procedure chkRightDermoidClick(Sender)
 begin
-  gbDimsRightDermoid.Visible := chkRightDermoid.Checked;
+  gbDimsRightDermoid.Enabled := chkRightDermoid.Checked;
 end;
 
 procedure chkLeftDermoidClick(Sender)
 begin
-  gbDimsLeftDermoid.Visible := chkLeftDermoid.Checked;
+  gbDimsLeftDermoid.Enabled := chkLeftDermoid.Checked;
 end;
 
 procedure chkRightFibromaClick(Sender)
 begin
-  gbDimsRightFibroma.Visible := chkRightFibroma.Checked;
+  gbDimsRightFibroma.Enabled := chkRightFibroma.Checked;
 end;
 
 procedure chkLeftFibromaClick(Sender)
 begin
-  gbDimsLeftFibroma.Visible := chkLeftFibroma.Checked;
+  gbDimsLeftFibroma.Enabled := chkLeftFibroma.Checked;
 end;
 
 // --- Common Pathologies: Endometrioma (multiple) ---

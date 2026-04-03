@@ -350,6 +350,15 @@ def cmd_find(args):
         else:
             filters[f_str.strip()] = None  # just check existence
 
+    # Parse missing-prop filters
+    missing_filters = {}
+    for f_str in (args.missing_prop or []):
+        if '=' in f_str:
+            k, _, v = f_str.partition('=')
+            missing_filters[k.strip()] = v.strip()
+        else:
+            missing_filters[f_str.strip()] = None
+
     for obj in objects:
         match = True
         for prop, val in filters.items():
@@ -359,10 +368,180 @@ def cmd_find(args):
             if val is not None and obj['properties'][prop] != val:
                 match = False
                 break
+        for prop, val in missing_filters.items():
+            if val is None and prop in obj['properties']:
+                match = False
+                break
+            if val is not None and obj['properties'].get(prop) == val:
+                match = False
+                break
+        if args.type and obj['type'] != args.type:
+            match = False
         if match:
             ls = obj['line_start'] + 1
             le = obj['line_end'] + 1
             print(f"{ls}-{le}\td={obj['depth']}\t{obj['name']}: {obj['type']}")
+
+
+def _find_object_lines(lines, name):
+    """Find the start and end line indices (0-based) for a named object."""
+    start = None
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if re.match(r'^(?:object|inherited)\s+' + re.escape(name) + r'\s*:', stripped):
+            start = i
+            break
+    if start is None:
+        return None, None
+
+    depth = 0
+    end = None
+    for i in range(start, len(lines)):
+        stripped = lines[i].strip()
+        if re.match(r'^(?:object|inherited)\s+\w+\s*:', stripped) or stripped == 'item':
+            depth += 1
+        if stripped in ('end', 'end>'):
+            depth -= 1
+            if depth == 0:
+                end = i
+                break
+    return start, end
+
+
+def _get_indent(line):
+    """Return the leading whitespace of a line."""
+    return line[:len(line) - len(line.lstrip())]
+
+
+def cmd_set_prop(args):
+    """Add or update a property on a named object.
+
+    Usage: dfmquery.py set-prop <file> <name> <prop=value>
+    """
+    with open(args.file) as f:
+        lines = f.readlines()
+
+    start, end = _find_object_lines(lines, args.name)
+    if start is None:
+        print(f"Error: object '{args.name}' not found", file=sys.stderr)
+        sys.exit(1)
+
+    prop_name, _, prop_val = args.property.partition('=')
+    prop_name = prop_name.strip()
+    prop_val = prop_val.strip()
+    prop_line_text = f"{prop_name} = {prop_val}"
+
+    # Check if property already exists on this object (before any child object)
+    indent = _get_indent(lines[start]) + '  '
+    updated = False
+    for i in range(start + 1, end + 1):
+        stripped = lines[i].strip()
+        # Stop at first child object or end
+        if re.match(r'^(?:object|inherited)\s+\w+\s*:', stripped) or stripped == 'item':
+            break
+        if stripped == 'end' or stripped == 'end>':
+            break
+        # Check if this line is the property we want to set
+        if stripped.startswith(prop_name + ' =') or stripped.startswith(prop_name + '='):
+            lines[i] = f"{indent}{prop_line_text}\n"
+            updated = True
+            break
+
+    if not updated:
+        # Insert after the object declaration line
+        lines.insert(start + 1, f"{indent}{prop_line_text}\n")
+
+    with open(args.file, 'w') as f:
+        f.writelines(lines)
+
+    action = "Updated" if updated else "Added"
+    print(f"{action}: {args.name}.{prop_line_text}")
+
+
+def cmd_replace(args):
+    """Replace a named object with new DFM content from stdin or file.
+
+    Usage: dfmquery.py replace <file> <name> < new_content.dfm
+           dfmquery.py replace <file> <name> --input new_content.dfm
+    """
+    with open(args.file) as f:
+        lines = f.readlines()
+
+    start, end = _find_object_lines(lines, args.name)
+    if start is None:
+        print(f"Error: object '{args.name}' not found", file=sys.stderr)
+        sys.exit(1)
+
+    if args.input:
+        with open(args.input) as f:
+            new_content = f.read()
+    else:
+        new_content = sys.stdin.read()
+
+    # Validate the new content is balanced
+    new_lines = new_content.split('\n')
+    depth = 0
+    for line in new_lines:
+        stripped = line.strip()
+        if re.match(r'^(?:object|inherited)\s+\w+\s*:', stripped) or stripped == 'item':
+            depth += 1
+        if stripped in ('end', 'end>'):
+            depth -= 1
+    if depth != 0:
+        print(f"Error: replacement content is unbalanced (depth={depth})", file=sys.stderr)
+        sys.exit(1)
+
+    # Replace
+    old_line_count = end - start + 1
+    result = lines[:start] + [new_content if new_content.endswith('\n') else new_content + '\n'] + lines[end + 1:]
+
+    with open(args.file, 'w') as f:
+        f.writelines(result)
+
+    new_line_count = new_content.count('\n') + (0 if new_content.endswith('\n') else 1)
+    print(f"Replaced {args.name}: {old_line_count} lines -> {new_line_count} lines")
+
+
+def cmd_wrap(args):
+    """Wrap a named object in a new TdxLayoutGroup.
+
+    Usage: dfmquery.py wrap <file> <name> --group <group_name> [--visible false] [--border false]
+    """
+    with open(args.file) as f:
+        lines = f.readlines()
+
+    start, end = _find_object_lines(lines, args.name)
+    if start is None:
+        print(f"Error: object '{args.name}' not found", file=sys.stderr)
+        sys.exit(1)
+
+    indent = _get_indent(lines[start])
+    inner_indent = indent + '  '
+
+    # Extract the original object content
+    original = ''.join(lines[start:end + 1])
+    # Re-indent it by 2 spaces
+    reindented = '\n'.join(inner_indent + line.lstrip() if line.strip() else line for line in original.split('\n'))
+
+    # Build wrapper group
+    group_props = [
+        f"{indent}object {args.group}: TdxLayoutGroup",
+        f"{inner_indent}CaptionOptions.Visible = False",
+        f"{inner_indent}ButtonOptions.Buttons = <>",
+        f"{inner_indent}ShowBorder = {'True' if args.border else 'False'}",
+    ]
+    if not args.visible:
+        group_props.append(f"{inner_indent}Visible = False")
+
+    wrapper = '\n'.join(group_props) + '\n' + reindented + f"{indent}end\n"
+
+    result = lines[:start] + [wrapper] + lines[end + 1:]
+
+    with open(args.file, 'w') as f:
+        f.writelines(result)
+
+    vis = "visible" if args.visible else "hidden"
+    print(f"Wrapped {args.name} in {args.group} ({vis})")
 
 
 def cmd_xref(args):
@@ -515,7 +694,29 @@ def main():
     # find
     p_find = subparsers.add_parser('find', help='Find objects with specific properties')
     p_find.add_argument('file')
-    p_find.add_argument('--prop', action='append', required=True, help='Property filter (e.g. "Visible=False")')
+    p_find.add_argument('--prop', action='append', default=[], help='Property filter (e.g. "Visible=False")')
+    p_find.add_argument('--missing-prop', action='append', help='Find objects WITHOUT this property')
+    p_find.add_argument('--type', help='Filter by Delphi type')
+
+    # set-prop
+    p_setprop = subparsers.add_parser('set-prop', help='Add or update a property on a named object')
+    p_setprop.add_argument('file')
+    p_setprop.add_argument('name')
+    p_setprop.add_argument('property', help='Property assignment (e.g. "AlignHorz = ahLeft")')
+
+    # replace
+    p_replace = subparsers.add_parser('replace', help='Replace a named object with new DFM content')
+    p_replace.add_argument('file')
+    p_replace.add_argument('name')
+    p_replace.add_argument('--input', help='File with replacement content (default: stdin)')
+
+    # wrap
+    p_wrap = subparsers.add_parser('wrap', help='Wrap an object in a new TdxLayoutGroup')
+    p_wrap.add_argument('file')
+    p_wrap.add_argument('name')
+    p_wrap.add_argument('--group', required=True, help='Name for the new wrapper group')
+    p_wrap.add_argument('--visible', action='store_true', default=False, help='Group visible (default: hidden)')
+    p_wrap.add_argument('--border', action='store_true', default=False, help='Show border (default: no)')
 
     # xref
     p_xref = subparsers.add_parser('xref', help='Cross-validate script against DFM')
@@ -536,6 +737,12 @@ def main():
         cmd_validate(args)
     elif args.command == 'find':
         cmd_find(args)
+    elif args.command == 'set-prop':
+        cmd_set_prop(args)
+    elif args.command == 'replace':
+        cmd_replace(args)
+    elif args.command == 'wrap':
+        cmd_wrap(args)
     elif args.command == 'xref':
         cmd_xref(args)
 

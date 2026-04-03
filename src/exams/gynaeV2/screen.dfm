@@ -696,7 +696,7 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Transparent = True
                 Width = 195
-                              Enabled = False
+                Enabled = True
               end
               object chkIrregularJunctionalZone: TcxCheckBox
                 Left = 10000
@@ -1917,7 +1917,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 0
                   Width = 35
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasUterusx1: TcxLabel
                   Left = 37
@@ -1935,7 +1935,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 1
                   Width = 35
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasUterusx2: TcxLabel
                   Left = 84
@@ -1953,7 +1953,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 2
                   Width = 35
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasUterusmm: TcxLabel
                   Left = 131
@@ -1977,7 +1977,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 3
                   Width = 40
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasUteruscc: TcxLabel
                   Left = 217
@@ -2283,7 +2283,7 @@ inherited Gynae: TGynae
                 Properties.ValueType = vtFloat
                 TabOrder = 1
                 Width = 35
-                              Enabled = False
+                Enabled = True
               end
               object chkInSync: TcxCheckBox
                 Left = 10000
@@ -3108,7 +3108,7 @@ inherited Gynae: TGynae
                 Properties.SpinButtons.Visible = False
                 TabOrder = 0
                 Width = 35
-                              Enabled = False
+                Enabled = True
               end
               object chkRightResolvingCL: TcxCheckBox
                 Left = 10000
@@ -3276,7 +3276,7 @@ inherited Gynae: TGynae
                 Properties.SpinButtons.Visible = False
                 TabOrder = 0
                 Width = 35
-                              Enabled = False
+                Enabled = True
               end
               object chkLeftResolvingCL: TcxCheckBox
                 Left = 10000
@@ -3392,7 +3392,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 0
                   Width = 35
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasRightOvaryx1: TcxLabel
                   Left = 37
@@ -3410,7 +3410,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 1
                   Width = 35
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasRightOvaryx2: TcxLabel
                   Left = 84
@@ -3428,7 +3428,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 2
                   Width = 35
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasRightOvarymm: TcxLabel
                   Left = 131
@@ -3452,7 +3452,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 3
                   Width = 40
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasRightOvarycc: TcxLabel
                   Left = 217
@@ -3480,7 +3480,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 0
                   Width = 35
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasLeftOvaryx1: TcxLabel
                   Left = 37
@@ -3498,7 +3498,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 1
                   Width = 35
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasLeftOvaryx2: TcxLabel
                   Left = 84
@@ -3516,7 +3516,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 2
                   Width = 35
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasLeftOvarymm: TcxLabel
                   Left = 131
@@ -3540,7 +3540,7 @@ inherited Gynae: TGynae
                   Properties.ValueType = vtFloat
                   TabOrder = 3
                   Width = 40
-                                  Enabled = False
+                  Enabled = True
                 end
                 object lblgbMeasLeftOvarycc: TcxLabel
                   Left = 217
@@ -4115,7 +4115,7 @@ inherited Gynae: TGynae
                     TabOrder = 0
                     Value = 1
                     Width = 35
-                                      Enabled = False
+                    Enabled = True
                   end
                   object chkRightDermoid: TcxCheckBox
                     Left = 10000
@@ -4157,7 +4157,7 @@ inherited Gynae: TGynae
                     TabOrder = 0
                     Value = 1
                     Width = 35
-                                      Enabled = False
+                    Enabled = True
                   end
                   object chkLeftDermoid: TcxCheckBox
                     Left = 10000
@@ -7285,6 +7285,7 @@ inherited Gynae: TGynae
                 Width = 85
               end
               object cmbSHGFindings: TcxComboBox
+                Enabled = True
                 Left = 10000
                 Top = 10000
                 Properties.DropDownListStyle = lsFixedList

@@ -4,7 +4,7 @@ exportbundle.py - Bundle and extract Contrast One export files.
 
 Usage:
   exportbundle.py extract <export_file> <output_dir>
-  exportbundle.py bundle <input_dir> <export_file>
+  exportbundle.py bundle <input_dir> <export_file> [--watch]
   exportbundle.py inspect <export_file>
 
 Commands:
@@ -21,6 +21,7 @@ Missing files are allowed -- empty sections will be written.
 import sys
 import struct
 import argparse
+import time
 from pathlib import Path
 
 
@@ -76,10 +77,8 @@ def cmd_extract(args):
     print(f"\nExtracted {len(sections)} sections to {output_dir}/")
 
 
-def cmd_bundle(args):
-    input_dir = Path(args.input_dir)
-    export_path = Path(args.export_file)
-
+def _do_bundle(input_dir, export_path):
+    """Bundle component files into a single export. Returns total bytes written."""
     components = []
     for filename, label in zip(SECTION_NAMES, SECTION_LABELS):
         file_path = input_dir / filename
@@ -100,6 +99,40 @@ def cmd_bundle(args):
 
     total = export_path.stat().st_size
     print(f"\nBundled -> {export_path}  ({total:,} bytes)")
+    return total
+
+
+def _get_mtimes(input_dir):
+    """Get dict of filename -> mtime for component files that exist."""
+    mtimes = {}
+    for filename in SECTION_NAMES:
+        file_path = input_dir / filename
+        if file_path.exists():
+            mtimes[filename] = file_path.stat().st_mtime
+    return mtimes
+
+
+def cmd_bundle(args):
+    input_dir = Path(args.input_dir)
+    export_path = Path(args.export_file)
+
+    _do_bundle(input_dir, export_path)
+
+    if args.watch:
+        print(f"\nWatching {input_dir} for changes (Ctrl+C to stop)...")
+        last_mtimes = _get_mtimes(input_dir)
+        try:
+            while True:
+                time.sleep(1)
+                current_mtimes = _get_mtimes(input_dir)
+                if current_mtimes != last_mtimes:
+                    changed = [f for f in SECTION_NAMES
+                               if current_mtimes.get(f) != last_mtimes.get(f)]
+                    print(f"\n--- Changed: {', '.join(changed)} ---")
+                    _do_bundle(input_dir, export_path)
+                    last_mtimes = current_mtimes
+        except KeyboardInterrupt:
+            print("\nStopped.")
 
 
 def cmd_inspect(args):
@@ -159,6 +192,8 @@ def main():
     p_bundle = subparsers.add_parser('bundle', help='Bundle component files into export')
     p_bundle.add_argument('input_dir')
     p_bundle.add_argument('export_file')
+    p_bundle.add_argument('--watch', '-w', action='store_true',
+                          help='Watch input files and re-bundle on changes')
 
     p_inspect = subparsers.add_parser('inspect', help='Show section info without extracting')
     p_inspect.add_argument('export_file')
