@@ -192,7 +192,7 @@ inherited Gynae: TGynae
             object edtOtherMedication: TcxTextEdit
               Left = 10000
               Top = 10000
-              Enabled = False
+              Visible = False
               TabOrder = 14
               Width = 200
             end
@@ -356,6 +356,13 @@ inherited Gynae: TGynae
               Transparent = True
             end
 
+            object edtOtherSurgery: TcxTextEdit
+              Left = 10000
+              Top = 10000
+              Visible = False
+              TabOrder = 20
+              Width = 200
+            end
             object lcPatientDetailsGroup_Root: TdxLayoutGroup
               AlignHorz = ahClient
               AlignVert = avTop
@@ -621,28 +628,8 @@ inherited Gynae: TGynae
                 TabOrder = 0
                 Width = 120
               end
-              object seSeptumLength: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 0
-                Width = 35
-              end
-              object seSeptumWidth: TcxSpinEdit
-                Left = 10000
-                Top = 10000
-                Properties.AssignedValues.MinValue = True
-                Properties.SpinButtons.Visible = False
-                Properties.DisplayFormat = '#0.0'
-                Properties.EditFormat = '#0.0'
-                Properties.ValueType = vtFloat
-                TabOrder = 0
-                Width = 35
-              end
+
+
               object chkLSCSScar: TcxCheckBox
                 Left = 10000
                 Top = 10000
@@ -1979,6 +1966,50 @@ inherited Gynae: TGynae
                 end
               end
 
+            object gbDimsSeptum: TcxGroupBox
+              Left = 10000
+              Top = 10000
+              ParentBackground = True
+              Style.BorderStyle = ebsNone
+              Style.Edges = []
+              TabOrder = 0
+              Height = 22
+              Width = 140
+              object seSeptumLength: TcxSpinEdit
+                Left = 0
+                Top = 0
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 0
+                Width = 35
+              end
+              object lblSeptumLbl: TcxLabel
+                Left = 37
+                Top = 2
+                Caption = 'x'
+                Transparent = True
+              end
+              object seSeptumWidth: TcxSpinEdit
+                Left = 47
+                Top = 0
+                Properties.AssignedValues.MinValue = True
+                Properties.SpinButtons.Visible = False
+                Properties.DisplayFormat = '#0.0'
+                Properties.EditFormat = '#0.0'
+                Properties.ValueType = vtFloat
+                TabOrder = 1
+                Width = 35
+              end
+              object lblSeptumMM: TcxLabel
+                Left = 84
+                Top = 2
+                Caption = 'mm'
+                Transparent = True
+              end
+            end
               object lcUterusGroup_Root: TdxLayoutGroup
                 AlignHorz = ahClient
                 AlignVert = avTop
@@ -2028,34 +2059,20 @@ inherited Gynae: TGynae
                   object lgCongenitalDetails: TdxLayoutGroup
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
+                    LayoutDirection = ldHorizontal
                     ShowBorder = False
                     Visible = False
                     object liCongenitalType: TdxLayoutItem
                       CaptionOptions.Text = 'Type'
+                      AlignHorz = ahLeft
                       Control = cmbCongenitalType
                       ControlOptions.ShowBorder = False
                     end
-                    object lgSeptum: TdxLayoutGroup
-                      CaptionOptions.Visible = False
-                      ButtonOptions.Buttons = <>
-                      LayoutDirection = ldHorizontal
-                      ShowBorder = False
-                      object liSeptumLabel: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'Septum'
-                      end
-                      object liSeptumL: TdxLayoutItem
-                        CaptionOptions.Text = 'L'
-                        Control = seSeptumLength
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liSeptumW: TdxLayoutItem
-                        CaptionOptions.Text = 'W'
-                        Control = seSeptumWidth
-                        ControlOptions.ShowBorder = False
-                      end
-                      object liSeptumMM: TdxLayoutLabeledItem
-                        CaptionOptions.Text = 'mm'
-                      end
+                    object liSeptumDims: TdxLayoutItem
+                      CaptionOptions.Text = 'Septum'
+                      AlignHorz = ahLeft
+                      Control = gbDimsSeptum
+                      ControlOptions.ShowBorder = False
                     end
                   end
                   object liLSCS: TdxLayoutItem
@@ -2389,7 +2406,7 @@ inherited Gynae: TGynae
                       Transparent = True
                     end
                     object gbDimsPolyp1: TcxGroupBox
-                      Left = 25
+                      Left = 135
                       Top = 0
                       ParentBackground = True
                       Style.BorderStyle = ebsNone
@@ -2450,7 +2467,7 @@ inherited Gynae: TGynae
                       end
                     end
                     object cmbPolypLocation1: TcxComboBox
-                      Left = 210
+                      Left = 25
                       Top = 1
                       Properties.DropDownListStyle = lsFixedList
                       Properties.Items.Strings = (
@@ -2482,7 +2499,7 @@ inherited Gynae: TGynae
                       Transparent = True
                     end
                     object gbDimsPolyp2: TcxGroupBox
-                      Left = 25
+                      Left = 135
                       Top = 0
                       ParentBackground = True
                       Style.BorderStyle = ebsNone
@@ -2543,7 +2560,7 @@ inherited Gynae: TGynae
                       end
                     end
                     object cmbPolypLocation2: TcxComboBox
-                      Left = 210
+                      Left = 25
                       Top = 1
                       Properties.DropDownListStyle = lsFixedList
                       Properties.Items.Strings = (
@@ -2575,7 +2592,7 @@ inherited Gynae: TGynae
                       Transparent = True
                     end
                     object gbDimsPolyp3: TcxGroupBox
-                      Left = 25
+                      Left = 135
                       Top = 0
                       ParentBackground = True
                       Style.BorderStyle = ebsNone
@@ -2636,7 +2653,7 @@ inherited Gynae: TGynae
                       end
                     end
                     object cmbPolypLocation3: TcxComboBox
-                      Left = 210
+                      Left = 25
                       Top = 1
                       Properties.DropDownListStyle = lsFixedList
                       Properties.Items.Strings = (
@@ -2668,7 +2685,7 @@ inherited Gynae: TGynae
                       Transparent = True
                     end
                     object gbDimsPolyp4: TcxGroupBox
-                      Left = 25
+                      Left = 135
                       Top = 0
                       ParentBackground = True
                       Style.BorderStyle = ebsNone
@@ -2729,7 +2746,7 @@ inherited Gynae: TGynae
                       end
                     end
                     object cmbPolypLocation4: TcxComboBox
-                      Left = 210
+                      Left = 25
                       Top = 1
                       Properties.DropDownListStyle = lsFixedList
                       Properties.Items.Strings = (
@@ -4648,6 +4665,7 @@ inherited Gynae: TGynae
               object gbDimsRightSimpleCyst: TcxGroupBox
                 Left = 10000
                 Top = 10000
+                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4709,6 +4727,7 @@ inherited Gynae: TGynae
               object gbDimsRightDermoid: TcxGroupBox
                 Left = 10000
                 Top = 10000
+                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4770,6 +4789,7 @@ inherited Gynae: TGynae
               object gbDimsRightFibroma: TcxGroupBox
                 Left = 10000
                 Top = 10000
+                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4831,6 +4851,7 @@ inherited Gynae: TGynae
               object gbDimsLeftSimpleCyst: TcxGroupBox
                 Left = 10000
                 Top = 10000
+                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4892,6 +4913,7 @@ inherited Gynae: TGynae
               object gbDimsLeftDermoid: TcxGroupBox
                 Left = 10000
                 Top = 10000
+                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4953,6 +4975,7 @@ inherited Gynae: TGynae
               object gbDimsLeftFibroma: TcxGroupBox
                 Left = 10000
                 Top = 10000
+                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []

@@ -59,8 +59,8 @@ end;
 
 procedure ccbMedicationChange(Sender)
 begin
-  edtOtherMedication.Enabled := (ccbMedication.States[ccbMedication.Properties.Items.Count-1] = 1);
-  if not edtOtherMedication.Enabled then
+  edtOtherMedication.Visible := (ccbMedication.States[ccbMedication.Properties.Items.Count-1] = 1);
+  if not edtOtherMedication.Visible then
     edtOtherMedication.Text := '';
 end;
 
@@ -69,6 +69,9 @@ end;
 procedure ccbPastSurgeryChange(Sender)
 begin
   lgLaparoscopy.Visible := (ccbPastSurgery.States[6] = 1);
+  edtOtherSurgery.Visible := (ccbPastSurgery.States[ccbPastSurgery.Properties.Items.Count-1] = 1);
+  if not edtOtherSurgery.Visible then
+    edtOtherSurgery.Text := '';
 end;
 
 // --- Uterus ---
@@ -83,6 +86,14 @@ end;
 procedure chkCongenitalAbnormalityClick(Sender)
 begin
   lgCongenitalDetails.Visible := chkCongenitalAbnormality.Checked;
+end;
+
+procedure AdenoTypeClick(Sender)
+begin
+  if rbAdenoDiffuse.Checked then
+    rbAdenoFocal.Checked := False;
+  if rbAdenoFocal.Checked then
+    rbAdenoDiffuse.Checked := False;
 end;
 
 procedure chkAdenomyosisClick(Sender)
@@ -455,10 +466,26 @@ end;
 
 procedure LMPStatusClick(Sender)
 begin
+  if chkLMPUnknown.Checked then
+  begin
+    chkAmenorrhoea.Checked := False;
+    chkPostMenopausal.Checked := False;
+  end;
+  if chkAmenorrhoea.Checked then
+  begin
+    chkLMPUnknown.Checked := False;
+    chkPostMenopausal.Checked := False;
+  end;
+  if chkPostMenopausal.Checked then
+  begin
+    chkLMPUnknown.Checked := False;
+    chkAmenorrhoea.Checked := False;
+  end;
   deLMPDate.Enabled := not (chkLMPUnknown.Checked or chkAmenorrhoea.Checked or chkPostMenopausal.Checked);
   seStartDay.Enabled := not (chkAmenorrhoea.Checked or chkPostMenopausal.Checked);
   seCycleMinDays.Enabled := not (chkAmenorrhoea.Checked or chkPostMenopausal.Checked);
 end;
+
 
 // --- Uterus Mobility (radio toggle) ---
 
@@ -580,6 +607,8 @@ begin
   // --- Uterus ---
   chkHysterectomy.OnClick := 'chkHysterectomyClick';
   chkCongenitalAbnormality.OnClick := 'chkCongenitalAbnormalityClick';
+  rbAdenoDiffuse.OnClick := 'AdenoTypeClick';
+  rbAdenoFocal.OnClick := 'AdenoTypeClick';
   chkAdenomyosis.OnClick := 'chkAdenomyosisClick';
   chkFibroidsPresent.OnClick := 'chkFibroidsPresentClick';
   seFibroidCount.Properties.OnChange := 'seFibroidCountChange';
