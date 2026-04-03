@@ -2373,7 +2373,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object lblPolypHdrDims: TcxLabel
-                  Left = 27
+                  Left = 137
                   Top = 1
                   Caption = 'Dimensions'
                   ParentFont = False
@@ -2382,7 +2382,7 @@ inherited Gynae: TGynae
                   Transparent = True
                 end
                 object lblPolypHdrLoc: TcxLabel
-                  Left = 212
+                  Left = 27
                   Top = 1
                   Caption = 'Location'
                   ParentFont = False
