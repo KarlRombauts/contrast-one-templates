@@ -383,6 +383,18 @@ inherited Gynae: TGynae
               Width = 200
                           Visible = False
             end
+            object edtOtherReferral: TcxTextEdit
+              Left = 10000
+              Top = 10000
+              TabOrder = 21
+              Width = 200
+            end
+            object edtOtherHistory: TcxTextEdit
+              Left = 10000
+              Top = 10000
+              TabOrder = 22
+              Width = 200
+            end
             object lcPatientDetailsGroup_Root: TdxLayoutGroup
               AlignHorz = ahClient
               AlignVert = avTop
@@ -498,89 +510,129 @@ end
                 end
               end
 
-              object lgClinical: TdxLayoutGroup
-                CaptionOptions.Text = 'Clinical'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = True
-                object lgMedRow: TdxLayoutGroup
-                  CaptionOptions.Visible = False
-                  ButtonOptions.Buttons = <>
-                  LayoutDirection = ldHorizontal
-                  ShowBorder = False
-                  object liMedication: TdxLayoutItem
-                    AlignHorz = ahLeft
-                    CaptionOptions.Text = 'Medication'
-                    Control = ccbMedication
-                    ControlOptions.ShowBorder = False
-                  end
-                  object lgOtherMedication: TdxLayoutGroup
-                    CaptionOptions.Visible = False
-                    ButtonOptions.Buttons = <>
-                    ShowBorder = False
-                    Visible = False
-                    object liOtherMed: TdxLayoutItem
-                    CaptionOptions.Visible = False
-                    Control = edtOtherMedication
-                    ControlOptions.ShowBorder = False
-                  end
-                  end
-                end
-                object liReferral: TdxLayoutItem
-                      AlignHorz = ahLeft
-                  CaptionOptions.Text = 'Referral indication'
-                  Control = ccbReferralIndication
-                  ControlOptions.ShowBorder = False
-                end
-                object liHistory: TdxLayoutItem
-                      AlignHorz = ahLeft
-                  CaptionOptions.Text = 'Gynae history'
-                  Control = ccbClinicalHistory
-                  ControlOptions.ShowBorder = False
-                end
-              end
+object lgClinical: TdxLayoutGroup
+  CaptionOptions.Text = 'Clinical'
+  CaptionOptions.Visible = True
+  ButtonOptions.Buttons = <>
+  ShowBorder = True
+  object lgMedRow: TdxLayoutGroup
+    CaptionOptions.Visible = False
+    ButtonOptions.Buttons = <>
+    LayoutDirection = ldHorizontal
+    ShowBorder = False
+    object liMedication: TdxLayoutItem
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Medication'
+      Control = ccbMedication
+      ControlOptions.ShowBorder = False
+    end
+    object lgOtherMedication: TdxLayoutGroup
+      CaptionOptions.Visible = False
+      ButtonOptions.Buttons = <>
+      ShowBorder = False
+      Visible = False
+      object liOtherMed: TdxLayoutItem
+        CaptionOptions.Visible = False
+        Control = edtOtherMedication
+        ControlOptions.ShowBorder = False
+      end
+    end
+  end
+  object lgReferralRow: TdxLayoutGroup
+    CaptionOptions.Visible = False
+    ButtonOptions.Buttons = <>
+    LayoutDirection = ldHorizontal
+    ShowBorder = False
+    object liReferral: TdxLayoutItem
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Referral indication'
+      Control = ccbReferralIndication
+      ControlOptions.ShowBorder = False
+    end
+    object lgOtherReferral: TdxLayoutGroup
+      CaptionOptions.Visible = False
+      ButtonOptions.Buttons = <>
+      ShowBorder = False
+      Visible = False
+      object liOtherReferral: TdxLayoutItem
+        CaptionOptions.Visible = False
+        Control = edtOtherReferral
+        ControlOptions.ShowBorder = False
+      end
+    end
+  end
+  object lgHistoryRow: TdxLayoutGroup
+    CaptionOptions.Visible = False
+    ButtonOptions.Buttons = <>
+    LayoutDirection = ldHorizontal
+    ShowBorder = False
+    object liHistory: TdxLayoutItem
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Gynae history'
+      Control = ccbClinicalHistory
+      ControlOptions.ShowBorder = False
+    end
+    object lgOtherHistory: TdxLayoutGroup
+      CaptionOptions.Visible = False
+      ButtonOptions.Buttons = <>
+      ShowBorder = False
+      Visible = False
+      object liOtherHistory: TdxLayoutItem
+        CaptionOptions.Visible = False
+        Control = edtOtherHistory
+        ControlOptions.ShowBorder = False
+      end
+    end
+  end
+end
 
-              object lgSurgery: TdxLayoutGroup
-                CaptionOptions.Text = 'Surgery'
-                CaptionOptions.Visible = True
-                ButtonOptions.Buttons = <>
-                ShowBorder = True
-                object liSurgery: TdxLayoutItem
-                      AlignHorz = ahLeft
-                  CaptionOptions.Text = 'Gynae surgery'
-                  Control = ccbPastSurgery
-                  ControlOptions.ShowBorder = False
-                end
-                object lgOtherSurgery: TdxLayoutGroup
-                  CaptionOptions.Visible = False
-                  ButtonOptions.Buttons = <>
-                  ShowBorder = False
-                  Visible = False
-                  object liOtherSurgery: TdxLayoutItem
-                    CaptionOptions.Text = 'Other'
-                    AlignHorz = ahLeft
-                    Control = edtOtherSurgery
-                    ControlOptions.ShowBorder = False
-                  end
-                end
-                object lgLaparoscopy: TdxLayoutGroup
-                  CaptionOptions.Visible = False
-                  ButtonOptions.Buttons = <>
-                  LayoutDirection = ldHorizontal
-                  ShowBorder = False
-                                  Visible = False
-                  object liLapCount: TdxLayoutItem
-                    CaptionOptions.Text = 'How many'
-                    Control = seLaparoscopyCount
-                    ControlOptions.ShowBorder = False
-                  end
-                  object liLapYear: TdxLayoutItem
-                    CaptionOptions.Text = 'Year of last'
-                    Control = seLaparoscopyYear
-                    ControlOptions.ShowBorder = False
-                  end
-                end
-              end
+object lgSurgery: TdxLayoutGroup
+  CaptionOptions.Text = 'Surgery'
+  CaptionOptions.Visible = True
+  ButtonOptions.Buttons = <>
+  ShowBorder = True
+  object lgSurgeryRow: TdxLayoutGroup
+    CaptionOptions.Visible = False
+    ButtonOptions.Buttons = <>
+    LayoutDirection = ldHorizontal
+    ShowBorder = False
+    object liSurgery: TdxLayoutItem
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Gynae surgery'
+      Control = ccbPastSurgery
+      ControlOptions.ShowBorder = False
+    end
+    object lgOtherSurgery: TdxLayoutGroup
+      CaptionOptions.Visible = False
+      ButtonOptions.Buttons = <>
+      ShowBorder = False
+      Visible = False
+      object liOtherSurgery: TdxLayoutItem
+        CaptionOptions.Text = 'Other'
+        AlignHorz = ahLeft
+        Control = edtOtherSurgery
+        ControlOptions.ShowBorder = False
+      end
+    end
+  end
+  object lgLaparoscopy: TdxLayoutGroup
+    CaptionOptions.Visible = False
+    ButtonOptions.Buttons = <>
+    LayoutDirection = ldHorizontal
+    ShowBorder = False
+    Visible = False
+    object liLapCount: TdxLayoutItem
+      CaptionOptions.Text = 'How many'
+      Control = seLaparoscopyCount
+      ControlOptions.ShowBorder = False
+    end
+    object liLapYear: TdxLayoutItem
+      CaptionOptions.Text = 'Year of last'
+      Control = seLaparoscopyYear
+      ControlOptions.ShowBorder = False
+    end
+  end
+end
 
               object liVersion: TdxLayoutItem
                 CaptionOptions.Visible = False

@@ -34,10 +34,14 @@ procedure InitializeScreen;
 begin
   if (deExamDate.Date < 100) then
     deExamDate.Date := now;
+  if (seLaparoscopyYear.Value < 1980) then
+    seLaparoscopyYear.Value := StrToInt(FormatDateTime('yyyy', now));
 
   // --- Default visibility ---
   lgPainWithProbe.Visible := False;
   lgOtherMedication.Visible := False;
+  lgOtherReferral.Visible := False;
+  lgOtherHistory.Visible := False;
   lgOtherSurgery.Visible := False;
   lgLaparoscopy.Visible := False;
   gbFibRow2.Visible := False;
@@ -122,6 +126,24 @@ begin
   lgOtherMedication.Visible := (ccbMedication.States[ccbMedication.Properties.Items.Count-1] = 1);
   if not lgOtherMedication.Visible then
     edtOtherMedication.Text := '';
+end;
+
+// --- Referral Indication ---
+
+procedure ccbReferralIndicationChange(Sender)
+begin
+  lgOtherReferral.Visible := (ccbReferralIndication.States[ccbReferralIndication.Properties.Items.Count-1] = 1);
+  if not lgOtherReferral.Visible then
+    edtOtherReferral.Text := '';
+end;
+
+// --- Gynae History ---
+
+procedure ccbClinicalHistoryChange(Sender)
+begin
+  lgOtherHistory.Visible := (ccbClinicalHistory.States[ccbClinicalHistory.Properties.Items.Count-1] = 1);
+  if not lgOtherHistory.Visible then
+    edtOtherHistory.Text := '';
 end;
 
 // --- Surgical History ---
@@ -471,6 +493,10 @@ begin
 
   // --- Medication ---
   ccbMedication.Properties.OnChange := 'ccbMedicationChange';
+
+  // --- Referral / History ---
+  ccbReferralIndication.Properties.OnChange := 'ccbReferralIndicationChange';
+  ccbClinicalHistory.Properties.OnChange := 'ccbClinicalHistoryChange';
 
   // --- Surgical History ---
   ccbPastSurgery.Properties.OnChange := 'ccbPastSurgeryChange';
