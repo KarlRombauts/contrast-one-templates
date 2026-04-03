@@ -34,6 +34,89 @@ procedure InitializeScreen;
 begin
   if (deExamDate.Date < 100) then
     deExamDate.Date := now;
+
+  // --- Default visibility ---
+  chkPainWithProbe.Visible := False;
+  edtOtherMedication.Visible := False;
+  edtOtherSurgery.Visible := False;
+  lgLaparoscopy.Visible := False;
+  gbFibRow2.Visible := False;
+  gbFibRow3.Visible := False;
+  gbFibRow4.Visible := False;
+  gbFibRow5.Visible := False;
+  gbFibRow6.Visible := False;
+  gbFibRow7.Visible := False;
+  gbFibRow8.Visible := False;
+  gbFibRow9.Visible := False;
+  gbFibRow10.Visible := False;
+  lgCongenitalDetails.Visible := False;
+  lgAdenomyosisDetails.Visible := False;
+  lgFibroidsDetails.Visible := False;
+  gbPolypRow2.Visible := False;
+  gbPolypRow3.Visible := False;
+  gbPolypRow4.Visible := False;
+  lgPolypDetails.Visible := False;
+  lgRPOCDetails.Visible := False;
+  lgRightOvaryDetails.Visible := False;
+  lgLeftOvaryDetails.Visible := False;
+  gbEndoRowRight2.Visible := False;
+  gbEndoRowRight3.Visible := False;
+  gbEndoRowLeft2.Visible := False;
+  gbEndoRowLeft3.Visible := False;
+  gbDimsRightSimpleCyst.Visible := False;
+  gbDimsRightDermoid.Visible := False;
+  gbDimsRightFibroma.Visible := False;
+  gbDimsLeftSimpleCyst.Visible := False;
+  gbDimsLeftDermoid.Visible := False;
+  gbDimsLeftFibroma.Visible := False;
+  lgRightEndoDetails.Visible := False;
+  lgLeftEndoDetails.Visible := False;
+  gbBowelRow2.Visible := False;
+  gbBowelRow3.Visible := False;
+  lgBladderDetails.Visible := False;
+  lgBladderLocation.Visible := False;
+  lgVaultContent.Visible := False;
+  lgVaultDetails.Visible := False;
+  lgRCDetails.Visible := False;
+  lgBowelDetails.Visible := False;
+  lgSHGDetails.Visible := False;
+  lgTubalDetails.Visible := False;
+
+  liCervixPresent.Visible := False;
+  gbDimsRightParaCyst.Visible := False;
+  gbDimsLeftParaCyst.Visible := False;
+  gbEndoRowRight1.Visible := False;
+  gbEndoRowLeft1.Visible := False;
+
+  // --- Default enabled ---
+  chkInfiltratingSerosa.Enabled := False;
+  seUterusLength.Enabled := False;
+  seUterusWidth.Enabled := False;
+  seUterusHeight.Enabled := False;
+  seUterusVolume.Enabled := False;
+  seEndometriumThickness.Enabled := False;
+  seRightHaemCLSize.Enabled := False;
+  seLeftHaemCLSize.Enabled := False;
+  seRightOvaryLength.Enabled := False;
+  seRightOvaryWidth.Enabled := False;
+  seRightOvaryHeight.Enabled := False;
+  seRightOvaryCC.Enabled := False;
+  seLeftOvaryLength.Enabled := False;
+  seLeftOvaryWidth.Enabled := False;
+  seLeftOvaryHeight.Enabled := False;
+  seLeftOvaryCC.Enabled := False;
+  seRightEndometriomaCount.Enabled := False;
+  seLeftEndometriomaCount.Enabled := False;
+  sePODDepth.Enabled := False;
+  cmbPODPartialSide.Enabled := False;
+  seRightUSLNoduleLength.Enabled := False;
+  seRightUSLNoduleWidth.Enabled := False;
+  seRightUSLNoduleDepth.Enabled := False;
+  seLeftUSLNoduleLength.Enabled := False;
+  seLeftUSLNoduleWidth.Enabled := False;
+  seLeftUSLNoduleDepth.Enabled := False;
+  chkRightKidneyObstructed.Enabled := False;
+  chkLeftKidneyObstructed.Enabled := False;
 end;
 
 // ======================== Event Handlers ==================================//

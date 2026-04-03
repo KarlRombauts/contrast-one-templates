@@ -59,7 +59,6 @@ inherited Gynae: TGynae
               Left = 10000
               Top = 10000
               Caption = 'Pain with probe insertion'
-              Visible = False
               TabOrder = 2
               Transparent = True
               Width = 180
@@ -192,7 +191,6 @@ inherited Gynae: TGynae
             object edtOtherMedication: TcxTextEdit
               Left = 10000
               Top = 10000
-              Visible = False
               TabOrder = 14
               Width = 200
             end
@@ -359,7 +357,6 @@ inherited Gynae: TGynae
             object edtOtherSurgery: TcxTextEdit
               Left = 10000
               Top = 10000
-              Visible = False
               TabOrder = 20
               Width = 200
             end
@@ -536,7 +533,6 @@ inherited Gynae: TGynae
                   ButtonOptions.Buttons = <>
                   LayoutDirection = ldHorizontal
                   ShowBorder = False
-                  Visible = False
                   object liLapCount: TdxLayoutItem
                     CaptionOptions.Text = 'How many'
                     Control = seLaparoscopyCount
@@ -666,7 +662,6 @@ inherited Gynae: TGynae
                 Left = 10000
                 Top = 10000
                 Caption = 'Infiltrating through serosa'
-                Enabled = False
                 TabOrder = 0
                 Transparent = True
                 Width = 195
@@ -927,7 +922,6 @@ inherited Gynae: TGynae
                   Color = 15790320
                   ParentColor = False
                   TabOrder = 2
-                  Visible = False
                   Height = 24
                   Width = 620
                   object lblFibIdx2: TcxLabel
@@ -1032,7 +1026,6 @@ inherited Gynae: TGynae
                   Style.Edges = []
                   ParentBackground = True
                   TabOrder = 3
-                  Visible = False
                   Height = 24
                   Width = 620
                   object lblFibIdx3: TcxLabel
@@ -1138,7 +1131,6 @@ inherited Gynae: TGynae
                   Color = 15790320
                   ParentColor = False
                   TabOrder = 4
-                  Visible = False
                   Height = 24
                   Width = 620
                   object lblFibIdx4: TcxLabel
@@ -1243,7 +1235,6 @@ inherited Gynae: TGynae
                   Style.Edges = []
                   ParentBackground = True
                   TabOrder = 5
-                  Visible = False
                   Height = 24
                   Width = 620
                   object lblFibIdx5: TcxLabel
@@ -1349,7 +1340,6 @@ inherited Gynae: TGynae
                   Color = 15790320
                   ParentColor = False
                   TabOrder = 6
-                  Visible = False
                   Height = 24
                   Width = 620
                   object lblFibIdx6: TcxLabel
@@ -1454,7 +1444,6 @@ inherited Gynae: TGynae
                   Style.Edges = []
                   ParentBackground = True
                   TabOrder = 7
-                  Visible = False
                   Height = 24
                   Width = 620
                   object lblFibIdx7: TcxLabel
@@ -1560,7 +1549,6 @@ inherited Gynae: TGynae
                   Color = 15790320
                   ParentColor = False
                   TabOrder = 8
-                  Visible = False
                   Height = 24
                   Width = 620
                   object lblFibIdx8: TcxLabel
@@ -1665,7 +1653,6 @@ inherited Gynae: TGynae
                   Style.Edges = []
                   ParentBackground = True
                   TabOrder = 9
-                  Visible = False
                   Height = 24
                   Width = 620
                   object lblFibIdx9: TcxLabel
@@ -1771,7 +1758,6 @@ inherited Gynae: TGynae
                   Color = 15790320
                   ParentColor = False
                   TabOrder = 10
-                  Visible = False
                   Height = 24
                   Width = 620
                   object lblFibIdx10: TcxLabel
@@ -1888,7 +1874,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 0
                   Width = 35
                 end
@@ -1906,7 +1891,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 1
                   Width = 35
                 end
@@ -1924,7 +1908,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 2
                   Width = 35
                 end
@@ -1948,7 +1931,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 3
                   Width = 40
                 end
@@ -2061,7 +2043,6 @@ inherited Gynae: TGynae
                     ButtonOptions.Buttons = <>
                     LayoutDirection = ldHorizontal
                     ShowBorder = False
-                    Visible = False
                     object liCongenitalType: TdxLayoutItem
                       CaptionOptions.Text = 'Type'
                       AlignHorz = ahLeft
@@ -2096,7 +2077,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object lgAdenoType: TdxLayoutGroup
                       CaptionOptions.Visible = False
                       ButtonOptions.Buttons = <>
@@ -2192,7 +2172,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liFibroidCount: TdxLayoutItem
                       CaptionOptions.Text = 'Count'
                       AlignHorz = ahLeft
@@ -2246,7 +2225,6 @@ inherited Gynae: TGynae
                 Properties.DisplayFormat = '#0.0'
                 Properties.EditFormat = '#0.0'
                 Properties.ValueType = vtFloat
-                Enabled = False
                 TabOrder = 1
                 Width = 35
               end
@@ -2489,7 +2467,6 @@ inherited Gynae: TGynae
                     Style.BorderStyle = ebsNone
                     Style.Edges = []
                     TabOrder = 2
-                    Visible = False
                     Height = 24
                     Width = 400
                     object lblPolypIdx2: TcxLabel
@@ -2582,7 +2559,6 @@ inherited Gynae: TGynae
                     Style.BorderStyle = ebsNone
                     Style.Edges = []
                     TabOrder = 3
-                    Visible = False
                     Height = 24
                     Width = 400
                     object lblPolypIdx3: TcxLabel
@@ -2675,7 +2651,6 @@ inherited Gynae: TGynae
                     Style.BorderStyle = ebsNone
                     Style.Edges = []
                     TabOrder = 4
-                    Visible = False
                     Height = 24
                     Width = 400
                     object lblPolypIdx4: TcxLabel
@@ -2897,7 +2872,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liPolypCount: TdxLayoutItem
                       CaptionOptions.Text = 'Count'
                       AlignHorz = ahLeft
@@ -2931,7 +2905,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liRPOCDims: TdxLayoutItem
                       CaptionOptions.Text = 'Dimensions'
                       AlignHorz = ahLeft
@@ -3071,7 +3044,6 @@ inherited Gynae: TGynae
                 Top = 10000
                 Properties.AssignedValues.MinValue = True
                 Properties.SpinButtons.Visible = False
-                Enabled = False
                 TabOrder = 0
                 Width = 35
               end
@@ -3239,7 +3211,6 @@ inherited Gynae: TGynae
                 Top = 10000
                 Properties.AssignedValues.MinValue = True
                 Properties.SpinButtons.Visible = False
-                Enabled = False
                 TabOrder = 0
                 Width = 35
               end
@@ -3355,7 +3326,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 0
                   Width = 35
                 end
@@ -3373,7 +3343,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 1
                   Width = 35
                 end
@@ -3391,7 +3360,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 2
                   Width = 35
                 end
@@ -3415,7 +3383,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 3
                   Width = 40
                 end
@@ -3443,7 +3410,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 0
                   Width = 35
                 end
@@ -3461,7 +3427,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 1
                   Width = 35
                 end
@@ -3479,7 +3444,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 2
                   Width = 35
                 end
@@ -3503,7 +3467,6 @@ inherited Gynae: TGynae
                   Properties.DisplayFormat = '#0.0'
                   Properties.EditFormat = '#0.0'
                   Properties.ValueType = vtFloat
-                  Enabled = False
                   TabOrder = 3
                   Width = 40
                 end
@@ -3675,7 +3638,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liRightMeasurements: TdxLayoutItem
                       CaptionOptions.Text = 'Measured'
                       AlignHorz = ahLeft
@@ -3855,7 +3817,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liLeftMeasurements: TdxLayoutItem
                       CaptionOptions.Text = 'Measured'
                       AlignHorz = ahLeft
@@ -4073,7 +4034,6 @@ inherited Gynae: TGynae
                     Top = 10000
                     Properties.MinValue = 1.000000000000000000
                     Properties.MaxValue = 3.000000000000000000
-                    Enabled = False
                     TabOrder = 0
                     Value = 1
                     Width = 35
@@ -4115,7 +4075,6 @@ inherited Gynae: TGynae
                     Top = 10000
                     Properties.MinValue = 1.000000000000000000
                     Properties.MaxValue = 3.000000000000000000
-                    Enabled = False
                     TabOrder = 0
                     Value = 1
                     Width = 35
@@ -4249,7 +4208,6 @@ inherited Gynae: TGynae
                     Style.BorderStyle = ebsNone
                     Style.Edges = []
                     TabOrder = 2
-                    Visible = False
                     Height = 24
                     Width = 220
                     object lblEndoIdxRight2: TcxLabel
@@ -4327,7 +4285,6 @@ inherited Gynae: TGynae
                     Style.BorderStyle = ebsNone
                     Style.Edges = []
                     TabOrder = 3
-                    Visible = False
                     Height = 24
                     Width = 220
                     object lblEndoIdxRight3: TcxLabel
@@ -4511,7 +4468,6 @@ inherited Gynae: TGynae
                     Style.BorderStyle = ebsNone
                     Style.Edges = []
                     TabOrder = 2
-                    Visible = False
                     Height = 24
                     Width = 220
                     object lblEndoIdxLeft2: TcxLabel
@@ -4589,7 +4545,6 @@ inherited Gynae: TGynae
                     Style.BorderStyle = ebsNone
                     Style.Edges = []
                     TabOrder = 3
-                    Visible = False
                     Height = 24
                     Width = 220
                     object lblEndoIdxLeft3: TcxLabel
@@ -4665,7 +4620,6 @@ inherited Gynae: TGynae
               object gbDimsRightSimpleCyst: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4727,7 +4681,6 @@ inherited Gynae: TGynae
               object gbDimsRightDermoid: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4789,7 +4742,6 @@ inherited Gynae: TGynae
               object gbDimsRightFibroma: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4851,7 +4803,6 @@ inherited Gynae: TGynae
               object gbDimsLeftSimpleCyst: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4913,7 +4864,6 @@ inherited Gynae: TGynae
               object gbDimsLeftDermoid: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -4975,7 +4925,6 @@ inherited Gynae: TGynae
               object gbDimsLeftFibroma: TcxGroupBox
                 Left = 10000
                 Top = 10000
-                Visible = False
                 ParentBackground = True
                 Style.BorderStyle = ebsNone
                 Style.Edges = []
@@ -5070,7 +5019,6 @@ inherited Gynae: TGynae
                         CaptionOptions.Visible = False
                         ButtonOptions.Buttons = <>
                         ShowBorder = False
-                        Visible = False
                         object liRightEndoCount: TdxLayoutItem
                           CaptionOptions.Text = 'Count'
                           AlignHorz = ahLeft
@@ -5141,7 +5089,6 @@ inherited Gynae: TGynae
                         CaptionOptions.Visible = False
                         ButtonOptions.Buttons = <>
                         ShowBorder = False
-                        Visible = False
                         object liLeftEndoCount: TdxLayoutItem
                           CaptionOptions.Text = 'Count'
                           AlignHorz = ahLeft
@@ -5790,7 +5737,6 @@ inherited Gynae: TGynae
                 Top = 10000
                 Properties.AssignedValues.MinValue = True
                 Properties.SpinButtons.Visible = False
-                Enabled = False
                 TabOrder = 74
                 Width = 35
               end
@@ -5818,7 +5764,6 @@ inherited Gynae: TGynae
                   ''
                   'left'
                   'right')
-                Enabled = False
                 TabOrder = 15
                 Width = 80
               end
@@ -6059,7 +6004,6 @@ inherited Gynae: TGynae
                 Left = 10000
                 Top = 10000
                 Caption = 'Obstructed'
-                Enabled = False
                 TabOrder = 71
                 Transparent = True
                 Width = 90
@@ -6076,7 +6020,6 @@ inherited Gynae: TGynae
                 Left = 10000
                 Top = 10000
                 Caption = 'Obstructed'
-                Enabled = False
                 TabOrder = 73
                 Transparent = True
                 Width = 90
@@ -6263,7 +6206,6 @@ inherited Gynae: TGynae
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
                   TabOrder = 2
-                  Visible = False
                   Height = 24
                   Width = 700
                   object lblBNIdx2: TcxLabel
@@ -6383,7 +6325,6 @@ inherited Gynae: TGynae
                   Style.BorderStyle = ebsNone
                   Style.Edges = []
                   TabOrder = 3
-                  Visible = False
                   Height = 24
                   Width = 700
                   object lblBNIdx3: TcxLabel
@@ -6765,7 +6706,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liBladderDims: TdxLayoutItem
                       CaptionOptions.Text = 'Dimensions'
                       AlignHorz = ahLeft
@@ -6778,7 +6718,6 @@ inherited Gynae: TGynae
                     ButtonOptions.Buttons = <>
                     LayoutDirection = ldHorizontal
                     ShowBorder = False
-                    Visible = False
                     object liBladderLoc: TdxLayoutItem
                       CaptionOptions.Text = 'Location'
                       Control = cmbBladderNoduleLocation
@@ -6801,7 +6740,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liVaultThin: TdxLayoutItem
                       CaptionOptions.Visible = False
                       Control = chkVaultThinRegular
@@ -6819,7 +6757,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liVaultDims: TdxLayoutItem
                       CaptionOptions.Text = 'Dimensions'
                       AlignHorz = ahLeft
@@ -6950,7 +6887,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liRCDims: TdxLayoutItem
                       CaptionOptions.Text = 'Dimensions'
                       AlignHorz = ahLeft
@@ -7148,7 +7084,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liBowelCount: TdxLayoutItem
                       CaptionOptions.Text = 'Count'
                       AlignHorz = ahLeft
@@ -7238,7 +7173,6 @@ inherited Gynae: TGynae
                   'Two endometrial polyps'
                   'Submucosal fibroid'
                   'Synechia')
-                Enabled = False
                 TabOrder = 1
                 Width = 180
               end
@@ -7332,7 +7266,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liSHGFindings: TdxLayoutItem
                       AlignHorz = ahLeft
                       CaptionOptions.Text = 'Findings'
@@ -7356,7 +7289,6 @@ inherited Gynae: TGynae
                     CaptionOptions.Visible = False
                     ButtonOptions.Buttons = <>
                     ShowBorder = False
-                    Visible = False
                     object liEnhancement: TdxLayoutItem
                       AlignHorz = ahLeft
                       CaptionOptions.Text = 'Enhancement method'

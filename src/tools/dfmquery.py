@@ -96,6 +96,15 @@ def parse_objects(lines):
                 name, typ, start, depth = stack.pop()
                 if name != '__item__':
                     parent = stack[-1][0] if stack else None
+                    # Collect direct properties (between start line and first child or end)
+                    props = {}
+                    for pi in range(start + 1, i):
+                        ps = lines[pi].strip()
+                        if (ps.startswith('object ') and ':' in ps) or ps == 'item':
+                            break
+                        if '=' in ps and not ps.startswith('//'):
+                            pk, _, pv = ps.partition('=')
+                            props[pk.strip()] = pv.strip()
                     objects.append({
                         'name': name,
                         'type': typ,
@@ -103,6 +112,7 @@ def parse_objects(lines):
                         'line_start': start,
                         'line_end': i,
                         'parent': parent,
+                        'properties': props,
                     })
             continue
 
@@ -324,6 +334,37 @@ def cmd_validate(args):
         sys.exit(1)
 
 
+def cmd_find(args):
+    """Find objects with specific property values."""
+    with open(args.file) as f:
+        lines = f.readlines()
+
+    objects = parse_objects(lines)
+
+    # Parse prop=value filters
+    filters = {}
+    for f_str in args.prop:
+        if '=' in f_str:
+            k, _, v = f_str.partition('=')
+            filters[k.strip()] = v.strip()
+        else:
+            filters[f_str.strip()] = None  # just check existence
+
+    for obj in objects:
+        match = True
+        for prop, val in filters.items():
+            if prop not in obj['properties']:
+                match = False
+                break
+            if val is not None and obj['properties'][prop] != val:
+                match = False
+                break
+        if match:
+            ls = obj['line_start'] + 1
+            le = obj['line_end'] + 1
+            print(f"{ls}-{le}\td={obj['depth']}\t{obj['name']}: {obj['type']}")
+
+
 def cmd_xref(args):
     """Cross-validate a script.pas against a DFM file.
 
@@ -471,6 +512,11 @@ def main():
     p_validate = subparsers.add_parser('validate', help='Validate DFM structure')
     p_validate.add_argument('files', nargs='+', metavar='file')
 
+    # find
+    p_find = subparsers.add_parser('find', help='Find objects with specific properties')
+    p_find.add_argument('file')
+    p_find.add_argument('--prop', action='append', required=True, help='Property filter (e.g. "Visible=False")')
+
     # xref
     p_xref = subparsers.add_parser('xref', help='Cross-validate script against DFM')
     p_xref.add_argument('dfm', help='DFM file')
@@ -488,6 +534,8 @@ def main():
         cmd_children(args)
     elif args.command == 'validate':
         cmd_validate(args)
+    elif args.command == 'find':
+        cmd_find(args)
     elif args.command == 'xref':
         cmd_xref(args)
 
